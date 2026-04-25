@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services – Gagstek | Cloud AI & Salesforce Solutions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #0f2044;
+      --accent: #3b82f6;
+      --accent-bright: #60a5fa;
+      --gold: #f59e0b;
+      --white: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; }
+
+    /* ─── NAVBAR ─────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 2rem; height: 72px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled { background: rgba(10,22,40,0.97); box-shadow: 0 2px 24px rgba(0,0,0,0.4); backdrop-filter: blur(12px); }
+    .logo
+    {
+      width:130px;
+    }
+    .logo span { color: var(--accent-bright); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.92rem; font-weight: 500; letter-spacing: 0.3px; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+    .nav-links a.active { border-bottom: 2px solid var(--accent-bright); padding-bottom: 2px; }
+    .nav-cta { background: var(--accent); color: var(--white) !important; padding: 0.55rem 1.3rem; border-radius: 6px; font-weight: 600 !important; transition: background 0.2s, transform 0.15s !important; }
+    .nav-cta:hover { background: var(--accent-bright) !important; transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; inset: 0; top: 72px; background: rgba(10,22,40,0.98); backdrop-filter: blur(16px); z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    .mobile-menu.open { display: flex; opacity: 1; pointer-events: all; }
+    .mobile-menu a { color: var(--white); text-decoration: none; font-size: 1.4rem; font-weight: 500; letter-spacing: 0.5px; transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--accent-bright); }
+    .mobile-menu .mob-cta { background: var(--accent); padding: 0.75rem 2.5rem; border-radius: 8px; font-weight: 600; font-size: 1rem; }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ─── HERO ───────────────────────────────────────────── */
+    .svc-hero {
+      position: relative;
+      padding-top: 72px;
+      min-height: 440px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .svc-hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1800&q=80&fit=crop');
+      background-size: cover; background-position: center;
+      filter: brightness(0.22) saturate(1.1);
+      transform: scale(1.04);
+      animation: slowZoom 18s ease-in-out infinite alternate;
+    }
+    @keyframes slowZoom { from { transform: scale(1.04); } to { transform: scale(1.1); } }
+    .svc-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(10,22,40,0.85) 0%, rgba(10,22,40,0.4) 60%, rgba(15,32,68,0.75) 100%);
+    }
+    .svc-hero-content {
+      position: relative; z-index: 10;
+      max-width: 1200px; margin: 0 auto; padding: 4rem 2rem;
+      width: 100%;
+    }
+    .svc-hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.4);
+      border-radius: 100px; padding: 0.4rem 1.1rem;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--accent-bright);
+      margin-bottom: 1.4rem;
+      animation: fadeUp 0.8s ease both;
+    }
+    .svc-hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--accent-bright); border-radius: 50%; }
+    .svc-hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 6vw, 4.5rem);
+      font-weight: 900; line-height: 1.08; letter-spacing: -1.5px;
+      color: var(--white); margin-bottom: 0.75rem;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+    .svc-hero-title .hl { color: var(--accent-bright); }
+    .svc-hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem); color: rgba(255,255,255,0.68);
+      max-width: 520px; line-height: 1.7; margin-bottom: 2rem;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+    .svc-hero-actions {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+    .btn-primary { background: var(--accent); color: var(--white); padding: 0.85rem 2.2rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(59,130,246,0.4); }
+    .btn-primary:hover { background: #2563eb; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(59,130,246,0.55); }
+    .btn-outline { background: transparent; color: var(--white); padding: 0.85rem 2.2rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.35); cursor: pointer; transition: border-color 0.2s, background 0.2s, transform 0.15s; }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.07); transform: translateY(-2px); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ─── BREADCRUMB STRIP ──────────────────────────────── */
+    .breadcrumb-strip {
+      background: rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 0.85rem 2rem;
+    }
+    .breadcrumb-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.82rem; color: rgba(255,255,255,0.45);
+    }
+    .breadcrumb-inner a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb-inner a:hover { color: var(--accent-bright); }
+    .breadcrumb-inner span { color: var(--accent-bright); font-weight: 600; }
+
+    /* ─── MAIN LAYOUT: SIDEBAR + CONTENT ───────────────── */
+    .svc-layout {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 280px 1fr;
+      gap: 0; padding: 0 2rem 6rem;
+      align-items: start;
+    }
+
+    /* ─── SIDEBAR ───────────────────────────────────────── */
+    .svc-sidebar {
+      position: sticky; top: 88px;
+      padding: 2.5rem 0 2.5rem 0;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      padding-right: 2rem;
+      margin-top: 3rem;
+    }
+    .sidebar-section-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--accent-bright);
+      margin-bottom: 0.75rem; padding-left: 1rem;
+    }
+    .sidebar-nav { list-style: none; margin-bottom: 2rem; }
+    .sidebar-nav li a {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.6rem 1rem; border-radius: 8px;
+      color: rgba(255,255,255,0.55); font-size: 0.88rem; font-weight: 500;
+      text-decoration: none; transition: all 0.2s;
+      border-left: 2px solid transparent;
+    }
+    .sidebar-nav li a:hover { color: var(--white); background: rgba(255,255,255,0.05); border-left-color: rgba(59,130,246,0.4); }
+    .sidebar-nav li a.active { color: var(--white); background: rgba(59,130,246,0.12); border-left-color: var(--accent-bright); font-weight: 600; }
+    .sidebar-nav li a .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(255,255,255,0.25); flex-shrink: 0; transition: background 0.2s;
+    }
+    .sidebar-nav li a.active .dot,
+    .sidebar-nav li a:hover .dot { background: var(--accent-bright); }
+    .sidebar-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 0.5rem 1rem 1.25rem; }
+    .sidebar-cta {
+      margin: 0 0.5rem;
+      background: linear-gradient(135deg, rgba(59,130,246,0.18), rgba(59,130,246,0.08));
+      border: 1px solid rgba(59,130,246,0.3);
+      border-radius: 12px; padding: 1.2rem 1rem; text-align: center;
+    }
+    .sidebar-cta p { font-size: 0.8rem; color: rgba(255,255,255,0.65); line-height: 1.5; margin-bottom: 0.75rem; }
+    .sidebar-cta a { display: inline-block; background: var(--accent); color: #fff; font-size: 0.82rem; font-weight: 700; padding: 0.55rem 1.2rem; border-radius: 7px; text-decoration: none; transition: background 0.2s; }
+    .sidebar-cta a:hover { background: var(--accent-bright); }
+
+    /* ─── SERVICE CONTENT AREA ──────────────────────────── */
+    .svc-content { padding-left: 3rem; padding-top: 3rem; }
+
+    /* Section intro */
+    .svc-section-intro {
+      margin-bottom: 3.5rem;
+    }
+    .svc-section-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--accent-bright);
+      margin-bottom: 0.75rem;
+    }
+    .svc-section-tag::before { content: ''; width: 28px; height: 2px; background: var(--accent-bright); border-radius: 2px; }
+    .svc-section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 900; line-height: 1.12; letter-spacing: -0.8px;
+      color: var(--white); margin-bottom: 1rem;
+    }
+    .svc-section-title span { color: var(--accent-bright); }
+    .svc-section-desc { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.75; max-width: 640px; }
+
+    /* Individual service entry */
+    .svc-entry {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: center;
+      padding: 3rem 0; border-top: 1px solid rgba(255,255,255,0.07);
+      scroll-margin-top: 100px;
+    }
+    .svc-entry:first-of-type { border-top: none; }
+    .svc-entry.reverse { direction: rtl; }
+    .svc-entry.reverse > * { direction: ltr; }
+
+    .svc-img-wrap {
+      position: relative; border-radius: 16px; overflow: hidden;
+      aspect-ratio: 4/3;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    }
+    .svc-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .svc-entry:hover .svc-img-wrap img { transform: scale(1.04); }
+    .svc-img-badge {
+      position: absolute; top: 1rem; left: 1rem;
+      background: rgba(10,22,40,0.85); backdrop-filter: blur(8px);
+      border: 1px solid rgba(59,130,246,0.35);
+      border-radius: 8px; padding: 0.45rem 0.9rem;
+      font-size: 0.74rem; font-weight: 700; color: var(--accent-bright);
+      letter-spacing: 0.5px;
+    }
+    .svc-img-gradient {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,22,40,0.5) 0%, transparent 50%);
+    }
+
+    .svc-text {}
+    .svc-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem; font-weight: 900; line-height: 1;
+      color: rgba(59,130,246,0.12); letter-spacing: -2px;
+      margin-bottom: -0.5rem;
+    }
+    .svc-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      font-weight: 900; color: var(--white);
+      line-height: 1.2; margin-bottom: 0.75rem;
+      letter-spacing: -0.3px;
+    }
+    .svc-desc { font-size: 0.95rem; color: rgba(255,255,255,0.62); line-height: 1.78; margin-bottom: 1.4rem; }
+    .svc-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .svc-bullets li {
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.5;
+    }
+    .svc-bullets li::before {
+      content: ''; flex-shrink: 0; width: 16px; height: 16px; margin-top: 1px;
+      background: rgba(59,130,246,0.2); border: 1.5px solid rgba(59,130,246,0.5);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='2,6 5,9 10,3' stroke='%2360a5fa' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: center; background-size: 10px;
+    }
+    .svc-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      color: var(--accent-bright); font-size: 0.88rem; font-weight: 700;
+      text-decoration: none; letter-spacing: 0.3px;
+      transition: gap 0.2s, color 0.2s;
+    }
+    .svc-link:hover { gap: 0.7rem; color: var(--white); }
+    .svc-link svg { transition: transform 0.2s; }
+    .svc-link:hover svg { transform: translateX(3px); }
+
+    /* ─── CHAPTER DIVIDER ───────────────────────────────── */
+    .chapter-divider {
+      display: flex; align-items: center; gap: 1.5rem;
+      padding: 3rem 0 1.5rem;
+    }
+    .chapter-divider::before, .chapter-divider::after {
+      content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.08);
+    }
+    .chapter-divider-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 900; color: var(--accent-bright);
+      white-space: nowrap; letter-spacing: -0.3px;
+    }
+
+    /* ─── PROCESS SECTION ───────────────────────────────── */
+    .process-section {
+      background: #0d1f3c;
+      padding: 6rem 2rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .process-inner { max-width: 1200px; margin: 0 auto; }
+    .process-header { text-align: center; margin-bottom: 4rem; }
+    .process-eyebrow {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--accent-bright); margin-bottom: 0.75rem;
+    }
+    .process-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 900;
+      color: var(--white); letter-spacing: -0.8px;
+      margin-bottom: 0.75rem;
+    }
+    .process-title span { color: var(--accent-bright); }
+    .process-subtitle { font-size: 1rem; color: rgba(255,255,255,0.55); max-width: 500px; margin: 0 auto; line-height: 1.7; }
+
+    .process-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .process-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 2rem 1.75rem;
+      position: relative; overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+    .process-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-bright));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+    .process-card:hover { border-color: rgba(59,130,246,0.3); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.3); }
+    .process-card:hover::before { transform: scaleX(1); }
+    .process-step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem; font-weight: 900; color: rgba(59,130,246,0.12);
+      line-height: 1; margin-bottom: 0.25rem; letter-spacing: -2px;
+    }
+    .process-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.25);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+    .process-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; font-weight: 900; color: var(--white);
+      margin-bottom: 0.7rem; letter-spacing: -0.2px;
+    }
+    .process-card-desc { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+
+    /* ─── STATS BAR ─────────────────────────────────────── */
+    .stats-bar {
+      background: var(--accent);
+      padding: 2.5rem 2rem;
+    }
+    .stats-bar-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2rem; text-align: center;
+    }
+    .sbar-item {}
+    .sbar-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem; font-weight: 900; color: #fff;
+      line-height: 1; margin-bottom: 0.3rem;
+    }
+    .sbar-label { font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.75); letter-spacing: 0.3px; }
+
+    /* ─── TESTIMONIAL CTA ───────────────────────────────── */
+    .testi-cta-section {
+      background: #f8faff;
+      padding: 6rem 2rem;
+    }
+    .testi-cta-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    .testi-cta-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-weight: 700; color: #0a1628; line-height: 1.45;
+      letter-spacing: -0.3px; margin-bottom: 2rem;
+      position: relative;
+    }
+    .testi-cta-quote::before {
+      content: '\201C';
+      font-size: 5rem; color: rgba(59,130,246,0.15);
+      position: absolute; top: -1.5rem; left: -1rem;
+      font-family: Georgia, serif; line-height: 1;
+    }
+    .testi-cta-author { display: flex; align-items: center; gap: 1rem; }
+    .testi-cta-avatar {
+      width: 52px; height: 52px; border-radius: 50%; overflow: hidden;
+      border: 3px solid #e8f0fe;
+    }
+    .testi-cta-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .testi-cta-name { font-weight: 700; color: #0a1628; font-size: 0.95rem; }
+    .testi-cta-role { font-size: 0.82rem; color: #64748b; }
+
+    .testi-cta-right { }
+    .testi-cta-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+      font-weight: 900; color: #0a1628; line-height: 1.15;
+      letter-spacing: -0.8px; margin-bottom: 1.2rem;
+    }
+    .testi-cta-heading span { color: var(--accent); }
+    .testi-cta-desc { font-size: 1rem; color: #475569; line-height: 1.75; margin-bottom: 2rem; }
+    .testi-cta-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-dark { background: #0a1628; color: #fff; padding: 0.85rem 2rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+    .btn-dark:hover { background: #1a2f50; transform: translateY(-2px); }
+    .btn-blue-outline { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); padding: 0.85rem 2rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+    .btn-blue-outline:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
+
+    /* ─── FAQ ───────────────────────────────────────────── */
+    .faq-section { background: var(--navy); padding: 6rem 2rem; }
+    .faq-inner { max-width: 860px; margin: 0 auto; }
+    .faq-header { text-align: center; margin-bottom: 3.5rem; }
+    .faq-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 4vw, 2.8rem); font-weight: 900;
+      color: var(--white); letter-spacing: -0.5px; margin-bottom: 0.75rem;
+    }
+    .faq-title span { color: var(--accent-bright); }
+    .faq-subtitle { font-size: 1rem; color: rgba(255,255,255,0.55); line-height: 1.65; }
+
+    .faq-list { display: flex; flex-direction: column; gap: 0; }
+    .faq-item {
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .faq-question {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.4rem 0; cursor: pointer; gap: 1rem;
+      transition: color 0.2s;
+    }
+    .faq-question:hover { color: var(--accent-bright); }
+    .faq-q-text { font-size: 1rem; font-weight: 600; color: var(--white); line-height: 1.4; flex: 1; transition: color 0.2s; }
+    .faq-question:hover .faq-q-text { color: var(--accent-bright); }
+    .faq-chevron {
+      flex-shrink: 0; width: 28px; height: 28px;
+      border-radius: 50%; background: rgba(255,255,255,0.07);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, transform 0.3s;
+      color: rgba(255,255,255,0.5);
+    }
+    .faq-item.open .faq-chevron { background: var(--accent); color: #fff; transform: rotate(180deg); }
+    .faq-answer {
+      max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease;
+      font-size: 0.93rem; color: rgba(255,255,255,0.58); line-height: 1.75;
+    }
+    .faq-item.open .faq-answer { max-height: 300px; padding-bottom: 1.4rem; }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    .site-footer { background: #111827; color: rgba(255,255,255,0.75); font-family: 'DM Sans', sans-serif; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .footer-top { padding: 4rem 0 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-top .footer-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; align-items: start; }
+    .ft-logo-link { display: inline-block; margin-bottom: 0.75rem; text-decoration: none; }
+    .ft-logo-img { height: 48px; width: auto; display: block; object-fit: contain; }
+    .ft-tagline { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.55; margin-bottom: 1.4rem; }
+    .ft-cta-btn { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--accent, #3b82f6); color: #fff; font-weight: 700; font-size: 0.9rem; padding: 0.75rem 1.6rem; border-radius: 8px; text-decoration: none; transition: background 0.2s, transform 0.15s; margin-bottom: 1.8rem; }
+    .ft-cta-btn:hover { background: #60a5fa; transform: translateY(-2px); }
+    .ft-socials { display: flex; gap: 0.9rem; margin-bottom: 1.2rem; }
+    .ft-social-icon { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.75); text-decoration: none; transition: background 0.2s, color 0.2s; }
+    .ft-social-icon:hover { background: var(--accent, #3b82f6); color: #fff; }
+    .ft-email { display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; }
+    .ft-email a { color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
+    .ft-email a:hover { color: #fff; }
+    .ft-offices { display: flex; flex-direction: column; gap: 1.2rem; }
+    .ft-office-title { font-weight: 700; font-size: 0.9rem; color: #fff; margin-bottom: 0.3rem; }
+    .ft-office-addr { font-size: 0.85rem; line-height: 1.6; color: rgba(255,255,255,0.55); }
+    .ft-office-phone { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-top: 0.2rem; }
+    .ft-rating { display: flex; align-items: center; gap: 0.75rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.75rem 1rem; width: fit-content; }
+    .ft-rating-score { font-weight: 700; font-size: 0.9rem; color: #fff; }
+    .ft-rating-sub { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
+    .ft-badges { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+    .ft-badge { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.6rem; font-size: 0.78rem; }
+    .ft-badge-iso .iso-text { font-size: 0.72rem; line-height: 1.3; color: #e11d48; font-weight: 700; text-transform: uppercase; }
+    .sf-text { display: flex; flex-direction: column; font-size: 0.72rem; color: rgba(255,255,255,0.7); line-height: 1.3; }
+    .sf-text span:first-child { font-weight: 700; color: #fff; }
+    .db-text { display: flex; flex-direction: column; font-size: 0.7rem; line-height: 1.4; color: rgba(255,255,255,0.65); }
+    .db-text span { font-weight: 700; color: #fff; font-size: 0.75rem; }
+    .footer-mid { padding: 3rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-mid .footer-inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+    .ft-col { display: flex; flex-direction: column; gap: 0.65rem; }
+    .ft-col-title { font-weight: 700; font-size: 0.9rem; color: #fff; margin-bottom: 0.5rem; letter-spacing: 0.3px; }
+    .ft-col a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .ft-col a:hover { color: #fff; }
+    .footer-bottom { padding: 1.4rem 0; }
+    .footer-bottom .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+    .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.45); }
+    .ft-bottom-links { display: flex; gap: 1.5rem; }
+    .ft-bottom-links a { font-size: 0.82rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .ft-bottom-links a:hover { color: #fff; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .svc-layout { grid-template-columns: 240px 1fr; }
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top .footer-inner { grid-template-columns: 1fr 1fr; }
+      .ft-badges { grid-column: 1 / -1; grid-template-columns: repeat(4,1fr); }
+    }
+    @media (max-width: 900px) {
+      .svc-layout { grid-template-columns: 1fr; padding: 0 1.5rem 4rem; }
+      .svc-sidebar { position: static; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding-right: 0; padding-bottom: 1.5rem; margin-top: 2rem; }
+      .sidebar-nav { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+      .sidebar-nav li a { border-left: none; border-bottom: 2px solid transparent; border-radius: 6px; font-size: 0.82rem; padding: 0.4rem 0.8rem; }
+      .sidebar-nav li a.active { border-bottom-color: var(--accent-bright); border-left: none; }
+      .sidebar-section-label { padding-left: 0; }
+      .sidebar-divider { display: none; }
+      .sidebar-cta { display: none; }
+      .svc-content { padding-left: 0; }
+      .svc-entry { grid-template-columns: 1fr; gap: 1.5rem; }
+      .svc-entry.reverse { direction: ltr; }
+      .testi-cta-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .stats-bar-inner { grid-template-columns: repeat(2, 1fr); }
+      .process-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .footer-top .footer-inner { grid-template-columns: 1fr; }
+      .ft-badges { grid-template-columns: repeat(2,1fr); }
+      .footer-mid .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .svc-hero-actions { flex-direction: column; }
+      .btn-primary, .btn-outline { width: 100%; max-width: 280px; text-align: center; }
+      .footer-bottom .footer-inner { flex-direction: column; align-items: flex-start; }
+      .ft-bottom-links { flex-wrap: wrap; gap: 1rem; }
+      .stats-bar-inner { grid-template-columns: 1fr 1fr; }
+      .footer-mid .footer-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav id="navbar">
+    <a href="home.html" class="logo"><img src="./img/logo.png"></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="client.html">Client Stories</a></li>
+      <li><a href="#">Products</a></li>
+      <li><a href="#">Careers</a></li>
+      <li><a href="#" class="nav-cta">Request a Meeting</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="services.html">Services</a>
+    <a href="#">Products</a>
+    <a href="#">Careers</a>
+    <a href="#" class="mob-cta">Request a Meeting</a>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="svc-hero">
+    <div class="svc-hero-bg"></div>
+    <div class="svc-hero-overlay"></div>
+    <div class="svc-hero-content">
+      <div class="svc-hero-eyebrow">Salesforce Crest Partner · AI Systems Integrator</div>
+      <h1 class="svc-hero-title">
+        Cloud AI &amp; Salesforce<br><span class="hl">Services</span>
+      </h1>
+      <p class="svc-hero-sub">Tailored solutions, zero surprises. We align technology with your business goals — from consulting to go-live and beyond.</p>
+      <div class="svc-hero-actions">
+        <a href="#salesforce-consulting" class="btn-primary">Explore Services</a>
+        <a href="#contact" class="btn-outline">Schedule a Call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb-strip">
+    <div class="breadcrumb-inner">
+      <a href="home.html">Home</a>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+      <span>Services</span>
+    </div>
+  </div>
+
+  <!-- ═══ MAIN: SIDEBAR + CONTENT ═══ -->
+  <div class="svc-layout">
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="svc-sidebar">
+      <p class="sidebar-section-label">Salesforce Services</p>
+      <ul class="sidebar-nav">
+        <li><a href="#salesforce-consulting" class="active"><span class="dot"></span> Business Consulting</a></li>
+        <li><a href="#implementation"><span class="dot"></span> Implementation & Dev</a></li>
+        <li><a href="#cpq"><span class="dot"></span> Quote-To-Cash (CPQ)</a></li>
+        <li><a href="#data-migration"><span class="dot"></span> Data Migration</a></li>
+        <li><a href="#healthcheck"><span class="dot"></span> Salesforce Healthcheck</a></li>
+        <li><a href="#support"><span class="dot"></span> Support & Admin</a></li>
+      </ul>
+      <div class="sidebar-divider"></div>
+      <p class="sidebar-section-label">AI Services</p>
+      <ul class="sidebar-nav">
+        <li><a href="#ai-sales"><span class="dot"></span> AI Sales Automation</a></li>
+        <li><a href="#ai-lead"><span class="dot"></span> AI Lead Intelligence</a></li>
+        <li><a href="#conversational-ai"><span class="dot"></span> Conversational AI</a></li>
+        <li><a href="#ai-workflow"><span class="dot"></span> AI Workflow Orchestration</a></li>
+        <li><a href="#ai-data"><span class="dot"></span> AI Data Engineering</a></li>
+        <li><a href="#custom-ai"><span class="dot"></span> Custom AI Products</a></li>
+      </ul>
+      <div class="sidebar-divider"></div>
+      <p class="sidebar-section-label">Staffing</p>
+      <ul class="sidebar-nav">
+        <li><a href="#staff-aug"><span class="dot"></span> Staff Augmentation</a></li>
+      </ul>
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-cta">
+        <p>100% Salesforce-certified professionals ready to transform your business.</p>
+        <a href="#">Free Consultation ↗</a>
+      </div>
+    </aside>
+
+    <!-- ── CONTENT ── -->
+    <div class="svc-content">
+
+      <!-- ───── SALESFORCE SERVICES ───── -->
+      <div class="svc-section-intro">
+        <div class="svc-section-tag">Salesforce Services</div>
+        <h2 class="svc-section-title">Enterprise CRM Solutions<br><span>Built Around Your Business</span></h2>
+        <p class="svc-section-desc">Gagstek is a Salesforce Crest Partner with 350+ certifications and 4,000+ Trailhead badges. We deliver consulting, implementation, and ongoing support — customised entirely to your goals.</p>
+      </div>
+
+      <!-- 1. Business Consulting -->
+      <div class="svc-entry" id="salesforce-consulting">
+        <div class="svc-img-wrap">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80&fit=crop" alt="Business Consulting" />
+          <div class="svc-img-gradient"></div>
+          <div class="svc-img-badge">Consulting & Advisory</div>
+        </div>
+        <div class="svc-text">
+          <div class="svc-number">01</div>
+          <h3 class="svc-name">Business Consulting, Architecture &amp; Advisory</h3>
+          <p class="svc-desc">We help you define your Salesforce vision, map your CRM roadmap, and architect a solution that aligns seamlessly with your business objectives. No assumptions — deep listening, clear design.</p>
+          <ul class="svc-bullets">
+            <li>Process Gap Analysis &amp; CRM Roadmap</li>
+            <li>Solution Architecture by Certified Architects</li>
+            <li>Platform Strategy &amp; Best-Fit Recommendations</li>
+            <li>Change Management &amp; Stakeholder Alignment</li>
+          </ul>
+          <a href="#" class="svc-link">Learn More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg></a>
+        </div>
+      </div>
+
+      <!-- 2. Implementation -->
+      <div class="svc-entry reverse" id="implementation">
+        <div class="svc-text">
+          <div class="svc-number">02</div>
+          <h3 class="svc-name">Implementation, Development &amp; Integration</h3>
+          <p class="svc-desc">Our certified developers build and configure Salesforce to your exact specifications — from Lightning Components and Apex development to seamless integrations with ERP, marketing platforms, and custom apps.</p>
+          <ul class="svc-bullets">
+            <li>Custom Lightning Components &amp; Apex Development</li>
+            <li>UX/UI Enhancement using Lightning Design System</li>
+            <li>API Integration with ERP, Marketing &amp; Custom Apps</li>
+            <li>AppExchange &amp; Mobile-First Product Engineering</li>
+          </ul>
+          <a href="#" class="svc-link">Learn More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg></a>
+        </div>
+        <div class="svc-img-wrap">
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80&fit=crop" alt="Implementation & Development" />
+          <div class="svc-img-gradient"></div>
+          <div class="svc-img-badge">Dev & Integration</div>
+        </div>
+      </div>
+
+      <!-- 3. CPQ -->
+      <div class="svc-entry" id="cpq">
+        <div class="svc-img-wrap">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&fit=crop" alt="Quote to Cash" />
+          <div class="svc-img-gradient"></div>
+          <div class="svc-img-badge">CPQ / Revenue Cloud</div>
+        </div>
+        <div class="svc-text">
+          <div class="svc-number">03</div>
+          <h3 class="svc-name">Quote-To-Cash &amp; Revenue Cloud</h3>
+          <p class="svc-desc">From product catalogues and pricing rules to advanced approvals and order management — we configure your end-to-end revenue engine so your team can quote accurately and close faster.</p>
+          <ul class="svc-bullets">
+            <li>Product Catalogue &amp; Price Catalogue Management</li>
+            <li>Quotation Management &amp; Advanced Approvals</li>
+            <li>Discounting, QCP &amp; PSP Plugin Configuration</li>
+            <li>Order Management &amp; IoT Device Integration</li>
+          </ul>
+          <a href="#" class="svc-link">Learn More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg></a>
+        </div>
+      </div>
+
+      <!-- 4. Data Migration -->
+      <div class="svc-entry reverse" id="data-migration">
+        <div class="svc-text">
+          <div class="svc-number">04</div>
+          <h3 class="svc-name">Data Migration &amp; Lightning Experience</h3>
+          <p class="svc-desc">Move your data with confidence. We use proven methodologies to ensure accuracy, security, and near-zero disruption — including full migration to Lightning Experience from Classic or legacy CRMs.</p>
+          <ul class="svc-bullets">
+            <li>Migration to Salesforce Lightning Experience</li>
+            <li>Data Cleansing, Mapping &amp; Deduplication</li>
+            <li>Secure, Validated Bulk Data Load</li>
+            <li>Post-Migration Quality Assurance &amp; Sign-off</li>
+          </ul>
+          <a href="#" class="svc-link">Learn More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg></a>
+        </div>
+        <div class="svc-img-wrap">
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80&fit=crop" alt="Data Migration" />
+          <div class="svc-img-gradient"></div>
+          <div class="svc-img-badge">Data Migration</div>
+        </div>
+      </div>
+
+      <!-- 5. Healthcheck -->
+      <div class="svc-entry" id="healthcheck">
+        <div class="svc-img-wrap">
+          <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80&fit=crop" alt="Salesforce Healthcheck" />
+          <div class="svc-img-gradient"></div>
+          <div class="svc-img-badge">Salesforce Healthcheck</div>
+        </div>
+        <div class="svc-text">
+          <div class="svc-number">05</div>
+          <h3 class="svc-name">Salesforce Healthcheck &amp; Optimisation</h3>
+          <p class="svc-desc">Unlock your Salesforce org's full potential with a detailed system audit. We identify technical debt, security risks, and performance gaps — then provide a clear, prioritised optimisation roadmap.</p>
+          <ul class="svc-bullets">
+            <li>Full Org Audit: Security, Performance &amp; Governance</li>
+            <li>Technical Debt &amp; Automation Review</li>
+            <li>User Adoption &amp; Data Quality Assessment</li>
+            <li>Prioritised Remediation Roadmap</li>
+          </ul>
+          <a href="#" class="svc-link">Learn More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg></a>
+        </div>
+      </div>
+
+      <!-- 6. Support -->
+      <div class="svc-entry reverse" id="support">
+        <div class="svc-text">
+          <div class="svc-number">06</div>
+          <h3 class="svc-name">Support, Administration &amp; Managed Services</h3>
+          <p class="svc-desc">Our certified Admins keep your Salesforce org running smoothly — handling configuration, user management, security, and ongoing maintenance. Think of us as your always-on Salesforce team.</p>
+          <ul class="svc-bullets">
+            <li>User Management, Profiles &amp; Permission Sets</li>
+            <li>Configuration, Automation &amp; Workflow Updates</li>
+            <li>Proactive Monitoring &amp; Incident Management</li>
+            <li>End-User Training &amp; Adoption Support</li>
+          </ul>
+          <a href="#" class="svc-link">Learn More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg></a>
+        </div>
+        <div class="svc-img-wrap">
+          <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80&fit=crop" alt="Support & Managed Services" />
+          <div class="svc-img-gradient"></div>
+          <div class="svc-img-badge">Support & Admin</div>
+        </div>
+      </div>
+
+      <!-- ───── AI SERVICES ───── -->
+      <div class="chapter-divider">
+        <span class="chapter-divider-label">AI Services</span>
+      </div>
+
+      <div class="svc-section-intro">
+        <div class="svc-section-tag">AI Services</div>
+        <h2 class="svc-section-title">Intelligent Automation<br><span>That Works While You Sleep</span></h2>
+        <p class="svc-section-desc">From AI voice agents to multi-tool pipelines — Gagstek builds production-ready AI systems that eliminate manual touch and accelerate your revenue cycle.</p>
+      </div>
+
+      <!-- 7. AI Sales -->
+      <div class="svc-entry" id="ai-sales">
+        <div class="svc-img-wrap">
+          <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80&fit=crop" alt="AI Sales Automation" />
+          <div class="svc-img-gradient"></div>
+          <div class="svc-img-badge">AI Sales Automation</div>
+        </div>
+        <div class="svc-text">
+          <div class="svc-number">07</div>
+          <h3 class="svc-name">AI Sales Automation</h3>
+          <p class="svc-desc">Automate lead capture, smart follow-ups, and CRM sync so your sales team focuses on closing — not data entry. Our AI agents work round-the-clock on your behalf.</p>
+          <ul class="svc-bullets">
+            <li>Automated Lead Capture &amp; Qualification</li>
+            <li>Smart Follow-Up Sequences via Email / SMS</li>
+            <li>Real-Time CRM Sync &amp; Activity Logging</li>
+            <li>AI-Powered Deal Scoring &amp; Prioritisation</li>
+          </ul>
+          <a href="#" class="svc-link">Learn More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg></a>
+        </div>
+      </div>
+
+      <!-- 8. AI Lead Intelligence -->
+      <div class="svc-entry reverse" id="ai-lead">
+        <div class="svc-text">
+          <div class="svc-number">08</div>
+          <h3 class="svc-name">AI Lead Intelligence</h3>
+          <p class="svc-desc">Enrich your pipeline with high-quality, intent-validated contacts. Our data scraping engines and enrichment pipelines ensure your sales team always works with accurate, decision-ready data.</p>
+          <ul class="svc-bullets">
+            <li>Automated Data Scraping &amp; Contact Discovery</li>
+            <li>Contact Enrichment with Verified Data Points</li>
+            <li>Buyer Intent Signals &amp; Validation</li>
+            <li>CRM-Ready Structured Datasets</li>
+          </ul>
+          <a href="#" class="svc-link">Learn More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg></a>
+        </div>
+        <div class="svc-img-wrap">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&fit=crop" alt="AI Lead Intelligence" />
+          <div class="svc-img-gradient"></div>
+          <div class="svc-img-badge">Lead Intelligence</div>
+        </div>
+      </div>
+
+      <!-- 9. Conversational AI -->
+      <div class="svc-entry" id="conversational-ai">
+        <div class="svc-img-wrap">
+          <img src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&q=80&fit=crop" alt="Conversational AI" />
+          <div class="svc-img-gradient"></div>
+          <div class="svc-img-badge">Conversational AI</div>
+        </div>
+        <div class="svc-text">
+          <div class="svc-number">09</div>
+          <h3 class="svc-name">Conversational AI Systems</h3>
+          <p class="svc-desc">Deploy intelligent voice agents, WhatsApp bots, and SMS automations that handle enquiries, qualify leads, and escalate to humans — exactly when needed.</p>
+          <ul class="svc-bullets">
+            <li>AI Voice Agents for Inbound &amp; Outbound Calls</li>
+            <li>WhatsApp &amp; SMS Bots with Human Fallback Logic</li>
+            <li>Multi-Channel Conversation Orchestration</li>
+            <li>Salesforce-Integrated Chat &amp; Ticket Creation</li>
+          </ul>
+          <a href="#" class="svc-link">Learn More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg></a>
+        </div>
+      </div>
+
+      <!-- 10. AI Workflow -->
+      <div class="svc-entry reverse" id="ai-workflow">
+        <div class="svc-text">
+          <div class="svc-number">10</div>
+          <h3 class="svc-name">AI Workflow Orchestration</h3>
+          <p class="svc-desc">Build complex, event-driven automation pipelines that connect multiple tools and systems with zero manual touch. From trigger to outcome — fully automated.</p>
+          <ul class="svc-bullets">
+            <li>Event-Based Trigger Architecture</li>
+            <li>Multi-Tool Pipelines (n8n, Make, Zapier + Custom)</li>
+            <li>Zero Manual Touch End-to-End Workflows</li>
+            <li>Real-Time Monitoring &amp; Error Handling</li>
+          </ul>
+          <a href="#" class="svc-link">Learn More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg></a>
+        </div>
+        <div class="svc-img-wrap">
+          <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&q=80&fit=crop" alt="AI Workflow Orchestration" />
+          <div class="svc-img-gradient"></div>
+          <div class="svc-img-badge">Workflow Orchestration</div>
+        </div>
+      </div>
+
+      <!-- 11. AI Data Engineering -->
+      <div class="svc-entry" id="ai-data">
+        <div class="svc-img-wrap">
+          <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=800&q=80&fit=crop" alt="AI Data Engineering" />
+          <div class="svc-img-gradient"></div>
+          <div class="svc-img-badge">AI Data Engineering</div>
+        </div>
+        <div class="svc-text">
+          <div class="svc-number">11</div>
+          <h3 class="svc-name">AI Data Engineering</h3>
+          <p class="svc-desc">Build structured, scalable data pipelines that power your AI applications. From real-time data streams to warehousing and analytics — we make your data work for you.</p>
+          <ul class="svc-bullets">
+            <li>Structured Data Pipelines &amp; ETL</li>
+            <li>Real-Time Data Processing &amp; Streaming</li>
+            <li>Scalable Cloud-Native Architectures</li>
+            <li>Data Quality, Governance &amp; Observability</li>
+          </ul>
+          <a href="#" class="svc-link">Learn More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg></a>
+        </div>
+      </div>
+
+      <!-- 12. Custom AI -->
+      <div class="svc-entry reverse" id="custom-ai">
+        <div class="svc-text">
+          <div class="svc-number">12</div>
+          <h3 class="svc-name">Custom AI Product Builds</h3>
+          <p class="svc-desc">Need a domain-specific AI solution unique to your industry? We design and deploy production-ready, secure AI products — from ideation to go-live — with full ongoing support.</p>
+          <ul class="svc-bullets">
+            <li>Domain-Specific AI Model Development</li>
+            <li>Secure, Compliant Production Deployments</li>
+            <li>LLM Integration &amp; Fine-Tuning</li>
+            <li>Full Product Lifecycle: Concept → Launch → Scale</li>
+          </ul>
+          <a href="#" class="svc-link">Learn More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg></a>
+        </div>
+        <div class="svc-img-wrap">
+          <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80&fit=crop" alt="Custom AI Products" />
+          <div class="svc-img-gradient"></div>
+          <div class="svc-img-badge">Custom AI Products</div>
+        </div>
+      </div>
+
+      <!-- ───── STAFF AUGMENTATION ───── -->
+      <div class="chapter-divider">
+        <span class="chapter-divider-label">Staff Augmentation</span>
+      </div>
+
+      <div class="svc-entry" id="staff-aug">
+        <div class="svc-img-wrap">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80&fit=crop" alt="Staff Augmentation" />
+          <div class="svc-img-gradient"></div>
+          <div class="svc-img-badge">Staff Augmentation</div>
+        </div>
+        <div class="svc-text">
+          <div class="svc-number">13</div>
+          <h3 class="svc-name">Staff Augmentation</h3>
+          <p class="svc-desc">Scale your team instantly with skilled Salesforce, Java, .NET, and AI/ML professionals who integrate seamlessly with your culture and technical requirements — on demand, with zero hiring overhead.</p>
+          <ul class="svc-bullets">
+            <li>Salesforce Developers, Admins &amp; Architects</li>
+            <li>Java, Python, .NET &amp; API Engineers</li>
+            <li>AI/ML &amp; Data Science Specialists</li>
+            <li>Flexible Engagements: Part-time to Full Dedicated Teams</li>
+          </ul>
+          <a href="#" class="svc-link">Learn More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg></a>
+        </div>
+      </div>
+
+    </div><!-- /svc-content -->
+  </div><!-- /svc-layout -->
+
+  <!-- ═══ STATS BAR ═══ -->
+  <div class="stats-bar">
+    <div class="stats-bar-inner">
+      <div class="sbar-item">
+        <div class="sbar-num">4,000+</div>
+        <div class="sbar-label">Salesforce Trailhead Badges</div>
+      </div>
+      <div class="sbar-item">
+        <div class="sbar-num">350+</div>
+        <div class="sbar-label">Salesforce Certifications</div>
+      </div>
+      <div class="sbar-item">
+        <div class="sbar-num">48+</div>
+        <div class="sbar-label">Project Implementations</div>
+      </div>
+      <div class="sbar-item">
+        <div class="sbar-num">100%</div>
+        <div class="sbar-label">Certified Professionals</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ PROCESS SECTION ═══ -->
+  <section class="process-section">
+    <div class="process-inner">
+      <div class="process-header">
+        <p class="process-eyebrow">Our Approach</p>
+        <h2 class="process-title">The Gagstek <span>Solution Process</span></h2>
+        <p class="process-subtitle">Every engagement follows a proven six-stage process — designed for transparency, collaboration, and lasting results.</p>
+      </div>
+      <div class="process-grid">
+
+        <div class="process-card">
+          <div class="process-step-num">01</div>
+          <div class="process-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <div class="process-card-title">Discovery</div>
+          <p class="process-card-desc">We get to know your business — desired outcomes, existing tools, and goals. No assumptions, lots of notes. This sets the foundation for everything that follows.</p>
+        </div>
+
+        <div class="process-card">
+          <div class="process-step-num">02</div>
+          <div class="process-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,11 12,14 22,4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          </div>
+          <div class="process-card-title">Assessment</div>
+          <p class="process-card-desc">Transparency first. We audit your current tech stack, clarify implementation scope, timelines, and costs upfront — so there are zero surprises later.</p>
+        </div>
+
+        <div class="process-card">
+          <div class="process-step-num">03</div>
+          <div class="process-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg>
+          </div>
+          <div class="process-card-title">Design</div>
+          <p class="process-card-desc">We collaborate closely with your team to blueprint your system before a single line of code is written. What you approve in design is exactly what you get in the build.</p>
+        </div>
+
+        <div class="process-card">
+          <div class="process-step-num">04</div>
+          <div class="process-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></svg>
+          </div>
+          <div class="process-card-title">Development</div>
+          <p class="process-card-desc">Fluid communication throughout. We involve your key stakeholders in regular reviews — you stay fully visible to progress, we stay aligned with your goals.</p>
+        </div>
+
+        <div class="process-card">
+          <div class="process-step-num">05</div>
+          <div class="process-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <div class="process-card-title">Onboarding</div>
+          <p class="process-card-desc">We get your team excited and equipped — hands-on training on each feature, executive dashboards to show ROI, and guided onboarding at every critical phase.</p>
+        </div>
+
+        <div class="process-card">
+          <div class="process-step-num">06</div>
+          <div class="process-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.91a16 16 0 006.91 6.91l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div class="process-card-title">Ongoing Support</div>
+          <p class="process-card-desc">We're here for the long haul — proactive maintenance, system updates, and support as you grow. Because much like you're invested in us, we're invested in YOU.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TESTIMONIAL + CTA ═══ -->
+  <section class="testi-cta-section">
+    <div class="testi-cta-inner">
+      <div>
+        <blockquote class="testi-cta-quote">
+          Gagstek has been our trusted Salesforce partner for 3 years, delivering reliable, innovative solutions tailored to our business needs — with excellent communication and a results-driven approach throughout.
+        </blockquote>
+        <div class="testi-cta-author">
+          <div class="testi-cta-avatar">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&q=80&fit=crop&crop=face" alt="Arjun Mehta" />
+          </div>
+          <div>
+            <div class="testi-cta-name">Arjun Mehta</div>
+            <div class="testi-cta-role">CTO, NovaSpark Technologies · Mumbai, India</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-cta-right">
+        <h2 class="testi-cta-heading">Ready to <span>Transform</span> Your Business?</h2>
+        <p class="testi-cta-desc">Whether you're starting fresh with Salesforce or scaling with AI — our certified team is ready to build around your goals. No guesswork, no delays.</p>
+        <div class="testi-cta-btns">
+          <a href="#" class="btn-dark">Schedule a Free Consultation</a>
+          <a href="#" class="btn-blue-outline">View Client Stories</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FAQ ═══ -->
+  <section class="faq-section">
+    <div class="faq-inner">
+      <div class="faq-header">
+        <h2 class="faq-title">Common <span>FAQs</span></h2>
+        <p class="faq-subtitle">Have questions before you get started? We've answered the most common ones below.</p>
+      </div>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-q-text">How long does a Salesforce implementation take?</span>
+            <span class="faq-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6,9 12,15 18,9"/></svg></span>
+          </div>
+          <div class="faq-answer">Rapid launch projects can go from kickoff to go-live in 4–6 weeks. Timelines scale with complexity — larger implementations with custom integrations typically run 2–5 months. Our sales team provides a precise timeline based on your specific requirements during the Assessment phase.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-q-text">What does a Salesforce implementation cost?</span>
+            <span class="faq-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6,9 12,15 18,9"/></svg></span>
+          </div>
+          <div class="faq-answer">Costs depend on scope, complexity, and the modules involved. All pricing is transparent and scoped upfront during our Assessment phase — no hidden fees, no surprise invoices. Contact us for a free scoping call and we'll give you a clear estimate.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-q-text">Do we need to prepare anything before starting?</span>
+            <span class="faq-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6,9 12,15 18,9"/></svg></span>
+          </div>
+          <div class="faq-answer">It helps to consolidate your existing data in one place and align your team on key business processes. The more clarity you have on how your business operates, the faster we can design and build. Don't worry — we guide you through everything in the Discovery phase.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-q-text">How do you ensure solutions are customised to our needs?</span>
+            <span class="faq-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6,9 12,15 18,9"/></svg></span>
+          </div>
+          <div class="faq-answer">Every engagement includes dedicated design sessions with our certified architects and delivery team. We blueprint your unique business challenges, needs, and proposed solutions — and you sign off on the design before we build a single thing.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-q-text">What happens after go-live?</span>
+            <span class="faq-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6,9 12,15 18,9"/></svg></span>
+          </div>
+          <div class="faq-answer">We provide hands-on user training so your team is fully equipped to manage the system. We also offer flexible Support & Managed Services plans for ongoing maintenance, enhancements, and expert help — whenever you need it.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-q-text">Can Gagstek help with AI services even if we don't use Salesforce?</span>
+            <span class="faq-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6,9 12,15 18,9"/></svg></span>
+          </div>
+          <div class="faq-answer">Absolutely. Our AI services — including sales automation, conversational AI, workflow orchestration, and custom AI product builds — are platform-agnostic. We integrate with your existing stack, whether or not Salesforce is part of it.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-inner">
+        <div class="ft-left">
+          <a href="home.html" class="ft-logo-link">
+            <img src="logo.png" alt="Gagstek" class="ft-logo-img"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline';" />
+            <span style="display:none;font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;color:#fff;">Gags<span style="color:#60a5fa;">tek</span></span>
+          </a>
+          <p class="ft-tagline">Unleashing Business Potential<br>with Cloud &amp; AI</p>
+          <a href="https://gagstek.com/contact-us/" class="ft-cta-btn">Get Started ↗</a>
+          <div class="ft-socials">
+            <a href="https://api.whatsapp.com/send?phone=919049023824" aria-label="WhatsApp" class="ft-social-icon" target="_blank">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.93 11.93 0 0012 0C5.37 0 0 5.37 0 12a11.9 11.9 0 001.64 6.07L0 24l6.13-1.61A11.93 11.93 0 0012 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.22-3.48-8.52zm-8.52 18.44a9.9 9.9 0 01-5.04-1.38l-.36-.21-3.74.98.99-3.64-.24-.38A9.9 9.9 0 012.1 12c0-5.46 4.44-9.9 9.9-9.9 2.64 0 5.12 1.03 6.99 2.9a9.84 9.84 0 012.9 6.99c0 5.47-4.44 9.93-9.9 9.93zm5.43-7.41c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07a8.13 8.13 0 01-2.4-1.48 9.02 9.02 0 01-1.66-2.07c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.09 3.19 5.07 4.47.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/gagstek___/" aria-label="Instagram" class="ft-social-icon" target="_blank">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://in.linkedin.com/company/gagstek" aria-label="LinkedIn" class="ft-social-icon" target="_blank">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@GagstekLLP" aria-label="YouTube" class="ft-social-icon" target="_blank">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#111827"/></svg>
+            </a>
+          </div>
+          <div class="ft-email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:info@gagstek.com">info@gagstek.com</a>
+          </div>
+        </div>
+        <div class="ft-offices">
+          <div class="ft-office">
+            <p class="ft-office-title">United States 🇺🇸</p>
+            <p class="ft-office-addr">16192 Coastal Highway, Lewes,<br>Delaware 19958, County of Sussex</p>
+            <p class="ft-office-phone">📞 +1-567-399-2506</p>
+          </div>
+          <div class="ft-office">
+            <p class="ft-office-title">India 🇮🇳</p>
+            <p class="ft-office-addr">P3-001 Pentagon Tower,<br>Magarpatta City, Pune 411013</p>
+          </div>
+          <div class="ft-office">
+            <p class="ft-office-title">Australia 🇦🇺</p>
+            <p class="ft-office-addr">161 Collins St, Melbourne VIC, 3000</p>
+            <p class="ft-office-phone">📞 +61-473118458</p>
+          </div>
+          <div class="ft-rating">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <div><p class="ft-rating-score">4.7/5 ★</p><p class="ft-rating-sub">AppExchange Rated Partner</p></div>
+          </div>
+        </div>
+        <div class="ft-badges">
+          <div class="ft-badge ft-badge-sf">
+            <svg width="38" height="38" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="28" fill="#00A1E0"/><text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-size="9" font-weight="bold" fill="white" font-family="Arial">Salesforce</text></svg>
+            <div class="sf-text"><span>Crest</span><span>Partner</span></div>
+          </div>
+          <div class="ft-badge ft-badge-iso">
+            <span class="iso-text">ISO<br><strong>27001</strong><br><small>CERTIFIED</small></span>
+          </div>
+          <div class="ft-badge ft-badge-aws">
+            <svg width="36" height="22" viewBox="0 0 80 50" fill="none"><text y="22" font-size="14" font-weight="bold" fill="#FF9900" font-family="Arial">aws</text><text y="38" font-size="9" fill="#FF9900" font-family="Arial">Partner</text><text y="48" font-size="9" fill="#FF9900" font-family="Arial">Network</text></svg>
+          </div>
+          <div class="ft-badge ft-badge-db">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF3621"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <div class="db-text"><small>databricks</small><span>Consulting Partner</span><small>Registered</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-mid">
+      <div class="footer-inner">
+        <div class="ft-col">
+          <p class="ft-col-title">Salesforce Services</p>
+          <a href="#salesforce-consulting">Business Consulting & Advisory</a>
+          <a href="#implementation">Implementation & Development</a>
+          <a href="#cpq">Quote-To-Cash Services</a>
+          <a href="#support">Administration & Support</a>
+          <a href="#data-migration">Data Migration</a>
+          <a href="#staff-aug">Staff Augmentation</a>
+        </div>
+        <div class="ft-col">
+          <p class="ft-col-title">AI Services</p>
+          <a href="#ai-sales">AI Sales Automation</a>
+          <a href="#ai-lead">AI Lead Intelligence</a>
+          <a href="#conversational-ai">Conversational AI Systems</a>
+          <a href="#ai-workflow">AI Workflow Orchestration</a>
+          <a href="#ai-data">AI Data Engineering</a>
+          <a href="#custom-ai">Custom AI Product Builds</a>
+        </div>
+        <div class="ft-col">
+          <p class="ft-col-title">Products</p>
+          <a href="https://gagstek.com/products/">E2E Sales</a>
+          <a href="https://gagstek.com/stockpro/">StockPro</a>
+          <a href="#">AppExchange Products</a>
+          <a href="#">Mobile-first Products</a>
+        </div>
+        <div class="ft-col">
+          <p class="ft-col-title">Company</p>
+          <a href="https://gagstek.com/about/">About Us</a>
+          <a href="https://gagstek.com/client-stories-2/">Client Stories</a>
+          <a href="https://gagstek.com/employee-review/">Employees' Words</a>
+          <a href="https://gagstek.com/career/">Careers</a>
+          <a href="https://gagstek.com/blogs/">Blogs</a>
+          <a href="https://gagstek.com/contact-us/">Contact Us</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-inner">
+        <p>© 2025 GAGSTEK LLP. All Rights Reserved.</p>
+        <div class="ft-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms Of Services</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky nav
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Sidebar active highlight on scroll
+    const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
+    const sections = [];
+    sidebarLinks.forEach(link => {
+      const id = link.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if (el) sections.push({ el, link });
+    });
+
+    function updateActive() {
+      let current = null;
+      sections.forEach(({ el }) => {
+        if (window.scrollY + 120 >= el.offsetTop) current = el.id;
+      });
+      sidebarLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    }
+    window.addEventListener('scroll', updateActive, { passive: true });
+    updateActive();
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('.faq-question').addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    // Smooth scroll for sidebar links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) {
+          e.preventDefault();
+          window.scrollTo({ top: el.offsetTop - 100, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Careers – Gagstek | Join Our Team</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #0f2044;
+      --accent: #3b82f6;
+      --accent-bright: #60a5fa;
+      --gold: #f59e0b;
+      --white: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; }
+
+    /* ─── NAVBAR ─────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 2rem; height: 72px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled { background: rgba(10,22,40,0.97); box-shadow: 0 2px 24px rgba(0,0,0,0.4); backdrop-filter: blur(12px); }
+    .logo { width: 130px; }
+    .logo span { color: var(--accent-bright); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.92rem; font-weight: 500; letter-spacing: 0.3px; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+    .nav-links a.active { border-bottom: 2px solid var(--accent-bright); padding-bottom: 2px; }
+    .nav-cta { background: var(--accent); color: var(--white) !important; padding: 0.55rem 1.3rem; border-radius: 6px; font-weight: 600 !important; transition: background 0.2s, transform 0.15s !important; }
+    .nav-cta:hover { background: var(--accent-bright) !important; transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; inset: 0; top: 72px; background: rgba(10,22,40,0.98); backdrop-filter: blur(16px); z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    .mobile-menu.open { display: flex; opacity: 1; pointer-events: all; }
+    .mobile-menu a { color: var(--white); text-decoration: none; font-size: 1.4rem; font-weight: 500; letter-spacing: 0.5px; transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--accent-bright); }
+    .mobile-menu .mob-cta { background: var(--accent); padding: 0.75rem 2.5rem; border-radius: 8px; font-weight: 600; font-size: 1rem; }
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ─── HERO ─────────────────────────────────────────── */
+    .career-hero {
+      position: relative; padding-top: 72px;
+      min-height: 520px; display: flex; align-items: center; overflow: hidden;
+    }
+    .career-hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1800&q=80&fit=crop');
+      background-size: cover; background-position: center;
+      filter: brightness(0.18) saturate(1.1);
+      transform: scale(1.04);
+      animation: slowZoom 20s ease-in-out infinite alternate;
+    }
+    @keyframes slowZoom { from { transform: scale(1.04); } to { transform: scale(1.1); } }
+    .career-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(10,22,40,0.9) 0%, rgba(10,22,40,0.4) 60%, rgba(15,32,68,0.8) 100%);
+    }
+    .career-hero-content {
+      position: relative; z-index: 10;
+      max-width: 1200px; margin: 0 auto; padding: 5rem 2rem;
+      width: 100%;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.4);
+      border-radius: 100px; padding: 0.4rem 1.1rem;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--accent-bright); margin-bottom: 1.4rem;
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--accent-bright); border-radius: 50%; }
+    .career-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 4.8rem);
+      font-weight: 900; line-height: 1.06; letter-spacing: -1.5px;
+      color: var(--white); margin-bottom: 1rem;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+    .career-hero h1 .hl { color: var(--accent-bright); }
+    .career-hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem); color: rgba(255,255,255,0.68);
+      max-width: 560px; line-height: 1.75; margin-bottom: 2.5rem;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+    .hero-actions {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+    .btn-primary { background: var(--accent); color: var(--white); padding: 0.85rem 2.2rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(59,130,246,0.4); }
+    .btn-primary:hover { background: #2563eb; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(59,130,246,0.55); }
+    .btn-outline { background: transparent; color: var(--white); padding: 0.85rem 2.2rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.35); cursor: pointer; transition: border-color 0.2s, background 0.2s, transform 0.15s; }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.07); transform: translateY(-2px); }
+
+    /* Hero stats */
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-top: 3rem; flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.4s ease both;
+    }
+    .hero-stat-item {}
+    .hero-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 900; color: var(--white); line-height: 1;
+    }
+    .hero-stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 0.3rem; letter-spacing: 0.3px; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ─── BREADCRUMB ──────────────────────────────────── */
+    .breadcrumb-strip {
+      background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 0.85rem 2rem;
+    }
+    .breadcrumb-inner {
+      max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.82rem; color: rgba(255,255,255,0.45);
+    }
+    .breadcrumb-inner a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb-inner a:hover { color: var(--accent-bright); }
+    .breadcrumb-inner span { color: var(--accent-bright); font-weight: 600; }
+
+    /* ─── WHY JOIN US ─────────────────────────────────── */
+    .why-section { background: var(--navy); padding: 6rem 2rem; }
+    .why-inner { max-width: 1200px; margin: 0 auto; }
+    .section-eyebrow {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--accent-bright); margin-bottom: 0.75rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .section-eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--accent-bright); border-radius: 2px; }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900;
+      color: var(--white); letter-spacing: -0.8px; margin-bottom: 1rem; line-height: 1.1;
+    }
+    .section-title span { color: var(--accent-bright); }
+    .section-desc { font-size: 1rem; color: rgba(255,255,255,0.58); line-height: 1.75; max-width: 600px; margin-bottom: 3.5rem; }
+
+    .perks-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    }
+    .perk-card {
+      background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; padding: 2rem; transition: transform 0.25s, background 0.25s, border-color 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .perk-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-bright));
+      opacity: 0; transition: opacity 0.25s;
+    }
+    .perk-card:hover { transform: translateY(-4px); background: rgba(59,130,246,0.06); border-color: rgba(59,130,246,0.25); }
+    .perk-card:hover::before { opacity: 1; }
+    .perk-icon {
+      width: 48px; height: 48px; background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.3);
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.2rem; color: var(--accent-bright); font-size: 1.5rem;
+    }
+    .perk-title { font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 0.6rem; line-height: 1.3; }
+    .perk-desc { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+
+    /* ─── CULTURE STRIP ───────────────────────────────── */
+    .culture-section {
+      background: #0d1f3c; padding: 5rem 2rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .culture-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    }
+    .culture-img-wrap {
+      position: relative; border-radius: 20px; overflow: hidden;
+      aspect-ratio: 5/4; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .culture-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .culture-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,22,40,0.7) 0%, transparent 50%);
+    }
+    .culture-img-badge {
+      position: absolute; bottom: 1.5rem; left: 1.5rem;
+      background: rgba(10,22,40,0.88); backdrop-filter: blur(8px);
+      border: 1px solid rgba(59,130,246,0.35); border-radius: 10px;
+      padding: 0.75rem 1.2rem; display: flex; align-items: center; gap: 0.75rem;
+    }
+    .culture-img-badge .badge-num {
+      font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: var(--accent-bright); line-height: 1;
+    }
+    .culture-img-badge .badge-label { font-size: 0.75rem; color: rgba(255,255,255,0.65); line-height: 1.4; }
+    .culture-text {}
+    .culture-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 700; color: var(--white);
+      line-height: 1.4; margin-bottom: 1.5rem; letter-spacing: -0.3px; position: relative;
+    }
+    .culture-quote::before {
+      content: '\201C'; font-size: 5rem; color: rgba(59,130,246,0.15);
+      position: absolute; top: -1.5rem; left: -1rem;
+      font-family: Georgia, serif; line-height: 1;
+    }
+    .culture-body { font-size: 0.97rem; color: rgba(255,255,255,0.6); line-height: 1.8; margin-bottom: 2rem; }
+    .culture-values { display: flex; flex-direction: column; gap: 0.75rem; }
+    .culture-value {
+      display: flex; align-items: center; gap: 0.8rem;
+      font-size: 0.9rem; font-weight: 600; color: rgba(255,255,255,0.8);
+    }
+    .culture-value-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--accent-bright); flex-shrink: 0;
+    }
+
+    /* ─── STATS BAR ───────────────────────────────────── */
+    .stats-bar {
+      background: linear-gradient(135deg, var(--accent) 0%, #1d4ed8 100%);
+      padding: 3.5rem 2rem;
+    }
+    .stats-bar-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center;
+    }
+    .sbar-item {}
+    .sbar-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem; font-weight: 900; color: #fff; line-height: 1; margin-bottom: 0.35rem;
+    }
+    .sbar-label { font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.8); letter-spacing: 0.3px; }
+
+    /* ─── OPEN ROLES ──────────────────────────────────── */
+    .roles-section { background: var(--navy); padding: 6rem 2rem; }
+    .roles-inner { max-width: 1200px; margin: 0 auto; }
+    .roles-header { margin-bottom: 3rem; }
+    .roles-header-top { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
+
+    /* Filter tabs */
+    .role-filters {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 0.5rem 1.2rem; border-radius: 100px;
+      font-size: 0.83rem; font-weight: 600; cursor: pointer;
+      border: 1.5px solid rgba(255,255,255,0.15);
+      background: transparent; color: rgba(255,255,255,0.55);
+      transition: all 0.2s;
+    }
+    .filter-btn:hover { border-color: rgba(59,130,246,0.5); color: var(--white); }
+    .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    /* Roles grid */
+    .roles-grid { display: flex; flex-direction: column; gap: 1px; }
+    .role-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px; padding: 1.75rem 2rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+      cursor: pointer; margin-bottom: 0.75rem; text-decoration: none;
+    }
+    .role-card:hover { background: rgba(59,130,246,0.07); border-color: rgba(59,130,246,0.3); transform: translateX(4px); }
+    .role-card-left { flex: 1; min-width: 0; }
+    .role-dept {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--accent-bright); margin-bottom: 0.5rem;
+    }
+    .role-title { font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; line-height: 1.3; }
+    .role-meta { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .role-tag {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-size: 0.78rem; color: rgba(255,255,255,0.5); font-weight: 500;
+    }
+    .role-card-right { display: flex; align-items: center; gap: 1rem; flex-shrink: 0; }
+    .role-type-badge {
+      padding: 0.35rem 0.9rem; border-radius: 100px; font-size: 0.74rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .badge-fulltime { background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.25); }
+    .badge-remote { background: rgba(59,130,246,0.15); color: var(--accent-bright); border: 1px solid rgba(59,130,246,0.25); }
+    .badge-hybrid { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.25); }
+    .role-arrow {
+      width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.07);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.5); transition: background 0.2s, color 0.2s;
+    }
+    .role-card:hover .role-arrow { background: var(--accent); color: #fff; }
+
+    /* No roles yet */
+    .no-roles-msg {
+      text-align: center; padding: 3rem; color: rgba(255,255,255,0.4); font-size: 0.95rem;
+    }
+
+    /* ─── APPLY FORM ──────────────────────────────────── */
+    .apply-section { background: #0d1f3c; padding: 6rem 2rem; border-top: 1px solid rgba(255,255,255,0.06); }
+    .apply-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+    }
+    .apply-left {}
+    .apply-copy { font-size: 0.97rem; color: rgba(255,255,255,0.62); line-height: 1.78; margin-bottom: 2rem; }
+    .apply-checklist { display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 2.5rem; }
+    .apply-check {
+      display: flex; align-items: flex-start; gap: 0.65rem;
+      font-size: 0.88rem; color: rgba(255,255,255,0.7); line-height: 1.5;
+    }
+    .apply-check::before {
+      content: ''; flex-shrink: 0; width: 18px; height: 18px; margin-top: 0px;
+      background: rgba(59,130,246,0.2); border: 1.5px solid rgba(59,130,246,0.5);
+      border-radius: 50%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='2,6 5,9 10,3' stroke='%2360a5fa' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: center; background-size: 10px;
+    }
+    .apply-testimonial {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 1.5rem;
+    }
+    .apply-testi-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 700; color: var(--white); line-height: 1.55; margin-bottom: 1rem;
+      font-style: italic;
+    }
+    .apply-testi-author { display: flex; align-items: center; gap: 0.75rem; }
+    .apply-testi-avatar {
+      width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), #1d4ed8);
+      display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; color: #fff; flex-shrink: 0;
+    }
+    .apply-testi-name { font-weight: 700; color: var(--white); font-size: 0.88rem; }
+    .apply-testi-role { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 0.15rem; }
+
+    /* Form */
+    .apply-form-wrap {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 20px; padding: 2.5rem;
+    }
+    .apply-form-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; font-weight: 900; color: var(--white); margin-bottom: 0.4rem;
+    }
+    .apply-form-sub { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-bottom: 1.8rem; line-height: 1.5; }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label {
+      display: block; font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.7);
+      margin-bottom: 0.4rem; letter-spacing: 0.3px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; background: rgba(255,255,255,0.06);
+      border: 1.5px solid rgba(255,255,255,0.1);
+      border-radius: 10px; padding: 0.8rem 1rem;
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+      color: var(--white); outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      -webkit-appearance: none;
+    }
+    .form-group select option { background: #0f2044; color: var(--white); }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--accent-bright); background: rgba(59,130,246,0.08); }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+
+    /* File upload */
+    .file-upload-wrap {
+      border: 1.5px dashed rgba(255,255,255,0.15); border-radius: 10px;
+      padding: 1.5rem; text-align: center; cursor: pointer;
+      transition: border-color 0.2s, background 0.2s; position: relative;
+    }
+    .file-upload-wrap:hover { border-color: rgba(59,130,246,0.5); background: rgba(59,130,246,0.05); }
+    .file-upload-wrap input[type="file"] {
+      position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; border: none; background: none; padding: 0;
+    }
+    .file-upload-icon { color: rgba(255,255,255,0.3); margin-bottom: 0.5rem; }
+    .file-upload-text { font-size: 0.84rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
+    .file-upload-text span { color: var(--accent-bright); font-weight: 600; }
+    .file-name-display { font-size: 0.8rem; color: var(--accent-bright); margin-top: 0.5rem; display: none; }
+
+    .form-submit-btn {
+      width: 100%; background: var(--accent); color: #fff; border: none; border-radius: 10px;
+      padding: 1rem; font-family: 'DM Sans', sans-serif; font-size: 0.97rem; font-weight: 700;
+      cursor: pointer; transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(59,130,246,0.4); margin-top: 0.5rem;
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    }
+    .form-submit-btn:hover { background: #2563eb; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(59,130,246,0.55); }
+    .form-submit-btn:active { transform: translateY(0); }
+    .form-note { font-size: 0.76rem; color: rgba(255,255,255,0.35); text-align: center; margin-top: 0.75rem; line-height: 1.5; }
+
+    /* Form success */
+    .form-success {
+      display: none; text-align: center; padding: 2rem 1rem;
+    }
+    .form-success-icon {
+      width: 64px; height: 64px; background: rgba(16,185,129,0.15); border: 2px solid rgba(16,185,129,0.4);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem; color: #34d399; font-size: 1.8rem;
+    }
+    .form-success h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--white); margin-bottom: 0.5rem; }
+    .form-success p { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+    /* ─── EMPLOYEE VOICES ─────────────────────────────── */
+    .voices-section { background: var(--navy); padding: 6rem 2rem; }
+    .voices-inner { max-width: 1200px; margin: 0 auto; }
+    .voices-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .voice-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; padding: 1.8rem; position: relative; transition: transform 0.25s, border-color 0.25s;
+    }
+    .voice-card:hover { transform: translateY(-4px); border-color: rgba(59,130,246,0.25); }
+    .voice-stars { display: flex; gap: 3px; margin-bottom: 1rem; }
+    .voice-stars span { color: var(--gold); font-size: 0.9rem; }
+    .voice-text {
+      font-size: 0.9rem; color: rgba(255,255,255,0.65); line-height: 1.75; margin-bottom: 1.3rem;
+      font-style: italic;
+    }
+    .voice-author { display: flex; align-items: center; gap: 0.75rem; }
+    .voice-avatar {
+      width: 42px; height: 42px; border-radius: 50%; overflow: hidden; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--accent), #1d4ed8);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.9rem; color: #fff;
+    }
+    .voice-name { font-weight: 700; font-size: 0.88rem; color: var(--white); }
+    .voice-role { font-size: 0.77rem; color: rgba(255,255,255,0.45); margin-top: 0.15rem; }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    .site-footer { background: #111827; color: rgba(255,255,255,0.75); font-family: 'DM Sans', sans-serif; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .footer-top { padding: 4rem 0 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-top .footer-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; align-items: start; }
+    .ft-logo-link { display: inline-block; margin-bottom: 0.75rem; text-decoration: none; }
+    .ft-logo-img { height: 48px; width: auto; display: block; object-fit: contain; }
+    .ft-tagline { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.55; margin-bottom: 1.4rem; }
+    .ft-cta-btn { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--accent, #3b82f6); color: #fff; font-weight: 700; font-size: 0.9rem; padding: 0.75rem 1.6rem; border-radius: 8px; text-decoration: none; transition: background 0.2s, transform 0.15s; margin-bottom: 1.8rem; }
+    .ft-cta-btn:hover { background: #60a5fa; transform: translateY(-2px); }
+    .ft-socials { display: flex; gap: 0.9rem; margin-bottom: 1.2rem; }
+    .ft-social-icon { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.75); text-decoration: none; transition: background 0.2s, color 0.2s; }
+    .ft-social-icon:hover { background: var(--accent, #3b82f6); color: #fff; }
+    .ft-email { display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; }
+    .ft-email a { color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
+    .ft-email a:hover { color: #fff; }
+    .ft-offices { display: flex; flex-direction: column; gap: 1.2rem; }
+    .ft-office-title { font-weight: 700; font-size: 0.9rem; color: #fff; margin-bottom: 0.3rem; }
+    .ft-office-addr { font-size: 0.85rem; line-height: 1.6; color: rgba(255,255,255,0.55); }
+    .ft-office-phone { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-top: 0.2rem; }
+    .ft-rating { display: flex; align-items: center; gap: 0.75rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.75rem 1rem; width: fit-content; }
+    .ft-rating-score { font-weight: 700; font-size: 0.9rem; color: #fff; }
+    .ft-rating-sub { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
+    .ft-badges { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+    .ft-badge { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.6rem; font-size: 0.78rem; }
+    .ft-badge-iso .iso-text { font-size: 0.72rem; line-height: 1.3; color: #e11d48; font-weight: 700; text-transform: uppercase; }
+    .sf-text { display: flex; flex-direction: column; font-size: 0.72rem; color: rgba(255,255,255,0.7); line-height: 1.3; }
+    .sf-text span:first-child { font-weight: 700; color: #fff; }
+    .db-text { display: flex; flex-direction: column; font-size: 0.7rem; line-height: 1.4; color: rgba(255,255,255,0.65); }
+    .db-text span { font-weight: 700; color: #fff; font-size: 0.75rem; }
+    .footer-mid { padding: 3rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-mid .footer-inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+    .ft-col { display: flex; flex-direction: column; gap: 0.65rem; }
+    .ft-col-title { font-weight: 700; font-size: 0.9rem; color: #fff; margin-bottom: 0.5rem; letter-spacing: 0.3px; }
+    .ft-col a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .ft-col a:hover { color: #fff; }
+    .footer-bottom { padding: 1.4rem 0; }
+    .footer-bottom .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+    .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.45); }
+    .ft-bottom-links { display: flex; gap: 1.5rem; }
+    .ft-bottom-links a { font-size: 0.82rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .ft-bottom-links a:hover { color: #fff; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .perks-grid { grid-template-columns: repeat(2, 1fr); }
+      .culture-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .apply-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .footer-top .footer-inner { grid-template-columns: 1fr 1fr; }
+      .ft-badges { grid-column: 1 / -1; grid-template-columns: repeat(4,1fr); }
+    }
+    @media (max-width: 900px) {
+      .voices-grid { grid-template-columns: 1fr 1fr; }
+      .stats-bar-inner { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .perks-grid { grid-template-columns: 1fr; }
+      .voices-grid { grid-template-columns: 1fr; }
+      .footer-top .footer-inner { grid-template-columns: 1fr; }
+      .ft-badges { grid-template-columns: repeat(2,1fr); }
+      .footer-mid .footer-inner { grid-template-columns: 1fr 1fr; }
+      .roles-header-top { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; }
+      .btn-primary, .btn-outline { width: 100%; max-width: 280px; text-align: center; }
+      .footer-bottom .footer-inner { flex-direction: column; align-items: flex-start; }
+      .ft-bottom-links { flex-wrap: wrap; gap: 1rem; }
+      .stats-bar-inner { grid-template-columns: 1fr 1fr; }
+      .footer-mid .footer-inner { grid-template-columns: 1fr; }
+      .role-card { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .role-card-right { width: 100%; justify-content: space-between; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav id="navbar">
+    <a href="home.html" class="logo"><img src="./img/logo.png" alt="Gagstek" /></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="client.html">Client Stories</a></li>
+      <li><a href="#">Products</a></li>
+      <li><a href="careers.html" class="active">Careers</a></li>
+      <li><a href="#" class="nav-cta">Request a Meeting</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="services.html">Services</a>
+    <a href="#">Products</a>
+    <a href="careers.html">Careers</a>
+    <a href="#" class="mob-cta">Request a Meeting</a>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="career-hero">
+    <div class="career-hero-bg"></div>
+    <div class="career-hero-overlay"></div>
+    <div class="career-hero-content">
+      <div class="hero-eyebrow">We're Hiring · Join Gagstek</div>
+      <h1>
+        Build the <span class="hl">Future</span><br>Together at Gagstek
+      </h1>
+      <p class="career-hero-sub">No global movement springs from individuals. It takes an entire team united behind something big. We work hard, laugh a lot, brainstorm nonstop — and give the best high-fives in town.</p>
+      <div class="hero-actions">
+        <a href="#open-roles" class="btn-primary">View Open Roles</a>
+        <a href="#apply" class="btn-outline">Drop Your Resume</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat-item">
+          <div class="hero-stat-num">50+</div>
+          <div class="hero-stat-label">Team Members Globally</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-num">3</div>
+          <div class="hero-stat-label">Countries of Operation</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-num">350+</div>
+          <div class="hero-stat-label">Salesforce Certifications</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-num">4.7★</div>
+          <div class="hero-stat-label">AppExchange Rating</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb-strip">
+    <div class="breadcrumb-inner">
+      <a href="home.html">Home</a>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+      <span>Careers</span>
+    </div>
+  </div>
+
+  <!-- ═══ WHY JOIN US ═══ -->
+  <section class="why-section">
+    <div class="why-inner">
+      <div class="section-eyebrow">Why Gagstek</div>
+      <h2 class="section-title">More Than a Job —<br><span>A Meaningful Career</span></h2>
+      <p class="section-desc">At GAGSTEK, we go beyond helping businesses transform through technology. We help them make a meaningful difference. And we do the same for our people.</p>
+
+      <div class="perks-grid">
+        <!-- Perk 1 -->
+        <div class="perk-card">
+          <div class="perk-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="perk-title">Salesforce Certification Support</div>
+          <div class="perk-desc">We fund your Salesforce certifications and Trailhead journey. Over 350 certifications and 4,000+ badges across our team — you'll be in great company.</div>
+        </div>
+        <!-- Perk 2 -->
+        <div class="perk-card">
+          <div class="perk-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div class="perk-title">Global Exposure</div>
+          <div class="perk-desc">Work with clients across the US, Australia, and India. Real international projects with enterprise clients — not sandbox environments.</div>
+        </div>
+        <!-- Perk 3 -->
+        <div class="perk-card">
+          <div class="perk-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="perk-title">Collaborative Culture</div>
+          <div class="perk-desc">We use hundreds of Post-Its a week in brainstorming sessions. Flat hierarchy, open communication, and your ideas genuinely matter here.</div>
+        </div>
+        <!-- Perk 4 -->
+        <div class="perk-card">
+          <div class="perk-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="perk-title">Work on Cutting-Edge AI</div>
+          <div class="perk-desc">Get hands-on with AI sales automation, conversational AI, and Agentforce. We're building tomorrow's tech — today.</div>
+        </div>
+        <!-- Perk 5 -->
+        <div class="perk-card">
+          <div class="perk-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <div class="perk-title">Flexible Work Arrangements</div>
+          <div class="perk-desc">Hybrid and remote-friendly roles available. We believe in outcomes over office hours — deliver great work on your terms.</div>
+        </div>
+        <!-- Perk 6 -->
+        <div class="perk-card">
+          <div class="perk-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <div class="perk-title">Fast-Track Growth</div>
+          <div class="perk-desc">At a growing Salesforce Crest Partner, your career accelerates. Mentorship from senior architects, direct client engagement, and real ownership of your work.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CULTURE ═══ -->
+  <section class="culture-section">
+    <div class="culture-inner">
+      <div class="culture-img-wrap">
+        <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=900&q=80&fit=crop" alt="Gagstek Team Culture" />
+        <div class="culture-img-overlay"></div>
+        <div class="culture-img-badge">
+          <div class="badge-num">ISO</div>
+          <div class="badge-label">27001<br>Certified</div>
+        </div>
+      </div>
+      <div class="culture-text">
+        <div class="section-eyebrow">Our Culture</div>
+        <h2 class="section-title" style="margin-bottom: 1rem;">Where Ambition<br><span>Meets Purpose</span></h2>
+        <p class="culture-body">We're a team of certified Salesforce professionals, AI engineers, and cloud architects who believe technology should make a real difference — for businesses and the people who use them. Every project, every sprint, every deployment matters.</p>
+        <div class="culture-values">
+          <div class="culture-value"><div class="culture-value-dot"></div>Translating aspirations into reality for every client</div>
+          <div class="culture-value"><div class="culture-value-dot"></div>Continuous learning — certifications funded, knowledge shared</div>
+          <div class="culture-value"><div class="culture-value-dot"></div>Diversity across US, India, and Australia</div>
+          <div class="culture-value"><div class="culture-value-dot"></div>Celebrating wins together — high-fives included</div>
+          <div class="culture-value"><div class="culture-value-dot"></div>Zero politics, flat hierarchy, genuine ownership</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ STATS BAR ═══ -->
+  <div class="stats-bar">
+    <div class="stats-bar-inner">
+      <div class="sbar-item">
+        <div class="sbar-num">350+</div>
+        <div class="sbar-label">Salesforce Certifications</div>
+      </div>
+      <div class="sbar-item">
+        <div class="sbar-num">4,000+</div>
+        <div class="sbar-label">Trailhead Badges</div>
+      </div>
+      <div class="sbar-item">
+        <div class="sbar-num">200+</div>
+        <div class="sbar-label">Projects Delivered</div>
+      </div>
+      <div class="sbar-item">
+        <div class="sbar-num">3</div>
+        <div class="sbar-label">Global Offices</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ OPEN ROLES ═══ -->
+  <section class="roles-section" id="open-roles">
+    <div class="roles-inner">
+      <div class="roles-header">
+        <div class="roles-header-top">
+          <div>
+            <div class="section-eyebrow">Open Positions</div>
+            <h2 class="section-title" style="margin-bottom: 0;">Current <span>Openings</span></h2>
+          </div>
+          <div class="role-filters" id="roleFilters">
+            <button class="filter-btn active" data-filter="all">All Roles</button>
+            <button class="filter-btn" data-filter="salesforce">Salesforce</button>
+            <button class="filter-btn" data-filter="engineering">Engineering</button>
+            <button class="filter-btn" data-filter="ai">AI / Data</button>
+            <button class="filter-btn" data-filter="consulting">Consulting</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="roles-grid" id="rolesGrid">
+
+        <!-- Role 1 -->
+        <a href="#apply" class="role-card" data-dept="salesforce">
+          <div class="role-card-left">
+            <div class="role-dept">Salesforce</div>
+            <div class="role-title">Salesforce Developer (Lightning / Apex)</div>
+            <div class="role-meta">
+              <span class="role-tag">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Pune, India
+              </span>
+              <span class="role-tag">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Full-time
+              </span>
+              <span class="role-tag">2–4 years exp.</span>
+            </div>
+          </div>
+          <div class="role-card-right">
+            <span class="role-type-badge badge-hybrid">Hybrid</span>
+            <div class="role-arrow">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- Role 2 -->
+        <a href="#apply" class="role-card" data-dept="salesforce">
+          <div class="role-card-left">
+            <div class="role-dept">Salesforce</div>
+            <div class="role-title">Salesforce CPQ / Revenue Cloud Consultant</div>
+            <div class="role-meta">
+              <span class="role-tag">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Pune / Remote
+              </span>
+              <span class="role-tag">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Full-time
+              </span>
+              <span class="role-tag">3–6 years exp.</span>
+            </div>
+          </div>
+          <div class="role-card-right">
+            <span class="role-type-badge badge-remote">Remote</span>
+            <div class="role-arrow">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- Role 3 -->
+        <a href="#apply" class="role-card" data-dept="salesforce">
+          <div class="role-card-left">
+            <div class="role-dept">Salesforce</div>
+            <div class="role-title">Salesforce Administrator & Business Analyst</div>
+            <div class="role-meta">
+              <span class="role-tag">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Pune, India
+              </span>
+              <span class="role-tag">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Full-time
+              </span>
+              <span class="role-tag">1–3 years exp.</span>
+            </div>
+          </div>
+          <div class="role-card-right">
+            <span class="role-type-badge badge-fulltime">On-site</span>
+            <div class="role-arrow">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- Role 4 -->
+        <a href="#apply" class="role-card" data-dept="engineering">
+          <div class="role-card-left">
+            <div class="role-dept">Engineering</div>
+            <div class="role-title">Full-Stack Software Developer (React / Node.js)</div>
+            <div class="role-meta">
+              <span class="role-tag">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Pune / Remote
+              </span>
+              <span class="role-tag">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Full-time
+              </span>
+              <span class="role-tag">2–5 years exp.</span>
+            </div>
+          </div>
+          <div class="role-card-right">
+            <span class="role-type-badge badge-remote">Remote</span>
+            <div class="role-arrow">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- Role 5 -->
+        <a href="#apply" class="role-card" data-dept="ai">
+          <div class="role-card-left">
+            <div class="role-dept">AI / Data</div>
+            <div class="role-title">AI/ML Engineer – Conversational AI & Agentforce</div>
+            <div class="role-meta">
+              <span class="role-tag">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Remote / India
+              </span>
+              <span class="role-tag">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Full-time
+              </span>
+              <span class="role-tag">3–6 years exp.</span>
+            </div>
+          </div>
+          <div class="role-card-right">
+            <span class="role-type-badge badge-remote">Remote</span>
+            <div class="role-arrow">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- Role 6 -->
+        <a href="#apply" class="role-card" data-dept="consulting">
+          <div class="role-card-left">
+            <div class="role-dept">Consulting</div>
+            <div class="role-title">Salesforce Solution Architect</div>
+            <div class="role-meta">
+              <span class="role-tag">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                US / Australia / Remote
+              </span>
+              <span class="role-tag">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Full-time
+              </span>
+              <span class="role-tag">6+ years exp.</span>
+            </div>
+          </div>
+          <div class="role-card-right">
+            <span class="role-type-badge badge-hybrid">Hybrid</span>
+            <div class="role-arrow">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg>
+            </div>
+          </div>
+        </a>
+
+      </div><!-- /roles-grid -->
+    </div>
+  </section>
+
+  <!-- ═══ EMPLOYEE VOICES ═══ -->
+  <section class="voices-section">
+    <div class="voices-inner">
+      <div class="section-eyebrow">Employees' Words</div>
+      <h2 class="section-title">What Our <span>Team Says</span></h2>
+
+      <div class="voices-grid">
+        <div class="voice-card">
+          <div class="voice-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="voice-text">"Gagstek gave me the space to get certified, grow into architecture roles, and actually own solutions. The learning culture here is unlike anywhere I've worked before."</p>
+          <div class="voice-author">
+            <div class="voice-avatar">RS</div>
+            <div>
+              <div class="voice-name">Rahul S.</div>
+              <div class="voice-role">Salesforce Tech Lead · Pune</div>
+            </div>
+          </div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="voice-text">"Working on US enterprise clients from Pune while building my AI skills — that's exactly the kind of career I wanted. Gagstek made it possible within my first year."</p>
+          <div class="voice-author">
+            <div class="voice-avatar">PK</div>
+            <div>
+              <div class="voice-name">Priya K.</div>
+              <div class="voice-role">Salesforce Developer · Pune</div>
+            </div>
+          </div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="voice-text">"Flat hierarchy isn't just a phrase here — I directly engage with clients in the US on CPQ implementations. My opinions are heard and acted on. That's rare."</p>
+          <div class="voice-author">
+            <div class="voice-avatar">AM</div>
+            <div>
+              <div class="voice-name">Aditya M.</div>
+              <div class="voice-role">CPQ Consultant · Remote</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ APPLICATION FORM ═══ -->
+  <section class="apply-section" id="apply">
+    <div class="apply-inner">
+
+      <!-- Left: info -->
+      <div class="apply-left">
+        <div class="section-eyebrow">Apply Now</div>
+        <h2 class="section-title">Describe How You Can<br><span>Be a Great Asset</span></h2>
+        <p class="apply-copy">We're currently hiring across all software development and Salesforce roles. If you're a driven developer, consultant, or architect who wants to build real solutions for global clients — we'd love to hear from you.</p>
+        <div class="apply-checklist">
+          <div class="apply-check">Salesforce-certified candidates get priority consideration</div>
+          <div class="apply-check">We review every application personally — no bots, no black holes</div>
+          <div class="apply-check">Freshers with strong fundamentals are also welcome to apply</div>
+          <div class="apply-check">Response within 3 business days, guaranteed</div>
+        </div>
+        <div class="apply-testimonial">
+          <p class="apply-testi-text">"Together, we work hard, we laugh a lot, we brainstorm nonstop, we use hundreds of Post-Its a week, and we give the best high-fives in town."</p>
+          <div class="apply-testi-author">
+            <div class="apply-testi-avatar">GT</div>
+            <div>
+              <div class="apply-testi-name">Gagstek Leadership Team</div>
+              <div class="apply-testi-role">Salesforce Crest Partner · ISO 27001 Certified</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: form -->
+      <div class="apply-form-wrap">
+        <div id="formView">
+          <h3 class="apply-form-title">Send Your Application</h3>
+          <p class="apply-form-sub">Fill in the details below and attach your resume. We'll be in touch shortly.</p>
+
+          <form id="applyForm" novalidate>
+            <div class="form-group">
+              <label for="fullName">Full Name *</label>
+              <input type="text" id="fullName" placeholder="Your full name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" placeholder="you@example.com" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" placeholder="+91 98765 43210" />
+            </div>
+            <div class="form-group">
+              <label for="role">Role You're Applying For</label>
+              <select id="role">
+                <option value="">— Select a role —</option>
+                <option>Salesforce Developer (Lightning / Apex)</option>
+                <option>Salesforce CPQ / Revenue Cloud Consultant</option>
+                <option>Salesforce Administrator & Business Analyst</option>
+                <option>Full-Stack Software Developer (React / Node.js)</option>
+                <option>AI/ML Engineer – Conversational AI & Agentforce</option>
+                <option>Salesforce Solution Architect</option>
+                <option>Other / General Application</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Why Gagstek? (Optional)</label>
+              <textarea id="message" placeholder="Tell us a bit about yourself and why you'd like to join our team..."></textarea>
+            </div>
+            <div class="form-group">
+              <label>Resume / CV *</label>
+              <div class="file-upload-wrap" id="fileUploadWrap">
+                <input type="file" id="resumeFile" accept=".pdf,.doc,.docx" />
+                <div class="file-upload-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                </div>
+                <p class="file-upload-text"><span>Click to upload</span> or drag and drop<br>PDF, DOC, DOCX — max 5MB</p>
+                <p class="file-name-display" id="fileNameDisplay"></p>
+              </div>
+            </div>
+            <button type="submit" class="form-submit-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Submit Application
+            </button>
+            <p class="form-note">By submitting, you agree to Gagstek storing your data for recruitment purposes. We never share your information.</p>
+          </form>
+        </div>
+
+        <!-- Success state -->
+        <div class="form-success" id="formSuccess">
+          <div class="form-success-icon">✓</div>
+          <h3>Application Received!</h3>
+          <p>Thanks for applying to Gagstek. Our team reviews every application personally and we'll be in touch within 3 business days.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-inner">
+        <div>
+          <a href="home.html" class="ft-logo-link">
+            <img src="./img/logo.png" alt="Gagstek" class="ft-logo-img" />
+          </a>
+          <p class="ft-tagline">Translating business aspirations into reality through Salesforce &amp; AI excellence.</p>
+          <a href="https://gagstek.com/contact-us/" class="ft-cta-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Let's Talk
+          </a>
+          <div class="ft-socials">
+            <a href="https://www.youtube.com/@GagstekLLP" class="ft-social-icon" target="_blank" aria-label="YouTube">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2s-.3-1.9-1.1-2.7c-1.1-1.1-2.3-1.1-2.8-1.2C16.8 2 12 2 12 2s-4.8 0-7.6.3c-.6.1-1.8.1-2.8 1.2C.8 4.3.5 6.2.5 6.2S.2 8.4.2 10.6v2.1c0 2.2.3 4.4.3 4.4s.3 1.9 1.1 2.7c1.1 1.1 2.5 1.1 3.1 1.2C6.8 21.1 12 21.1 12 21.1s4.8 0 7.6-.3c.6-.1 1.8-.1 2.8-1.2.8-.8 1.1-2.7 1.1-2.7s.3-2.2.3-4.4v-2.1c0-2.2-.3-4.4-.3-4.4zm-14 8.9V8.9l7.6 3.1-7.6 3.1z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/gagstek___/" class="ft-social-icon" target="_blank" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://in.linkedin.com/company/gagstek" class="ft-social-icon" target="_blank" aria-label="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=919049023824" class="ft-social-icon" target="_blank" aria-label="WhatsApp">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            </a>
+          </div>
+          <div class="ft-email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:info@gagstek.com">info@gagstek.com</a>
+          </div>
+        </div>
+        <div class="ft-offices">
+          <div class="ft-office">
+            <p class="ft-office-title">United States 🇺🇸</p>
+            <p class="ft-office-addr">16192 Coastal Highway, Lewes,<br>Delaware 19958, County of Sussex</p>
+            <p class="ft-office-phone">📞 +1-567-399-2506</p>
+          </div>
+          <div class="ft-office">
+            <p class="ft-office-title">India 🇮🇳</p>
+            <p class="ft-office-addr">P3-001 Pentagon Tower,<br>Magarpatta City, Pune 411013</p>
+          </div>
+          <div class="ft-office">
+            <p class="ft-office-title">Australia 🇦🇺</p>
+            <p class="ft-office-addr">161 Collins St, Melbourne VIC, 3000</p>
+            <p class="ft-office-phone">📞 +61-473118458</p>
+          </div>
+          <div class="ft-rating">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <div><p class="ft-rating-score">4.7/5 ★</p><p class="ft-rating-sub">AppExchange Rated Partner</p></div>
+          </div>
+        </div>
+        <div class="ft-badges">
+          <div class="ft-badge ft-badge-sf">
+            <svg width="38" height="38" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="28" fill="#00A1E0"/><text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-size="9" font-weight="bold" fill="white" font-family="Arial">Salesforce</text></svg>
+            <div class="sf-text"><span>Crest</span><span>Partner</span></div>
+          </div>
+          <div class="ft-badge ft-badge-iso">
+            <span class="iso-text">ISO<br><strong>27001</strong><br><small>CERTIFIED</small></span>
+          </div>
+          <div class="ft-badge ft-badge-aws">
+            <svg width="36" height="22" viewBox="0 0 80 50" fill="none"><text y="22" font-size="14" font-weight="bold" fill="#FF9900" font-family="Arial">aws</text><text y="38" font-size="9" fill="#FF9900" font-family="Arial">Partner</text><text y="48" font-size="9" fill="#FF9900" font-family="Arial">Network</text></svg>
+          </div>
+          <div class="ft-badge ft-badge-db">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF3621"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <div class="db-text"><small>databricks</small><span>Consulting Partner</span><small>Registered</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-mid">
+      <div class="footer-inner">
+        <div class="ft-col">
+          <p class="ft-col-title">Salesforce Services</p>
+          <a href="#">Business Consulting & Advisory</a>
+          <a href="#">Implementation & Development</a>
+          <a href="#">Quote-To-Cash Services</a>
+          <a href="#">Administration & Support</a>
+          <a href="#">Data Migration</a>
+          <a href="#">Staff Augmentation</a>
+        </div>
+        <div class="ft-col">
+          <p class="ft-col-title">AI Services</p>
+          <a href="#">AI Sales Automation</a>
+          <a href="#">AI Lead Intelligence</a>
+          <a href="#">Conversational AI Systems</a>
+          <a href="#">AI Workflow Orchestration</a>
+          <a href="#">AI Data Engineering</a>
+          <a href="#">Custom AI Product Builds</a>
+        </div>
+        <div class="ft-col">
+          <p class="ft-col-title">Products</p>
+          <a href="https://gagstek.com/products/">E2E Sales</a>
+          <a href="https://gagstek.com/stockpro/">StockPro</a>
+          <a href="#">AppExchange Products</a>
+          <a href="#">Mobile-first Products</a>
+        </div>
+        <div class="ft-col">
+          <p class="ft-col-title">Company</p>
+          <a href="https://gagstek.com/about/">About Us</a>
+          <a href="https://gagstek.com/client-stories-2/">Client Stories</a>
+          <a href="https://gagstek.com/employee-review/">Employees' Words</a>
+          <a href="https://gagstek.com/career/">Careers</a>
+          <a href="https://gagstek.com/blogs/">Blogs</a>
+          <a href="https://gagstek.com/contact-us/">Contact Us</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-inner">
+        <p>© 2025 GAGSTEK LLP. All Rights Reserved.</p>
+        <div class="ft-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms Of Services</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky nav
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Role filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const roleCards = document.querySelectorAll('.role-card');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        roleCards.forEach(card => {
+          if (filter === 'all' || card.dataset.dept === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // File upload display
+    const resumeFile = document.getElementById('resumeFile');
+    const fileNameDisplay = document.getElementById('fileNameDisplay');
+    resumeFile.addEventListener('change', () => {
+      if (resumeFile.files.length > 0) {
+        fileNameDisplay.textContent = '✓ ' + resumeFile.files[0].name;
+        fileNameDisplay.style.display = 'block';
+      }
+    });
+
+    // Form submit
+    const applyForm = document.getElementById('applyForm');
+    const formView = document.getElementById('formView');
+    const formSuccess = document.getElementById('formSuccess');
+    applyForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('fullName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      if (!name || !email) {
+        alert('Please fill in your name and email.');
+        return;
+      }
+      // Simulate submission
+      formView.style.display = 'none';
+      formSuccess.style.display = 'block';
+    });
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.perk-card, .role-card, .voice-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>

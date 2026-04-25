@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us – Gagstek | Your Guide to Digital Transformation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #0f2044;
+      --accent: #3b82f6;
+      --accent-bright: #60a5fa;
+      --gold: #f59e0b;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 2rem;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10,22,40,0.97);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.4);
+      backdrop-filter: blur(12px);
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+
+    .logo-img {
+      height: 40px;
+      width: 130px;
+      display: block;
+      /* Replace src with your actual logo file */
+    }
+    .logo-placeholder {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: var(--white);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .logo-placeholder .logo-img-wrap {
+      width: 130px;
+      height: 40px;
+      
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #fff;
+      font-weight: 900;
+      /* Replace this div with <img src="logo.png" class="logo-img" alt="Gagstek"> */
+    }
+    .logo-placeholder span { color: var(--accent-bright); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+    .nav-links a.active { color: var(--accent-bright); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: var(--white) !important;
+      padding: 0.55rem 1.3rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+    .nav-cta:hover { background: var(--accent-bright) !important; transform: translateY(-1px); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--white); border-radius: 2px; transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0; top: 72px;
+      background: rgba(10,22,40,0.98);
+      backdrop-filter: blur(16px);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .mobile-menu.open { display: flex; opacity: 1; pointer-events: all; }
+    .mobile-menu a {
+      color: var(--white); text-decoration: none;
+      font-size: 1.4rem; font-weight: 500;
+      letter-spacing: 0.5px; transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--accent-bright); }
+    .mobile-menu .mob-cta {
+      background: var(--accent); padding: 0.75rem 2.5rem;
+      border-radius: 8px; font-weight: 600; font-size: 1rem;
+    }
+
+    /* ─── PAGE HERO ──────────────────────────────────────── */
+    .page-hero {
+      position: relative;
+      padding: 140px 2rem 80px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .page-hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #0a1628 0%, #0f2044 50%, #0a1628 100%);
+    }
+    .page-hero-glow {
+      position: absolute;
+      width: 700px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(59,130,246,0.15) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .page-hero-content { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; }
+    .page-hero-label {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--accent-bright);
+      background: rgba(59,130,246,0.12);
+      border: 1px solid rgba(96,165,250,0.25);
+      padding: 0.4rem 1rem; border-radius: 100px;
+      margin-bottom: 1.4rem;
+    }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+    }
+    .page-hero h1 span { color: var(--accent-bright); }
+    .page-hero p {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: rgba(255,255,255,0.7);
+      line-height: 1.75;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    /* ─── ABOUT INTRO (text + image split) ──────────────── */
+    .about-intro {
+      background: #fff;
+      padding: 6rem 2rem;
+    }
+    .about-intro-inner {
+      max-width: 1160px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-intro-text {}
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .about-intro-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      color: #0a1628;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+    .about-intro-text h2 span { color: var(--accent); }
+    .about-intro-text p {
+      font-size: 0.97rem;
+      color: #475569;
+      line-height: 1.8;
+      margin-bottom: 1.1rem;
+    }
+    .about-intro-text p:last-child { margin-bottom: 0; }
+    .about-intro-img {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      box-shadow: 0 24px 64px rgba(10,22,40,0.14);
+    }
+    .about-intro-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .about-intro-img-badge {
+      position: absolute;
+      bottom: 1.5rem; left: 1.5rem;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    /* ─── STATS BAND ─────────────────────────────────────── */
+    .stats-band {
+      background: var(--navy);
+      padding: 5rem 2rem;
+    }
+    .stats-band-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+    .stat-item {}
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      color: var(--accent-bright);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .stat-label {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+      font-weight: 500;
+    }
+
+    /* ─── VALUES ─────────────────────────────────────────── */
+    .values-section {
+      background: #f1f5f9;
+      padding: 6rem 2rem;
+    }
+    .values-inner { max-width: 1100px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      color: #0a1628;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-header h2 span { color: var(--accent); }
+    .section-header p {
+      font-size: 1rem;
+      color: #64748b;
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .value-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(10,22,40,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .value-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(10,22,40,0.12); }
+    .value-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+    .value-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #0a1628;
+      margin-bottom: 0.7rem;
+    }
+    .value-card p {
+      font-size: 0.875rem;
+      color: #64748b;
+      line-height: 1.7;
+    }
+
+    /* ─── JOURNEY / TIMELINE ─────────────────────────────── */
+    .journey-section {
+      background: var(--navy);
+      padding: 6rem 2rem;
+    }
+    .journey-inner { max-width: 900px; margin: 0 auto; }
+    .journey-section .section-header h2 { color: #fff; }
+    .journey-section .section-header p { color: rgba(255,255,255,0.6); }
+
+    .timeline { position: relative; margin-top: 3rem; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: rgba(59,130,246,0.25);
+      transform: translateX(-50%);
+    }
+    .tl-item {
+      display: grid;
+      grid-template-columns: 1fr 48px 1fr;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 3.5rem;
+    }
+    .tl-item:last-child { margin-bottom: 0; }
+    .tl-item.right .tl-content-wrap { grid-column: 3; grid-row: 1; }
+    .tl-item.right .tl-empty { grid-column: 1; grid-row: 1; }
+
+    .tl-content {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 1.5rem;
+    }
+    .tl-year {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--accent-bright);
+      margin-bottom: 0.4rem;
+    }
+    .tl-content h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .tl-content p {
+      font-size: 0.84rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.65;
+    }
+    .tl-dot {
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(59,130,246,0.25);
+      margin: 0 auto;
+      z-index: 2;
+      position: relative;
+    }
+    .tl-empty {}
+
+    /* ─── TEAM ───────────────────────────────────────────── */
+    .team-section {
+      background: #fff;
+      padding: 6rem 2rem;
+    }
+    .team-inner { max-width: 1100px; margin: 0 auto; }
+    .team-section .section-header h2 { color: #0a1628; }
+    .team-section .section-header p { color: #64748b; }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .team-card {
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .team-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 8px 32px rgba(59,130,246,0.12);
+      transform: translateY(-4px);
+    }
+    .team-avatar {
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1.2rem;
+      display: block;
+      border: 3px solid #e2e8f0;
+    }
+    .team-avatar-placeholder {
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-bright) 100%);
+      margin: 0 auto 1.2rem;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 900;
+      color: #fff;
+    }
+    .team-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 700;
+      color: #0a1628; margin-bottom: 0.25rem;
+    }
+    .team-card .role {
+      font-size: 0.82rem; font-weight: 600;
+      color: var(--accent); text-transform: uppercase;
+      letter-spacing: 1px; margin-bottom: 0.8rem;
+    }
+    .team-card p {
+      font-size: 0.86rem; color: #64748b; line-height: 1.65;
+    }
+
+    /* ─── ON-DEMAND EXPERTISE ────────────────────────────── */
+    .expertise-section {
+      background: var(--navy-mid);
+      padding: 5rem 2rem;
+    }
+    .expertise-inner { max-width: 1100px; margin: 0 auto; }
+    .expertise-section .section-header h2 { color: #fff; }
+    .expertise-section .section-header p { color: rgba(255,255,255,0.6); }
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin-top: 3rem;
+    }
+    .exp-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 1.6rem;
+      display: flex; align-items: center; gap: 1rem;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .exp-card:hover {
+      background: rgba(59,130,246,0.1);
+      border-color: rgba(59,130,246,0.4);
+      transform: translateY(-3px);
+    }
+    .exp-icon {
+      width: 48px; height: 48px; flex-shrink: 0;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .exp-card h4 { font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem; }
+    .exp-card p { font-size: 0.8rem; color: rgba(255,255,255,0.55); line-height: 1.5; }
+
+    /* ─── OFFICE LOCATIONS ───────────────────────────────── */
+    .offices-section {
+      background: #f1f5f9;
+      padding: 6rem 2rem;
+    }
+    .offices-inner { max-width: 1100px; margin: 0 auto; }
+    .offices-section .section-header h2 { color: #0a1628; }
+    .offices-section .section-header p { color: #64748b; }
+    .offices-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .office-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 2rem;
+      box-shadow: 0 4px 24px rgba(10,22,40,0.07);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .office-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(10,22,40,0.12); }
+    .office-flag {
+      font-size: 2rem; margin-bottom: 1rem; display: block;
+    }
+    .office-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 700;
+      color: #0a1628; margin-bottom: 0.5rem;
+    }
+    .office-card .country {
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1rem;
+    }
+    .office-addr {
+      font-size: 0.88rem; color: #64748b;
+      line-height: 1.7; margin-bottom: 1.2rem;
+    }
+    .office-contact { display: flex; flex-direction: column; gap: 0.4rem; }
+    .office-contact a {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.84rem; color: #475569; text-decoration: none;
+      transition: color 0.2s;
+    }
+    .office-contact a:hover { color: var(--accent); }
+    .office-divider {
+      width: 40px; height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-bottom: 1.2rem;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    .site-footer {
+      background: #111827;
+      color: rgba(255,255,255,0.75);
+      font-family: 'DM Sans', sans-serif;
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+    }
+    .footer-top {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-top .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3rem; align-items: start;
+    }
+    .ft-cta-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 900; color: #fff;
+      line-height: 1.25; margin-bottom: 1.4rem;
+    }
+    .ft-cta-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--accent); color: #fff;
+      font-weight: 700; font-size: 0.9rem;
+      padding: 0.75rem 1.6rem; border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      margin-bottom: 1.8rem;
+    }
+    .ft-cta-btn:hover { background: #60a5fa; transform: translateY(-2px); }
+    .ft-socials { display: flex; gap: 0.9rem; margin-bottom: 1.2rem; }
+    .ft-social-icon {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.75); text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .ft-social-icon:hover { background: var(--accent); color: #fff; }
+    .ft-email { display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; }
+    .ft-email a { color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
+    .ft-email a:hover { color: #fff; }
+    .ft-offices { display: flex; flex-direction: column; gap: 1.5rem; }
+    .ft-office-title { font-weight: 700; font-size: 0.9rem; color: #fff; margin-bottom: 0.4rem; }
+    .ft-office-addr { font-size: 0.85rem; line-height: 1.6; color: rgba(255,255,255,0.55); }
+    .ft-rating {
+      display: flex; align-items: center; gap: 0.75rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px; padding: 0.75rem 1rem; width: fit-content;
+    }
+    .ft-rating-score { font-weight: 700; font-size: 0.9rem; color: #fff; }
+    .ft-rating-sub { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
+    .ft-badges { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+    .ft-badge {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px; padding: 0.75rem 1rem;
+      display: flex; align-items: center; gap: 0.6rem; font-size: 0.78rem;
+    }
+    .ft-badge-iso .iso-text { font-size: 0.72rem; line-height: 1.3; color: #e11d48; font-weight: 700; text-transform: uppercase; }
+    .sf-text { display: flex; flex-direction: column; font-size: 0.72rem; color: rgba(255,255,255,0.7); line-height: 1.3; }
+    .sf-text span:first-child { font-weight: 700; color: #fff; }
+    .db-text { display: flex; flex-direction: column; font-size: 0.7rem; line-height: 1.4; color: rgba(255,255,255,0.65); }
+    .db-text span { font-weight: 700; color: #fff; font-size: 0.75rem; }
+    .footer-mid { padding: 3rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-mid .footer-inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+    .ft-col { display: flex; flex-direction: column; gap: 0.65rem; }
+    .ft-col-title { font-weight: 700; font-size: 0.9rem; color: #fff; margin-bottom: 0.5rem; letter-spacing: 0.3px; }
+    .ft-col a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .ft-col a:hover { color: #fff; }
+
+    /* Footer logo */
+    .ft-logo {
+      display: flex; align-items: center; gap: 0.5rem;
+      text-decoration: none; margin-bottom: 1.2rem;
+    }
+    .ft-logo-img-wrap {
+      width: 36px; height: 36px; border-radius: 7px;
+      background: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.9rem; font-weight: 900; color: #fff;
+      /* Replace with <img src="logo.png" class="logo-img" alt="Gagstek"> */
+    }
+    .ft-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 900;
+      color: #fff; letter-spacing: -0.3px;
+    }
+    .ft-logo-text span { color: var(--accent-bright); }
+
+    .footer-bottom { padding: 1.4rem 0; }
+    .footer-bottom .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+    .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.45); }
+    .ft-bottom-links { display: flex; gap: 1.5rem; }
+    .ft-bottom-links a { font-size: 0.82rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .ft-bottom-links a:hover { color: #fff; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 992px) {
+      .about-intro-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .about-intro-img { max-width: 560px; }
+      .stats-band-inner { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+      .values-grid { grid-template-columns: 1fr 1fr; }
+      .expertise-grid { grid-template-columns: 1fr 1fr; }
+      .offices-grid { grid-template-columns: 1fr 1fr; }
+      .team-grid { grid-template-columns: 1fr 1fr; max-width: 100%; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .timeline::before { left: 24px; transform: none; }
+      .tl-item { grid-template-columns: 48px 1fr; gap: 0; }
+      .tl-item .tl-content-wrap { grid-column: 2; grid-row: 1; padding-left: 1rem; }
+      .tl-item.right .tl-content-wrap { grid-column: 2; }
+      .tl-item.right .tl-empty { display: none; }
+      .tl-item .tl-empty { display: none; }
+      .tl-dot { margin: 0; }
+      .footer-top .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .ft-badges { grid-template-columns: repeat(2, 1fr); }
+      .footer-mid .footer-inner { grid-template-columns: 1fr 1fr; gap: 1.8rem; }
+      .values-grid { grid-template-columns: 1fr; }
+      .expertise-grid { grid-template-columns: 1fr; }
+      .offices-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .page-hero { padding: 120px 1.25rem 60px; }
+      .about-intro { padding: 4rem 1.25rem; }
+      .stats-band { padding: 3.5rem 1.25rem; }
+      .stats-band-inner { grid-template-columns: 1fr 1fr; }
+      .values-section, .journey-section, .team-section, .expertise-section, .offices-section { padding: 4rem 1.25rem; }
+      .footer-inner { padding: 0 1.25rem; }
+      .footer-bottom .footer-inner { flex-direction: column; align-items: flex-start; }
+      .ft-bottom-links { flex-wrap: wrap; gap: 1rem; }
+      .team-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAVBAR ─────────────────────────────────────────── -->
+  <nav id="navbar">
+    <!-- LOGO: Replace the .logo-placeholder div with <img src="your-logo.png" class="logo-img" alt="Gagstek"> -->
+    <a href="index.html" class="logo-placeholder">
+      <div class="logo-img-wrap"><img src="./img/logo.png"></div>
+     
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="client.html">Client Stories</a></li>
+      <li><a href="#">Careers</a></li>
+      <li><a href="#">Blogs</a></li>
+      <li><a href="#" class="nav-cta">Get Started</a></li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="#">Careers</a>
+    <a href="#">Blogs</a>
+    <a href="#" class="mob-cta">Get Started</a>
+  </div>
+
+  <!-- ─── PAGE HERO ──────────────────────────────────────── -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-glow"></div>
+    <div class="page-hero-content">
+      <span class="page-hero-label">Our Story</span>
+      <h1>We Are <span>Gagstek</span></h1>
+      <p>A trusted partner to some of the most recognized brands and industry leaders — delivering meaningful change and lasting impact through technology and strategy.</p>
+    </div>
+  </section>
+
+  <!-- ─── ABOUT INTRO ───────────────────────────────────── -->
+  <section class="about-intro">
+    <div class="about-intro-inner">
+      <div class="about-intro-text">
+        <span class="section-label">About Us</span>
+        <h2>Your Partner in <span>Digital Transformation</span></h2>
+        <p>Gagstek is a Trusted Partner to some of the most recognized brands and industry leaders today as well as evolving digital players that are fast changing traditional industries.</p>
+        <p>We work in close partnership with our clients to deliver meaningful change and lasting impact. Our seasoned industry veterans are experienced in solving your business problems with the help of IT and automation.</p>
+        <p>We focus on providing Strategic Consulting on a wide range of Business & Technology concerns like Automation & Innovation, as well as effective Delivery of Solutions & Services that helps our clients achieve outcomes. We stay with our clients until the end customer is delighted and satisfied.</p>
+        <p>Gagstek was founded by former Management & Technology Consulting Executives as an alternative to traditional Big-4 consulting to deliver better value to clients. The founding leads not only possess deep technology and architecture skills but also have helped hundreds of clients in overcoming business problems through digitization.</p>
+        <p>Our strength is in delivering outstanding client experiences with a consulting model based on superior business & technology talent.</p>
+      </div>
+      <div class="about-intro-img">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=80&fit=crop" alt="Gagstek team collaborating" />
+        <div class="about-intro-img-badge">Founded 2023 · Pune, India</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── STATS BAND ─────────────────────────────────────── -->
+  <section class="stats-band">
+    <div class="stats-band-inner">
+      <div class="stat-item">
+        <div class="stat-number">100+</div>
+        <div class="stat-label">Clients Served</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">23+</div>
+        <div class="stat-label">Years Combined Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Global Offices</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">Certified Professionals</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── VALUES ───────────────────────────────────────────── -->
+  <section class="values-section">
+    <div class="values-inner">
+      <div class="section-header">
+        <span class="section-label">What Drives Us</span>
+        <h2>Our Core <span>Values</span></h2>
+        <p>The principles that guide every engagement, every solution, and every relationship we build.</p>
+      </div>
+      <div class="values-grid">
+
+        <div class="value-card">
+          <div class="value-icon" style="background:#eff6ff;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Futuristic Thinking</h3>
+          <p>We promote futuristic approaches and ideologies that keeps our clients' development scope ahead of time, always anticipating tomorrow's challenges today.</p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon" style="background:#f0fdf4;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Uncompromising Quality</h3>
+          <p>When it comes to quality, Gagstek always has the required organizational skills and resource management to deliver solutions that stand the test of time.</p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon" style="background:#fdf4ff;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4" stroke="#a855f7" stroke-width="2"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Equality & Solidarity</h3>
+          <p>Equality is the primary principle we are built on. We practice this in every aspect and encourage the spirit of solidarity among our team and clients.</p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon" style="background:#fff7ed;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Proactive Communication</h3>
+          <p>We believe in proactive communication that develops transparency and actionable strategies — keeping every stakeholder informed at every step.</p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon" style="background:#fef3c7;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Teamwork & Innovation</h3>
+          <p>We strongly preach the virtue of teamwork and promote brainstorming for smarter, more technologically advanced outcomes for all our clients.</p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon" style="background:#f0f9ff;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#0ea5e9" stroke-width="2"/><path d="M12 8v4l3 3" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Clear Vision</h3>
+          <p>Having a clear vision helps us be thoughtful in every space we choose to work, ensuring our solutions are strategic, purposeful, and future-ready.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── JOURNEY TIMELINE ───────────────────────────────── -->
+  <section class="journey-section">
+    <div class="journey-inner">
+      <div class="section-header">
+        <span class="section-label" style="color:var(--accent-bright); background:rgba(96,165,250,0.1); border:1px solid rgba(96,165,250,0.2); padding:0.4rem 1rem; border-radius:100px; display:inline-block; font-size:0.72rem; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:1rem;">Our Journey</span>
+        <h2>Building Gagstek,<br><span style="color:var(--accent-bright);">Year by Year</span></h2>
+        <p>From a vision to a global consulting firm — here is how we grew.</p>
+      </div>
+
+      <div class="timeline">
+
+        <div class="tl-item left">
+          <div class="tl-content-wrap">
+            <div class="tl-content">
+              <div class="tl-year">2023</div>
+              <h4>Founded in Pune, India</h4>
+              <p>Gagstek was founded by former Management & Technology Consulting Executives as an alternative to traditional Big-4 consulting. Core services launched: Salesforce, Java & Python Engineering.</p>
+            </div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-empty"></div>
+        </div>
+
+        <div class="tl-item right">
+          <div class="tl-empty"></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content-wrap">
+            <div class="tl-content">
+              <div class="tl-year">2024</div>
+              <h4>Global Expansion</h4>
+              <p>Expanded to United States and Australia offices. Grew our certified Salesforce and AI team. Successfully delivered 100+ client engagements across multiple industries.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item left">
+          <div class="tl-content-wrap">
+            <div class="tl-content">
+              <div class="tl-year">2025</div>
+              <h4>AI & Agentic Solutions</h4>
+              <p>Launched Agentic AI practice, iCRM product, and StockPro. Deepened partnerships across Salesforce, AWS, and Databricks ecosystems. Team of 50+ certified professionals.</p>
+            </div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-empty"></div>
+        </div>
+
+        <div class="tl-item right">
+          <div class="tl-empty"></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content-wrap">
+            <div class="tl-content">
+              <div class="tl-year">2026</div>
+              <h4>Scaling New Heights</h4>
+              <p>Continuing to scale our team, deepen our technology expertise, and expand our client base across 12+ industries globally — staying ahead of digital transformation.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TEAM LEADERSHIP ────────────────────────────────── -->
+  <section class="team-section">
+    <div class="team-inner">
+      <div class="section-header">
+        <span class="section-label">The People Behind It</span>
+        <h2>Team <span>Leadership</span></h2>
+        <p>Our founding team brings decades of enterprise consulting experience to every engagement.</p>
+      </div>
+      <div class="team-grid">
+
+        <div class="team-card">
+          <img
+            src="https://gagstek.com/wp-content/uploads/2023/09/PHOTO-2023-09-25-13-21-57.jpg"
+            alt="Deepak Kumar"
+            class="team-avatar"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="team-avatar-placeholder" style="display:none;">D</div>
+          <h3>Deepak Kumar</h3>
+          <div class="role">Co-Founder & CEO</div>
+          <p>23 years of IT experience. Worked as Delivery Lead, Salesforce Tech Architect, and in leadership roles at Accenture and Cognizant. Systems and Application Architect — Salesforce Certified.</p>
+        </div>
+
+        <div class="team-card">
+          <img
+            src="https://gagstek.com/wp-content/uploads/2023/09/Steve-Atlice-scaled.jpeg"
+            alt="Steve Atlice"
+            class="team-avatar"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="team-avatar-placeholder" style="display:none;">S</div>
+          <h3>Steve Atlice</h3>
+          <div class="role">CTO</div>
+          <p>8 years of IT experience working as developer, team lead, and solution architect — leading Gagstek's Salesforce Practice with deep hands-on technical expertise.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ON-DEMAND EXPERTISE ───────────────────────────── -->
+  <section class="expertise-section">
+    <div class="expertise-inner">
+      <div class="section-header">
+        <span class="section-label" style="color:var(--accent-bright); background:rgba(96,165,250,0.1); border:1px solid rgba(96,165,250,0.2); padding:0.4rem 1rem; border-radius:100px; display:inline-block; font-size:0.72rem; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:1rem;">What We Offer</span>
+        <h2>On-Demand <span style="color:var(--accent-bright);">Expert Developers</span></h2>
+        <p style="color:rgba(255,255,255,0.6);">Gagstek can support you with on-demand specialists across every major technology domain.</p>
+      </div>
+      <div class="expertise-grid">
+
+        <div class="exp-card">
+          <div class="exp-icon" style="background:rgba(59,130,246,0.15);">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke="#60a5fa" stroke-width="2"/></svg>
+          </div>
+          <div>
+            <h4>Salesforce</h4>
+            <p>Certified Architects, Admins, Developers — Sales, Service, Marketing Cloud & more</p>
+          </div>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-icon" style="background:rgba(168,85,247,0.15);">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="#c084fc" stroke-width="2"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="#c084fc" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <h4>Agentic AI & ML</h4>
+            <p>LLM integration, AI agents, predictive analytics, NLP chatbots, ML pipelines</p>
+          </div>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-icon" style="background:rgba(34,197,94,0.15);">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><polyline points="16 18 22 12 16 6" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="8 6 2 12 8 18" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <h4>Java & Python</h4>
+            <p>Spring Boot, Django, FastAPI, microservices, Docker & Kubernetes</p>
+          </div>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-icon" style="background:rgba(245,158,11,0.15);">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#fbbf24" stroke-width="2"/><polyline points="22,6 12,13 2,6" stroke="#fbbf24" stroke-width="2"/></svg>
+          </div>
+          <div>
+            <h4>MuleSoft & Integration</h4>
+            <p>REST / GraphQL APIs, OAuth 2.0, ERP integrations, iPaaS platforms</p>
+          </div>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-icon" style="background:rgba(14,165,233,0.15);">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2" stroke="#38bdf8" stroke-width="2"/><path d="M8 21h8M12 17v4" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <h4>Web Development</h4>
+            <p>React, Next.js, Node.js — modern, performant web applications</p>
+          </div>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-icon" style="background:rgba(249,115,22,0.15);">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="5" y="2" width="14" height="20" rx="2" stroke="#fb923c" stroke-width="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke="#fb923c" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <h4>Mobile Apps</h4>
+            <p>iOS and Android native & cross-platform development with React Native</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── OFFICE LOCATIONS ──────────────────────────────── -->
+  <section class="offices-section">
+    <div class="offices-inner">
+      <div class="section-header">
+        <span class="section-label">Where We Are</span>
+        <h2>Our Global <span>Offices</span></h2>
+        <p>Delivering world-class consulting from three continents — close to our clients, wherever they are.</p>
+      </div>
+      <div class="offices-grid">
+
+        <div class="office-card">
+          <span class="office-flag">🇺🇸</span>
+          <div class="office-divider"></div>
+          <h3>United States</h3>
+          <div class="country">North America</div>
+          <p class="office-addr">16192 Coastal Highway,<br>City of Lewes, Delaware 19958,<br>County of Sussex</p>
+          <div class="office-contact">
+            <a href="tel:+15673992506">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.07 2.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              +1-567-399-2506
+            </a>
+            <a href="mailto:info@gagstek.com">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              info@gagstek.com
+            </a>
+          </div>
+        </div>
+
+        <div class="office-card">
+          <span class="office-flag">🇮🇳</span>
+          <div class="office-divider"></div>
+          <h3>India</h3>
+          <div class="country">South Asia</div>
+          <p class="office-addr">P3-001 Pentagon Tower,<br>Magarpatta City,<br>Pune 411013, Maharashtra</p>
+          <div class="office-contact">
+            <a href="tel:+919049023824">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.07 2.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              +91-90490-23824
+            </a>
+            <a href="mailto:info@gagstek.com">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              info@gagstek.com
+            </a>
+          </div>
+        </div>
+
+        <div class="office-card">
+          <span class="office-flag">🇦🇺</span>
+          <div class="office-divider"></div>
+          <h3>Australia</h3>
+          <div class="country">Asia-Pacific</div>
+          <p class="office-addr">161 Collins St,<br>Melbourne VIC 3000,<br>Australia</p>
+          <div class="office-contact">
+            <a href="tel:+61473118458">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.07 2.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              +61-473-118-458
+            </a>
+            <a href="mailto:info@gagstek.com">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              info@gagstek.com
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─────────────────────────────────────────── -->
+  <footer class="site-footer">
+
+    <div class="footer-top">
+      <div class="footer-inner">
+
+        <div class="ft-left">
+          <!-- FOOTER LOGO: Replace .ft-logo-img-wrap with <img src="logo.png" class="logo-img" alt="Gagstek"> -->
+          <a href="index.html" class="ft-logo">
+            <div class="ft-logo-img-wrap">G</div>
+            <span class="ft-logo-text">Gags<span>tek</span></span>
+          </a>
+          <h2 class="ft-cta-heading">Looking for<br>expert advice?</h2>
+          <a href="#contact" class="ft-cta-btn">Schedule a Call ↗</a>
+          <div class="ft-socials">
+            <a href="#" aria-label="Facebook" class="ft-social-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="#" aria-label="X" class="ft-social-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/gagstek___/" aria-label="Instagram" class="ft-social-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://in.linkedin.com/company/gagstek" aria-label="LinkedIn" class="ft-social-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@GagstekLLP" aria-label="YouTube" class="ft-social-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#111827"/></svg>
+            </a>
+          </div>
+          <div class="ft-email">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:info@gagstek.com">info@gagstek.com</a>
+          </div>
+        </div>
+
+        <div class="ft-offices">
+          <div class="ft-office">
+            <p class="ft-office-title">United States Office 🇺🇸</p>
+            <p class="ft-office-addr">16192 Coastal Highway, Lewes,<br>Delaware 19958, Sussex</p>
+          </div>
+          <div class="ft-office">
+            <p class="ft-office-title">India Office 🇮🇳</p>
+            <p class="ft-office-addr">P3-001 Pentagon Tower,<br>Magarpatta City, Pune 411013</p>
+          </div>
+          <div class="ft-office">
+            <p class="ft-office-title">Australia Office 🇦🇺</p>
+            <p class="ft-office-addr">161 Collins St,<br>Melbourne VIC 3000</p>
+          </div>
+          <div class="ft-rating">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <div>
+              <p class="ft-rating-score">5.0 ★</p>
+              <p class="ft-rating-sub">Based on 17 clutch reviews</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ft-badges">
+          <div class="ft-badge ft-badge-aws">
+            <svg width="36" height="22" viewBox="0 0 80 50" fill="none"><text y="22" font-size="14" font-weight="bold" fill="#FF9900" font-family="Arial">aws</text><text y="38" font-size="9" fill="#FF9900" font-family="Arial">Partner</text><text y="48" font-size="9" fill="#FF9900" font-family="Arial">Network</text></svg>
+          </div>
+          <div class="ft-badge ft-badge-iso">
+            <span class="iso-text">ISO<br><strong>27001</strong><br><small>CERTIFIED</small></span>
+          </div>
+          <div class="ft-badge ft-badge-sf">
+            <svg width="38" height="38" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="28" fill="#00A1E0"/><text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-size="9" font-weight="bold" fill="white" font-family="Arial">Salesforce</text></svg>
+            <div class="sf-text"><span>Crest</span><span>Partner</span></div>
+          </div>
+          <div class="ft-badge ft-badge-db">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF3621"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <div class="db-text"><small>databricks</small><span>Consulting Partner</span><small>Registered</small></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-mid">
+      <div class="footer-inner">
+        <div class="ft-col">
+          <p class="ft-col-title">Services</p>
+          <a href="#">Salesforce Consulting</a>
+          <a href="#">Cloud Migration</a>
+          <a href="#">ERP Solutions</a>
+          <a href="#">Web Development</a>
+          <a href="#">AI & Automation</a>
+          <a href="#">Java & Python Dev</a>
+        </div>
+        <div class="ft-col">
+          <p class="ft-col-title">Industries</p>
+          <a href="#">Healthcare</a>
+          <a href="#">Logistics</a>
+          <a href="#">Real Estate</a>
+          <a href="#">Automotive</a>
+          <a href="#">Education</a>
+          <a href="#">Manufacturing</a>
+        </div>
+        <div class="ft-col">
+          <p class="ft-col-title">Products Expertise</p>
+          <a href="#">SAP S/4HANA</a>
+          <a href="#">MuleSoft</a>
+          <a href="#">React / Next.js</a>
+          <a href="#">Data & AI</a>
+          <a href="#">iOS & Android</a>
+          <a href="#">iCRM / StockPro</a>
+        </div>
+        <div class="ft-col">
+          <p class="ft-col-title">Company</p>
+          <a href="about.html">About Us</a>
+          <a href="#">Client Stories</a>
+          <a href="#">Employee Reviews</a>
+          <a href="#">Careers</a>
+          <a href="#">Blogs</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-inner">
+        <p>© 2026 Gagstek. All Rights Reserved.</p>
+        <div class="ft-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms Of Services</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+  <script>
+    // Hamburger toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+  </script>
+
+</body>
+</html>

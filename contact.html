@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us – Gagstek | Speak With Our Team</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #0f2044;
+      --accent: #3b82f6;
+      --accent-bright: #60a5fa;
+      --gold: #f59e0b;
+      --white: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; }
+
+    /* ─── NAVBAR ─────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 2rem; height: 72px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled { background: rgba(10,22,40,0.97); box-shadow: 0 2px 24px rgba(0,0,0,0.4); backdrop-filter: blur(12px); }
+    .logo { width: 130px; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.92rem; font-weight: 500; letter-spacing: 0.3px; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+    .nav-links a.active { border-bottom: 2px solid var(--accent-bright); padding-bottom: 2px; }
+    .nav-cta { background: var(--accent); color: var(--white) !important; padding: 0.55rem 1.3rem; border-radius: 6px; font-weight: 600 !important; transition: background 0.2s, transform 0.15s !important; border-bottom: none !important; }
+    .nav-cta:hover { background: var(--accent-bright) !important; transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; inset: 0; top: 72px; background: rgba(10,22,40,0.98); backdrop-filter: blur(16px); z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    .mobile-menu.open { display: flex; opacity: 1; pointer-events: all; }
+    .mobile-menu a { color: var(--white); text-decoration: none; font-size: 1.4rem; font-weight: 500; transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--accent-bright); }
+    .mobile-menu .mob-cta { background: var(--accent); padding: 0.75rem 2.5rem; border-radius: 8px; font-weight: 600; font-size: 1rem; }
+    @media (max-width: 768px) { nav { padding: 0 1.25rem; } .nav-links { display: none; } .hamburger { display: flex; } }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slowZoom { from { transform: scale(1.04); } to { transform: scale(1.1); } }
+
+    /* ─── BREADCRUMB ──────────────────────────────────── */
+    .breadcrumb-strip { background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 0.85rem 2rem; margin-top: 72px; }
+    .breadcrumb-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: rgba(255,255,255,0.45); }
+    .breadcrumb-inner a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb-inner a:hover { color: var(--accent-bright); }
+    .breadcrumb-inner span { color: var(--accent-bright); font-weight: 600; }
+
+    /* ─── SECTION COMMONS ─────────────────────────────── */
+    .section-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--accent-bright); margin-bottom: 0.75rem;
+    }
+    .section-eyebrow::before { content: ''; width: 22px; height: 2px; background: var(--accent-bright); border-radius: 2px; }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 900;
+      color: var(--white); letter-spacing: -0.8px; line-height: 1.1; margin-bottom: 1rem;
+    }
+    .section-title span { color: var(--accent-bright); }
+
+    /* ─── HERO / CONTACT FORM SECTION ─────────────────── */
+    .contact-hero { background: var(--navy); padding: 4rem 2rem 5rem; }
+    .contact-hero-inner { max-width: 1200px; margin: 0 auto; }
+
+    .contact-hero-header { margin-bottom: 3rem; }
+    .contact-hero-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 900;
+      color: var(--white); letter-spacing: -1.5px; line-height: 1.07;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+    .contact-hero-header h1 span { color: var(--accent-bright); }
+    .contact-hero-header p {
+      font-size: 1.05rem; color: rgba(255,255,255,0.6); line-height: 1.75;
+      max-width: 520px; margin-top: 1rem;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+
+    /* Two-column layout */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+
+    /* ─── FORM PANEL ─────────────────────────────────── */
+    .form-panel {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px; padding: 2.5rem;
+    }
+    .form-group { margin-bottom: 1.1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.1rem; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; background: rgba(255,255,255,0.06);
+      border: 1.5px solid rgba(255,255,255,0.1);
+      border-radius: 10px; padding: 0.9rem 1.1rem;
+      font-family: 'DM Sans', sans-serif; font-size: 0.92rem;
+      color: var(--white); outline: none;
+      transition: border-color 0.2s, background 0.2s; -webkit-appearance: none;
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--accent-bright); background: rgba(59,130,246,0.08); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-row .form-group { margin-bottom: 0; }
+
+    .send-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--accent); color: #fff; border: none; border-radius: 10px;
+      padding: 0.95rem 2.5rem; font-family: 'DM Sans', sans-serif;
+      font-size: 1rem; font-weight: 700; cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(59,130,246,0.4);
+      margin-top: 0.5rem;
+    }
+    .send-btn:hover { background: #2563eb; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(59,130,246,0.55); }
+    .send-btn svg { transition: transform 0.2s; }
+    .send-btn:hover svg { transform: translateX(3px) translateY(-3px); }
+
+    .whatsapp-line {
+      margin-top: 1.5rem; padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;
+      font-size: 0.88rem; color: rgba(255,255,255,0.5);
+    }
+    .whatsapp-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(37,211,102,0.12); border: 1.5px solid rgba(37,211,102,0.35);
+      color: #4ade80; border-radius: 8px; padding: 0.5rem 1.1rem;
+      font-size: 0.85rem; font-weight: 600; text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .whatsapp-btn:hover { background: rgba(37,211,102,0.2); border-color: rgba(37,211,102,0.6); }
+
+    /* Form success */
+    .form-success { display: none; text-align: center; padding: 2.5rem 1rem; }
+    .form-success-icon { width: 64px; height: 64px; background: rgba(16,185,129,0.15); border: 2px solid rgba(16,185,129,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: #34d399; font-size: 1.8rem; }
+    .form-success h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--white); margin-bottom: 0.5rem; }
+    .form-success p { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+    /* ─── STEPS PANEL ────────────────────────────────── */
+    .steps-panel {
+      background: #0d1f3c; border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px; padding: 2.5rem;
+      display: flex; flex-direction: column;
+    }
+    .steps-panel-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem; font-weight: 900; color: var(--white);
+      line-height: 1.4; margin-bottom: 2rem;
+    }
+    .steps-list { display: flex; flex-direction: column; gap: 0; flex: 1; }
+    .step-item {
+      display: flex; gap: 1.1rem; padding: 1.4rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: relative;
+    }
+    .step-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .step-item:first-child { padding-top: 0; }
+
+    .step-icon-wrap {
+      flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(59,130,246,0.15); border: 1.5px solid rgba(59,130,246,0.35);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent-bright); margin-top: 2px;
+    }
+    .step-content {}
+    .step-title { font-weight: 700; font-size: 0.97rem; color: var(--white); margin-bottom: 0.4rem; line-height: 1.3; }
+    .step-desc { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.65; }
+
+    /* Contact quick info bar */
+    .contact-quick-bar {
+      margin-top: 2rem; padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex; flex-direction: column; gap: 0.75rem;
+    }
+    .cq-item {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.87rem; color: rgba(255,255,255,0.65);
+    }
+    .cq-item a { color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
+    .cq-item a:hover { color: var(--accent-bright); }
+    .cq-icon { width: 30px; height: 30px; border-radius: 8px; background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.25); display: flex; align-items: center; justify-content: center; color: var(--accent-bright); flex-shrink: 0; }
+
+    /* ─── STATS BAR ─────────────────────────────────── */
+    .stats-bar { background: linear-gradient(135deg, var(--accent) 0%, #1d4ed8 100%); padding: 3rem 2rem; }
+    .stats-bar-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
+    .sbar-num { font-family: 'Playfair Display', serif; font-size: 2.3rem; font-weight: 900; color: #fff; line-height: 1; margin-bottom: 0.35rem; }
+    .sbar-label { font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.8); letter-spacing: 0.3px; }
+
+    /* ─── LOCATIONS SECTION ─────────────────────────── */
+    .locations-section { background: #0d1f3c; padding: 5.5rem 2rem; border-top: 1px solid rgba(255,255,255,0.06); }
+    .locations-inner { max-width: 1200px; margin: 0 auto; }
+    .locations-header { text-align: center; margin-bottom: 3rem; }
+    .locations-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+    .location-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px; overflow: hidden;
+      transition: transform 0.28s, border-color 0.28s, box-shadow 0.28s;
+    }
+    .location-card:hover { transform: translateY(-5px); border-color: rgba(59,130,246,0.3); box-shadow: 0 20px 50px rgba(0,0,0,0.35); }
+    .location-card.dark-card { background: var(--navy-mid); border-color: rgba(59,130,246,0.2); }
+
+    .location-card-top { padding: 1.75rem 1.75rem 0; }
+    .loc-icon {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(59,130,246,0.15); border: 1.5px solid rgba(59,130,246,0.35);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent-bright); margin-bottom: 1.2rem;
+    }
+    .loc-country { font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem; }
+    .loc-address { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.65; margin-bottom: 0.5rem; }
+    .loc-phone { font-size: 0.82rem; color: var(--accent-bright); font-weight: 600; }
+    .loc-phone a { color: inherit; text-decoration: none; }
+
+    .location-card-skyline {
+      margin-top: 1.5rem; height: 110px; overflow: hidden; position: relative;
+    }
+    .location-card-skyline img { width: 100%; height: 100%; object-fit: cover; object-position: bottom; display: block; }
+    .location-card-skyline svg { width: 100%; height: 100%; display: block; }
+
+    /* Sales card */
+    .sales-card {
+      background: var(--navy-mid); border: 1px solid rgba(59,130,246,0.25); position: relative; overflow: hidden;
+    }
+    .sales-card-content { padding: 2rem; position: relative; z-index: 2; }
+    .sales-icon { width: 44px; height: 44px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; color: #fff; margin-bottom: 1.2rem; }
+    .sales-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-bright); margin-bottom: 0.6rem; }
+    .sales-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: var(--white); line-height: 1.2; margin-bottom: 1.2rem; }
+    .sales-detail { display: flex; align-items: center; gap: 0.6rem; font-size: 0.88rem; color: rgba(255,255,255,0.7); margin-bottom: 0.6rem; }
+    .sales-detail a { color: var(--accent-bright); text-decoration: none; font-weight: 600; transition: color 0.2s; }
+    .sales-detail a:hover { color: #fff; }
+    .sales-card-img {
+      position: absolute; bottom: 0; right: 0;
+      width: 55%; height: 65%; object-fit: cover; object-position: center top;
+      mask-image: linear-gradient(to left, rgba(0,0,0,0.5) 0%, transparent 80%), linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 60%);
+      opacity: 0.35;
+    }
+
+    /* ─── FAQ SECTION ────────────────────────────────── */
+    .faq-section { background: var(--navy); padding: 6rem 2rem; }
+    .faq-inner { max-width: 1200px; margin: 0 auto; }
+    .faq-header { text-align: center; margin-bottom: 3.5rem; }
+    .faq-layout { display: grid; grid-template-columns: 1fr 380px; gap: 2rem; align-items: start; }
+
+    .faq-list { display: flex; flex-direction: column; gap: 0; }
+    .faq-item {
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .faq-question {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 1.35rem 0; background: none; border: none; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; font-size: 0.97rem; font-weight: 600;
+      color: rgba(255,255,255,0.85); text-align: left; gap: 1rem;
+      transition: color 0.2s;
+    }
+    .faq-question:hover { color: var(--white); }
+    .faq-question.open { color: var(--accent-bright); }
+    .faq-chevron {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: background 0.2s, transform 0.3s, border-color 0.2s;
+      color: rgba(255,255,255,0.5);
+    }
+    .faq-question.open .faq-chevron { transform: rotate(180deg); background: rgba(59,130,246,0.15); border-color: rgba(59,130,246,0.4); color: var(--accent-bright); }
+    .faq-answer {
+      overflow: hidden; max-height: 0; transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+    .faq-answer.open { max-height: 300px; }
+    .faq-answer-inner { padding-bottom: 1.25rem; font-size: 0.9rem; color: rgba(255,255,255,0.58); line-height: 1.75; }
+
+    /* FAQ aside card */
+    .faq-aside {
+      background: #0d1f3c; border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px; padding: 2.5rem; text-align: center;
+      position: sticky; top: 100px;
+    }
+    .faq-aside-icon {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: rgba(59,130,246,0.12); border: 2px solid rgba(59,130,246,0.3);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem; font-size: 1.8rem; color: var(--accent-bright);
+    }
+    .faq-aside-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--white); line-height: 1.3; margin-bottom: 1rem; }
+    .faq-aside-desc { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.65; margin-bottom: 2rem; }
+    .faq-aside-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--accent); color: #fff; border: none; border-radius: 10px;
+      padding: 0.9rem 2rem; font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem; font-weight: 700; cursor: pointer; text-decoration: none;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(59,130,246,0.4);
+    }
+    .faq-aside-btn:hover { background: #2563eb; transform: translateY(-2px); }
+
+    /* ─── FOOTER ─────────────────────────────────────── */
+    .site-footer { background: #111827; color: rgba(255,255,255,0.75); }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .footer-top { padding: 4rem 0 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-top .footer-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; align-items: start; }
+    .ft-logo-link { display: inline-block; margin-bottom: 0.75rem; text-decoration: none; }
+    .ft-logo-img { height: 48px; width: auto; display: block; object-fit: contain; }
+    .ft-tagline { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.55; margin-bottom: 1.4rem; }
+    .ft-cta-btn { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--accent); color: #fff; font-weight: 700; font-size: 0.9rem; padding: 0.75rem 1.6rem; border-radius: 8px; text-decoration: none; transition: background 0.2s, transform 0.15s; margin-bottom: 1.8rem; }
+    .ft-cta-btn:hover { background: #60a5fa; transform: translateY(-2px); }
+    .ft-socials { display: flex; gap: 0.9rem; margin-bottom: 1.2rem; }
+    .ft-social-icon { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.75); text-decoration: none; transition: background 0.2s, color 0.2s; }
+    .ft-social-icon:hover { background: var(--accent); color: #fff; }
+    .ft-email { display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; }
+    .ft-email a { color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
+    .ft-email a:hover { color: #fff; }
+    .ft-offices { display: flex; flex-direction: column; gap: 1.2rem; }
+    .ft-office-title { font-weight: 700; font-size: 0.9rem; color: #fff; margin-bottom: 0.3rem; }
+    .ft-office-addr { font-size: 0.85rem; line-height: 1.6; color: rgba(255,255,255,0.55); }
+    .ft-office-phone { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-top: 0.2rem; }
+    .ft-rating { display: flex; align-items: center; gap: 0.75rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.75rem 1rem; width: fit-content; }
+    .ft-rating-score { font-weight: 700; font-size: 0.9rem; color: #fff; }
+    .ft-rating-sub { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
+    .ft-badges { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+    .ft-badge { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.6rem; font-size: 0.78rem; }
+    .ft-badge-iso .iso-text { font-size: 0.72rem; line-height: 1.3; color: #e11d48; font-weight: 700; text-transform: uppercase; }
+    .sf-text { display: flex; flex-direction: column; font-size: 0.72rem; color: rgba(255,255,255,0.7); line-height: 1.3; }
+    .sf-text span:first-child { font-weight: 700; color: #fff; }
+    .db-text { display: flex; flex-direction: column; font-size: 0.7rem; line-height: 1.4; color: rgba(255,255,255,0.65); }
+    .db-text span { font-weight: 700; color: #fff; font-size: 0.75rem; }
+    .footer-mid { padding: 3rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-mid .footer-inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+    .ft-col { display: flex; flex-direction: column; gap: 0.65rem; }
+    .ft-col-title { font-weight: 700; font-size: 0.9rem; color: #fff; margin-bottom: 0.5rem; letter-spacing: 0.3px; }
+    .ft-col a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .ft-col a:hover { color: #fff; }
+    .footer-bottom { padding: 1.4rem 0; }
+    .footer-bottom .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+    .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.45); }
+    .ft-bottom-links { display: flex; gap: 1.5rem; }
+    .ft-bottom-links a { font-size: 0.82rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .ft-bottom-links a:hover { color: #fff; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .locations-grid { grid-template-columns: 1fr 1fr; }
+      .faq-layout { grid-template-columns: 1fr; }
+      .faq-aside { position: static; }
+      .footer-top .footer-inner { grid-template-columns: 1fr 1fr; }
+      .ft-badges { grid-column: 1/-1; grid-template-columns: repeat(4,1fr); }
+    }
+    @media (max-width: 768px) {
+      .locations-grid { grid-template-columns: 1fr; }
+      .stats-bar-inner { grid-template-columns: 1fr 1fr; }
+      .footer-top .footer-inner { grid-template-columns: 1fr; }
+      .ft-badges { grid-template-columns: repeat(2,1fr); }
+      .footer-mid .footer-inner { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .footer-bottom .footer-inner { flex-direction: column; align-items: flex-start; }
+      .ft-bottom-links { flex-wrap: wrap; gap: 1rem; }
+      .footer-mid .footer-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav id="navbar">
+    <a href="home.html" class="logo"><img src="./img/logo.png" alt="Gagstek" /></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="client.html">Client Stories</a></li>
+      <li><a href="#">Products</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="contact.html" class="nav-cta">Request a Meeting</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="services.html">Services</a>
+    <a href="#">Products</a>
+    <a href="careers.html">Careers</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="mob-cta">Request a Meeting</a>
+  </div>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb-strip">
+    <div class="breadcrumb-inner">
+      <a href="home.html">Home</a>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+      <span>Contact Us</span>
+    </div>
+  </div>
+
+  <!-- ═══ CONTACT HERO + FORM ═══ -->
+  <section class="contact-hero">
+    <div class="contact-hero-inner">
+      <div class="contact-hero-header">
+        <div class="section-eyebrow">Contact Gagstek</div>
+        <h1>Speak With Our Team<br><span>About Your Next Move</span></h1>
+        <p>Ready to transform your business with Salesforce or AI? Our team of certified experts is standing by — let's talk about what's possible.</p>
+      </div>
+
+      <div class="contact-grid">
+
+        <!-- FORM -->
+        <div class="form-panel">
+          <div id="formView">
+            <div class="form-row">
+              <div class="form-group">
+                <input type="text" id="fname" placeholder="Your name" />
+              </div>
+              <div class="form-group">
+                <input type="tel" id="fphone" placeholder="Phone number" />
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="email" id="femail" placeholder="Your business email" />
+            </div>
+            <div class="form-group">
+              <input type="text" id="fcompany" placeholder="Company name" />
+            </div>
+            <div class="form-group">
+              <textarea id="fmessage" placeholder="Please share your requirements — what are you looking to achieve?"></textarea>
+            </div>
+            <button class="send-btn" onclick="handleSubmit()">
+              Send
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+            <div class="whatsapp-line">
+              <span>Prefer to chat directly?</span>
+              <a href="https://api.whatsapp.com/send?phone=919049023824" target="_blank" class="whatsapp-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                WhatsApp Us
+              </a>
+            </div>
+          </div>
+          <div class="form-success" id="formSuccess">
+            <div class="form-success-icon">✓</div>
+            <h3>Message Received!</h3>
+            <p>A Gagstek business development executive will reach out to you within 24 hours.</p>
+          </div>
+        </div>
+
+        <!-- STEPS PANEL -->
+        <div class="steps-panel">
+          <p class="steps-panel-title">Gagstek makes reaching us simple — so your solutions come together effortlessly.</p>
+
+          <div class="steps-list">
+
+            <div class="step-item">
+              <div class="step-icon-wrap">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <div class="step-content">
+                <div class="step-title">Put Forward Your Requirement</div>
+                <div class="step-desc">Fill out the inquiry form on the left and a business development executive will reach out to you within 24 hours.</div>
+              </div>
+            </div>
+
+            <div class="step-item">
+              <div class="step-icon-wrap">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div class="step-content">
+                <div class="step-title">Sign a Non-Disclosure Agreement</div>
+                <div class="step-desc">We safeguard your ideas through a strict NDA, ensuring full confidentiality throughout the project lifecycle.</div>
+              </div>
+            </div>
+
+            <div class="step-item">
+              <div class="step-icon-wrap">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </div>
+              <div class="step-content">
+                <div class="step-title">Analyzing Your Requirement</div>
+                <div class="step-desc">Upon NDA completion, our certified Salesforce architects assess your requirements and follow up within a few hours.</div>
+              </div>
+            </div>
+
+            <div class="step-item">
+              <div class="step-icon-wrap">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              </div>
+              <div class="step-content">
+                <div class="step-title">Estimated Budget & Timeline</div>
+                <div class="step-desc">Once we analyze the project requirements and resources, our team provides you with an estimated cost and expected timeframe for completion.</div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="contact-quick-bar">
+            <div class="cq-item">
+              <div class="cq-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.81-.81a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+              </div>
+              <span>US: <a href="tel:+15673992506">+1-567-399-2506</a> &nbsp;|&nbsp; AU: <a href="tel:+61473118458">+61-473118458</a></span>
+            </div>
+            <div class="cq-item">
+              <div class="cq-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <span><a href="mailto:info@gagstek.com">info@gagstek.com</a></span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /contact-grid -->
+    </div>
+  </section>
+
+  <!-- ═══ STATS BAR ═══ -->
+  <div class="stats-bar">
+    <div class="stats-bar-inner">
+      <div><div class="sbar-num">200+</div><div class="sbar-label">Projects Delivered</div></div>
+      <div><div class="sbar-num">350+</div><div class="sbar-label">Salesforce Certifications</div></div>
+      <div><div class="sbar-num">24hr</div><div class="sbar-label">Response Guarantee</div></div>
+      <div><div class="sbar-num">4.7★</div><div class="sbar-label">AppExchange Rating</div></div>
+    </div>
+  </div>
+
+  <!-- ═══ LOCATIONS ═══ -->
+  <section class="locations-section">
+    <div class="locations-inner">
+      <div class="locations-header">
+        <div class="section-eyebrow" style="justify-content:center;">Where We Are</div>
+        <h2 class="section-title" style="text-align:center;">Gagstek <span>Locations</span></h2>
+      </div>
+
+      <div class="locations-grid">
+
+        <!-- US -->
+        <div class="location-card">
+          <div class="location-card-top">
+            <div class="loc-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="loc-country">🇺🇸 United States</div>
+            <div class="loc-address">16192 Coastal Highway, in the city of Lewes,<br>Delaware 19958, County of Sussex</div>
+            <div class="loc-phone"><a href="tel:+15673992506">+1-567-399-2506</a></div>
+          </div>
+          <div class="location-card-skyline">
+            <!-- US city SVG skyline -->
+            <svg viewBox="0 0 400 110" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
+              <defs>
+                <linearGradient id="usGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:0.3"/>
+                  <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0.15"/>
+                </linearGradient>
+              </defs>
+              <rect width="400" height="110" fill="url(#usGrad)"/>
+              <!-- Buildings -->
+              <rect x="10" y="60" width="18" height="50" fill="rgba(255,255,255,0.12)" rx="1"/>
+              <rect x="30" y="45" width="14" height="65" fill="rgba(255,255,255,0.15)" rx="1"/>
+              <rect x="46" y="70" width="20" height="40" fill="rgba(255,255,255,0.1)" rx="1"/>
+              <rect x="68" y="30" width="12" height="80" fill="rgba(255,255,255,0.18)" rx="1"/>
+              <rect x="68" y="20" width="4" height="14" fill="rgba(255,255,255,0.2)"/>
+              <rect x="82" y="50" width="16" height="60" fill="rgba(255,255,255,0.12)" rx="1"/>
+              <rect x="100" y="65" width="22" height="45" fill="rgba(255,255,255,0.1)" rx="1"/>
+              <rect x="124" y="40" width="14" height="70" fill="rgba(255,255,255,0.15)" rx="1"/>
+              <rect x="140" y="55" width="18" height="55" fill="rgba(255,255,255,0.12)" rx="1"/>
+              <rect x="160" y="35" width="10" height="75" fill="rgba(255,255,255,0.18)" rx="1"/>
+              <rect x="160" y="25" width="3" height="12" fill="rgba(255,255,255,0.22)"/>
+              <rect x="172" y="60" width="24" height="50" fill="rgba(255,255,255,0.1)" rx="1"/>
+              <rect x="198" y="45" width="16" height="65" fill="rgba(255,255,255,0.14)" rx="1"/>
+              <rect x="216" y="55" width="20" height="55" fill="rgba(255,255,255,0.11)" rx="1"/>
+              <rect x="238" y="38" width="12" height="72" fill="rgba(255,255,255,0.17)" rx="1"/>
+              <rect x="252" y="62" width="18" height="48" fill="rgba(255,255,255,0.1)" rx="1"/>
+              <rect x="272" y="48" width="14" height="62" fill="rgba(255,255,255,0.14)" rx="1"/>
+              <rect x="288" y="42" width="22" height="68" fill="rgba(255,255,255,0.12)" rx="1"/>
+              <rect x="312" y="58" width="16" height="52" fill="rgba(255,255,255,0.1)" rx="1"/>
+              <rect x="330" y="36" width="10" height="74" fill="rgba(255,255,255,0.18)" rx="1"/>
+              <rect x="342" y="52" width="20" height="58" fill="rgba(255,255,255,0.12)" rx="1"/>
+              <rect x="364" y="66" width="14" height="44" fill="rgba(255,255,255,0.1)" rx="1"/>
+              <rect x="380" y="44" width="16" height="66" fill="rgba(255,255,255,0.15)" rx="1"/>
+              <!-- Ground -->
+              <rect x="0" y="108" width="400" height="2" fill="rgba(255,255,255,0.15)"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- India -->
+        <div class="location-card">
+          <div class="location-card-top">
+            <div class="loc-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="loc-country">🇮🇳 India</div>
+            <div class="loc-address">P3-001 Pentagon Tower, Magarpatta City,<br>Pune 411013, Maharashtra</div>
+            <div class="loc-phone" style="color: rgba(255,255,255,0.4); font-size: 0.78rem;">Primary development hub</div>
+          </div>
+          <div class="location-card-skyline">
+            <svg viewBox="0 0 400 110" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
+              <defs>
+                <linearGradient id="inGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style="stop-color:#a78bfa;stop-opacity:0.25"/>
+                  <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:0.15"/>
+                </linearGradient>
+              </defs>
+              <rect width="400" height="110" fill="url(#inGrad)"/>
+              <!-- India Gate silhouette simplified -->
+              <rect x="170" y="55" width="60" height="55" fill="none"/>
+              <!-- arch -->
+              <path d="M175 110 L175 65 Q200 40 225 65 L225 110" fill="rgba(255,255,255,0.14)" stroke="none"/>
+              <!-- pillars -->
+              <rect x="175" y="60" width="8" height="50" fill="rgba(255,255,255,0.18)"/>
+              <rect x="217" y="60" width="8" height="50" fill="rgba(255,255,255,0.18)"/>
+              <!-- top platform -->
+              <rect x="165" y="55" width="70" height="8" fill="rgba(255,255,255,0.2)" rx="2"/>
+              <rect x="185" y="42" width="30" height="14" fill="rgba(255,255,255,0.15)" rx="1"/>
+              <rect x="195" y="34" width="10" height="10" fill="rgba(255,255,255,0.18)" rx="1"/>
+              <!-- flanking buildings -->
+              <rect x="20" y="65" width="14" height="45" fill="rgba(255,255,255,0.1)" rx="1"/>
+              <rect x="36" y="50" width="18" height="60" fill="rgba(255,255,255,0.13)" rx="1"/>
+              <rect x="56" y="70" width="14" height="40" fill="rgba(255,255,255,0.09)" rx="1"/>
+              <rect x="72" y="58" width="10" height="52" fill="rgba(255,255,255,0.12)" rx="1"/>
+              <rect x="84" y="74" width="20" height="36" fill="rgba(255,255,255,0.09)" rx="1"/>
+              <rect x="106" y="62" width="14" height="48" fill="rgba(255,255,255,0.11)" rx="1"/>
+              <rect x="122" y="55" width="10" height="55" fill="rgba(255,255,255,0.13)" rx="1"/>
+              <rect x="134" y="68" width="16" height="42" fill="rgba(255,255,255,0.09)" rx="1"/>
+              <rect x="248" y="68" width="16" height="42" fill="rgba(255,255,255,0.09)" rx="1"/>
+              <rect x="266" y="55" width="10" height="55" fill="rgba(255,255,255,0.13)" rx="1"/>
+              <rect x="278" y="62" width="14" height="48" fill="rgba(255,255,255,0.11)" rx="1"/>
+              <rect x="294" y="74" width="20" height="36" fill="rgba(255,255,255,0.09)" rx="1"/>
+              <rect x="316" y="58" width="10" height="52" fill="rgba(255,255,255,0.12)" rx="1"/>
+              <rect x="328" y="70" width="14" height="40" fill="rgba(255,255,255,0.09)" rx="1"/>
+              <rect x="344" y="50" width="18" height="60" fill="rgba(255,255,255,0.13)" rx="1"/>
+              <rect x="364" y="65" width="14" height="45" fill="rgba(255,255,255,0.1)" rx="1"/>
+              <rect x="0" y="108" width="400" height="2" fill="rgba(255,255,255,0.15)"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Australia -->
+        <div class="location-card">
+          <div class="location-card-top">
+            <div class="loc-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="loc-country">🇦🇺 Australia</div>
+            <div class="loc-address">161 Collins St, Melbourne VIC, 3000</div>
+            <div class="loc-phone"><a href="tel:+61473118458">+61-473118458</a></div>
+          </div>
+          <div class="location-card-skyline">
+            <svg viewBox="0 0 400 110" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
+              <defs>
+                <linearGradient id="auGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style="stop-color:#34d399;stop-opacity:0.2"/>
+                  <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:0.15"/>
+                </linearGradient>
+              </defs>
+              <rect width="400" height="110" fill="url(#auGrad)"/>
+              <path d="M175 110 Q180 72 190 55 Q200 40 205 55 Q210 40 220 55 Q228 72 233 110" fill="rgba(255,255,255,0.18)"/>
+              <path d="M180 110 Q183 77 190 60 Q197 77 200 110" fill="rgba(255,255,255,0.12)"/>
+              <rect x="10" y="60" width="16" height="50" fill="rgba(255,255,255,0.1)" rx="1"/>
+              <rect x="28" y="44" width="12" height="66" fill="rgba(255,255,255,0.14)" rx="1"/>
+              <rect x="42" y="68" width="18" height="42" fill="rgba(255,255,255,0.09)" rx="1"/>
+              <rect x="62" y="38" width="10" height="72" fill="rgba(255,255,255,0.16)" rx="1"/>
+              <rect x="74" y="54" width="14" height="56" fill="rgba(255,255,255,0.11)" rx="1"/>
+              <rect x="90" y="70" width="20" height="40" fill="rgba(255,255,255,0.09)" rx="1"/>
+              <rect x="112" y="50" width="14" height="60" fill="rgba(255,255,255,0.13)" rx="1"/>
+              <rect x="128" y="64" width="16" height="46" fill="rgba(255,255,255,0.1)" rx="1"/>
+              <rect x="146" y="44" width="10" height="66" fill="rgba(255,255,255,0.15)" rx="1"/>
+              <rect x="246" y="44" width="10" height="66" fill="rgba(255,255,255,0.15)" rx="1"/>
+              <rect x="258" y="64" width="16" height="46" fill="rgba(255,255,255,0.1)" rx="1"/>
+              <rect x="276" y="50" width="14" height="60" fill="rgba(255,255,255,0.13)" rx="1"/>
+              <rect x="292" y="70" width="20" height="40" fill="rgba(255,255,255,0.09)" rx="1"/>
+              <rect x="314" y="54" width="14" height="56" fill="rgba(255,255,255,0.11)" rx="1"/>
+              <rect x="330" y="38" width="10" height="72" fill="rgba(255,255,255,0.16)" rx="1"/>
+              <rect x="342" y="68" width="18" height="42" fill="rgba(255,255,255,0.09)" rx="1"/>
+              <rect x="362" y="44" width="12" height="66" fill="rgba(255,255,255,0.14)" rx="1"/>
+              <rect x="376" y="60" width="16" height="50" fill="rgba(255,255,255,0.1)" rx="1"/>
+              <rect x="0" y="108" width="400" height="2" fill="rgba(255,255,255,0.15)"/>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Sales Connect — full width below -->
+      <div class="location-card sales-card" style="margin-top: 1.5rem; grid-column: 1 / -1;">
+        <div class="sales-card-content" style="display:flex; align-items:center; gap:3rem; flex-wrap:wrap; padding: 2rem 2.5rem;">
+          <div style="display:flex; align-items:center; gap:1rem; flex-shrink:0;">
+            <div class="sales-icon" style="margin-bottom:0;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="sales-label" style="margin-bottom:0.2rem;">INFO</div>
+              <div class="sales-title" style="font-size:1.4rem; margin-bottom:0;">Sales Connect</div>
+            </div>
+          </div>
+          <div style="display:flex; gap:2.5rem; flex-wrap:wrap; flex:1; align-items:center;">
+            <div class="sales-detail" style="margin:0;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>Email — <a href="mailto:info@gagstek.com">info@gagstek.com</a></span>
+            </div>
+            <div class="sales-detail" style="margin:0;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.81-.81a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+              <span>US — <a href="tel:+15673992506">+1-567-399-2506</a></span>
+            </div>
+            <div class="sales-detail" style="margin:0;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.81-.81a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+              <span>AU — <a href="tel:+61473118458">+61-473118458</a></span>
+            </div>
+          </div>
+          <a href="https://api.whatsapp.com/send?phone=919049023824" target="_blank" class="whatsapp-btn" style="flex-shrink:0;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            WhatsApp Us
+          </a>
+        </div>
+      </div>
+
+    </div>
+    </div>
+  </section>
+
+  <!-- ═══ FAQ SECTION ═══ -->
+  <section class="faq-section">
+    <div class="faq-inner">
+      <div class="faq-header">
+        <div class="section-eyebrow" style="justify-content:center;">FAQ</div>
+        <h2 class="section-title" style="text-align:center;">Frequently Asked <span>Questions</span></h2>
+      </div>
+
+      <div class="faq-layout">
+        <div class="faq-list">
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              Who will I be speaking with when I contact Gagstek?
+              <div class="faq-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">You'll first connect with a business development executive who will understand your requirements. They'll then route you to a certified Salesforce architect or AI specialist best suited to your project scope.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              What's the typical response time after I submit the contact form?
+              <div class="faq-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">We guarantee a response within 24 hours on business days. For urgent requirements, we recommend reaching us via WhatsApp — our team is typically available across US and India time zones.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              Does your team work across different timezones?
+              <div class="faq-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Yes. With offices in the US, India, and Australia, our teams operate across multiple time zones. This enables us to offer near-round-the-clock support and ensure seamless collaboration with clients globally.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              Is there a cost for the initial consultation?
+              <div class="faq-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">No — the initial consultation and requirements analysis are completely free of charge. We believe in earning your trust first. You'll receive a detailed scope and cost estimate before any engagement begins.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              Do you sign NDAs before starting a project conversation?
+              <div class="faq-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Absolutely. We sign a strict Non-Disclosure Agreement before any detailed project discussions begin. Your ideas and intellectual property are fully protected throughout the entire project lifecycle.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              I'm looking for a job — where can I see current openings at Gagstek?
+              <div class="faq-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Head over to our <a href="careers.html" style="color:var(--accent-bright); font-weight:600;">Careers page</a> to view all current openings across Salesforce, Engineering, AI, and Consulting roles. You can also drop a general application if you don't see a perfect fit.</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="faq-aside">
+          <div class="faq-aside-icon">?</div>
+          <h3 class="faq-aside-title">Have A Query Specific To Your Business?</h3>
+          <p class="faq-aside-desc">Our certified architects and consultants handle complex, industry-specific requirements. Tell us what you need and we'll get back to you within 24 hours.</p>
+          <a href="#" onclick="document.getElementById('fname').scrollIntoView({behavior:'smooth'}); return false;" class="faq-aside-btn">
+            Contact Us
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-inner">
+        <div>
+          <a href="home.html" class="ft-logo-link">
+            <img src="./img/logo.png" alt="Gagstek" class="ft-logo-img" />
+          </a>
+          <p class="ft-tagline">Translating business aspirations into reality through Salesforce &amp; AI excellence.</p>
+          <a href="#" onclick="document.getElementById('fname').scrollIntoView({behavior:'smooth'}); return false;" class="ft-cta-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Let's Talk
+          </a>
+          <div class="ft-socials">
+            <a href="https://www.youtube.com/@GagstekLLP" class="ft-social-icon" target="_blank" aria-label="YouTube">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2s-.3-1.9-1.1-2.7c-1.1-1.1-2.3-1.1-2.8-1.2C16.8 2 12 2 12 2s-4.8 0-7.6.3c-.6.1-1.8.1-2.8 1.2C.8 4.3.5 6.2.5 6.2S.2 8.4.2 10.6v2.1c0 2.2.3 4.4.3 4.4s.3 1.9 1.1 2.7c1.1 1.1 2.5 1.1 3.1 1.2C6.8 21.1 12 21.1 12 21.1s4.8 0 7.6-.3c.6-.1 1.8-.1 2.8-1.2.8-.8 1.1-2.7 1.1-2.7s.3-2.2.3-4.4v-2.1c0-2.2-.3-4.4-.3-4.4zm-14 8.9V8.9l7.6 3.1-7.6 3.1z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/gagstek___/" class="ft-social-icon" target="_blank" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://in.linkedin.com/company/gagstek" class="ft-social-icon" target="_blank" aria-label="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=919049023824" class="ft-social-icon" target="_blank" aria-label="WhatsApp">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            </a>
+          </div>
+          <div class="ft-email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:info@gagstek.com">info@gagstek.com</a>
+          </div>
+        </div>
+        <div class="ft-offices">
+          <div>
+            <p class="ft-office-title">United States 🇺🇸</p>
+            <p class="ft-office-addr">16192 Coastal Highway, Lewes,<br>Delaware 19958, County of Sussex</p>
+            <p class="ft-office-phone">📞 +1-567-399-2506</p>
+          </div>
+          <div>
+            <p class="ft-office-title">India 🇮🇳</p>
+            <p class="ft-office-addr">P3-001 Pentagon Tower,<br>Magarpatta City, Pune 411013</p>
+          </div>
+          <div>
+            <p class="ft-office-title">Australia 🇦🇺</p>
+            <p class="ft-office-addr">161 Collins St, Melbourne VIC, 3000</p>
+            <p class="ft-office-phone">📞 +61-473118458</p>
+          </div>
+          <div class="ft-rating">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <div><p class="ft-rating-score">4.7/5 ★</p><p class="ft-rating-sub">AppExchange Rated Partner</p></div>
+          </div>
+        </div>
+        <div class="ft-badges">
+          <div class="ft-badge">
+            <svg width="38" height="38" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="28" fill="#00A1E0"/><text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-size="9" font-weight="bold" fill="white" font-family="Arial">Salesforce</text></svg>
+            <div class="sf-text"><span>Crest</span><span>Partner</span></div>
+          </div>
+          <div class="ft-badge ft-badge-iso">
+            <span class="iso-text">ISO<br><strong>27001</strong><br><small>CERTIFIED</small></span>
+          </div>
+          <div class="ft-badge">
+            <svg width="36" height="22" viewBox="0 0 80 50" fill="none"><text y="22" font-size="14" font-weight="bold" fill="#FF9900" font-family="Arial">aws</text><text y="38" font-size="9" fill="#FF9900" font-family="Arial">Partner</text><text y="48" font-size="9" fill="#FF9900" font-family="Arial">Network</text></svg>
+          </div>
+          <div class="ft-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF3621"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <div class="db-text"><small>databricks</small><span>Consulting Partner</span><small>Registered</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-mid">
+      <div class="footer-inner">
+        <div class="ft-col">
+          <p class="ft-col-title">Salesforce Services</p>
+          <a href="#">Business Consulting & Advisory</a>
+          <a href="#">Implementation & Development</a>
+          <a href="#">Quote-To-Cash Services</a>
+          <a href="#">Administration & Support</a>
+          <a href="#">Data Migration</a>
+          <a href="#">Staff Augmentation</a>
+        </div>
+        <div class="ft-col">
+          <p class="ft-col-title">AI Services</p>
+          <a href="#">AI Sales Automation</a>
+          <a href="#">AI Lead Intelligence</a>
+          <a href="#">Conversational AI Systems</a>
+          <a href="#">AI Workflow Orchestration</a>
+          <a href="#">AI Data Engineering</a>
+          <a href="#">Custom AI Product Builds</a>
+        </div>
+        <div class="ft-col">
+          <p class="ft-col-title">Products</p>
+          <a href="https://gagstek.com/products/">E2E Sales</a>
+          <a href="https://gagstek.com/stockpro/">StockPro</a>
+          <a href="#">AppExchange Products</a>
+          <a href="#">Mobile-first Products</a>
+        </div>
+        <div class="ft-col">
+          <p class="ft-col-title">Company</p>
+          <a href="https://gagstek.com/about/">About Us</a>
+          <a href="https://gagstek.com/client-stories-2/">Client Stories</a>
+          <a href="employee-review.html">Employees' Words</a>
+          <a href="careers.html">Careers</a>
+          <a href="https://gagstek.com/blogs/">Blogs</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-inner">
+        <p>© 2025 GAGSTEK LLP. All Rights Reserved.</p>
+        <div class="ft-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms Of Services</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky nav
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // FAQ accordion
+    function toggleFaq(btn) {
+      const answer = btn.nextElementSibling;
+      const isOpen = btn.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-question').forEach(q => {
+        q.classList.remove('open');
+        q.nextElementSibling.classList.remove('open');
+      });
+      // Open clicked if it was closed
+      if (!isOpen) {
+        btn.classList.add('open');
+        answer.classList.add('open');
+      }
+    }
+
+    // Form submit
+    function handleSubmit() {
+      const name = document.getElementById('fname').value.trim();
+      const email = document.getElementById('femail').value.trim();
+      if (!name || !email) {
+        document.getElementById('fname').style.borderColor = !name ? 'rgba(239,68,68,0.7)' : '';
+        document.getElementById('femail').style.borderColor = !email ? 'rgba(239,68,68,0.7)' : '';
+        return;
+      }
+      document.getElementById('formView').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    }
+
+    // Scroll-in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.location-card, .faq-item, .step-item').forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = `opacity 0.5s ease ${i * 0.06}s, transform 0.5s ease ${i * 0.06}s`;
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Stories – Gagstek</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #0f2044;
+      --accent: #3b82f6;
+      --accent-bright: #60a5fa;
+      --gold: #f59e0b;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 2rem;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(10,22,40,0.97);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.4);
+      backdrop-filter: blur(12px);
+    }
+    .logo {
+      width:130px;
+    }
+    .logo span { color: var(--accent-bright); }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--accent);
+      color: var(--white) !important;
+      padding: 0.55rem 1.3rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+    .nav-cta:hover { background: var(--accent-bright) !important; transform: translateY(-1px); }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      top: 72px;
+      background: rgba(10,22,40,0.98);
+      backdrop-filter: blur(16px);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .mobile-menu.open { display: flex; opacity: 1; pointer-events: all; }
+    .mobile-menu a { color: var(--white); text-decoration: none; font-size: 1.4rem; font-weight: 500; }
+    .mobile-menu a:hover { color: var(--accent-bright); }
+    .mobile-menu .mob-cta { background: var(--accent); padding: 0.75rem 2.5rem; border-radius: 8px; font-weight: 600; font-size: 1rem; }
+
+    /* ─── HERO BANNER ─────────────────────────────────── */
+    .page-hero {
+      position: relative;
+      padding-top: 72px;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .page-hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1800&q=80&fit=crop');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.25) saturate(1.1);
+    }
+    .page-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(10,22,40,0.8) 0%, rgba(10,22,40,0.4) 50%, rgba(15,32,68,0.75) 100%);
+    }
+    .page-hero-glow {
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .page-hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 3rem 1.5rem;
+      max-width: 760px;
+      animation: fadeUp 0.9s ease both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .page-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(59,130,246,0.15);
+      border: 1px solid rgba(59,130,246,0.4);
+      border-radius: 100px;
+      padding: 0.4rem 1.1rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent-bright);
+      margin-bottom: 1.4rem;
+      animation: fadeUp 0.9s 0.1s ease both;
+    }
+    .page-hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--accent-bright);
+      border-radius: 50%;
+    }
+    .page-hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5.5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: var(--white);
+      margin-bottom: 1.2rem;
+      animation: fadeUp 0.9s 0.2s ease both;
+    }
+    .page-hero-title .highlight { color: var(--accent-bright); }
+    .page-hero-sub {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+      max-width: 520px;
+      margin: 0 auto;
+      animation: fadeUp 0.9s 0.3s ease both;
+    }
+
+    /* ─── STATS BAR ─────────────────────────────────────── */
+    .stats-bar {
+      background: #111827;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .stats-bar-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      text-align: center;
+    }
+    .sb-item {}
+    .sb-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--accent-bright);
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .sb-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* ─── VIDEO TESTIMONIALS SECTION ─────────────────── */
+    .video-section {
+      background: var(--navy);
+      padding: 6rem 2rem;
+    }
+    .section-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+    .section-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .section-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px; height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      line-height: 1.12;
+      margin-bottom: 0.75rem;
+    }
+    .section-title .accent { color: var(--accent-bright); }
+    .section-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+      max-width: 560px;
+      margin-bottom: 3rem;
+    }
+
+    /* Video cards grid */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.6rem;
+    }
+
+    .vid-card {
+      background: rgba(255,255,255,0.04);
+      border: 1.5px solid rgba(255,255,255,0.09);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: transform 0.28s, box-shadow 0.28s, border-color 0.28s;
+      cursor: pointer;
+    }
+    .vid-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 56px rgba(59,130,246,0.18);
+      border-color: rgba(59,130,246,0.4);
+    }
+
+    /* Thumbnail */
+    .vid-thumb {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+    }
+    .vid-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .vid-card:hover .vid-thumb img { transform: scale(1.06); }
+    .vid-thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,22,40,0.65) 0%, rgba(10,22,40,0.1) 60%);
+    }
+    .vid-play-btn {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(8px);
+      border: 2px solid rgba(255,255,255,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .vid-card:hover .vid-play-btn {
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+    .vid-tag {
+      position: absolute;
+      bottom: 0.75rem;
+      left: 0.75rem;
+      background: rgba(59,130,246,0.85);
+      backdrop-filter: blur(6px);
+      border-radius: 6px;
+      padding: 0.3rem 0.75rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+    .vid-duration {
+      position: absolute;
+      bottom: 0.75rem;
+      right: 0.75rem;
+      background: rgba(10,22,40,0.8);
+      border-radius: 6px;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* Card body */
+    .vid-body {
+      padding: 1.4rem 1.5rem 1.6rem;
+    }
+    .vid-industry {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent-bright);
+      margin-bottom: 0.6rem;
+    }
+    .vid-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.35;
+      margin-bottom: 0.75rem;
+    }
+    .vid-person {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.9rem;
+    }
+    .vid-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(59,130,246,0.4);
+      flex-shrink: 0;
+    }
+    .vid-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--white);
+      display: block;
+      line-height: 1.2;
+    }
+    .vid-role {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .vid-blurb {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.65;
+    }
+    .vid-watch-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent-bright);
+      text-decoration: none;
+      margin-top: 1.1rem;
+      transition: gap 0.2s, color 0.2s;
+    }
+    .vid-watch-link:hover { gap: 0.7rem; color: #fff; }
+
+    /* Featured card (first, spans 2 cols) */
+    .vid-card.featured {
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+    }
+    .vid-card.featured .vid-thumb {
+      aspect-ratio: unset;
+      height: 100%;
+    }
+    .vid-card.featured .vid-body {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .vid-card.featured .vid-title {
+      font-size: 1.3rem;
+    }
+
+    /* ─── WRITTEN QUOTES SECTION ─────────────────────── */
+    .quotes-section {
+      background: #f0f6ff;
+      padding: 6rem 2rem;
+    }
+    .quotes-section .section-eyebrow { color: var(--accent); }
+    .quotes-section .section-eyebrow::before { background: var(--accent); }
+    .quotes-section .section-title { color: #0a1628; }
+    .quotes-section .section-sub { color: #64748b; }
+
+    .quotes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.6rem;
+    }
+
+    .quote-card {
+      background: #fff;
+      border: 1.5px solid #e2eaf8;
+      border-radius: 16px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+    }
+    .quote-card:hover {
+      box-shadow: 0 16px 48px rgba(59,130,246,0.12);
+      transform: translateY(-4px);
+      border-color: #93c5fd;
+    }
+    .quote-card.large {
+      grid-column: span 2;
+    }
+
+    .stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 1.2rem;
+    }
+    .star {
+      color: #f59e0b;
+      font-size: 1rem;
+    }
+
+    .quote-text {
+      font-size: 0.92rem;
+      color: #334155;
+      line-height: 1.8;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 1.4rem;
+      font-style: italic;
+    }
+
+    .quote-person {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      border-top: 1px solid #e2eaf8;
+      padding-top: 1.2rem;
+    }
+    .quote-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #e2eaf8;
+      flex-shrink: 0;
+    }
+    .quote-name {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #0a1628;
+      display: block;
+    }
+    .quote-meta {
+      font-size: 0.78rem;
+      color: #64748b;
+    }
+    .quote-tag {
+      display: inline-block;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 100px;
+      padding: 0.2rem 0.75rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #3b82f6;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    /* Big decorative quote mark */
+    .quote-deco {
+      position: absolute;
+      top: 1rem;
+      right: 1.2rem;
+      font-family: Georgia, serif;
+      font-size: 5rem;
+      line-height: 1;
+      color: #e2eaf8;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* ─── CASE STUDIES SECTION ───────────────────────── */
+    .cases-section {
+      background: var(--navy);
+      padding: 6rem 2rem;
+    }
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.6rem;
+      margin-top: 0;
+    }
+
+    .case-card {
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.28s, box-shadow 0.28s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+    .case-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+    }
+
+    .case-thumb {
+      position: relative;
+      aspect-ratio: 16/10;
+      overflow: hidden;
+    }
+    .case-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+      filter: brightness(0.75) saturate(1.05);
+    }
+    .case-card:hover .case-thumb img { transform: scale(1.06); }
+    .case-thumb-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,22,40,0.9) 0%, rgba(10,22,40,0.2) 60%);
+    }
+    .case-industry-badge {
+      position: absolute;
+      top: 0.9rem;
+      left: 0.9rem;
+      background: rgba(59,130,246,0.85);
+      border-radius: 6px;
+      padding: 0.3rem 0.75rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .case-body {
+      background: rgba(255,255,255,0.04);
+      border: 1.5px solid rgba(255,255,255,0.09);
+      border-top: none;
+      border-radius: 0 0 18px 18px;
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .case-card:hover .case-body { border-color: rgba(59,130,246,0.35); }
+    .case-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent-bright);
+      margin-bottom: 0.5rem;
+    }
+    .case-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.35;
+      margin-bottom: 0.75rem;
+      flex: 1;
+    }
+    .case-outcomes {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+      flex-wrap: wrap;
+    }
+    .case-outcome-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+    .case-outcome-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--accent-bright);
+      line-height: 1;
+    }
+    .case-outcome-label {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.3px;
+    }
+    .case-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent-bright);
+      text-decoration: none;
+      transition: gap 0.2s, color 0.2s;
+    }
+    .case-link:hover { gap: 0.7rem; color: #fff; }
+
+    /* ─── CTA BAND ───────────────────────────────────── */
+    .cta-band {
+      background: linear-gradient(135deg, #0f2044 0%, #1a3a6e 50%, #0a1628 100%);
+      padding: 5rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-band::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .cta-band-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .cta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(59,130,246,0.15);
+      border: 1px solid rgba(59,130,246,0.35);
+      border-radius: 100px;
+      padding: 0.4rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent-bright);
+      margin-bottom: 1.4rem;
+    }
+    .cta-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      margin-bottom: 1rem;
+      line-height: 1.12;
+    }
+    .cta-title span { color: var(--accent-bright); }
+    .cta-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .cta-btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 0.9rem 2.2rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(59,130,246,0.4);
+    }
+    .cta-btn-primary:hover { background: #2563eb; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(59,130,246,0.55); }
+    .cta-btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 0.9rem 2.2rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    }
+    .cta-btn-outline:hover { border-color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.07); transform: translateY(-2px); }
+
+    /* ─── FOOTER ─────────────────────────────────────── */
+    .site-footer { background: #111827; color: rgba(255,255,255,0.75); font-family: 'DM Sans', sans-serif; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .footer-top { padding: 4rem 0 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-top .footer-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; align-items: start; }
+    .ft-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: #fff; text-decoration: none; display: block; margin-bottom: 0.75rem; }
+    .ft-logo span { color: #60a5fa; }
+    .ft-tagline { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.55; margin-bottom: 1.4rem; }
+    .ft-socials { display: flex; gap: 0.9rem; margin-bottom: 1.2rem; }
+    .ft-social-icon { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.75); text-decoration: none; transition: background 0.2s, color 0.2s; }
+    .ft-social-icon:hover { background: #3b82f6; color: #fff; }
+    .ft-office-title { font-weight: 700; font-size: 0.9rem; color: #fff; margin-bottom: 0.4rem; }
+    .ft-office-addr { font-size: 0.85rem; line-height: 1.6; color: rgba(255,255,255,0.55); margin-bottom: 1.2rem; }
+    .footer-mid { padding: 3rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-mid .footer-inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+    .ft-col { display: flex; flex-direction: column; gap: 0.65rem; }
+    .ft-col-title { font-weight: 700; font-size: 0.9rem; color: #fff; margin-bottom: 0.5rem; letter-spacing: 0.3px; }
+    .ft-col a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .ft-col a:hover { color: #fff; }
+    .footer-bottom { padding: 1.4rem 0; }
+    .footer-bottom .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+    .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.45); }
+    .ft-bottom-links { display: flex; gap: 1.5rem; }
+    .ft-bottom-links a { font-size: 0.82rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .ft-bottom-links a:hover { color: #fff; }
+
+    /* ─── REVEAL ANIMATION ──────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .video-grid { grid-template-columns: 1fr 1fr; }
+      .vid-card.featured { grid-column: span 2; grid-template-columns: 1fr; }
+      .vid-card.featured .vid-thumb { aspect-ratio: 16/9; }
+      .cases-grid { grid-template-columns: 1fr 1fr; }
+      .quotes-grid { grid-template-columns: 1fr 1fr; }
+      .quote-card.large { grid-column: span 1; }
+      .stats-bar-inner { grid-template-columns: repeat(2, 1fr); }
+      .footer-top .footer-inner { grid-template-columns: 1fr 1fr; }
+      .footer-mid .footer-inner { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .video-grid { grid-template-columns: 1fr; }
+      .vid-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+      .cases-grid { grid-template-columns: 1fr; }
+      .quotes-grid { grid-template-columns: 1fr; }
+      .quote-card.large { grid-column: span 1; }
+      .video-section, .quotes-section, .cases-section { padding: 4rem 1.25rem; }
+      .footer-top .footer-inner { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .stats-bar-inner { grid-template-columns: 1fr 1fr; }
+      .cta-actions { flex-direction: column; align-items: center; }
+      .cta-btn-primary, .cta-btn-outline { width: 100%; max-width: 280px; text-align: center; }
+      .footer-mid .footer-inner { grid-template-columns: 1fr 1fr; }
+      .footer-bottom .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav id="navbar">
+    <a href="/" class="logo"><img src="./img/logo.png"></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="service.html">Services</a></li>
+      <li><a href="#">Products</a></li>
+      <li><a href="#" class="active" style="color:#60a5fa;">Client Stories</a></li>
+      <li><a href="#">Careers</a></li>
+      <li><a href="#" class="nav-cta">Request a Meeting</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="services.html">Services</a>
+    <a href="#">Products</a>
+    <a href="#" style="color:#60a5fa;">Client Stories</a>
+    <a href="#">Careers</a>
+    <a href="#" class="mob-cta">Request a Meeting</a>
+  </div>
+
+  <!-- ═══ HERO BANNER ═══ -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-glow"></div>
+    <div class="page-hero-content">
+      <div class="page-hero-badge">Client Stories</div>
+      <h1 class="page-hero-title">
+        Hear What It's Like<br>Working With <span class="highlight">Our Team</span>
+      </h1>
+      <p class="page-hero-sub">
+        Real results, real voices — from clients across industries who partnered with Gagstek to transform their business.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ STATS BAR ═══ -->
+  <div class="stats-bar">
+    <div class="stats-bar-inner">
+      <div class="sb-item reveal">
+        <span class="sb-num">170+</span>
+        <span class="sb-label">Projects Delivered</span>
+      </div>
+      <div class="sb-item reveal reveal-delay-1">
+        <span class="sb-num">50+</span>
+        <span class="sb-label">Happy Clients</span>
+      </div>
+      <div class="sb-item reveal reveal-delay-2">
+        <span class="sb-num">95%</span>
+        <span class="sb-label">Client Satisfaction</span>
+      </div>
+      <div class="sb-item reveal reveal-delay-3">
+        <span class="sb-num">8+</span>
+        <span class="sb-label">Years of Experience</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ VIDEO TESTIMONIALS ═══ -->
+  <section class="video-section">
+    <div class="section-inner">
+      <p class="section-eyebrow reveal">From Someone Who's Been There</p>
+      <h2 class="section-title reveal">Curious About Working <span class="accent">With Our Team?</span></h2>
+      <p class="section-sub reveal">Hear directly from our clients — unscripted, unfiltered stories about what it's really like to partner with Gagstek.</p>
+
+      <div class="video-grid">
+
+        <!-- Featured card -->
+        <div class="vid-card featured reveal">
+          <div class="vid-thumb">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=900&q=80&fit=crop" alt="Andrew Riggs" loading="lazy" />
+            <div class="vid-thumb-overlay"></div>
+            <div class="vid-play-btn">
+              <svg viewBox="0 0 24 24" fill="white" width="22" height="22"><polygon points="6,4 20,12 6,20"/></svg>
+            </div>
+            <div class="vid-tag">Featured</div>
+            <div class="vid-duration">3:24</div>
+          </div>
+          <div class="vid-body">
+            <div class="vid-industry">IT & Technology</div>
+            <h3 class="vid-title">Co-Managed Success: Partnering Through the Entire Implementation</h3>
+            <div class="vid-person">
+              <img class="vid-avatar" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&q=80&fit=crop&crop=face" alt="Andrew Riggs" />
+              <div>
+                <span class="vid-name">Andrew Riggs</span>
+                <span class="vid-role">Director of IT, SCE Power Plus</span>
+              </div>
+            </div>
+            <p class="vid-blurb">What happens when your Salesforce partner actually listens, teaches, and builds with you? Andrew shares how Gagstek delivered what others couldn't — a co-managed, flexible approach that truly fit their team.</p>
+            <a href="#" class="vid-watch-link">Watch Story →</a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="vid-card reveal reveal-delay-1">
+          <div class="vid-thumb">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80&fit=crop&crop=top" alt="Energy Efficiency Client" loading="lazy" />
+            <div class="vid-thumb-overlay"></div>
+            <div class="vid-play-btn">
+              <svg viewBox="0 0 24 24" fill="white" width="20" height="20"><polygon points="6,4 20,12 6,20"/></svg>
+            </div>
+            <div class="vid-tag">Energy</div>
+            <div class="vid-duration">2:47</div>
+          </div>
+          <div class="vid-body">
+            <div class="vid-industry">Energy & Utilities</div>
+            <h3 class="vid-title">Gagstek Asked the Questions No One Else Did</h3>
+            <div class="vid-person">
+              <img class="vid-avatar" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&q=80&fit=crop&crop=face" alt="Energy Client" />
+              <div>
+                <span class="vid-name">Energy Efficiency Client</span>
+                <span class="vid-role">Operations Head, USA</span>
+              </div>
+            </div>
+            <p class="vid-blurb">When everyone else rushed to sell, Gagstek stopped to listen. Discover how our business-first approach earned this client's lasting trust and a multi-year partnership.</p>
+            <a href="#" class="vid-watch-link">Watch Story →</a>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="vid-card reveal">
+          <div class="vid-thumb">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&fit=crop&crop=top" alt="Brad Schwind" loading="lazy" />
+            <div class="vid-thumb-overlay"></div>
+            <div class="vid-play-btn">
+              <svg viewBox="0 0 24 24" fill="white" width="20" height="20"><polygon points="6,4 20,12 6,20"/></svg>
+            </div>
+            <div class="vid-tag">Manufacturing</div>
+            <div class="vid-duration">2:11</div>
+          </div>
+          <div class="vid-body">
+            <div class="vid-industry">Manufacturing</div>
+            <h3 class="vid-title">How Gagstek Gained Our Client's Trust Before Writing a Line of Code</h3>
+            <div class="vid-person">
+              <img class="vid-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80&fit=crop&crop=face" alt="Brad Schwind" />
+              <div>
+                <span class="vid-name">Brad Schwind</span>
+                <span class="vid-role">Marketing Manager</span>
+              </div>
+            </div>
+            <p class="vid-blurb">Gagstek didn't rush into the build. Instead, we spent time with their team to truly understand what really mattered. That's when trust — and a great project — took over.</p>
+            <a href="#" class="vid-watch-link">Watch Story →</a>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="vid-card reveal reveal-delay-1">
+          <div class="vid-thumb">
+            <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?w=600&q=80&fit=crop&crop=top" alt="Energy Client" loading="lazy" />
+            <div class="vid-thumb-overlay"></div>
+            <div class="vid-play-btn">
+              <svg viewBox="0 0 24 24" fill="white" width="20" height="20"><polygon points="6,4 20,12 6,20"/></svg>
+            </div>
+            <div class="vid-tag">Energy</div>
+            <div class="vid-duration">3:05</div>
+          </div>
+          <div class="vid-body">
+            <div class="vid-industry">Energy & Utilities</div>
+            <h3 class="vid-title">How Salesforce Helped Our Client Book $105M in One Month</h3>
+            <div class="vid-person">
+              <img class="vid-avatar" src="https://images.unsplash.com/photo-1554151228-14d9def656e4?w=80&q=80&fit=crop&crop=face" alt="Energy Client" />
+              <div>
+                <span class="vid-name">Energy Efficiency Client</span>
+                <span class="vid-role">VP Sales Operations, USA</span>
+              </div>
+            </div>
+            <p class="vid-blurb">With Gagstek's help, this client unlocked Salesforce's full potential — doubling their monthly bookings and driving smarter, faster decisions across the organisation.</p>
+            <a href="#" class="vid-watch-link">Watch Story →</a>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="vid-card reveal reveal-delay-2">
+          <div class="vid-thumb">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=80&fit=crop&crop=top" alt="Manufacturing Client" loading="lazy" />
+            <div class="vid-thumb-overlay"></div>
+            <div class="vid-play-btn">
+              <svg viewBox="0 0 24 24" fill="white" width="20" height="20"><polygon points="6,4 20,12 6,20"/></svg>
+            </div>
+            <div class="vid-tag">Manufacturing</div>
+            <div class="vid-duration">1:58</div>
+          </div>
+          <div class="vid-body">
+            <div class="vid-industry">Manufacturing</div>
+            <h3 class="vid-title">How Gagstek Helped This Client See and Win More Opportunities</h3>
+            <div class="vid-person">
+              <img class="vid-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80&fit=crop&crop=face" alt="Manufacturing Client" />
+              <div>
+                <span class="vid-name">Manufacturing Client</span>
+                <span class="vid-role">Head of Sales, UK</span>
+              </div>
+            </div>
+            <p class="vid-blurb">Before Salesforce, this client's sales process lacked visibility and scalability. Partnering with Gagstek gave them the tools, insight, and expertise to grow rapidly.</p>
+            <a href="#" class="vid-watch-link">Watch Story →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ WRITTEN QUOTES ═══ -->
+  <section class="quotes-section">
+    <div class="section-inner">
+      <p class="section-eyebrow reveal">What Our Clients Say</p>
+      <h2 class="section-title reveal">Voices of <span style="color:#3b82f6;">Real Results</span></h2>
+      <p class="section-sub reveal">Unfiltered feedback from the businesses we've had the privilege of working with.</p>
+
+      <div class="quotes-grid">
+
+        <!-- Large quote -->
+        <div class="quote-card large reveal">
+          <div class="quote-deco">"</div>
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="quote-text">Gagstek has and continues to be the best implementation partner we have ever had the pleasure of working with. Knowledgeable, insightful, and efficient — the entire team feels more like an extension of our company than some external resource. I would never look anywhere else for our Salesforce implementation and buildout needs.</p>
+          <div class="quote-person">
+            <img class="quote-avatar" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&q=80&fit=crop&crop=face" alt="VP Products" />
+            <div>
+              <span class="quote-name">VP Products Development & Innovation</span>
+              <span class="quote-meta">Global ISV · 2+ Year Partnership</span>
+            </div>
+            <span class="quote-tag">Salesforce</span>
+          </div>
+        </div>
+
+        <!-- Regular quote -->
+        <div class="quote-card reveal reveal-delay-1">
+          <div class="quote-deco">"</div>
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="quote-text">Gagstek is an incredible partner with excellent attention to detail and a passion for delivering for its customers. Great sales, account, integration, and technical teams. I would recommend them to anyone needing Salesforce work done.</p>
+          <div class="quote-person">
+            <img class="quote-avatar" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&q=80&fit=crop&crop=face" alt="High Tech Client" />
+            <div>
+              <span class="quote-name">CIO, OEM Automotive</span>
+              <span class="quote-meta">USA · TAT reduced by 15%</span>
+            </div>
+            <span class="quote-tag">AI + CRM</span>
+          </div>
+        </div>
+
+        <!-- Regular quote -->
+        <div class="quote-card reveal">
+          <div class="quote-deco">"</div>
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="quote-text">Gagstek revolutionized our sales pipeline with their custom Salesforce integration. Their team didn't just deliver code — they understood our unique workflow challenges and built solutions that actually fit how we work. Our lead conversion has increased by 40% since implementation!</p>
+          <div class="quote-person">
+            <img class="quote-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80&fit=crop&crop=face" alt="VP Sales" />
+            <div>
+              <span class="quote-name">VP of Sales Operations</span>
+              <span class="quote-meta">Tech Startup · Canada</span>
+            </div>
+            <span class="quote-tag">Lead Gen</span>
+          </div>
+        </div>
+
+        <!-- Regular quote -->
+        <div class="quote-card reveal reveal-delay-1">
+          <div class="quote-deco">"</div>
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="quote-text">The team at Gagstek transformed our customer onboarding process from a 3-week nightmare into a smooth 3-day experience. Their Salesforce automation workflows are brilliant, and their ongoing support feels like having an extended IT team. Highly recommend their expertise!</p>
+          <div class="quote-person">
+            <img class="quote-avatar" src="https://images.unsplash.com/photo-1554151228-14d9def656e4?w=80&q=80&fit=crop&crop=face" alt="Head of Customer Success" />
+            <div>
+              <span class="quote-name">Head of Customer Success</span>
+              <span class="quote-meta">Financial Services · Australia</span>
+            </div>
+            <span class="quote-tag">Automation</span>
+          </div>
+        </div>
+
+        <!-- Regular quote -->
+        <div class="quote-card reveal reveal-delay-2">
+          <div class="quote-deco">"</div>
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="quote-text">Working with Gagstek on our inventory management system was a game-changer. Their Python-based solution seamlessly connects our warehouse data with our customer portal. What impressed me most was their ability to translate complex technical requirements into user-friendly interfaces our staff love using.</p>
+          <div class="quote-person">
+            <img class="quote-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80&fit=crop&crop=face" alt="Operations Manager" />
+            <div>
+              <span class="quote-name">Operations Manager</span>
+              <span class="quote-meta">Manufacturing Company · UK</span>
+            </div>
+            <span class="quote-tag">Python Dev</span>
+          </div>
+        </div>
+
+        <!-- Large quote -->
+        <div class="quote-card large reveal">
+          <div class="quote-deco">"</div>
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="quote-text">Gagstek has far exceeded my expectations, and they continue to do so. They are competent, honest, and dedicated superstars. They took time, listened, asked critical questions, and provided top notch professional service. Their passion for our success was evident throughout the whole process. Most impressively, following our implementation, they proactively remained in contact and I have been treated as a true partner. I will undoubtedly continue to engage their services as our Salesforce needs evolve.</p>
+          <div class="quote-person">
+            <img class="quote-avatar" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&q=80&fit=crop&crop=face" alt="Director" />
+            <div>
+              <span class="quote-name">Director, Customer Service</span>
+              <span class="quote-meta">USA-based Product Company</span>
+            </div>
+            <span class="quote-tag">Long-term Partner</span>
+          </div>
+        </div>
+
+        <!-- Regular quote -->
+        <div class="quote-card reveal">
+          <div class="quote-deco">"</div>
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="quote-text">Gagstek's custom reporting dashboard gave us visibility we never had before. Their developers created Python scripts that pull data from multiple sources into real-time visualizations. Finally, our executive team can make data-driven decisions instantly. Outstanding partnership!</p>
+          <div class="quote-person">
+            <img class="quote-avatar" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&q=80&fit=crop&crop=face" alt="CTO" />
+            <div>
+              <span class="quote-name">Chief Technology Officer</span>
+              <span class="quote-meta">Healthcare SaaS · Germany</span>
+            </div>
+            <span class="quote-tag">Data Engineering</span>
+          </div>
+        </div>
+
+        <!-- Regular quote -->
+        <div class="quote-card reveal reveal-delay-1">
+          <div class="quote-deco">"</div>
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="quote-text">Your team is a dedicated group of professionals, who are innovative in providing solutions for our product that caters to contract management for the SME segment. I am very pleased to be associated with Gagstek!!</p>
+          <div class="quote-person">
+            <img class="quote-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80&fit=crop&crop=face" alt="Portfolio Lead" />
+            <div>
+              <span class="quote-name">Portfolio Lead, Software Development</span>
+              <span class="quote-meta">Real Estate Portal · USA</span>
+            </div>
+            <span class="quote-tag">Salesforce</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CASE STUDIES ═══ -->
+  <section class="cases-section">
+    <div class="section-inner">
+      <p class="section-eyebrow reveal">Featured Case Studies</p>
+      <h2 class="section-title reveal">Transformations We've <span class="accent">Delivered</span></h2>
+      <p class="section-sub reveal">Deep dives into real projects, real outcomes, and the strategies that drove them.</p>
+
+      <div class="cases-grid">
+
+        <div class="case-card reveal">
+          <div class="case-thumb">
+            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=700&q=80&fit=crop" alt="Quote-to-Cash" loading="lazy" />
+            <div class="case-thumb-gradient"></div>
+            <div class="case-industry-badge">MedTech</div>
+          </div>
+          <div class="case-body">
+            <span class="case-label">Featured Case Study</span>
+            <h3 class="case-title">Modernizing Quote-to-Cash for a Global Medical Device Manufacturer</h3>
+            <div class="case-outcomes">
+              <div class="case-outcome-item">
+                <span class="case-outcome-num">60%</span>
+                <span class="case-outcome-label">Faster Quoting</span>
+              </div>
+              <div class="case-outcome-item">
+                <span class="case-outcome-num">3x</span>
+                <span class="case-outcome-label">Revenue Visibility</span>
+              </div>
+            </div>
+            <a href="https://gagstek.com/case-study-modernizing-quote-to-cash/" class="case-link">Read Case Study →</a>
+          </div>
+        </div>
+
+        <div class="case-card reveal reveal-delay-1">
+          <div class="case-thumb">
+            <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=700&q=80&fit=crop" alt="AI Sales Dashboard" loading="lazy" />
+            <div class="case-thumb-gradient"></div>
+            <div class="case-industry-badge">AI & Sales</div>
+          </div>
+          <div class="case-body">
+            <span class="case-label">Featured Case Study</span>
+            <h3 class="case-title">AI Sales Dashboard for a Mid-Sized Sales-Driven Organisation</h3>
+            <div class="case-outcomes">
+              <div class="case-outcome-item">
+                <span class="case-outcome-num">40%</span>
+                <span class="case-outcome-label">Lead Conversion Up</span>
+              </div>
+              <div class="case-outcome-item">
+                <span class="case-outcome-num">Real-time</span>
+                <span class="case-outcome-label">Pipeline Visibility</span>
+              </div>
+            </div>
+            <a href="https://gagstek.com/case-study-ai-sales-dashboard/" class="case-link">Read Case Study →</a>
+          </div>
+        </div>
+
+        <div class="case-card reveal reveal-delay-2">
+          <div class="case-thumb">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&q=80&fit=crop" alt="Lead Generation Engine" loading="lazy" />
+            <div class="case-thumb-gradient"></div>
+            <div class="case-industry-badge">Growth</div>
+          </div>
+          <div class="case-body">
+            <span class="case-label">Featured Case Study</span>
+            <h3 class="case-title">Scalable Lead Generation Engine for Outbound Growth</h3>
+            <div class="case-outcomes">
+              <div class="case-outcome-item">
+                <span class="case-outcome-num">2x</span>
+                <span class="case-outcome-label">Monthly Bookings</span>
+              </div>
+              <div class="case-outcome-item">
+                <span class="case-outcome-num">$105M</span>
+                <span class="case-outcome-label">In One Month</span>
+              </div>
+            </div>
+            <a href="https://gagstek.com/case-study-lead-generation-engine/" class="case-link">Read Case Study →</a>
+          </div>
+        </div>
+
+        <div class="case-card reveal">
+          <div class="case-thumb">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80&fit=crop" alt="Force.com" loading="lazy" />
+            <div class="case-thumb-gradient"></div>
+            <div class="case-industry-badge">FinTech</div>
+          </div>
+          <div class="case-body">
+            <span class="case-label">Featured Case Study</span>
+            <h3 class="case-title">Force.com Implementation for a Leading Financial Institution</h3>
+            <div class="case-outcomes">
+              <div class="case-outcome-item">
+                <span class="case-outcome-num">15%</span>
+                <span class="case-outcome-label">TAT Reduction</span>
+              </div>
+              <div class="case-outcome-item">
+                <span class="case-outcome-num">100%</span>
+                <span class="case-outcome-label">SF Certified Team</span>
+              </div>
+            </div>
+            <a href="https://gagstek.com/caste-study-force/" class="case-link">Read Case Study →</a>
+          </div>
+        </div>
+
+        <div class="case-card reveal reveal-delay-1">
+          <div class="case-thumb">
+            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=700&q=80&fit=crop" alt="MuleSoft" loading="lazy" />
+            <div class="case-thumb-gradient"></div>
+            <div class="case-industry-badge">Integration</div>
+          </div>
+          <div class="case-body">
+            <span class="case-label">Featured Case Study</span>
+            <h3 class="case-title">MuleSoft Implementation for a German Enterprise Client</h3>
+            <div class="case-outcomes">
+              <div class="case-outcome-item">
+                <span class="case-outcome-num">Zero</span>
+                <span class="case-outcome-label">Data Silos</span>
+              </div>
+              <div class="case-outcome-item">
+                <span class="case-outcome-num">Real-time</span>
+                <span class="case-outcome-label">System Sync</span>
+              </div>
+            </div>
+            <a href="https://gagstek.com/case-study-mulesoft/" class="case-link">Read Case Study →</a>
+          </div>
+        </div>
+
+        <div class="case-card reveal reveal-delay-2">
+          <div class="case-thumb">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=80&fit=crop" alt="Salesforce Analytics" loading="lazy" />
+            <div class="case-thumb-gradient"></div>
+            <div class="case-industry-badge">Analytics & AI</div>
+          </div>
+          <div class="case-body">
+            <span class="case-label">Featured Case Study</span>
+            <h3 class="case-title">Salesforce Analytics Enrichment Using Open-Source AI (Alt to Agentforce)</h3>
+            <div class="case-outcomes">
+              <div class="case-outcome-item">
+                <span class="case-outcome-num">Open</span>
+                <span class="case-outcome-label">Source AI Stack</span>
+              </div>
+              <div class="case-outcome-item">
+                <span class="case-outcome-num">50%</span>
+                <span class="case-outcome-label">Cost Reduction</span>
+              </div>
+            </div>
+            <a href="https://gagstek.com/case-study-salesforce-analytics/" class="case-link">Read Case Study →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA BAND ═══ -->
+  <div class="cta-band">
+    <div class="cta-band-inner">
+      <div class="cta-badge">Ready to Get Started?</div>
+      <h2 class="cta-title">Let's Write Your <span>Success Story</span> Together</h2>
+      <p class="cta-sub">Join 50+ companies that have transformed their business with Gagstek. Schedule a no-obligation consultation and let's explore what's possible.</p>
+      <div class="cta-actions">
+        <a href="#" class="cta-btn-primary">Request a Meeting →</a>
+        <a href="#" class="cta-btn-outline">Explore Our Services</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-inner">
+        <div>
+          <a href="/" class="ft-logo">Gags<span>tek</span></a>
+          <p class="ft-tagline">At GAGSTEK, we go beyond helping businesses transform through technology. We help them make a meaningful difference.</p>
+          <div class="ft-socials">
+            <a href="#" class="ft-social-icon" aria-label="LinkedIn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="#" class="ft-social-icon" aria-label="YouTube">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#111827"/></svg>
+            </a>
+            <a href="#" class="ft-social-icon" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="#" class="ft-social-icon" aria-label="WhatsApp">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <p class="ft-office-title">India Office</p>
+          <p class="ft-office-addr">P3-001 Pentagon Tower<br>Magarpatta City, Pune 411013</p>
+          <p class="ft-office-title">US Office</p>
+          <p class="ft-office-addr">16192 Coastal Highway, Lewes<br>Delaware 19958, County of Sussex</p>
+          <p class="ft-office-title">Australia Office</p>
+          <p class="ft-office-addr">161 Collins St, Melbourne VIC 3000</p>
+        </div>
+        <div>
+          <p class="ft-office-title" style="margin-bottom:0.75rem;">Contact</p>
+          <p class="ft-office-addr">US: +1-567-399-2506<br>AU: +61-473118458</p>
+          <p class="ft-office-addr"><a href="mailto:info@gagstek.com" style="color:rgba(255,255,255,0.55);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">info@gagstek.com</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-mid">
+      <div class="footer-inner">
+        <div class="ft-col">
+          <p class="ft-col-title">Salesforce Services</p>
+          <a href="#">Business Consulting & Advisory</a>
+          <a href="#">Implementation & Development</a>
+          <a href="#">Quote-To-Cash Services</a>
+          <a href="#">Support & Data Migration</a>
+          <a href="#">Administration</a>
+          <a href="#">Staff Augmentation</a>
+        </div>
+        <div class="ft-col">
+          <p class="ft-col-title">AI Services</p>
+          <a href="#">AI Sales Automation</a>
+          <a href="#">AI Lead Intelligence</a>
+          <a href="#">Conversational AI Systems</a>
+          <a href="#">AI Workflow Orchestration</a>
+          <a href="#">AI Data Engineering</a>
+          <a href="#">Custom AI Product Builds</a>
+        </div>
+        <div class="ft-col">
+          <p class="ft-col-title">Products</p>
+          <a href="https://gagstek.com/products/">E2E Sales</a>
+          <a href="https://gagstek.com/stockpro/">StockPro</a>
+          <a href="#">AppExchange Products</a>
+          <a href="#">Mobile-first Products</a>
+        </div>
+        <div class="ft-col">
+          <p class="ft-col-title">Company</p>
+          <a href="https://gagstek.com/about/">About Us</a>
+          <a href="https://gagstek.com/client-stories-2/">Client Stories</a>
+          <a href="https://gagstek.com/employee-review/">Employees' Words</a>
+          <a href="https://gagstek.com/career/">Careers</a>
+          <a href="https://gagstek.com/blogs/">Blogs</a>
+          <a href="https://gagstek.com/contact-us/">Contact Us</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-inner">
+        <p>© 2025 GAGSTEK LLP. All Rights Reserved.</p>
+        <div class="ft-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms Of Services</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky nav
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
