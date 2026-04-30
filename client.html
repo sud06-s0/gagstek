@@ -43,10 +43,12 @@
       box-shadow: 0 2px 24px rgba(0,0,0,0.4);
       backdrop-filter: blur(12px);
     }
+
     .logo {
       width:130px;
     }
     .logo span { color: var(--accent-bright); }
+
     .nav-links {
       display: flex;
       gap: 2rem;
@@ -62,6 +64,7 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--white); }
+
     .nav-cta {
       background: var(--accent);
       color: var(--white) !important;
@@ -70,7 +73,12 @@
       font-weight: 600 !important;
       transition: background 0.2s, transform 0.15s !important;
     }
-    .nav-cta:hover { background: var(--accent-bright) !important; transform: translateY(-1px); }
+    .nav-cta:hover {
+      background: var(--accent-bright) !important;
+      transform: translateY(-1px);
+    }
+
+    /* Hamburger */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -91,6 +99,34 @@
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Nav Socials */
+    .nav-socials {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-left: 1rem;
+    }
+    .nav-social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      color: var(--accent-bright);
+      text-decoration: none;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-social-icon:hover {
+      color: var(--white);
+      background: rgba(96,165,250,0.15);
+    }
+    @media (max-width: 768px) {
+      .nav-socials { display: none; }
+    }
+
+    /* Mobile menu */
     .mobile-menu {
       display: none;
       position: fixed;
@@ -107,10 +143,27 @@
       pointer-events: none;
       transition: opacity 0.3s;
     }
-    .mobile-menu.open { display: flex; opacity: 1; pointer-events: all; }
-    .mobile-menu a { color: var(--white); text-decoration: none; font-size: 1.4rem; font-weight: 500; }
+    .mobile-menu.open {
+      display: flex;
+      opacity: 1;
+      pointer-events: all;
+    }
+    .mobile-menu a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
     .mobile-menu a:hover { color: var(--accent-bright); }
-    .mobile-menu .mob-cta { background: var(--accent); padding: 0.75rem 2.5rem; border-radius: 8px; font-weight: 600; font-size: 1rem; }
+    .mobile-menu .mob-cta {
+      background: var(--accent);
+      padding: 0.75rem 2.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
 
     /* ─── HERO BANNER ─────────────────────────────────── */
     .page-hero {
@@ -750,30 +803,163 @@
     }
     .cta-btn-outline:hover { border-color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.07); transform: translateY(-2px); }
 
-    /* ─── FOOTER ─────────────────────────────────────── */
-    .site-footer { background: #111827; color: rgba(255,255,255,0.75); font-family: 'DM Sans', sans-serif; }
-    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-    .footer-top { padding: 4rem 0 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .footer-top .footer-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; align-items: start; }
-    .ft-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: #fff; text-decoration: none; display: block; margin-bottom: 0.75rem; }
-    .ft-logo span { color: #60a5fa; }
-    .ft-tagline { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.55; margin-bottom: 1.4rem; }
-    .ft-socials { display: flex; gap: 0.9rem; margin-bottom: 1.2rem; }
-    .ft-social-icon { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.75); text-decoration: none; transition: background 0.2s, color 0.2s; }
-    .ft-social-icon:hover { background: #3b82f6; color: #fff; }
-    .ft-office-title { font-weight: 700; font-size: 0.9rem; color: #fff; margin-bottom: 0.4rem; }
-    .ft-office-addr { font-size: 0.85rem; line-height: 1.6; color: rgba(255,255,255,0.55); margin-bottom: 1.2rem; }
-    .footer-mid { padding: 3rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .footer-mid .footer-inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+    /* ─── FOOTER STYLES ──────────────────────────────────── */
+    .site-footer {
+      background: #111827;
+      color: rgba(255,255,255,0.75);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* TOP BAND */
+    .footer-top {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-top .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    /* Footer Logo */
+    .ft-logo-link {
+      display: inline-block;
+      margin-bottom: 0.75rem;
+      text-decoration: none;
+    }
+    .ft-logo-img {
+      height: 48px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+    .ft-tagline {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.55;
+      margin-bottom: 1.4rem;
+    }
+    .ft-office-phone {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 0.25rem;
+    }
+
+    /* CTA left */
+    .ft-left {}
+    .ft-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--accent, #3b82f6);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 0.75rem 1.6rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      margin-bottom: 1.8rem;
+    }
+    .ft-cta-btn:hover { background: #60a5fa; transform: translateY(-2px); }
+
+    .ft-socials {
+      display: flex;
+      gap: 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+    .ft-social-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(59,130,246,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-bright, #60a5fa);
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .ft-social-icon:hover { background: var(--accent, #3b82f6); color: #fff; }
+
+    .ft-email {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.88rem;
+    }
+    .ft-email a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .ft-email a:hover { color: #fff; }
+
+    /* Offices */
+    .ft-offices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .ft-office-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+    .ft-office-addr {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* MID BAND */
+    .footer-mid {
+      padding: 3rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-mid .footer-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
     .ft-col { display: flex; flex-direction: column; gap: 0.65rem; }
-    .ft-col-title { font-weight: 700; font-size: 0.9rem; color: #fff; margin-bottom: 0.5rem; letter-spacing: 0.3px; }
-    .ft-col a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .ft-col-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.3px;
+    }
+    .ft-col a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
     .ft-col a:hover { color: #fff; }
+
+    /* BOTTOM BAR */
     .footer-bottom { padding: 1.4rem 0; }
-    .footer-bottom .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+    .footer-bottom .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
     .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.45); }
     .ft-bottom-links { display: flex; gap: 1.5rem; }
-    .ft-bottom-links a { font-size: 0.82rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .ft-bottom-links a {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
     .ft-bottom-links a:hover { color: #fff; }
 
     /* ─── REVEAL ANIMATION ──────────────────────────── */
@@ -826,16 +1012,34 @@
 
   <!-- ═══ NAVBAR ═══ -->
   <nav id="navbar">
-    <a href="/" class="logo"><img src="./img/logo.png"></a>
+    <a href="#" class="logo"><img src="./img/logo.png"></a>
+
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About Us</a></li>
-      <li><a href="service.html">Services</a></li>
+      <li><a href="services.html">Services</a></li>
+       <li><a href="client.html" style="color:#60a5fa;">Client Stories</a></li>
       <li><a href="#">Products</a></li>
-      <li><a href="#" class="active" style="color:#60a5fa;">Client Stories</a></li>
       <li><a href="#">Careers</a></li>
       <li><a href="#" class="nav-cta">Request a Meeting</a></li>
     </ul>
+
+    <!-- Nav Social Icons -->
+    <div class="nav-socials">
+      <a href="https://api.whatsapp.com/send?phone=919049023824" aria-label="WhatsApp" class="nav-social-icon" target="_blank" rel="noopener">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.93 11.93 0 0012 0C5.37 0 0 5.37 0 12a11.9 11.9 0 001.64 6.07L0 24l6.13-1.61A11.93 11.93 0 0012 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.22-3.48-8.52zm-8.52 18.44a9.9 9.9 0 01-5.04-1.38l-.36-.21-3.74.98.99-3.64-.24-.38A9.9 9.9 0 012.1 12c0-5.46 4.44-9.9 9.9-9.9 2.64 0 5.12 1.03 6.99 2.9a9.84 9.84 0 012.9 6.99c0 5.47-4.44 9.93-9.9 9.93zm5.43-7.41c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07a8.13 8.13 0 01-2.4-1.48 9.02 9.02 0 01-1.66-2.07c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.09 3.19 5.07 4.47.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35z"/></svg>
+      </a>
+      <a href="https://www.youtube.com/@GagstekLLP" aria-label="YouTube" class="nav-social-icon" target="_blank" rel="noopener">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="rgba(10,22,40,0.97)"/></svg>
+      </a>
+      <a href="https://www.instagram.com/gagstek___/" aria-label="Instagram" class="nav-social-icon" target="_blank" rel="noopener">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="https://in.linkedin.com/company/gagstek" aria-label="LinkedIn" class="nav-social-icon" target="_blank" rel="noopener">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+    </div>
+
     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
@@ -847,7 +1051,6 @@
     <a href="about.html">About Us</a>
     <a href="services.html">Services</a>
     <a href="#">Products</a>
-    <a href="#" style="color:#60a5fa;">Client Stories</a>
     <a href="#">Careers</a>
     <a href="#" class="mob-cta">Request a Meeting</a>
   </div>
@@ -1346,71 +1549,103 @@
     </div>
   </div>
 
-  <!-- ═══ FOOTER ═══ -->
+  <!-- ─── FOOTER ─────────────────────────────────────────── -->
   <footer class="site-footer">
+
+    <!-- Top band: Logo + Social + Office addresses + Badges -->
     <div class="footer-top">
       <div class="footer-inner">
-        <div>
-          <a href="/" class="ft-logo">Gags<span>tek</span></a>
-          <p class="ft-tagline">At GAGSTEK, we go beyond helping businesses transform through technology. We help them make a meaningful difference.</p>
+
+        <!-- Left: Logo + Social + Email -->
+        <div class="ft-left">
+          <!-- GAGSTEK LOGO: replace "logo.png" with your actual logo file path -->
+          <a href="https://gagstek.com" class="ft-logo-link">
+            <img
+              src="logo.png"
+              alt="Gagstek"
+              class="ft-logo-img"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"
+            /><span class="ft-logo-fallback" style="display:none;font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;color:#fff;">Gags<span style="color:#60a5fa;">tek</span></span>
+          </a>
+          <p class="ft-tagline">Unleashing Business Potential<br>with Cloud &amp; AI</p>
+          <a href="https://gagstek.com/contact-us/" class="ft-cta-btn">Get Started ↗</a>
           <div class="ft-socials">
-            <a href="#" class="ft-social-icon" aria-label="LinkedIn">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            <!-- WhatsApp -->
+            <a href="https://api.whatsapp.com/send?phone=919049023824" aria-label="WhatsApp" class="ft-social-icon" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.93 11.93 0 0012 0C5.37 0 0 5.37 0 12a11.9 11.9 0 001.64 6.07L0 24l6.13-1.61A11.93 11.93 0 0012 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.22-3.48-8.52zm-8.52 18.44a9.9 9.9 0 01-5.04-1.38l-.36-.21-3.74.98.99-3.64-.24-.38A9.9 9.9 0 012.1 12c0-5.46 4.44-9.9 9.9-9.9 2.64 0 5.12 1.03 6.99 2.9a9.84 9.84 0 012.9 6.99c0 5.47-4.44 9.93-9.9 9.93zm5.43-7.41c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07a8.13 8.13 0 01-2.4-1.48 9.02 9.02 0 01-1.66-2.07c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.09 3.19 5.07 4.47.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35z"/></svg>
             </a>
-            <a href="#" class="ft-social-icon" aria-label="YouTube">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#111827"/></svg>
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/gagstek___/" aria-label="Instagram" class="ft-social-icon" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
             </a>
-            <a href="#" class="ft-social-icon" aria-label="Instagram">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            <!-- LinkedIn -->
+            <a href="https://in.linkedin.com/company/gagstek" aria-label="LinkedIn" class="ft-social-icon" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
             </a>
-            <a href="#" class="ft-social-icon" aria-label="WhatsApp">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            <!-- YouTube -->
+            <a href="https://www.youtube.com/@GagstekLLP" aria-label="YouTube" class="ft-social-icon" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="rgba(10,22,40,0.85)"/></svg>
             </a>
           </div>
+          <div class="ft-email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:info@gagstek.com">info@gagstek.com</a>
+          </div>
         </div>
-        <div>
-          <p class="ft-office-title">India Office</p>
-          <p class="ft-office-addr">P3-001 Pentagon Tower<br>Magarpatta City, Pune 411013</p>
-          <p class="ft-office-title">US Office</p>
-          <p class="ft-office-addr">16192 Coastal Highway, Lewes<br>Delaware 19958, County of Sussex</p>
-          <p class="ft-office-title">Australia Office</p>
-          <p class="ft-office-addr">161 Collins St, Melbourne VIC 3000</p>
+
+        <!-- Middle: Office Addresses -->
+        <div class="ft-offices">
+          <div class="ft-office">
+            <p class="ft-office-title">United States Office 🇺🇸</p>
+            <p class="ft-office-addr">16192 Coastal Highway, Lewes,<br>Delaware 19958, County of Sussex</p>
+            <p class="ft-office-phone">📞 +1-567-399-2506</p>
+          </div>
+          <div class="ft-office">
+            <p class="ft-office-title">India Office 🇮🇳</p>
+            <p class="ft-office-addr">P3-001 Pentagon Tower,<br>Magarpatta City, Pune 411013</p>
+          </div>
+          <div class="ft-office">
+            <p class="ft-office-title">Australia Office 🇦🇺</p>
+            <p class="ft-office-addr">161 Collins St,<br>Melbourne VIC, 3000</p>
+            <p class="ft-office-phone">📞 +61-473118458</p>
+          </div>
         </div>
-        <div>
-          <p class="ft-office-title" style="margin-bottom:0.75rem;">Contact</p>
-          <p class="ft-office-addr">US: +1-567-399-2506<br>AU: +61-473118458</p>
-          <p class="ft-office-addr"><a href="mailto:info@gagstek.com" style="color:rgba(255,255,255,0.55);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">info@gagstek.com</a></p>
-        </div>
+
       </div>
     </div>
 
+    <!-- Middle band: Nav links -->
     <div class="footer-mid">
       <div class="footer-inner">
+
         <div class="ft-col">
           <p class="ft-col-title">Salesforce Services</p>
-          <a href="#">Business Consulting & Advisory</a>
-          <a href="#">Implementation & Development</a>
-          <a href="#">Quote-To-Cash Services</a>
-          <a href="#">Support & Data Migration</a>
-          <a href="#">Administration</a>
-          <a href="#">Staff Augmentation</a>
+          <a href="https://gagstek.com/what-we-do-2/">Business Consulting & Advisory</a>
+          <a href="https://gagstek.com/what-we-do-2/">Implementation & Development</a>
+          <a href="https://gagstek.com/what-we-do-2/">Quote-To-Cash Services</a>
+          <a href="https://gagstek.com/what-we-do-2/">Administration & Support</a>
+          <a href="https://gagstek.com/what-we-do-2/">Data Migration</a>
+          <a href="https://gagstek.com/what-we-do-2/">Staff Augmentation</a>
         </div>
+
         <div class="ft-col">
           <p class="ft-col-title">AI Services</p>
-          <a href="#">AI Sales Automation</a>
-          <a href="#">AI Lead Intelligence</a>
-          <a href="#">Conversational AI Systems</a>
-          <a href="#">AI Workflow Orchestration</a>
-          <a href="#">AI Data Engineering</a>
-          <a href="#">Custom AI Product Builds</a>
+          <a href="https://gagstek.com/what-we-do-2/">AI Sales Automation</a>
+          <a href="https://gagstek.com/what-we-do-2/">AI Lead Intelligence</a>
+          <a href="https://gagstek.com/what-we-do-2/">Conversational AI Systems</a>
+          <a href="https://gagstek.com/what-we-do-2/">AI Workflow Orchestration</a>
+          <a href="https://gagstek.com/what-we-do-2/">AI Data Engineering</a>
+          <a href="https://gagstek.com/what-we-do-2/">Custom AI Product Builds</a>
         </div>
+
         <div class="ft-col">
           <p class="ft-col-title">Products</p>
           <a href="https://gagstek.com/products/">E2E Sales</a>
           <a href="https://gagstek.com/stockpro/">StockPro</a>
-          <a href="#">AppExchange Products</a>
-          <a href="#">Mobile-first Products</a>
+          <a href="https://gagstek.com/what-we-do-2/">AppExchange Products</a>
+          <a href="https://gagstek.com/what-we-do-2/">Mobile-first Products</a>
         </div>
+
         <div class="ft-col">
           <p class="ft-col-title">Company</p>
           <a href="https://gagstek.com/about/">About Us</a>
@@ -1420,12 +1655,14 @@
           <a href="https://gagstek.com/blogs/">Blogs</a>
           <a href="https://gagstek.com/contact-us/">Contact Us</a>
         </div>
+
       </div>
     </div>
 
+    <!-- Bottom bar: copyright -->
     <div class="footer-bottom">
       <div class="footer-inner">
-        <p>© 2025 GAGSTEK LLP. All Rights Reserved.</p>
+        <p>© 2026 Gagstek. All Rights Reserved.</p>
         <div class="ft-bottom-links">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms Of Services</a>
@@ -1433,6 +1670,7 @@
         </div>
       </div>
     </div>
+
   </footer>
 
   <script>
