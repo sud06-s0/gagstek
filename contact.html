@@ -16,7 +16,860 @@
       --gold: #f59e0b;
       --white: #ffffff;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 2rem;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(10,22,40,0.97);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.4);
+      backdrop-filter: blur(12px);
+    }
+
+    .logo {
+      width:130px;
+    }
+    .logo span { color: var(--accent-bright); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: var(--white) !important;
+      padding: 0.55rem 1.3rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+    .nav-cta:hover {
+      background: var(--accent-bright) !important;
+      transform: translateY(-1px);
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Nav Socials */
+    .nav-socials {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-left: 1rem;
+    }
+    .nav-social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      color: var(--accent-bright);
+      text-decoration: none;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-social-icon:hover {
+      color: var(--white);
+      background: rgba(96,165,250,0.15);
+    }
+    @media (max-width: 768px) {
+      .nav-socials { display: none; }
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      top: 72px;
+      background: rgba(10,22,40,0.98);
+      backdrop-filter: blur(16px);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .mobile-menu.open {
+      display: flex;
+      opacity: 1;
+      pointer-events: all;
+    }
+    .mobile-menu a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--accent-bright); }
+    .mobile-menu .mob-cta {
+      background: var(--accent);
+      padding: 0.75rem 2.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    /* ─── PAGE HERO ──────────────────────────────────────── */
+    .page-hero {
+      position: relative;
+      padding: 140px 2rem 80px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .page-hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #0a1628 0%, #0f2044 50%, #0a1628 100%);
+    }
+    .page-hero-glow {
+      position: absolute;
+      width: 700px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(59,130,246,0.15) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .page-hero-content { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; }
+    .page-hero-label {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--accent-bright);
+      background: rgba(59,130,246,0.12);
+      border: 1px solid rgba(96,165,250,0.25);
+      padding: 0.4rem 1rem; border-radius: 100px;
+      margin-bottom: 1.4rem;
+    }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+    }
+    .page-hero h1 span { color: var(--accent-bright); }
+    .page-hero p {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: rgba(255,255,255,0.7);
+      line-height: 1.75;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    /* ─── ABOUT INTRO (text + image split) ──────────────── */
+    .about-intro {
+      background: #fff;
+      padding: 6rem 2rem;
+    }
+    .about-intro-inner {
+      max-width: 1160px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-intro-text {}
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .about-intro-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      color: #0a1628;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+    .about-intro-text h2 span { color: var(--accent); }
+    .about-intro-text p {
+      font-size: 0.97rem;
+      color: #475569;
+      line-height: 1.8;
+      margin-bottom: 1.1rem;
+    }
+    .about-intro-text p:last-child { margin-bottom: 0; }
+    .about-intro-img {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      box-shadow: 0 24px 64px rgba(10,22,40,0.14);
+    }
+    .about-intro-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .about-intro-img-badge {
+      position: absolute;
+      bottom: 1.5rem; left: 1.5rem;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    /* ─── STATS BAND ─────────────────────────────────────── */
+    .stats-band {
+      background: var(--navy);
+      padding: 5rem 2rem;
+    }
+    .stats-band-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+    .stat-item {}
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      color: var(--accent-bright);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .stat-label {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+      font-weight: 500;
+    }
+
+    /* ─── VALUES ─────────────────────────────────────────── */
+    .values-section {
+      background: #f1f5f9;
+      padding: 6rem 2rem;
+    }
+    .values-inner { max-width: 1100px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      color: #0a1628;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-header h2 span { color: var(--accent); }
+    .section-header p {
+      font-size: 1rem;
+      color: #64748b;
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .value-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(10,22,40,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .value-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(10,22,40,0.12); }
+    .value-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+    .value-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #0a1628;
+      margin-bottom: 0.7rem;
+    }
+    .value-card p {
+      font-size: 0.875rem;
+      color: #64748b;
+      line-height: 1.7;
+    }
+
+    /* ─── JOURNEY / TIMELINE ─────────────────────────────── */
+    .journey-section {
+      background: var(--navy);
+      padding: 6rem 2rem;
+    }
+    .journey-inner { max-width: 900px; margin: 0 auto; }
+    .journey-section .section-header h2 { color: #fff; }
+    .journey-section .section-header p { color: rgba(255,255,255,0.6); }
+
+    .timeline { position: relative; margin-top: 3rem; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: rgba(59,130,246,0.25);
+      transform: translateX(-50%);
+    }
+    .tl-item {
+      display: grid;
+      grid-template-columns: 1fr 48px 1fr;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 3.5rem;
+    }
+    .tl-item:last-child { margin-bottom: 0; }
+    .tl-item.right .tl-content-wrap { grid-column: 3; grid-row: 1; }
+    .tl-item.right .tl-empty { grid-column: 1; grid-row: 1; }
+
+    .tl-content {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 1.5rem;
+    }
+    .tl-year {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--accent-bright);
+      margin-bottom: 0.4rem;
+    }
+    .tl-content h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .tl-content p {
+      font-size: 0.84rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.65;
+    }
+    .tl-dot {
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(59,130,246,0.25);
+      margin: 0 auto;
+      z-index: 2;
+      position: relative;
+    }
+    .tl-empty {}
+
+    /* ─── TEAM ───────────────────────────────────────────── */
+    .team-section {
+      background: #fff;
+      padding: 6rem 2rem;
+    }
+    .team-inner { max-width: 1100px; margin: 0 auto; }
+    .team-section .section-header h2 { color: #0a1628; }
+    .team-section .section-header p { color: #64748b; }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .team-card {
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .team-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 8px 32px rgba(59,130,246,0.12);
+      transform: translateY(-4px);
+    }
+    .team-avatar {
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1.2rem;
+      display: block;
+      border: 3px solid #e2e8f0;
+    }
+    .team-avatar-placeholder {
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-bright) 100%);
+      margin: 0 auto 1.2rem;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 900;
+      color: #fff;
+    }
+    .team-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 700;
+      color: #0a1628; margin-bottom: 0.25rem;
+    }
+    .team-card .role {
+      font-size: 0.82rem; font-weight: 600;
+      color: var(--accent); text-transform: uppercase;
+      letter-spacing: 1px; margin-bottom: 0.8rem;
+    }
+    .team-card p {
+      font-size: 0.86rem; color: #64748b; line-height: 1.65;
+    }
+
+    /* ─── ON-DEMAND EXPERTISE ────────────────────────────── */
+    .expertise-section {
+      background: var(--navy-mid);
+      padding: 5rem 2rem;
+    }
+    .expertise-inner { max-width: 1100px; margin: 0 auto; }
+    .expertise-section .section-header h2 { color: #fff; }
+    .expertise-section .section-header p { color: rgba(255,255,255,0.6); }
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin-top: 3rem;
+    }
+    .exp-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 1.6rem;
+      display: flex; align-items: center; gap: 1rem;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .exp-card:hover {
+      background: rgba(59,130,246,0.1);
+      border-color: rgba(59,130,246,0.4);
+      transform: translateY(-3px);
+    }
+    .exp-icon {
+      width: 48px; height: 48px; flex-shrink: 0;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .exp-card h4 { font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem; }
+    .exp-card p { font-size: 0.8rem; color: rgba(255,255,255,0.55); line-height: 1.5; }
+
+    /* ─── OFFICE LOCATIONS ───────────────────────────────── */
+    .offices-section {
+      background: #f1f5f9;
+      padding: 6rem 2rem;
+    }
+    .offices-inner { max-width: 1100px; margin: 0 auto; }
+    .offices-section .section-header h2 { color: #0a1628; }
+    .offices-section .section-header p { color: #64748b; }
+    .offices-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .office-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 2rem;
+      box-shadow: 0 4px 24px rgba(10,22,40,0.07);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .office-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(10,22,40,0.12); }
+    .office-flag {
+      font-size: 2rem; margin-bottom: 1rem; display: block;
+    }
+    .office-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 700;
+      color: #0a1628; margin-bottom: 0.5rem;
+    }
+    .office-card .country {
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1rem;
+    }
+    .office-addr {
+      font-size: 0.88rem; color: #64748b;
+      line-height: 1.7; margin-bottom: 1.2rem;
+    }
+    .office-contact { display: flex; flex-direction: column; gap: 0.4rem; }
+    .office-contact a {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.84rem; color: #475569; text-decoration: none;
+      transition: color 0.2s;
+    }
+    .office-contact a:hover { color: var(--accent); }
+    .office-divider {
+      width: 40px; height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-bottom: 1.2rem;
+    }
+
+    /* ─── FOOTER STYLES ──────────────────────────────────── */
+    .site-footer {
+      background: #111827;
+      color: rgba(255,255,255,0.75);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* TOP BAND */
+    .footer-top {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-top .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    /* Footer Logo */
+    .ft-logo-link {
+      display: inline-block;
+      margin-bottom: 0.75rem;
+      text-decoration: none;
+    }
+    .ft-logo-img {
+      height: 48px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+    .ft-tagline {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.55;
+      margin-bottom: 1.4rem;
+    }
+    .ft-office-phone {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 0.25rem;
+    }
+
+    /* CTA left */
+    .ft-left {}
+    .ft-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--accent, #3b82f6);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 0.75rem 1.6rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      margin-bottom: 1.8rem;
+    }
+    .ft-cta-btn:hover { background: #60a5fa; transform: translateY(-2px); }
+
+    .ft-socials {
+      display: flex;
+      gap: 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+    .ft-social-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(59,130,246,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-bright, #60a5fa);
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .ft-social-icon:hover { background: var(--accent, #3b82f6); color: #fff; }
+
+    .ft-email {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.88rem;
+    }
+    .ft-email a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .ft-email a:hover { color: #fff; }
+
+    /* Offices */
+    .ft-offices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .ft-office-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+    .ft-office-addr {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.55);
+    }
+    .ft-rating {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      width: fit-content;
+    }
+    .ft-rating-score { font-weight: 700; font-size: 0.9rem; color: #fff; }
+    .ft-rating-sub { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
+
+    /* Badges */
+    .ft-badges {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+    }
+    .ft-badge {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.78rem;
+    }
+    .ft-badge-iso .iso-text {
+      font-size: 0.72rem;
+      line-height: 1.3;
+      color: #e11d48;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .ft-badge-sf { align-items: center; }
+    .sf-text { display: flex; flex-direction: column; font-size: 0.72rem; color: rgba(255,255,255,0.7); line-height: 1.3; }
+    .sf-text span:first-child { font-weight: 700; color: #fff; }
+    .db-text { display: flex; flex-direction: column; font-size: 0.7rem; line-height: 1.4; color: rgba(255,255,255,0.65); }
+    .db-text span { font-weight: 700; color: #fff; font-size: 0.75rem; }
+
+    /* MID BAND */
+    .footer-mid {
+      padding: 3rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-mid .footer-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .ft-col { display: flex; flex-direction: column; gap: 0.65rem; }
+    .ft-col-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.3px;
+    }
+    .ft-col a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+    .ft-col a:hover { color: #fff; }
+
+    /* BOTTOM BAR */
+    .footer-bottom { padding: 1.4rem 0; }
+    .footer-bottom .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+    .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.45); }
+    .ft-bottom-links { display: flex; gap: 1.5rem; }
+    .ft-bottom-links a {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .ft-bottom-links a:hover { color: #fff; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .footer-top .footer-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+      .ft-offices { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 992px) {
+      .about-intro-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .about-intro-img { max-width: 560px; }
+      .stats-band-inner { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+      .values-grid { grid-template-columns: 1fr 1fr; }
+      .expertise-grid { grid-template-columns: 1fr 1fr; }
+      .offices-grid { grid-template-columns: 1fr 1fr; }
+      .team-grid { grid-template-columns: 1fr 1fr; max-width: 100%; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .timeline::before { left: 24px; transform: none; }
+      .tl-item { grid-template-columns: 48px 1fr; gap: 0; }
+      .tl-item .tl-content-wrap { grid-column: 2; grid-row: 1; padding-left: 1rem; }
+      .tl-item.right .tl-content-wrap { grid-column: 2; }
+      .tl-item.right .tl-empty { display: none; }
+      .tl-item .tl-empty { display: none; }
+      .tl-dot { margin: 0; }
+      .footer-top .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .ft-badges { grid-template-columns: repeat(2, 1fr); }
+      .footer-mid .footer-inner { grid-template-columns: 1fr 1fr; gap: 1.8rem; }
+      .values-grid { grid-template-columns: 1fr; }
+      .expertise-grid { grid-template-columns: 1fr; }
+      .offices-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .page-hero { padding: 120px 1.25rem 60px; }
+      .about-intro { padding: 4rem 1.25rem; }
+      .stats-band { padding: 3.5rem 1.25rem; }
+      .stats-band-inner { grid-template-columns: 1fr 1fr; }
+      .values-section, .journey-section, .team-section, .expertise-section, .offices-section { padding: 4rem 1.25rem; }
+      .footer-inner { padding: 0 1.25rem; }
+      .footer-bottom .footer-inner { flex-direction: column; align-items: flex-start; }
+      .ft-bottom-links { flex-wrap: wrap; gap: 1rem; }
+      .team-grid { grid-template-columns: 1fr; }
+    }
+
+    
+    /* ─── NAV DROPDOWN (fixed hover gap) ─── */
+    .nav-has-dropdown { position: relative; }
+    .nav-drop-label {
+      display: flex; align-items: center; gap: 5px;
+      color: rgba(255,255,255,0.8); font-size: 0.92rem; font-weight: 500;
+      letter-spacing: 0.3px; cursor: pointer; transition: color 0.2s; user-select: none;
+    }
+    .nav-drop-label:hover { color: #fff; }
+    /* Invisible bridge fills the gap between label and panel so hover doesn't break */
+    .nav-has-dropdown::after {
+      content: ''; position: absolute;
+      top: 100%; left: 0; right: 0; height: 16px;
+    }
+    .drop-panel {
+      display: none; position: absolute;
+      top: calc(100% + 14px); left: 50%; transform: translateX(-50%);
+      background: rgba(10,22,40,0.98);
+      border: 1px solid rgba(96,165,250,0.15); border-radius: 12px;
+      padding: 0.6rem; min-width: 240px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.5); z-index: 200;
+    }
+    .nav-has-dropdown:hover .drop-panel { display: flex; flex-direction: column; gap: 4px; }
+    .drop-panel a {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.65rem 0.85rem; border-radius: 8px;
+      text-decoration: none; color: rgba(255,255,255,0.8);
+      font-size: 0.88rem; transition: background 0.2s, color 0.2s;
+    }
+    .drop-panel a:hover, .drop-panel a.dp-current { background: rgba(59,130,246,0.12); color: #fff; }
+    .dp-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .dp-meta { display: flex; flex-direction: column; line-height: 1.3; }
+    .dp-meta small { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 1px; }
+
+    /* ─── MOBILE MENU FIXES ─── */
+    /* Hide social icons on mobile */
+    @media (max-width: 768px) {
+      .nav-socials { display: none !important; }
+      .logo img, .logo-img-wrap img { max-width: 100px !important; height: 34px !important; }
+      .logo-placeholder .logo-img-wrap img { max-width: 100px !important; height: 34px !important; }
+    }
+    /* Smaller, tighter mobile menu */
+    .mobile-menu a { font-size: 1.05rem !important; }
+    .mobile-menu .mob-cta { font-size: 0.95rem !important; padding: 0.6rem 2rem !important; }
+    /* Products sub-links in mobile */
+    .mob-products-label {
+      color: rgba(255,255,255,0.5); font-size: 0.7rem !important;
+      letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600;
+      pointer-events: none; margin-top: 0.25rem;
+    }
+    .mob-sub { font-size: 0.95rem !important; color: rgba(255,255,255,0.65) !important; padding-left: 1.2rem; }
+    .mob-sub.mob-active { color: var(--accent-bright) !important; }
+
+    
+    /* ─── PAGE STYLES ─── */
     body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; }
 
     /* ─── NAVBAR ─────────────────────────────────────── */
@@ -369,35 +1222,74 @@
       .ft-bottom-links { flex-wrap: wrap; gap: 1rem; }
       .footer-mid .footer-inner { grid-template-columns: 1fr; }
     }
+  
   </style>
 </head>
 <body>
 
   <!-- ═══ NAVBAR ═══ -->
   <nav id="navbar">
-    <a href="home.html" class="logo"><img src="./img/logo.png" alt="Gagstek" /></a>
+    <a href="index.html" class="logo"><img src="./img/logo.png" alt="Gagstek"></a>
+
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About Us</a></li>
       <li><a href="services.html">Services</a></li>
-      <li><a href="client.html">Client Stories</a></li>
-      <li><a href="#">Products</a></li>
-      <li><a href="careers.html">Careers</a></li>
-      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="client.html">Clients</a></li>
+      <li class="nav-has-dropdown">
+        <span class="nav-drop-label">
+          Products
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </span>
+        <div class="drop-panel">
+          <a href="icrm.html">
+            <div class="dp-icon" style="background:rgba(59,130,246,0.15);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+            <div class="dp-meta">E2E Sales<small>Lead to Invoice, automated</small></div>
+          </a>
+          <a href="stockpro.html">
+            <div class="dp-icon" style="background:rgba(34,197,94,0.15);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
+            <div class="dp-meta">StockPro<small>Smart inventory management</small></div>
+          </a>
+        </div>
+      </li>
+      <li><a href="career.html">Career</a></li>
+      <li><a href="contact.html" style="color:#60a5fa;">Contact</a></li>
       <li><a href="contact.html" class="nav-cta">Request a Meeting</a></li>
     </ul>
+
+    <!-- Nav Social Icons -->
+    <div class="nav-socials">
+      <a href="https://api.whatsapp.com/send?phone=919049023824" aria-label="WhatsApp" class="nav-social-icon" target="_blank" rel="noopener">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.93 11.93 0 0012 0C5.37 0 0 5.37 0 12a11.9 11.9 0 001.64 6.07L0 24l6.13-1.61A11.93 11.93 0 0012 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.22-3.48-8.52zm-8.52 18.44a9.9 9.9 0 01-5.04-1.38l-.36-.21-3.74.98.99-3.64-.24-.38A9.9 9.9 0 012.1 12c0-5.46 4.44-9.9 9.9-9.9 2.64 0 5.12 1.03 6.99 2.9a9.84 9.84 0 012.9 6.99c0 5.47-4.44 9.93-9.9 9.93zm5.43-7.41c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07a8.13 8.13 0 01-2.4-1.48 9.02 9.02 0 01-1.66-2.07c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.09 3.19 5.07 4.47.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35z"/></svg>
+      </a>
+      <a href="https://www.youtube.com/@GagstekLLP" aria-label="YouTube" class="nav-social-icon" target="_blank" rel="noopener">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="rgba(10,22,40,0.97)"/></svg>
+      </a>
+      <a href="https://www.instagram.com/gagstek___/" aria-label="Instagram" class="nav-social-icon" target="_blank" rel="noopener">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="https://in.linkedin.com/company/gagstek" aria-label="LinkedIn" class="nav-social-icon" target="_blank" rel="noopener">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+    </div>
+
     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
   </nav>
 
+  <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
     <a href="services.html">Services</a>
-    <a href="#">Products</a>
-    <a href="careers.html">Careers</a>
-    <a href="contact.html">Contact</a>
+    <a href="client.html">Clients</a>
+    
+    <a href="#" class="mob-products-label">Products</a>
+    <a href="icrm.html" class="mob-sub">→ E2E Sales</a>
+    <a href="stockpro.html" class="mob-sub">→ StockPro</a>
+    <a href="career.html">Career</a>
+    <a href="contact.html" style="color:#60a5fa;">Contact</a>
     <a href="contact.html" class="mob-cta">Request a Meeting</a>
   </div>
 
@@ -821,29 +1713,40 @@
 
   <!-- ═══ FOOTER ═══ -->
   <footer class="site-footer">
+
+    <!-- Top band: Logo + Social + Office addresses + Badges -->
     <div class="footer-top">
       <div class="footer-inner">
-        <div>
-          <a href="home.html" class="ft-logo-link">
-            <img src="./img/logo.png" alt="Gagstek" class="ft-logo-img" />
+
+        <!-- Left: Logo + Social + Email -->
+        <div class="ft-left">
+          <!-- GAGSTEK LOGO: replace "logo.png" with your actual logo file path -->
+          <a href="https://gagstek.com" class="ft-logo-link">
+            <img
+              src="logo.png"
+              alt="Gagstek"
+              class="ft-logo-img"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"
+            /><span class="ft-logo-fallback" style="display:none;font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;color:#fff;">Gags<span style="color:#60a5fa;">tek</span></span>
           </a>
-          <p class="ft-tagline">Translating business aspirations into reality through Salesforce &amp; AI excellence.</p>
-          <a href="#" onclick="document.getElementById('fname').scrollIntoView({behavior:'smooth'}); return false;" class="ft-cta-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            Let's Talk
-          </a>
+          <p class="ft-tagline">Unleashing Business Potential<br>with Cloud &amp; AI</p>
+          <a href="https://gagstek.com/contact-us/" class="ft-cta-btn">Get Started ↗</a>
           <div class="ft-socials">
-            <a href="https://www.youtube.com/@GagstekLLP" class="ft-social-icon" target="_blank" aria-label="YouTube">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2s-.3-1.9-1.1-2.7c-1.1-1.1-2.3-1.1-2.8-1.2C16.8 2 12 2 12 2s-4.8 0-7.6.3c-.6.1-1.8.1-2.8 1.2C.8 4.3.5 6.2.5 6.2S.2 8.4.2 10.6v2.1c0 2.2.3 4.4.3 4.4s.3 1.9 1.1 2.7c1.1 1.1 2.5 1.1 3.1 1.2C6.8 21.1 12 21.1 12 21.1s4.8 0 7.6-.3c.6-.1 1.8-.1 2.8-1.2.8-.8 1.1-2.7 1.1-2.7s.3-2.2.3-4.4v-2.1c0-2.2-.3-4.4-.3-4.4zm-14 8.9V8.9l7.6 3.1-7.6 3.1z"/></svg>
+            <!-- WhatsApp -->
+            <a href="https://api.whatsapp.com/send?phone=919049023824" aria-label="WhatsApp" class="ft-social-icon" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.93 11.93 0 0012 0C5.37 0 0 5.37 0 12a11.9 11.9 0 001.64 6.07L0 24l6.13-1.61A11.93 11.93 0 0012 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.22-3.48-8.52zm-8.52 18.44a9.9 9.9 0 01-5.04-1.38l-.36-.21-3.74.98.99-3.64-.24-.38A9.9 9.9 0 012.1 12c0-5.46 4.44-9.9 9.9-9.9 2.64 0 5.12 1.03 6.99 2.9a9.84 9.84 0 012.9 6.99c0 5.47-4.44 9.93-9.9 9.93zm5.43-7.41c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07a8.13 8.13 0 01-2.4-1.48 9.02 9.02 0 01-1.66-2.07c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.09 3.19 5.07 4.47.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35z"/></svg>
             </a>
-            <a href="https://www.instagram.com/gagstek___/" class="ft-social-icon" target="_blank" aria-label="Instagram">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/gagstek___/" aria-label="Instagram" class="ft-social-icon" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
             </a>
-            <a href="https://in.linkedin.com/company/gagstek" class="ft-social-icon" target="_blank" aria-label="LinkedIn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            <!-- LinkedIn -->
+            <a href="https://in.linkedin.com/company/gagstek" aria-label="LinkedIn" class="ft-social-icon" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
             </a>
-            <a href="https://api.whatsapp.com/send?phone=919049023824" class="ft-social-icon" target="_blank" aria-label="WhatsApp">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            <!-- YouTube -->
+            <a href="https://www.youtube.com/@GagstekLLP" aria-label="YouTube" class="ft-social-icon" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="rgba(10,22,40,0.85)"/></svg>
             </a>
           </div>
           <div class="ft-email">
@@ -851,87 +1754,77 @@
             <a href="mailto:info@gagstek.com">info@gagstek.com</a>
           </div>
         </div>
+
+        <!-- Middle: Office Addresses -->
         <div class="ft-offices">
-          <div>
-            <p class="ft-office-title">United States 🇺🇸</p>
+          <div class="ft-office">
+            <p class="ft-office-title">United States Office 🇺🇸</p>
             <p class="ft-office-addr">16192 Coastal Highway, Lewes,<br>Delaware 19958, County of Sussex</p>
             <p class="ft-office-phone">📞 +1-567-399-2506</p>
           </div>
-          <div>
-            <p class="ft-office-title">India 🇮🇳</p>
+          <div class="ft-office">
+            <p class="ft-office-title">India Office 🇮🇳</p>
             <p class="ft-office-addr">P3-001 Pentagon Tower,<br>Magarpatta City, Pune 411013</p>
           </div>
-          <div>
-            <p class="ft-office-title">Australia 🇦🇺</p>
-            <p class="ft-office-addr">161 Collins St, Melbourne VIC, 3000</p>
+          <div class="ft-office">
+            <p class="ft-office-title">Australia Office 🇦🇺</p>
+            <p class="ft-office-addr">161 Collins St,<br>Melbourne VIC, 3000</p>
             <p class="ft-office-phone">📞 +61-473118458</p>
           </div>
-          <div class="ft-rating">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-            <div><p class="ft-rating-score">4.7/5 ★</p><p class="ft-rating-sub">AppExchange Rated Partner</p></div>
-          </div>
         </div>
-        <div class="ft-badges">
-          <div class="ft-badge">
-            <svg width="38" height="38" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="28" fill="#00A1E0"/><text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-size="9" font-weight="bold" fill="white" font-family="Arial">Salesforce</text></svg>
-            <div class="sf-text"><span>Crest</span><span>Partner</span></div>
-          </div>
-          <div class="ft-badge ft-badge-iso">
-            <span class="iso-text">ISO<br><strong>27001</strong><br><small>CERTIFIED</small></span>
-          </div>
-          <div class="ft-badge">
-            <svg width="36" height="22" viewBox="0 0 80 50" fill="none"><text y="22" font-size="14" font-weight="bold" fill="#FF9900" font-family="Arial">aws</text><text y="38" font-size="9" fill="#FF9900" font-family="Arial">Partner</text><text y="48" font-size="9" fill="#FF9900" font-family="Arial">Network</text></svg>
-          </div>
-          <div class="ft-badge">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF3621"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            <div class="db-text"><small>databricks</small><span>Consulting Partner</span><small>Registered</small></div>
-          </div>
-        </div>
+
+
+
       </div>
     </div>
 
+    <!-- Middle band: Nav links -->
     <div class="footer-mid">
       <div class="footer-inner">
+
         <div class="ft-col">
           <p class="ft-col-title">Salesforce Services</p>
-          <a href="#">Business Consulting & Advisory</a>
-          <a href="#">Implementation & Development</a>
-          <a href="#">Quote-To-Cash Services</a>
-          <a href="#">Administration & Support</a>
-          <a href="#">Data Migration</a>
-          <a href="#">Staff Augmentation</a>
+          <a href="https://gagstek.com/what-we-do-2/">Business Consulting & Advisory</a>
+          <a href="https://gagstek.com/what-we-do-2/">Implementation & Development</a>
+          <a href="https://gagstek.com/what-we-do-2/">Quote-To-Cash Services</a>
+          <a href="https://gagstek.com/what-we-do-2/">Administration & Support</a>
+          <a href="https://gagstek.com/what-we-do-2/">Data Migration</a>
+          <a href="https://gagstek.com/what-we-do-2/">Staff Augmentation</a>
         </div>
+
         <div class="ft-col">
           <p class="ft-col-title">AI Services</p>
-          <a href="#">AI Sales Automation</a>
-          <a href="#">AI Lead Intelligence</a>
-          <a href="#">Conversational AI Systems</a>
-          <a href="#">AI Workflow Orchestration</a>
-          <a href="#">AI Data Engineering</a>
-          <a href="#">Custom AI Product Builds</a>
+          <a href="https://gagstek.com/what-we-do-2/">AI Sales Automation</a>
+          <a href="https://gagstek.com/what-we-do-2/">AI Lead Intelligence</a>
+          <a href="https://gagstek.com/what-we-do-2/">Conversational AI Systems</a>
+          <a href="https://gagstek.com/what-we-do-2/">AI Workflow Orchestration</a>
+          <a href="https://gagstek.com/what-we-do-2/">AI Data Engineering</a>
+          <a href="https://gagstek.com/what-we-do-2/">Custom AI Product Builds</a>
         </div>
-        <div class="ft-col">
+
+                <div class="ft-col">
           <p class="ft-col-title">Products</p>
-          <a href="https://gagstek.com/products/">E2E Sales</a>
-          <a href="https://gagstek.com/stockpro/">StockPro</a>
-          <a href="#">AppExchange Products</a>
-          <a href="#">Mobile-first Products</a>
+          <a href="icrm.html">E2E Sales</a>
+          <a href="stockpro.html">StockPro</a>
         </div>
-        <div class="ft-col">
+
+                <div class="ft-col">
           <p class="ft-col-title">Company</p>
-          <a href="https://gagstek.com/about/">About Us</a>
-          <a href="https://gagstek.com/client-stories-2/">Client Stories</a>
-          <a href="employee-review.html">Employees' Words</a>
-          <a href="careers.html">Careers</a>
-          <a href="https://gagstek.com/blogs/">Blogs</a>
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="client.html">Clients</a>
+          <a href="employee-review.html">Employee Review</a>
+          <a href="career.html">Career</a>
           <a href="contact.html">Contact Us</a>
         </div>
+
       </div>
     </div>
 
+    <!-- Bottom bar: copyright -->
     <div class="footer-bottom">
       <div class="footer-inner">
-        <p>© 2025 GAGSTEK LLP. All Rights Reserved.</p>
+        <p>© 2026 Gagstek. All Rights Reserved.</p>
         <div class="ft-bottom-links">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms Of Services</a>
@@ -939,6 +1832,7 @@
         </div>
       </div>
     </div>
+
   </footer>
 
   <script>
