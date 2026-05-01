@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>iCRM – E2E Sales Suite | Gagstek</title>
+  <title>Case Studies – Gagstek</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-
   <style>
+
     :root {
       --navy: #0a1628;
       --navy-mid: #0f2044;
@@ -869,288 +869,247 @@
     .mob-sub.mob-active { color: var(--accent-bright) !important; }
 
     
+
     /* ─── PAGE STYLES ─── */
-    /* Products dropdown */
-    .nav-has-dropdown { cursor: pointer; }
-    .nav-drop-label {
-      display: flex; align-items: center; gap: 0.3rem;
-      color: var(--accent-bright); font-size: 0.92rem; font-weight: 500;
-      letter-spacing: 0.3px; transition: color 0.2s; user-select: none;
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #0f2044;
+      --accent: #3b82f6;
+      --accent-bright: #60a5fa;
+      --gold: #f59e0b;
+      --white: #ffffff;
     }
-    .nav-drop-label svg { transition: transform 0.25s; }
-    .nav-has-dropdown:hover .nav-drop-label svg { transform: rotate(180deg); }
-    .nav-has-dropdown:hover .nav-drop-label { color: var(--white); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; }
 
-    .drop-panel {
-      position: absolute; top: calc(100% + 14px); left: 50%;
-      transform: translateX(-50%) translateY(-6px);
-      background: #0d1f3c;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 12px; padding: 0.4rem;
-      min-width: 230px;
-      opacity: 0; pointer-events: none;
-      transition: opacity 0.22s, transform 0.22s;
-      box-shadow: 0 16px 48px rgba(0,0,0,0.5);
-      z-index: 200;
+    /* ─── HERO ─── */
+    .page-hero {
+      position: relative;
+      padding: 140px 2rem 80px;
+      text-align: center;
+      background: linear-gradient(135deg, #0a1628 0%, #0f2044 50%, #0a1628 100%);
+      overflow: hidden;
     }
-    .nav-has-dropdown:hover .drop-panel {
-      opacity: 1; pointer-events: all;
-      transform: translateX(-50%) translateY(0);
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+      pointer-events: none;
     }
-    .drop-panel a {
-      display: flex !important; align-items: center; gap: 0.75rem;
-      padding: 0.72rem 0.9rem; border-radius: 8px;
-      color: rgba(255,255,255,0.72) !important;
-      font-size: 0.88rem !important; font-weight: 500 !important;
-      transition: background 0.18s, color 0.18s; text-decoration: none;
+    .page-hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(59,130,246,0.12);
+      border: 1px solid rgba(59,130,246,0.35);
+      border-radius: 100px; padding: 0.4rem 1.1rem;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--accent-bright); margin-bottom: 1.4rem;
     }
-    .drop-panel a:hover { background: rgba(59,130,246,0.15); color: #fff !important; }
-    .drop-panel a.dp-current { background: rgba(59,130,246,0.2); color: var(--accent-bright) !important; }
-    .dp-icon { width: 30px; height: 30px; border-radius: 7px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .dp-meta small { display: block; font-size: 0.72rem; color: rgba(255,255,255,0.4); font-weight: 400; margin-top: 1px; }
+    .page-hero-eyebrow::before { content:''; width:6px; height:6px; background:var(--accent-bright); border-radius:50%; }
+    .page-hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 900; line-height: 1.1;
+      letter-spacing: -1px; color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .page-hero-title span { color: var(--accent-bright); }
+    .page-hero-sub {
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: rgba(255,255,255,0.65);
+      max-width: 560px; margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+    .hero-stats-strip {
+      display: flex; justify-content: center; gap: 3rem;
+      flex-wrap: wrap; margin-top: 2.5rem;
+      position: relative; z-index: 1;
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 900;
+      color: var(--accent-bright); display: block;
+    }
+    .hero-stat-label {
+      font-size: 0.75rem; color: rgba(255,255,255,0.5);
+      text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500;
+    }
 
-    /* Hamburger */
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
-    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    /* ─── FILTER BAR ─── */
+    .filter-bar {
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 1.2rem 2rem;
+      display: flex; justify-content: center;
+      gap: 0.6rem; flex-wrap: wrap;
+    }
+    .filter-btn {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.6);
+      padding: 0.45rem 1.1rem;
+      border-radius: 100px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem; font-weight: 500;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--accent); border-color: var(--accent);
+      color: #fff;
+    }
 
-    /* Mobile menu */
-    .mobile-menu {
-      display: none; position: fixed; inset: 0; top: 72px;
-      background: rgba(10,22,40,0.98); backdrop-filter: blur(16px);
-      z-index: 99; flex-direction: column; align-items: center; justify-content: center;
-      gap: 2rem; opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    /* ─── CASES GRID ─── */
+    .cases-section {
+      padding: 5rem 2rem 6rem;
+      max-width: 1200px; margin: 0 auto;
     }
-    .mobile-menu.open { display: flex; opacity: 1; pointer-events: all; }
-    .mobile-menu a { color: var(--white); text-decoration: none; font-size: 1.4rem; font-weight: 500; letter-spacing: 0.5px; transition: color 0.2s; }
-    .mobile-menu a:hover { color: var(--accent-bright); }
-    .mobile-menu .mob-cta { background: var(--accent); padding: 0.75rem 2.5rem; border-radius: 8px; font-weight: 600; font-size: 1rem; }
-    .mob-prod-label { font-size: 0.7rem !important; font-weight: 700 !important; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-bright) !important; }
-    .mob-sub { font-size: 1.1rem !important; color: rgba(255,255,255,0.6) !important; }
-    .mob-sub.mob-active { color: var(--accent-bright) !important; }
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+      margin-top: 0;
+    }
+    .case-card {
+      border-radius: 18px; overflow: hidden;
+      position: relative; transition: transform 0.28s, box-shadow 0.28s;
+      cursor: pointer; display: flex; flex-direction: column;
+    }
+    .case-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,0.35); }
+    .case-thumb { position: relative; aspect-ratio: 16/10; overflow: hidden; }
+    .case-thumb img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.5s ease;
+      filter: brightness(0.75) saturate(1.05);
+    }
+    .case-card:hover .case-thumb img { transform: scale(1.06); }
+    .case-thumb-gradient {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,22,40,0.9) 0%, rgba(10,22,40,0.2) 60%);
+    }
+    .case-industry-badge {
+      position: absolute; top: 0.9rem; left: 0.9rem;
+      background: rgba(59,130,246,0.85); border-radius: 6px;
+      padding: 0.3rem 0.75rem; font-size: 0.7rem; font-weight: 700;
+      color: #fff; letter-spacing: 0.8px; text-transform: uppercase;
+    }
+    .case-body {
+      background: rgba(255,255,255,0.04);
+      border: 1.5px solid rgba(255,255,255,0.09);
+      border-top: none; border-radius: 0 0 18px 18px;
+      padding: 1.5rem; flex: 1;
+      display: flex; flex-direction: column;
+    }
+    .case-card:hover .case-body { border-color: rgba(59,130,246,0.35); }
+    .case-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--accent-bright); margin-bottom: 0.5rem;
+    }
+    .case-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--white); line-height: 1.35; margin-bottom: 0.75rem; flex: 1;
+    }
+    .case-outcomes { display: flex; gap: 1rem; margin-bottom: 1.1rem; flex-wrap: wrap; }
+    .case-outcome-item { display: flex; flex-direction: column; gap: 0.1rem; }
+    .case-outcome-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 900;
+      color: var(--accent-bright); line-height: 1;
+    }
+    .case-outcome-label { font-size: 0.7rem; color: rgba(255,255,255,0.5); letter-spacing: 0.3px; }
+    .case-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.82rem; font-weight: 700;
+      color: var(--accent-bright); text-decoration: none;
+      transition: gap 0.2s, color 0.2s;
+    }
+    .case-link:hover { gap: 0.7rem; color: #fff; }
+    .case-card.hidden { display: none; }
 
-    /* ─── PAGE HERO ──────────────────────────────────────── */
-    .page-hero { position: relative; padding: 140px 2rem 80px; text-align: center; overflow: hidden; }
-    .page-hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #0a1628 0%, #0f2044 50%, #0a1628 100%); }
-    .page-hero-glow {
-      position: absolute; width: 700px; height: 400px; border-radius: 50%;
-      background: radial-gradient(ellipse, rgba(59,130,246,0.15) 0%, transparent 70%);
-      top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;
+    /* ─── CTA BAND ─── */
+    .cta-band {
+      background: linear-gradient(135deg, #0f2044 0%, #1a3a6e 50%, #0a1628 100%);
+      padding: 5rem 2rem; text-align: center;
+      position: relative; overflow: hidden;
     }
-    .page-hero-content { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; }
-    .page-hero-label {
-      display: inline-block; font-size: 0.75rem; font-weight: 700;
-      letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent-bright);
-      background: rgba(59,130,246,0.12); border: 1px solid rgba(96,165,250,0.25);
-      padding: 0.4rem 1rem; border-radius: 100px; margin-bottom: 1.4rem;
+    .cta-band::before {
+      content: ''; position: absolute;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none;
     }
-    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; line-height: 1.15; margin-bottom: 1.2rem; }
-    .page-hero h1 span { color: var(--accent-bright); }
-    .page-hero p { font-size: clamp(1rem, 2vw, 1.15rem); color: rgba(255,255,255,0.7); line-height: 1.75; max-width: 620px; margin: 0 auto; }
-
-    /* ─── ABOUT INTRO (white split section) ─────────────── */
-    .about-intro { background: #fff; padding: 6rem 2rem; }
-    .about-intro-inner {
-      max-width: 1160px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 5rem; align-items: center;
+    .cta-band-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+    .cta-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.35);
+      border-radius: 100px; padding: 0.4rem 1rem;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--accent-bright); margin-bottom: 1.2rem;
     }
-    .about-intro-inner.reverse { direction: rtl; }
-    .about-intro-inner.reverse > * { direction: ltr; }
-
-    .section-label {
-      display: inline-block; font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;
+    .cta-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 900; color: var(--white);
+      margin-bottom: 1rem; line-height: 1.15;
     }
-    .about-intro-text h2 {
-      font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-      font-weight: 900; color: #0a1628; line-height: 1.2; margin-bottom: 1.5rem;
-    }
-    .about-intro-text h2 span { color: var(--accent); }
-    .about-intro-text p { font-size: 0.97rem; color: #475569; line-height: 1.8; margin-bottom: 1.1rem; }
-    .about-intro-text p:last-of-type { margin-bottom: 0; }
-
-    .about-intro-img { position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 24px 64px rgba(10,22,40,0.14); }
-    .about-intro-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .about-intro-img-badge {
-      position: absolute; bottom: 1.5rem; left: 1.5rem;
+    .cta-title span { color: var(--accent-bright); }
+    .cta-sub { font-size: 1rem; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 2rem; }
+    .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .cta-btn-primary {
       background: var(--accent); color: #fff;
-      padding: 0.6rem 1.2rem; border-radius: 10px; font-size: 0.82rem; font-weight: 700;
+      padding: 0.85rem 2rem; border-radius: 8px;
+      font-size: 0.95rem; font-weight: 700; text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 20px rgba(59,130,246,0.4);
     }
-
-    .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem; }
-    .btn-fill {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      background: var(--accent); color: #fff; padding: 0.7rem 1.6rem;
-      border-radius: 7px; font-size: 0.9rem; font-weight: 700;
-      text-decoration: none; transition: background 0.2s, transform 0.15s;
+    .cta-btn-primary:hover { background: #2563eb; transform: translateY(-2px); }
+    .cta-btn-outline {
+      background: transparent; color: var(--white);
+      padding: 0.85rem 2rem; border-radius: 8px;
+      font-size: 0.95rem; font-weight: 700; text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.35);
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
     }
-    .btn-fill:hover { background: var(--accent-bright); transform: translateY(-2px); }
-    .btn-stroke {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      border: 1.5px solid var(--accent); color: var(--accent);
-      padding: 0.7rem 1.6rem; border-radius: 7px; font-size: 0.9rem; font-weight: 700;
-      text-decoration: none; transition: background 0.2s, color 0.2s, transform 0.15s;
+    .cta-btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.07); transform: translateY(-2px); }
+
+    /* ─── REVEAL ANIMATION ─── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── SECTION HEADER ─── */
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-eyebrow {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--accent-bright); margin-bottom: 0.6rem;
     }
-    .btn-stroke:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
-
-    /* ─── STATS BAND ─────────────────────────────────────── */
-    .stats-band { background: var(--navy); padding: 5rem 2rem; }
-    .stats-band-inner {
-      max-width: 1100px; margin: 0 auto;
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center;
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900;
+      color: var(--white); line-height: 1.15; margin-bottom: 0.75rem;
     }
-    .stat-number { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 900; color: var(--accent-bright); line-height: 1; margin-bottom: 0.5rem; }
-    .stat-label { font-size: 0.88rem; color: rgba(255,255,255,0.6); font-weight: 500; }
+    .section-title .accent { color: var(--accent-bright); }
+    .section-sub { font-size: 1rem; color: rgba(255,255,255,0.6); margin-bottom: 2.5rem; max-width: 600px; }
 
-    /* ─── VALUES (features grid) ─────────────────────────── */
-    .values-section { background: #f1f5f9; padding: 6rem 2rem; }
-    .values-inner { max-width: 1100px; margin: 0 auto; }
-    .section-header { text-align: center; margin-bottom: 3.5rem; }
-    .section-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 900; color: #0a1628; line-height: 1.2; margin-bottom: 1rem; }
-    .section-header h2 span { color: var(--accent); }
-    .section-header p { font-size: 1rem; color: #64748b; max-width: 560px; margin: 0 auto; line-height: 1.7; }
-    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .value-card { background: #fff; border-radius: 16px; padding: 2rem; box-shadow: 0 4px 20px rgba(10,22,40,0.06); transition: transform 0.2s, box-shadow 0.2s; }
-    .value-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(10,22,40,0.12); }
-    .value-icon { width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; }
-    .value-card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: #0a1628; margin-bottom: 0.7rem; }
-    .value-card p { font-size: 0.875rem; color: #64748b; line-height: 1.7; }
-    .feat-list { list-style: none; margin-top: 0.7rem; display: flex; flex-direction: column; gap: 0.3rem; }
-    .feat-list li { font-size: 0.82rem; color: #64748b; display: flex; align-items: flex-start; gap: 0.45rem; }
-    .feat-list li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
-
-    /* ─── JOURNEY (how it works) ─────────────────────────── */
-    .journey-section { background: var(--navy); padding: 6rem 2rem; }
-    .journey-inner { max-width: 900px; margin: 0 auto; }
-    .journey-section .section-header h2 { color: #fff; }
-    .journey-section .section-header p { color: rgba(255,255,255,0.6); }
-    .section-label-pill {
-      display: inline-block; font-size: 0.75rem; font-weight: 700;
-      letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent-bright);
-      background: rgba(59,130,246,0.12); border: 1px solid rgba(96,165,250,0.25);
-      padding: 0.4rem 1rem; border-radius: 100px; margin-bottom: 1.4rem;
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .cases-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    .timeline { position: relative; margin-top: 3rem; }
-    .timeline::before { content: ''; position: absolute; left: 28px; top: 0; bottom: 0; width: 2px; background: rgba(59,130,246,0.25); }
-    .tl-item { display: grid; grid-template-columns: 56px 1fr; gap: 1.5rem; align-items: flex-start; margin-bottom: 2.8rem; }
-    .tl-item:last-child { margin-bottom: 0; }
-    .tl-num { width: 56px; height: 56px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; color: #fff; flex-shrink: 0; z-index: 2; position: relative; box-shadow: 0 0 0 6px rgba(59,130,246,0.15); }
-    .tl-content { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1.5rem; }
-    .tl-content h4 { font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
-    .tl-content p { font-size: 0.84rem; color: rgba(255,255,255,0.6); line-height: 1.65; }
-
-    /* ─── EXPERTISE (integrations) ───────────────────────── */
-    .expertise-section { background: var(--navy-mid); padding: 6rem 2rem; }
-    .expertise-inner { max-width: 1100px; margin: 0 auto; }
-    .expertise-section .section-header h2 { color: #fff; }
-    .expertise-section .section-header p { color: rgba(255,255,255,0.6); }
-    .expertise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
-    .exp-card {
-      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 14px; padding: 1.6rem;
-      display: flex; align-items: flex-start; gap: 1rem;
-      transition: background 0.2s, border-color 0.2s, transform 0.2s;
-    }
-    .exp-card:hover { background: rgba(59,130,246,0.1); border-color: rgba(59,130,246,0.4); transform: translateY(-3px); }
-    .exp-icon { width: 48px; height: 48px; flex-shrink: 0; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
-    .exp-card h4 { font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem; }
-    .exp-card p { font-size: 0.8rem; color: rgba(255,255,255,0.55); line-height: 1.5; }
-    .exp-link { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.78rem; font-weight: 700; color: var(--accent-bright); text-decoration: none; margin-top: 0.6rem; transition: gap 0.2s; }
-    .exp-link:hover { gap: 0.5rem; }
-
-    /* ─── OFFICES (CTA section) ──────────────────────────── */
-    .offices-section { background: #f1f5f9; padding: 6rem 2rem; }
-    .offices-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
-    .offices-section .section-header h2 { color: #0a1628; }
-    .offices-section .section-header p { color: #64748b; }
-    .cta-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
-    .cta-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: #fff; padding: 0.85rem 2.2rem; border-radius: 8px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: background 0.2s, transform 0.15s; }
-    .cta-primary:hover { background: var(--accent-bright); transform: translateY(-2px); }
-    .cta-secondary { display: inline-flex; align-items: center; gap: 0.5rem; border: 1.5px solid #94a3b8; color: #475569; padding: 0.85rem 2.2rem; border-radius: 8px; font-weight: 600; font-size: 1rem; text-decoration: none; transition: border-color 0.2s, color 0.2s, transform 0.15s; }
-    .cta-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
-
-    /* ─── FOOTER ─────────────────────────────────────────── */
-    .site-footer { background: #111827; color: rgba(255,255,255,0.75); font-family: 'DM Sans', sans-serif; }
-    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-    .footer-top { padding: 4rem 0 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .footer-top .footer-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; align-items: start; }
-    .ft-cta-heading { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 900; color: #fff; line-height: 1.25; margin-bottom: 1.4rem; }
-    .ft-cta-btn { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--accent); color: #fff; font-weight: 700; font-size: 0.9rem; padding: 0.75rem 1.6rem; border-radius: 8px; text-decoration: none; transition: background 0.2s, transform 0.15s; margin-bottom: 1.8rem; }
-    .ft-cta-btn:hover { background: #60a5fa; transform: translateY(-2px); }
-    .ft-socials { display: flex; gap: 0.9rem; margin-bottom: 1.2rem; }
-    .ft-social-icon { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.75); text-decoration: none; transition: background 0.2s, color 0.2s; }
-    .ft-social-icon:hover { background: var(--accent); color: #fff; }
-    .ft-email { display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; }
-    .ft-email a { color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
-    .ft-email a:hover { color: #fff; }
-    .ft-offices { display: flex; flex-direction: column; gap: 1.5rem; }
-    .ft-office-title { font-weight: 700; font-size: 0.9rem; color: #fff; margin-bottom: 0.4rem; }
-    .ft-office-addr { font-size: 0.85rem; line-height: 1.6; color: rgba(255,255,255,0.55); }
-    .ft-rating { display: flex; align-items: center; gap: 0.75rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.75rem 1rem; width: fit-content; }
-    .ft-rating-score { font-weight: 700; font-size: 0.9rem; color: #fff; }
-    .ft-rating-sub { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
-    .ft-badges { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
-    .ft-badge { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.6rem; font-size: 0.78rem; }
-    .ft-badge-iso .iso-text { font-size: 0.72rem; line-height: 1.3; color: #e11d48; font-weight: 700; text-transform: uppercase; }
-    .sf-text { display: flex; flex-direction: column; font-size: 0.72rem; color: rgba(255,255,255,0.7); line-height: 1.3; }
-    .sf-text span:first-child { font-weight: 700; color: #fff; }
-    .db-text { display: flex; flex-direction: column; font-size: 0.7rem; line-height: 1.4; color: rgba(255,255,255,0.65); }
-    .db-text span { font-weight: 700; color: #fff; font-size: 0.75rem; }
-    .footer-mid { padding: 3rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .footer-mid .footer-inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
-    .ft-col { display: flex; flex-direction: column; gap: 0.65rem; }
-    .ft-col-title { font-weight: 700; font-size: 0.9rem; color: #fff; margin-bottom: 0.5rem; letter-spacing: 0.3px; }
-    .ft-col a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
-    .ft-col a:hover { color: #fff; }
-    .ft-logo { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; margin-bottom: 1.2rem; }
-    .ft-logo-img-wrap { width: 36px; height: 36px; border-radius: 7px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 0.9rem; font-weight: 900; color: #fff; }
-    .ft-logo-text { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; color: #fff; letter-spacing: -0.3px; }
-    .ft-logo-text span { color: var(--accent-bright); }
-    .footer-bottom { padding: 1.4rem 0; }
-    .footer-bottom .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
-    .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.45); }
-    .ft-bottom-links { display: flex; gap: 1.5rem; }
-    .ft-bottom-links a { font-size: 0.82rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
-    .ft-bottom-links a:hover { color: #fff; }
-
-    /* ─── RESPONSIVE ─────────────────────────────────────── */
-    @media (max-width: 992px) {
-      .about-intro-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .about-intro-inner.reverse { direction: ltr; }
-      .about-intro-img { max-width: 560px; }
-      .stats-band-inner { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-      .values-grid { grid-template-columns: 1fr 1fr; }
-      .expertise-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .footer-top .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
-      .ft-badges { grid-template-columns: repeat(2, 1fr); }
-      .footer-mid .footer-inner { grid-template-columns: 1fr 1fr; gap: 1.8rem; }
-      .values-grid { grid-template-columns: 1fr; }
-      .expertise-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 480px) {
+    @media (max-width: 640px) {
+      .cases-grid { grid-template-columns: 1fr; }
       .page-hero { padding: 120px 1.25rem 60px; }
-      .about-intro { padding: 4rem 1.25rem; }
-      .stats-band { padding: 3.5rem 1.25rem; }
-      .stats-band-inner { grid-template-columns: 1fr 1fr; }
-      .values-section, .journey-section, .expertise-section, .offices-section { padding: 4rem 1.25rem; }
-      .footer-inner { padding: 0 1.25rem; }
-      .footer-bottom .footer-inner { flex-direction: column; align-items: flex-start; }
-      .ft-bottom-links { flex-wrap: wrap; gap: 1rem; }
-      .cta-row { flex-direction: column; align-items: center; }
+      .hero-stats-strip { gap: 1.5rem; }
+      .cases-section { padding: 3rem 1.25rem 4rem; }
+      .filter-bar { padding: 1rem 1.25rem; gap: 0.5rem; }
+      .cta-actions { flex-direction: column; align-items: center; }
+      .cta-btn-primary, .cta-btn-outline { width: 100%; max-width: 280px; text-align: center; }
     }
-  
   </style>
 </head>
 <body>
 
-  <!-- ─── NAVBAR ─────────────────────────────────────────── -->
   <nav id="navbar">
     <a href="index.html" class="logo"><img src="./img/logo.png" alt="Gagstek"></a>
 
@@ -1158,14 +1117,14 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About Us</a></li>
       <li><a href="services.html">Services</a></li>
-      <li><a href="client.html">Clients</a></li>
+      <li><a href="client.html" style="color:#60a5fa;">Clients</a></li>
       <li class="nav-has-dropdown">
-        <span class="nav-drop-label" style="color:#60a5fa;">
+        <span class="nav-drop-label">
           Products
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </span>
         <div class="drop-panel">
-          <a href="icrm.html" class="dp-current">
+          <a href="icrm.html">
             <div class="dp-icon" style="background:rgba(59,130,246,0.15);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
             <div class="dp-meta">E2E Sales<small>Lead to Invoice, automated</small></div>
           </a>
@@ -1176,6 +1135,7 @@
         </div>
       </li>
       <li><a href="career.html">Career</a></li>
+      <li><a href="case-study.html">Case Studies</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="contact.html" class="nav-cta">Request a Meeting</a></li>
     </ul>
@@ -1206,184 +1166,164 @@
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
     <a href="services.html">Services</a>
-    <a href="client.html">Clients</a>
+    <a href="client.html" style="color:#60a5fa;">Clients</a>
     
     <a href="#" class="mob-products-label">Products</a>
-    <a href="icrm.html" class="mob-sub mob-active">→ E2E Sales</a>
+    <a href="icrm.html" class="mob-sub">→ E2E Sales</a>
     <a href="stockpro.html" class="mob-sub">→ StockPro</a>
     <a href="career.html">Career</a>
+    <a href="case-study.html">Case Studies</a>
     <a href="contact.html">Contact</a>
     <a href="contact.html" class="mob-cta">Request a Meeting</a>
   </div>
 
-  <!-- ─── PAGE HERO ──────────────────────────────────────── -->
+  <!-- ═══ HERO ═══ -->
   <section class="page-hero">
-    <div class="page-hero-bg"></div>
-    <div class="page-hero-glow"></div>
-    <div class="page-hero-content">
-      <span class="page-hero-label">Product · iCRM</span>
-      <h1>End-to-End <span>Sales Suite</span> That Closes Deals</h1>
-      <p>iCRM is Gagstek's flagship sales platform — taking your team from lead generation through pipeline, quotes, digital contracts, and recurring invoices in one unified workspace.</p>
+    <div class="page-hero-eyebrow">Client Success Stories</div>
+    <h1 class="page-hero-title">Transformations We've <span>Delivered</span></h1>
+    <p class="page-hero-sub">Deep dives into real projects, real outcomes, and the strategies that drove measurable business impact.</p>
+    <div class="hero-stats-strip">
+      <div class="hero-stat"><span class="hero-stat-num">50+</span><span class="hero-stat-label">Projects Delivered</span></div>
+      <div class="hero-stat"><span class="hero-stat-num">6</span><span class="hero-stat-label">Industries</span></div>
+      <div class="hero-stat"><span class="hero-stat-num">$105M</span><span class="hero-stat-label">Revenue Unlocked</span></div>
+      <div class="hero-stat"><span class="hero-stat-num">100%</span><span class="hero-stat-label">Client Retention</span></div>
     </div>
   </section>
 
-  <!-- ─── INTRO SPLIT ────────────────────────────────────── -->
-  <section class="about-intro">
-    <div class="about-intro-inner">
-      <div class="about-intro-text">
-        <span class="section-label">What is iCRM?</span>
-        <h2>Your Sales Team's <span>Complete Workspace</span></h2>
-        <p>iCRM is the valued, client-oriented sales software built to boost your revenue. From auto-generated leads to a full pipeline of forecasts and won opportunities — every step of your sales journey lives in one place.</p>
-        <p>Designed by former Management &amp; Technology Consulting executives, iCRM eliminates data silos and gives your team a modern interface with task management, activity tracking, and real-time collaboration baked in.</p>
-        <p>Gain a clear view of your opportunity pipeline with a drag-and-drop board. Customize stages for each sales team, analyze lost opportunities, and log every interaction instantly within the opportunity's timeline.</p>
-        <div class="btn-row">
-          <a href="#" class="btn-fill">Start Selling →</a>
-          <a href="#features" class="btn-stroke">Explore Features</a>
+  <!-- ═══ FILTER BAR ═══ -->
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="MedTech">MedTech</button>
+    <button class="filter-btn" data-filter="AI & Sales">AI &amp; Sales</button>
+    <button class="filter-btn" data-filter="Growth">Growth</button>
+    <button class="filter-btn" data-filter="FinTech">FinTech</button>
+    <button class="filter-btn" data-filter="Integration">Integration</button>
+    <button class="filter-btn" data-filter="Analytics & AI">Analytics &amp; AI</button>
+  </div>
+
+  <!-- ═══ CASES GRID ═══ -->
+  <section class="cases-section">
+    <div class="cases-grid">
+
+      <div class="case-card reveal" data-industry="MedTech">
+        <div class="case-thumb">
+          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=700&q=80&fit=crop" alt="Quote-to-Cash" loading="lazy" />
+          <div class="case-thumb-gradient"></div>
+          <div class="case-industry-badge">MedTech</div>
+        </div>
+        <div class="case-body">
+          <span class="case-label">Featured Case Study</span>
+          <h3 class="case-title">Modernizing Quote-to-Cash for a Global Medical Device Manufacturer</h3>
+          <div class="case-outcomes">
+            <div class="case-outcome-item"><span class="case-outcome-num">60%</span><span class="case-outcome-label">Faster Quoting</span></div>
+            <div class="case-outcome-item"><span class="case-outcome-num">3x</span><span class="case-outcome-label">Revenue Visibility</span></div>
+          </div>
+          <a href="https://gagstek.com/case-study-modernizing-quote-to-cash/" class="case-link">Read Case Study →</a>
         </div>
       </div>
-      <div class="about-intro-img">
-        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&q=80&fit=crop" alt="iCRM Dashboard" />
-        <div class="about-intro-img-badge">iCRM · E2E Sales Platform</div>
+
+      <div class="case-card reveal" data-industry="AI & Sales">
+        <div class="case-thumb">
+          <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=700&q=80&fit=crop" alt="AI Sales Dashboard" loading="lazy" />
+          <div class="case-thumb-gradient"></div>
+          <div class="case-industry-badge">AI &amp; Sales</div>
+        </div>
+        <div class="case-body">
+          <span class="case-label">Featured Case Study</span>
+          <h3 class="case-title">AI Sales Dashboard for a Mid-Sized Sales-Driven Organisation</h3>
+          <div class="case-outcomes">
+            <div class="case-outcome-item"><span class="case-outcome-num">40%</span><span class="case-outcome-label">Lead Conversion Up</span></div>
+            <div class="case-outcome-item"><span class="case-outcome-num">Real-time</span><span class="case-outcome-label">Pipeline Visibility</span></div>
+          </div>
+          <a href="https://gagstek.com/case-study-ai-sales-dashboard/" class="case-link">Read Case Study →</a>
+        </div>
       </div>
+
+      <div class="case-card reveal" data-industry="Growth">
+        <div class="case-thumb">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&q=80&fit=crop" alt="Lead Generation Engine" loading="lazy" />
+          <div class="case-thumb-gradient"></div>
+          <div class="case-industry-badge">Growth</div>
+        </div>
+        <div class="case-body">
+          <span class="case-label">Featured Case Study</span>
+          <h3 class="case-title">Scalable Lead Generation Engine for Outbound Growth</h3>
+          <div class="case-outcomes">
+            <div class="case-outcome-item"><span class="case-outcome-num">2x</span><span class="case-outcome-label">Monthly Bookings</span></div>
+            <div class="case-outcome-item"><span class="case-outcome-num">$105M</span><span class="case-outcome-label">In One Month</span></div>
+          </div>
+          <a href="https://gagstek.com/case-study-lead-generation-engine/" class="case-link">Read Case Study →</a>
+        </div>
+      </div>
+
+      <div class="case-card reveal" data-industry="FinTech">
+        <div class="case-thumb">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80&fit=crop" alt="Force.com" loading="lazy" />
+          <div class="case-thumb-gradient"></div>
+          <div class="case-industry-badge">FinTech</div>
+        </div>
+        <div class="case-body">
+          <span class="case-label">Featured Case Study</span>
+          <h3 class="case-title">Force.com Implementation for a Leading Financial Institution</h3>
+          <div class="case-outcomes">
+            <div class="case-outcome-item"><span class="case-outcome-num">15%</span><span class="case-outcome-label">TAT Reduction</span></div>
+            <div class="case-outcome-item"><span class="case-outcome-num">100%</span><span class="case-outcome-label">SF Certified Team</span></div>
+          </div>
+          <a href="https://gagstek.com/caste-study-force/" class="case-link">Read Case Study →</a>
+        </div>
+      </div>
+
+      <div class="case-card reveal" data-industry="Integration">
+        <div class="case-thumb">
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=700&q=80&fit=crop" alt="MuleSoft" loading="lazy" />
+          <div class="case-thumb-gradient"></div>
+          <div class="case-industry-badge">Integration</div>
+        </div>
+        <div class="case-body">
+          <span class="case-label">Featured Case Study</span>
+          <h3 class="case-title">MuleSoft Implementation for a German Enterprise Client</h3>
+          <div class="case-outcomes">
+            <div class="case-outcome-item"><span class="case-outcome-num">Zero</span><span class="case-outcome-label">Data Silos</span></div>
+            <div class="case-outcome-item"><span class="case-outcome-num">Real-time</span><span class="case-outcome-label">System Sync</span></div>
+          </div>
+          <a href="https://gagstek.com/case-study-mulesoft/" class="case-link">Read Case Study →</a>
+        </div>
+      </div>
+
+      <div class="case-card reveal" data-industry="Analytics & AI">
+        <div class="case-thumb">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=80&fit=crop" alt="Salesforce Analytics" loading="lazy" />
+          <div class="case-thumb-gradient"></div>
+          <div class="case-industry-badge">Analytics &amp; AI</div>
+        </div>
+        <div class="case-body">
+          <span class="case-label">Featured Case Study</span>
+          <h3 class="case-title">Salesforce Analytics Enrichment Using Open-Source AI (Alt to Agentforce)</h3>
+          <div class="case-outcomes">
+            <div class="case-outcome-item"><span class="case-outcome-num">Open</span><span class="case-outcome-label">Source AI Stack</span></div>
+            <div class="case-outcome-item"><span class="case-outcome-num">50%</span><span class="case-outcome-label">Cost Reduction</span></div>
+          </div>
+          <a href="https://gagstek.com/case-study-salesforce-analytics/" class="case-link">Read Case Study →</a>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- ─── STATS BAND ────────────────────────────────────── -->
-  <section class="stats-band">
-    <div class="stats-band-inner">
-      <div><div class="stat-number">100+</div><div class="stat-label">Clients Using iCRM</div></div>
-      <div><div class="stat-number">50+</div><div class="stat-label">Certified Professionals</div></div>
-      <div><div class="stat-number">99.9%</div><div class="stat-label">Platform Uptime</div></div>
-      <div><div class="stat-number">24/7</div><div class="stat-label">Expert Support</div></div>
-    </div>
-  </section>
-
-  <!-- ─── FEATURES ──────────────────────────────────────── -->
-  <section class="values-section" id="features">
-    <div class="values-inner">
-      <div class="section-header">
-        <span class="section-label">Core Capabilities</span>
-        <h2>Everything Your Sales Team <span>Needs</span></h2>
-        <p>A complete toolkit for modern sales organizations — from first contact to closed deal and recurring revenue.</p>
-      </div>
-      <div class="values-grid">
-        <div class="value-card">
-          <div class="value-icon" style="background:#eff6ff;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4" stroke="#3b82f6" stroke-width="2"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <h3>Lead Management</h3>
-          <p>Auto-generate leads from email, social media, web forms, and campaigns. Score, enrich, and nurture leads with full qualifying workflows.</p>
-          <ul class="feat-list"><li>Multi-channel lead generation</li><li>Lead scoring &amp; enrichment</li><li>Nurture &amp; qualifying workflows</li></ul>
-        </div>
-        <div class="value-card">
-          <div class="value-icon" style="background:#f0fdf4;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#22c55e" stroke-width="2"/><path d="M3 9h18M9 21V9" stroke="#22c55e" stroke-width="2" stroke-linecap="round"/></svg></div>
-          <h3>Opportunity Pipeline</h3>
-          <p>Drag-and-drop pipeline with customizable stages per team. Forecast management with full deal-level visibility and lost-opportunity analysis.</p>
-          <ul class="feat-list"><li>Drag-and-drop pipeline board</li><li>Custom stages per sales team</li><li>Forecast &amp; pipeline reports</li></ul>
-        </div>
-        <div class="value-card">
-          <div class="value-icon" style="background:#fdf4ff;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#a855f7" stroke-width="2"/><line x1="16" y1="2" x2="16" y2="6" stroke="#a855f7" stroke-width="2" stroke-linecap="round"/><line x1="8" y1="2" x2="8" y2="6" stroke="#a855f7" stroke-width="2" stroke-linecap="round"/><line x1="3" y1="10" x2="21" y2="10" stroke="#a855f7" stroke-width="2"/></svg></div>
-          <h3>Activities &amp; Tasks</h3>
-          <p>Prioritize daily tasks and schedule meetings via Google Calendar and Outlook. Every interaction is auto-logged to the opportunity timeline.</p>
-          <ul class="feat-list"><li>Google Calendar &amp; Outlook sync</li><li>Priority task management</li><li>Full interaction history</li></ul>
-        </div>
-        <div class="value-card">
-          <div class="value-icon" style="background:#fff7ed;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="14 2 14 8 20 8" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="16" y1="13" x2="8" y2="13" stroke="#f97316" stroke-width="2" stroke-linecap="round"/></svg></div>
-          <h3>Quotes &amp; Contracts</h3>
-          <p>Create quotes from opportunities in clicks. Digital contracts with e-signatures, recurring payments, and subscription billing — all in one place.</p>
-          <ul class="feat-list"><li>One-click quote generation</li><li>Digital contracts &amp; e-sign</li><li>Subscriptions &amp; recurring billing</li></ul>
-        </div>
-        <div class="value-card">
-          <div class="value-icon" style="background:#fef3c7;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="9 22 9 12 15 12 15 22" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <h3>Account Management</h3>
-          <p>One unified customer record shared across your whole team. Sub-accounts, individual preferences, and full transaction history per customer.</p>
-          <ul class="feat-list"><li>Unified customer records</li><li>Sub-accounts &amp; multi-contacts</li><li>Full order &amp; invoice history</li></ul>
-        </div>
-        <div class="value-card">
-          <div class="value-icon" style="background:#f0f9ff;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><line x1="18" y1="20" x2="18" y2="10" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="20" x2="12" y2="4" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round"/><line x1="6" y1="20" x2="6" y2="14" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round"/></svg></div>
-          <h3>Reporting &amp; Dashboards</h3>
-          <p>Multi-view dashboards with custom filters, grouping, and data slicing — giving leadership real-time visibility across all teams and pipelines.</p>
-          <ul class="feat-list"><li>Customizable dashboards</li><li>Pipeline snapshot &amp; filters</li><li>Performance analytics</li></ul>
-        </div>
+  <!-- ═══ CTA BAND ═══ -->
+  <div class="cta-band">
+    <div class="cta-band-inner">
+      <div class="cta-badge">Ready to Get Started?</div>
+      <h2 class="cta-title">Let's Write Your <span>Success Story</span> Together</h2>
+      <p class="cta-sub">Join 50+ companies that have transformed their business with Gagstek. Schedule a no-obligation consultation and let's explore what's possible.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="cta-btn-primary">Request a Meeting →</a>
+        
+        <a href="services.html" class="cta-btn-outline">Explore Our Services</a>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ─── COMMUNICATION SPLIT ───────────────────────────── -->
-  <section class="about-intro" style="background:#f8fafc;">
-    <div class="about-intro-inner reverse">
-      <div class="about-intro-img">
-        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&q=80&fit=crop" alt="Business Communication" />
-        <div class="about-intro-img-badge">VoIP + Email Routing</div>
-      </div>
-      <div class="about-intro-text">
-        <span class="section-label">Business Communication</span>
-        <h2>Every Conversation, <span>In One Place</span></h2>
-        <p>Reusable email templates for mass and repetitive communications. All emails are automatically mapped to the correct opportunity — and new leads can be created directly from incoming emails.</p>
-        <p>Dial customers directly from the browser using VoIP — automatically or manually. A full console provides a view of all logged calls, with account details and interaction history at your fingertips.</p>
-        <div class="btn-row"><a href="#" class="btn-fill">Start Selling →</a></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── HOW IT WORKS ──────────────────────────────────── -->
-  <section class="journey-section">
-    <div class="journey-inner">
-      <div class="section-header">
-        <span class="section-label-pill">Getting Started</span>
-        <h2>Up &amp; Running in <span style="color:var(--accent-bright);">Three Steps</span></h2>
-        <p>Deploying iCRM is fast, guided, and tailored to your team's workflow from day one.</p>
-      </div>
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-num">1</div>
-          <div class="tl-content"><h4>Connect &amp; Configure</h4><p>Install iCRM via AppExchange or Gagstek's onboarding link. Approve integrations, configure your sales stages, and map your existing data to the platform in minutes.</p></div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-num">2</div>
-          <div class="tl-content"><h4>Import &amp; Activate</h4><p>Bring in your existing leads, accounts, and opportunities. Activate email routing, set up VoIP telephony, and sync with Google Calendar or Outlook for immediate productivity.</p></div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-num">3</div>
-          <div class="tl-content"><h4>Sell &amp; Scale</h4><p>Start managing your pipeline, creating quotes, and tracking performance through real-time dashboards. As your team grows, iCRM scales effortlessly across regions and teams.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── INTEGRATIONS ──────────────────────────────────── -->
-  <section class="expertise-section">
-    <div class="expertise-inner">
-      <div class="section-header">
-        <span class="section-label-pill">Integrations</span>
-        <h2>Connect Your <span style="color:var(--accent-bright);">Entire Stack</span></h2>
-        <p>iCRM integrates with your existing tools through OAuth 2.0 — secure, reliable, and fully bi-directional.</p>
-      </div>
-      <div class="expertise-grid">
-        <div class="exp-card"><div class="exp-icon" style="background:rgba(59,130,246,0.15);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div><div><h4>Quotes Module</h4><p>Create quotes from opportunities in a few clicks. Full customer journey visibility from first contact to paid invoice.</p><a href="#" class="exp-link">Discover →</a></div></div>
-        <div class="exp-card"><div class="exp-icon" style="background:rgba(34,197,94,0.15);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg></div><div><h4>StockPro — Stock Register</h4><p>Check product availability and initiate orders directly from within a quote — no tool switching required.</p><a href="stockpro.html" class="exp-link">Discover →</a></div></div>
-        <div class="exp-card"><div class="exp-icon" style="background:rgba(245,158,11,0.15);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><h4>Email Marketing</h4><p>Boost lead acquisition and nurture campaigns with unified, trackable communication workflows.</p><a href="#" class="exp-link">Discover →</a></div></div>
-        <div class="exp-card"><div class="exp-icon" style="background:rgba(168,85,247,0.15);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><path d="M8 21h8M12 17v4"/></svg></div><div><h4>Google Workspace</h4><p>Sync meetings to Google Calendar and auto-map all emails to opportunities through Gmail routing rules.</p><a href="#" class="exp-link">Discover →</a></div></div>
-        <div class="exp-card"><div class="exp-icon" style="background:rgba(14,165,233,0.15);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.07 2.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><h4>VoIP Telephony</h4><p>Dial from the browser with a full computer telephony console — call logging, account context, and team activity tracking.</p><a href="#" class="exp-link">Discover →</a></div></div>
-        <div class="exp-card"><div class="exp-icon" style="background:rgba(239,68,68,0.15);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div><h4>Salesforce Platform</h4><p>Deep Salesforce integration using OAuth 2.0 for secure, fully bi-directional data sync across your CRM ecosystem.</p><a href="#" class="exp-link">Discover →</a></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── CTA ───────────────────────────────────────────── -->
-  <section class="offices-section">
-    <div class="offices-inner">
-      <div class="section-header">
-        <span class="section-label">Ready to Transform?</span>
-        <h2>Start Selling Smarter with <span>iCRM</span></h2>
-        <p>Contact Gagstek today to unlock the full potential of your sales operations. Our team will have you set up and selling faster than you think.</p>
-      </div>
-      <div class="cta-row">
-        <a href="#" class="cta-primary">Get Started Today →</a>
-        <a href="stockpro.html" class="cta-secondary">Explore StockPro</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── FOOTER ─────────────────────────────────────────── -->
   <footer class="site-footer">
 
     <!-- Top band: Logo + Social + Office addresses + Badges -->
@@ -1487,6 +1427,7 @@
           <a href="client.html">Clients</a>
           <a href="employee-review.html">Employee Review</a>
           <a href="career.html">Career</a>
+          <li><a href="case-study.html">Case Studies</a>
           <a href="contact.html">Contact Us</a>
         </div>
 
@@ -1508,6 +1449,13 @@
   </footer>
 
   <script>
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    // Hamburger
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
     hamburger.addEventListener('click', () => {
@@ -1518,6 +1466,31 @@
       a.addEventListener('click', () => {
         hamburger.classList.remove('open');
         mobileMenu.classList.remove('open');
+      });
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.case-card');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        cards.forEach(card => {
+          if (filter === 'all' || card.dataset.industry === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
       });
     });
   </script>
