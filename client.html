@@ -361,19 +361,73 @@
       position: relative;
       aspect-ratio: 16 / 10;
       overflow: hidden;
+      cursor: pointer;
     }
-    .vid-thumb img {
+    .vid-thumb img.vid-poster {
       width: 100%; height: 100%;
       object-fit: cover;
       display: block;
       transition: transform 0.5s ease;
     }
-    .vid-card:hover .vid-thumb img { transform: scale(1.06); }
+    .vid-card:hover .vid-thumb img.vid-poster { transform: scale(1.06); }
     .vid-thumb-overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(to top, rgba(10,22,40,0.65) 0%, rgba(10,22,40,0.1) 60%);
     }
+
+    /* ─── VIDEO MODAL ─────────────────────────────────── */
+    .vid-modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(5,12,25,0.92);
+      backdrop-filter: blur(10px);
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .vid-modal-backdrop.open { display: flex; }
+    .vid-modal-box {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.7);
+      background: #000;
+      animation: modalIn 0.3s ease both;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.93); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    .vid-modal-box video {
+      width: 100%;
+      display: block;
+      max-height: 80vh;
+      background: #000;
+    }
+    .vid-modal-close {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.6);
+      border: 1.5px solid rgba(255,255,255,0.25);
+      color: #fff;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
+      z-index: 10;
+      line-height: 1;
+    }
+    .vid-modal-close:hover { background: rgba(59,130,246,0.7); }
     .vid-play-btn {
       position: absolute;
       top: 50%; left: 50%;
@@ -1193,9 +1247,11 @@
 
         <!-- Featured card -->
         <div class="vid-card featured reveal">
-          <div class="vid-thumb video-mode">
-            <div class="vid-iframe-wrap">
-              <iframe src="./vid/3w.mp4" title="Client Testimonial - IT Partnership" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          <div class="vid-thumb" onclick="openVideoModal('./vid/3w.mp4')">
+            <img class="vid-poster" src="./img/21w.png" alt="Client Testimonial - IT Partnership" />
+            <div class="vid-thumb-overlay"></div>
+            <div class="vid-play-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
             </div>
             <div class="vid-tag">Featured</div>
           </div>
@@ -1216,9 +1272,11 @@
 
         <!-- Card 2 -->
         <div class="vid-card reveal reveal-delay-1">
-          <div class="vid-thumb video-mode">
-            <div class="vid-iframe-wrap">
-              <iframe src="./vid/1w.mp4" title="Client Testimonial - Energy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          <div class="vid-thumb" onclick="openVideoModal('./vid/1w.mp4')">
+            <img class="vid-poster" src="./img/1w.png" alt="Client Testimonial - Energy" />
+            <div class="vid-thumb-overlay"></div>
+            <div class="vid-play-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
             </div>
             <div class="vid-tag">Energy</div>
           </div>
@@ -1239,9 +1297,11 @@
 
         <!-- Card 3 -->
         <div class="vid-card reveal">
-          <div class="vid-thumb video-mode">
-            <div class="vid-iframe-wrap">
-              <iframe src="./vid/2w.mp4" title="Client Testimonial - Manufacturing" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          <div class="vid-thumb" onclick="openVideoModal('./vid/2w.mp4')">
+            <img class="vid-poster" src="./img/2w.png" alt="Client Testimonial - Manufacturing" />
+            <div class="vid-thumb-overlay"></div>
+            <div class="vid-play-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
             </div>
             <div class="vid-tag">Manufacturing</div>
           </div>
@@ -1262,9 +1322,11 @@
 
         <!-- Card 4 -->
         <div class="vid-card reveal reveal-delay-1">
-          <div class="vid-thumb video-mode">
-            <div class="vid-iframe-wrap">
-              <iframe src="./vid/4w.mp4" title="Client Testimonial - Sales Growth" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          <div class="vid-thumb" onclick="openVideoModal('./vid/5w.mp4')">
+            <img class="vid-poster" src="./img/4w.png" alt="Client Testimonial - Sales Growth" />
+            <div class="vid-thumb-overlay"></div>
+            <div class="vid-play-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
             </div>
             <div class="vid-tag">Energy</div>
           </div>
@@ -1285,9 +1347,11 @@
 
         <!-- Card 5 -->
         <div class="vid-card reveal reveal-delay-2">
-          <div class="vid-thumb video-mode">
-            <div class="vid-iframe-wrap">
-              <iframe src="./vid/5w.mp4" title="Client Testimonial - Opportunities" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          <div class="vid-thumb" onclick="openVideoModal('./vid/4w.mp4')">
+            <img class="vid-poster" src="./img/5w.png" alt="Client Testimonial - Opportunities" />
+            <div class="vid-thumb-overlay"></div>
+            <div class="vid-play-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
             </div>
             <div class="vid-tag">Manufacturing</div>
           </div>
@@ -1595,6 +1659,44 @@
     </div>
 
   </footer>
+
+  <!-- ═══ VIDEO MODAL ═══ -->
+  <div class="vid-modal-backdrop" id="vidModal" onclick="handleModalBackdropClick(event)">
+    <div class="vid-modal-box">
+      <button class="vid-modal-close" onclick="closeVideoModal()" title="Close">✕</button>
+      <video id="vidModalPlayer" controls playsinline></video>
+    </div>
+  </div>
+
+  <script>
+    function openVideoModal(src) {
+      const modal = document.getElementById('vidModal');
+      const player = document.getElementById('vidModalPlayer');
+      player.src = src;
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      player.play().catch(() => {});
+    }
+
+    function closeVideoModal() {
+      const modal = document.getElementById('vidModal');
+      const player = document.getElementById('vidModalPlayer');
+      modal.classList.remove('open');
+      player.pause();
+      player.src = '';
+      document.body.style.overflow = '';
+    }
+
+    function handleModalBackdropClick(e) {
+      if (e.target === document.getElementById('vidModal')) {
+        closeVideoModal();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeVideoModal();
+    });
+  </script>
 
   <script>
     // Sticky nav
