@@ -174,7 +174,16 @@
     }
     .page-hero-bg {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, #0a1628 0%, #0f2044 50%, #0a1628 100%);
+      background-image: url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1800&q=80&fit=crop');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.28) saturate(1.1);
+    }
+    /* Mobile hero image */
+    @media (max-width: 768px) {
+      .page-hero-bg {
+        background-image: url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=800&q=80&fit=crop&crop=center');
+      }
     }
     .page-hero-glow {
       position: absolute;
@@ -924,8 +933,29 @@
     .section-title span { color: var(--accent-bright); }
 
     /* ─── HERO / CONTACT FORM SECTION ─────────────────── */
-    .contact-hero { background: var(--navy); padding: 4rem 2rem 5rem; }
-    .contact-hero-inner { max-width: 1200px; margin: 0 auto; }
+    .contact-hero {
+      position: relative;
+      padding: 4rem 2rem 5rem;
+      /* Desktop hero image */
+      background-image: url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1800&q=80&fit=crop');
+      background-size: cover;
+      background-position: center;
+      isolation: isolate;
+    }
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(10,22,40,0.82);
+      z-index: 0;
+    }
+    /* Mobile hero image */
+    @media (max-width: 768px) {
+      .contact-hero {
+        background-image: url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=800&q=80&fit=crop&crop=center');
+      }
+    }
+    .contact-hero-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; }
 
     .contact-hero-header { margin-bottom: 3rem; }
     .contact-hero-header h1 {
@@ -1224,6 +1254,7 @@
     }
   
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
 
@@ -1239,15 +1270,15 @@
       <li class="nav-has-dropdown">
         <span class="nav-drop-label">
           Products
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          <i class="fa-solid fa-chevron-down" style="font-size:11px;"></i>
         </span>
         <div class="drop-panel">
           <a href="icrm.html">
-            <div class="dp-icon" style="background:rgba(59,130,246,0.15);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+            <div class="dp-icon" style="background:rgba(59,130,246,0.15);"><i class="fa-solid fa-users" style="color:#60a5fa;font-size:14px;"></i></div>
             <div class="dp-meta">E2E Sales<small>Lead to Invoice, automated</small></div>
           </a>
           <a href="stockpro.html">
-            <div class="dp-icon" style="background:rgba(34,197,94,0.15);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
+            <div class="dp-icon" style="background:rgba(34,197,94,0.15);"><i class="fa-solid fa-boxes-stacked" style="color:#4ade80;font-size:14px;"></i></div>
             <div class="dp-meta">StockPro<small>Smart inventory management</small></div>
           </a>
         </div>
@@ -1261,16 +1292,16 @@
     <!-- Nav Social Icons -->
     <div class="nav-socials">
       <a href="https://api.whatsapp.com/send?phone=919049023824" aria-label="WhatsApp" class="nav-social-icon" target="_blank" rel="noopener">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.93 11.93 0 0012 0C5.37 0 0 5.37 0 12a11.9 11.9 0 001.64 6.07L0 24l6.13-1.61A11.93 11.93 0 0012 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.22-3.48-8.52zm-8.52 18.44a9.9 9.9 0 01-5.04-1.38l-.36-.21-3.74.98.99-3.64-.24-.38A9.9 9.9 0 012.1 12c0-5.46 4.44-9.9 9.9-9.9 2.64 0 5.12 1.03 6.99 2.9a9.84 9.84 0 012.9 6.99c0 5.47-4.44 9.93-9.9 9.93zm5.43-7.41c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07a8.13 8.13 0 01-2.4-1.48 9.02 9.02 0 01-1.66-2.07c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.09 3.19 5.07 4.47.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35z"/></svg>
+        <i class="fa-brands fa-whatsapp" style="font-size:17px;"></i>
       </a>
       <a href="https://www.youtube.com/@GagstekLLP" aria-label="YouTube" class="nav-social-icon" target="_blank" rel="noopener">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="rgba(10,22,40,0.97)"/></svg>
+        <i class="fa-brands fa-youtube" style="font-size:17px;"></i>
       </a>
       <a href="https://www.instagram.com/gagstek___/" aria-label="Instagram" class="nav-social-icon" target="_blank" rel="noopener">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        <i class="fa-brands fa-instagram" style="font-size:17px;"></i>
       </a>
       <a href="https://in.linkedin.com/company/gagstek" aria-label="LinkedIn" class="nav-social-icon" target="_blank" rel="noopener">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        <i class="fa-brands fa-linkedin-in" style="font-size:17px;"></i>
       </a>
     </div>
 
@@ -1299,7 +1330,7 @@
   <div class="breadcrumb-strip">
     <div class="breadcrumb-inner">
       <a href="home.html">Home</a>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+      <i class="fa-solid fa-chevron-right" style="font-size:11px;"></i>
       <span>Contact Us</span>
     </div>
   </div>
@@ -1337,12 +1368,12 @@
             </div>
             <button class="send-btn" onclick="handleSubmit()">
               Send
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              <i class="fa-solid fa-arrow-right" style="font-size:14px;"></i>
             </button>
             <div class="whatsapp-line">
               <span>Prefer to chat directly?</span>
               <a href="https://api.whatsapp.com/send?phone=919049023824" target="_blank" class="whatsapp-btn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                <i class="fa-brands fa-whatsapp" style="font-size:15px;"></i>
                 WhatsApp Us
               </a>
             </div>
@@ -1362,7 +1393,7 @@
 
             <div class="step-item">
               <div class="step-icon-wrap">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <i class="fa-solid fa-message" style="font-size:16px;"></i>
               </div>
               <div class="step-content">
                 <div class="step-title">Put Forward Your Requirement</div>
@@ -1372,7 +1403,7 @@
 
             <div class="step-item">
               <div class="step-icon-wrap">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <i class="fa-solid fa-shield-halved" style="font-size:16px;"></i>
               </div>
               <div class="step-content">
                 <div class="step-title">Sign a Non-Disclosure Agreement</div>
@@ -1382,7 +1413,7 @@
 
             <div class="step-item">
               <div class="step-icon-wrap">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <i class="fa-solid fa-magnifying-glass" style="font-size:16px;"></i>
               </div>
               <div class="step-content">
                 <div class="step-title">Analyzing Your Requirement</div>
@@ -1392,7 +1423,7 @@
 
             <div class="step-item">
               <div class="step-icon-wrap">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <i class="fa-solid fa-dollar-sign" style="font-size:16px;"></i>
               </div>
               <div class="step-content">
                 <div class="step-title">Estimated Budget & Timeline</div>
@@ -1405,13 +1436,13 @@
           <div class="contact-quick-bar">
             <div class="cq-item">
               <div class="cq-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.81-.81a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+                <i class="fa-solid fa-phone" style="font-size:12px;"></i>
               </div>
               <span>US: <a href="tel:+15673992506">+1-567-399-2506</a> &nbsp;|&nbsp; AU: <a href="tel:+61473118458">+61-473118458</a></span>
             </div>
             <div class="cq-item">
               <div class="cq-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <i class="fa-solid fa-envelope" style="font-size:12px;"></i>
               </div>
               <span><a href="mailto:info@gagstek.com">info@gagstek.com</a></span>
             </div>
@@ -1446,7 +1477,7 @@
         <div class="location-card">
           <div class="location-card-top">
             <div class="loc-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <i class="fa-solid fa-location-dot" style="font-size:18px;"></i>
             </div>
             <div class="loc-country">🇺🇸 United States</div>
             <div class="loc-address">16192 Coastal Highway, in the city of Lewes,<br>Delaware 19958, County of Sussex</div>
@@ -1496,7 +1527,7 @@
         <div class="location-card">
           <div class="location-card-top">
             <div class="loc-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <i class="fa-solid fa-location-dot" style="font-size:18px;"></i>
             </div>
             <div class="loc-country">🇮🇳 India</div>
             <div class="loc-address">P3-001 Pentagon Tower, Magarpatta City,<br>Pune 411013, Maharashtra</div>
@@ -1548,7 +1579,7 @@
         <div class="location-card">
           <div class="location-card-top">
             <div class="loc-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <i class="fa-solid fa-location-dot" style="font-size:18px;"></i>
             </div>
             <div class="loc-country">🇦🇺 Australia</div>
             <div class="loc-address">161 Collins St, Melbourne VIC, 3000</div>
@@ -1595,7 +1626,7 @@
         <div class="sales-card-content" style="display:flex; align-items:center; gap:3rem; flex-wrap:wrap; padding: 2rem 2.5rem;">
           <div style="display:flex; align-items:center; gap:1rem; flex-shrink:0;">
             <div class="sales-icon" style="margin-bottom:0;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <i class="fa-solid fa-envelope" style="font-size:18px;"></i>
             </div>
             <div>
               <div class="sales-label" style="margin-bottom:0.2rem;">INFO</div>
@@ -1604,20 +1635,20 @@
           </div>
           <div style="display:flex; gap:2.5rem; flex-wrap:wrap; flex:1; align-items:center;">
             <div class="sales-detail" style="margin:0;">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <i class="fa-solid fa-envelope" style="font-size:13px;"></i>
               <span>Email — <a href="mailto:info@gagstek.com">info@gagstek.com</a></span>
             </div>
             <div class="sales-detail" style="margin:0;">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.81-.81a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+              <i class="fa-solid fa-phone" style="font-size:13px;"></i>
               <span>US — <a href="tel:+15673992506">+1-567-399-2506</a></span>
             </div>
             <div class="sales-detail" style="margin:0;">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.81-.81a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+              <i class="fa-solid fa-phone" style="font-size:13px;"></i>
               <span>AU — <a href="tel:+61473118458">+61-473118458</a></span>
             </div>
           </div>
           <a href="https://api.whatsapp.com/send?phone=919049023824" target="_blank" class="whatsapp-btn" style="flex-shrink:0;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            <i class="fa-brands fa-whatsapp" style="font-size:15px;"></i>
             WhatsApp Us
           </a>
         </div>
@@ -1641,7 +1672,7 @@
           <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
               Who will I be speaking with when I contact Gagstek?
-              <div class="faq-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
+              <div class="faq-chevron"><i class="fa-solid fa-chevron-down" style="font-size:12px;"></i></div>
             </button>
             <div class="faq-answer">
               <div class="faq-answer-inner">You'll first connect with a business development executive who will understand your requirements. They'll then route you to a certified Salesforce architect or AI specialist best suited to your project scope.</div>
@@ -1651,7 +1682,7 @@
           <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
               What's the typical response time after I submit the contact form?
-              <div class="faq-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
+              <div class="faq-chevron"><i class="fa-solid fa-chevron-down" style="font-size:12px;"></i></div>
             </button>
             <div class="faq-answer">
               <div class="faq-answer-inner">We guarantee a response within 24 hours on business days. For urgent requirements, we recommend reaching us via WhatsApp — our team is typically available across US and India time zones.</div>
@@ -1661,7 +1692,7 @@
           <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
               Does your team work across different timezones?
-              <div class="faq-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
+              <div class="faq-chevron"><i class="fa-solid fa-chevron-down" style="font-size:12px;"></i></div>
             </button>
             <div class="faq-answer">
               <div class="faq-answer-inner">Yes. With offices in the US, India, and Australia, our teams operate across multiple time zones. This enables us to offer near-round-the-clock support and ensure seamless collaboration with clients globally.</div>
@@ -1671,7 +1702,7 @@
           <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
               Is there a cost for the initial consultation?
-              <div class="faq-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
+              <div class="faq-chevron"><i class="fa-solid fa-chevron-down" style="font-size:12px;"></i></div>
             </button>
             <div class="faq-answer">
               <div class="faq-answer-inner">No — the initial consultation and requirements analysis are completely free of charge. We believe in earning your trust first. You'll receive a detailed scope and cost estimate before any engagement begins.</div>
@@ -1681,7 +1712,7 @@
           <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
               Do you sign NDAs before starting a project conversation?
-              <div class="faq-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
+              <div class="faq-chevron"><i class="fa-solid fa-chevron-down" style="font-size:12px;"></i></div>
             </button>
             <div class="faq-answer">
               <div class="faq-answer-inner">Absolutely. We sign a strict Non-Disclosure Agreement before any detailed project discussions begin. Your ideas and intellectual property are fully protected throughout the entire project lifecycle.</div>
@@ -1691,7 +1722,7 @@
           <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
               I'm looking for a job — where can I see current openings at Gagstek?
-              <div class="faq-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
+              <div class="faq-chevron"><i class="fa-solid fa-chevron-down" style="font-size:12px;"></i></div>
             </button>
             <div class="faq-answer">
               <div class="faq-answer-inner">Head over to our <a href="careers.html" style="color:var(--accent-bright); font-weight:600;">Careers page</a> to view all current openings across Salesforce, Engineering, AI, and Consulting roles. You can also drop a general application if you don't see a perfect fit.</div>
@@ -1706,7 +1737,7 @@
           <p class="faq-aside-desc">Our certified architects and consultants handle complex, industry-specific requirements. Tell us what you need and we'll get back to you within 24 hours.</p>
           <a href="#" onclick="document.getElementById('fname').scrollIntoView({behavior:'smooth'}); return false;" class="faq-aside-btn">
             Contact Us
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <i class="fa-solid fa-arrow-right" style="font-size:13px;"></i>
           </a>
         </div>
       </div>
@@ -1736,23 +1767,23 @@
           <div class="ft-socials">
             <!-- WhatsApp -->
             <a href="https://api.whatsapp.com/send?phone=919049023824" aria-label="WhatsApp" class="ft-social-icon" target="_blank" rel="noopener">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.93 11.93 0 0012 0C5.37 0 0 5.37 0 12a11.9 11.9 0 001.64 6.07L0 24l6.13-1.61A11.93 11.93 0 0012 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.22-3.48-8.52zm-8.52 18.44a9.9 9.9 0 01-5.04-1.38l-.36-.21-3.74.98.99-3.64-.24-.38A9.9 9.9 0 012.1 12c0-5.46 4.44-9.9 9.9-9.9 2.64 0 5.12 1.03 6.99 2.9a9.84 9.84 0 012.9 6.99c0 5.47-4.44 9.93-9.9 9.93zm5.43-7.41c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07a8.13 8.13 0 01-2.4-1.48 9.02 9.02 0 01-1.66-2.07c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.09 3.19 5.07 4.47.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35z"/></svg>
+              <i class="fa-brands fa-whatsapp" style="font-size:20px;"></i>
             </a>
             <!-- Instagram -->
             <a href="https://www.instagram.com/gagstek___/" aria-label="Instagram" class="ft-social-icon" target="_blank" rel="noopener">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              <i class="fa-brands fa-instagram" style="font-size:20px;"></i>
             </a>
             <!-- LinkedIn -->
             <a href="https://in.linkedin.com/company/gagstek" aria-label="LinkedIn" class="ft-social-icon" target="_blank" rel="noopener">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              <i class="fa-brands fa-linkedin-in" style="font-size:20px;"></i>
             </a>
             <!-- YouTube -->
             <a href="https://www.youtube.com/@GagstekLLP" aria-label="YouTube" class="ft-social-icon" target="_blank" rel="noopener">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="rgba(10,22,40,0.85)"/></svg>
+              <i class="fa-brands fa-youtube" style="font-size:20px;"></i>
             </a>
           </div>
           <div class="ft-email">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <i class="fa-solid fa-envelope" style="font-size:14px;"></i>
             <a href="mailto:info@gagstek.com">info@gagstek.com</a>
           </div>
         </div>

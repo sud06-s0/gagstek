@@ -174,7 +174,16 @@
     }
     .page-hero-bg {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, #0a1628 0%, #0f2044 50%, #0a1628 100%);
+      background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1800&q=80&fit=crop');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.28) saturate(1.1);
+    }
+    /* Mobile hero image */
+    @media (max-width: 768px) {
+      .page-hero-bg {
+        background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80&fit=crop&crop=center');
+      }
     }
     .page-hero-glow {
       position: absolute;
@@ -869,6 +878,7 @@
     .mob-sub.mob-active { color: var(--accent-bright) !important; }
 
     </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
 
@@ -884,15 +894,15 @@
       <li class="nav-has-dropdown">
         <span class="nav-drop-label">
           Products
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          <i class="fa-solid fa-chevron-down" style="font-size:11px;"></i>
         </span>
         <div class="drop-panel">
           <a href="icrm.html">
-            <div class="dp-icon" style="background:rgba(59,130,246,0.15);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+            <div class="dp-icon" style="background:rgba(59,130,246,0.15);"><i class="fa-solid fa-users" style="color:#60a5fa;font-size:14px;"></i></div>
             <div class="dp-meta">E2E Sales<small>Lead to Invoice, automated</small></div>
           </a>
           <a href="stockpro.html">
-            <div class="dp-icon" style="background:rgba(34,197,94,0.15);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
+            <div class="dp-icon" style="background:rgba(34,197,94,0.15);"><i class="fa-solid fa-boxes-stacked" style="color:#4ade80;font-size:14px;"></i></div>
             <div class="dp-meta">StockPro<small>Smart inventory management</small></div>
           </a>
         </div>
@@ -906,16 +916,16 @@
     <!-- Nav Social Icons -->
     <div class="nav-socials">
       <a href="https://api.whatsapp.com/send?phone=919049023824" aria-label="WhatsApp" class="nav-social-icon" target="_blank" rel="noopener">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.93 11.93 0 0012 0C5.37 0 0 5.37 0 12a11.9 11.9 0 001.64 6.07L0 24l6.13-1.61A11.93 11.93 0 0012 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.22-3.48-8.52zm-8.52 18.44a9.9 9.9 0 01-5.04-1.38l-.36-.21-3.74.98.99-3.64-.24-.38A9.9 9.9 0 012.1 12c0-5.46 4.44-9.9 9.9-9.9 2.64 0 5.12 1.03 6.99 2.9a9.84 9.84 0 012.9 6.99c0 5.47-4.44 9.93-9.9 9.93zm5.43-7.41c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07a8.13 8.13 0 01-2.4-1.48 9.02 9.02 0 01-1.66-2.07c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.09 3.19 5.07 4.47.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35z"/></svg>
+        <i class="fa-brands fa-whatsapp" style="font-size:17px;"></i>
       </a>
       <a href="https://www.youtube.com/@GagstekLLP" aria-label="YouTube" class="nav-social-icon" target="_blank" rel="noopener">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="rgba(10,22,40,0.97)"/></svg>
+        <i class="fa-brands fa-youtube" style="font-size:17px;"></i>
       </a>
       <a href="https://www.instagram.com/gagstek___/" aria-label="Instagram" class="nav-social-icon" target="_blank" rel="noopener">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        <i class="fa-brands fa-instagram" style="font-size:17px;"></i>
       </a>
       <a href="https://in.linkedin.com/company/gagstek" aria-label="LinkedIn" class="nav-social-icon" target="_blank" rel="noopener">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        <i class="fa-brands fa-linkedin-in" style="font-size:17px;"></i>
       </a>
     </div>
 
@@ -964,8 +974,8 @@
         <p>Our strength is in delivering outstanding client experiences with a consulting model based on superior business & technology talent.</p>
       </div>
       <div class="about-intro-img">
-        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=80&fit=crop" alt="Gagstek team collaborating" />
-        <div class="about-intro-img-badge">Founded 2023 · Pune, India</div>
+        <img src="./img/team.jpeg?w=900&q=80&fit=crop" alt="Gagstek team collaborating" />
+        <div class="about-intro-img-badge">Founded 2022 · Pune, India</div>
       </div>
     </div>
   </section>
@@ -1004,7 +1014,7 @@
 
         <div class="value-card">
           <div class="value-icon" style="background:#eff6ff;">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <i class="fa-solid fa-layer-group" style="color:#3b82f6;font-size:24px;"></i>
           </div>
           <h3>Futuristic Thinking</h3>
           <p>We promote futuristic approaches and ideologies that keeps our clients' development scope ahead of time, always anticipating tomorrow's challenges today.</p>
@@ -1012,7 +1022,7 @@
 
         <div class="value-card">
           <div class="value-icon" style="background:#f0fdf4;">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <i class="fa-solid fa-circle-check" style="color:#22c55e;font-size:24px;"></i>
           </div>
           <h3>Uncompromising Quality</h3>
           <p>When it comes to quality, Gagstek always has the required organizational skills and resource management to deliver solutions that stand the test of time.</p>
@@ -1020,7 +1030,7 @@
 
         <div class="value-card">
           <div class="value-icon" style="background:#fdf4ff;">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4" stroke="#a855f7" stroke-width="2"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <i class="fa-solid fa-people-group" style="color:#a855f7;font-size:24px;"></i>
           </div>
           <h3>Equality & Solidarity</h3>
           <p>Equality is the primary principle we are built on. We practice this in every aspect and encourage the spirit of solidarity among our team and clients.</p>
@@ -1028,7 +1038,7 @@
 
         <div class="value-card">
           <div class="value-icon" style="background:#fff7ed;">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <i class="fa-solid fa-comments" style="color:#f97316;font-size:24px;"></i>
           </div>
           <h3>Proactive Communication</h3>
           <p>We believe in proactive communication that develops transparency and actionable strategies — keeping every stakeholder informed at every step.</p>
@@ -1036,7 +1046,7 @@
 
         <div class="value-card">
           <div class="value-icon" style="background:#fef3c7;">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <i class="fa-solid fa-bolt" style="color:#f59e0b;font-size:24px;"></i>
           </div>
           <h3>Teamwork & Innovation</h3>
           <p>We strongly preach the virtue of teamwork and promote brainstorming for smarter, more technologically advanced outcomes for all our clients.</p>
@@ -1044,7 +1054,7 @@
 
         <div class="value-card">
           <div class="value-icon" style="background:#f0f9ff;">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#0ea5e9" stroke-width="2"/><path d="M12 8v4l3 3" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round"/></svg>
+            <i class="fa-solid fa-eye" style="color:#0ea5e9;font-size:24px;"></i>
           </div>
           <h3>Clear Vision</h3>
           <p>Having a clear vision helps us be thoughtful in every space we choose to work, ensuring our solutions are strategic, purposeful, and future-ready.</p>
@@ -1068,7 +1078,7 @@
         <div class="tl-item left">
           <div class="tl-content-wrap">
             <div class="tl-content">
-              <div class="tl-year">2023</div>
+              <div class="tl-year">2022</div>
               <h4>Founded in Pune, India</h4>
               <p>Gagstek was founded by former Management & Technology Consulting Executives as an alternative to traditional Big-4 consulting. Core services launched: Salesforce, Java & Python Engineering.</p>
             </div>
@@ -1082,7 +1092,7 @@
           <div class="tl-dot"></div>
           <div class="tl-content-wrap">
             <div class="tl-content">
-              <div class="tl-year">2024</div>
+              <div class="tl-year">2023</div>
               <h4>Global Expansion</h4>
               <p>Expanded to United States and Australia offices. Grew our certified Salesforce and AI team. Successfully delivered 100+ client engagements across multiple industries.</p>
             </div>
@@ -1092,7 +1102,7 @@
         <div class="tl-item left">
           <div class="tl-content-wrap">
             <div class="tl-content">
-              <div class="tl-year">2025</div>
+              <div class="tl-year">2024-25</div>
               <h4>AI & Agentic Solutions</h4>
               <p>Launched Agentic AI practice, iCRM product, and StockPro. Deepened partnerships across Salesforce, AWS, and Databricks ecosystems. Team of 50+ certified professionals.</p>
             </div>
@@ -1169,7 +1179,7 @@
 
         <div class="exp-card">
           <div class="exp-icon" style="background:rgba(59,130,246,0.15);">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke="#60a5fa" stroke-width="2"/></svg>
+            <i class="fa-solid fa-cloud" style="color:#60a5fa;font-size:24px;"></i>
           </div>
           <div>
             <h4>Salesforce</h4>
@@ -1179,7 +1189,7 @@
 
         <div class="exp-card">
           <div class="exp-icon" style="background:rgba(168,85,247,0.15);">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="#c084fc" stroke-width="2"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="#c084fc" stroke-width="2" stroke-linecap="round"/></svg>
+            <i class="fa-solid fa-robot" style="color:#c084fc;font-size:24px;"></i>
           </div>
           <div>
             <h4>Agentic AI & ML</h4>
@@ -1189,7 +1199,7 @@
 
         <div class="exp-card">
           <div class="exp-icon" style="background:rgba(34,197,94,0.15);">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><polyline points="16 18 22 12 16 6" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="8 6 2 12 8 18" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <i class="fa-solid fa-code" style="color:#4ade80;font-size:24px;"></i>
           </div>
           <div>
             <h4>Java & Python</h4>
@@ -1199,7 +1209,7 @@
 
         <div class="exp-card">
           <div class="exp-icon" style="background:rgba(245,158,11,0.15);">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#fbbf24" stroke-width="2"/><polyline points="22,6 12,13 2,6" stroke="#fbbf24" stroke-width="2"/></svg>
+            <i class="fa-solid fa-plug" style="color:#fbbf24;font-size:24px;"></i>
           </div>
           <div>
             <h4>MuleSoft & Integration</h4>
@@ -1209,7 +1219,7 @@
 
         <div class="exp-card">
           <div class="exp-icon" style="background:rgba(14,165,233,0.15);">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2" stroke="#38bdf8" stroke-width="2"/><path d="M8 21h8M12 17v4" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/></svg>
+            <i class="fa-solid fa-desktop" style="color:#38bdf8;font-size:24px;"></i>
           </div>
           <div>
             <h4>Web Development</h4>
@@ -1219,7 +1229,7 @@
 
         <div class="exp-card">
           <div class="exp-icon" style="background:rgba(249,115,22,0.15);">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="5" y="2" width="14" height="20" rx="2" stroke="#fb923c" stroke-width="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke="#fb923c" stroke-width="2" stroke-linecap="round"/></svg>
+            <i class="fa-solid fa-mobile-screen-button" style="color:#fb923c;font-size:24px;"></i>
           </div>
           <div>
             <h4>Mobile Apps</h4>
@@ -1249,11 +1259,11 @@
           <p class="office-addr">16192 Coastal Highway,<br>City of Lewes, Delaware 19958,<br>County of Sussex</p>
           <div class="office-contact">
             <a href="tel:+15673992506">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.07 2.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <i class="fa-solid fa-phone" style="font-size:12px;"></i>
               +1-567-399-2506
             </a>
             <a href="mailto:info@gagstek.com">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <i class="fa-solid fa-envelope" style="font-size:12px;"></i>
               info@gagstek.com
             </a>
           </div>
@@ -1267,11 +1277,11 @@
           <p class="office-addr">P3-001 Pentagon Tower,<br>Magarpatta City,<br>Pune 411013, Maharashtra</p>
           <div class="office-contact">
             <a href="tel:+919049023824">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.07 2.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <i class="fa-solid fa-phone" style="font-size:12px;"></i>
               +91-90490-23824
             </a>
             <a href="mailto:info@gagstek.com">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <i class="fa-solid fa-envelope" style="font-size:12px;"></i>
               info@gagstek.com
             </a>
           </div>
@@ -1285,11 +1295,11 @@
           <p class="office-addr">161 Collins St,<br>Melbourne VIC 3000,<br>Australia</p>
           <div class="office-contact">
             <a href="tel:+61473118458">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.07 2.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <i class="fa-solid fa-phone" style="font-size:12px;"></i>
               +61-473-118-458
             </a>
             <a href="mailto:info@gagstek.com">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <i class="fa-solid fa-envelope" style="font-size:12px;"></i>
               info@gagstek.com
             </a>
           </div>
@@ -1322,23 +1332,23 @@
           <div class="ft-socials">
             <!-- WhatsApp -->
             <a href="https://api.whatsapp.com/send?phone=919049023824" aria-label="WhatsApp" class="ft-social-icon" target="_blank" rel="noopener">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.93 11.93 0 0012 0C5.37 0 0 5.37 0 12a11.9 11.9 0 001.64 6.07L0 24l6.13-1.61A11.93 11.93 0 0012 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.22-3.48-8.52zm-8.52 18.44a9.9 9.9 0 01-5.04-1.38l-.36-.21-3.74.98.99-3.64-.24-.38A9.9 9.9 0 012.1 12c0-5.46 4.44-9.9 9.9-9.9 2.64 0 5.12 1.03 6.99 2.9a9.84 9.84 0 012.9 6.99c0 5.47-4.44 9.93-9.9 9.93zm5.43-7.41c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07a8.13 8.13 0 01-2.4-1.48 9.02 9.02 0 01-1.66-2.07c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.09 3.19 5.07 4.47.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35z"/></svg>
+              <i class="fa-brands fa-whatsapp" style="font-size:20px;"></i>
             </a>
             <!-- Instagram -->
             <a href="https://www.instagram.com/gagstek___/" aria-label="Instagram" class="ft-social-icon" target="_blank" rel="noopener">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              <i class="fa-brands fa-instagram" style="font-size:20px;"></i>
             </a>
             <!-- LinkedIn -->
             <a href="https://in.linkedin.com/company/gagstek" aria-label="LinkedIn" class="ft-social-icon" target="_blank" rel="noopener">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              <i class="fa-brands fa-linkedin-in" style="font-size:20px;"></i>
             </a>
             <!-- YouTube -->
             <a href="https://www.youtube.com/@GagstekLLP" aria-label="YouTube" class="ft-social-icon" target="_blank" rel="noopener">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="rgba(10,22,40,0.85)"/></svg>
+              <i class="fa-brands fa-youtube" style="font-size:20px;"></i>
             </a>
           </div>
           <div class="ft-email">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <i class="fa-solid fa-envelope" style="font-size:14px;"></i>
             <a href="mailto:info@gagstek.com">info@gagstek.com</a>
           </div>
         </div>

@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blogs – Gagstek | Your Guide to Digital Transformation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #0f2044;
+      --accent: #3b82f6;
+      --accent-bright: #60a5fa;
+      --gold: #f59e0b;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 2rem;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(10,22,40,0.97);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.4);
+      backdrop-filter: blur(12px);
+    }
+
+    .logo { width: 130px; }
+    .logo span { color: var(--accent-bright); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: var(--white) !important;
+      padding: 0.55rem 1.3rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+    .nav-cta:hover {
+      background: var(--accent-bright) !important;
+      transform: translateY(-1px);
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Nav Socials */
+    .nav-socials {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-left: 1rem;
+    }
+    .nav-social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      color: var(--accent-bright);
+      text-decoration: none;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-social-icon:hover {
+      color: var(--white);
+      background: rgba(96,165,250,0.15);
+    }
+    @media (max-width: 768px) {
+      .nav-socials { display: none; }
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      top: 72px;
+      background: rgba(10,22,40,0.98);
+      backdrop-filter: blur(16px);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .mobile-menu.open {
+      display: flex;
+      opacity: 1;
+      pointer-events: all;
+    }
+    .mobile-menu a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.05rem !important;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--accent-bright); }
+    .mobile-menu .mob-cta {
+      background: var(--accent);
+      padding: 0.6rem 2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem !important;
+    }
+
+    /* ─── NAV DROPDOWN ─── */
+    .nav-has-dropdown { position: relative; }
+    .nav-drop-label {
+      display: flex; align-items: center; gap: 5px;
+      color: rgba(255,255,255,0.8); font-size: 0.92rem; font-weight: 500;
+      letter-spacing: 0.3px; cursor: pointer; transition: color 0.2s; user-select: none;
+    }
+    .nav-drop-label:hover { color: #fff; }
+    .nav-has-dropdown::after {
+      content: ''; position: absolute;
+      top: 100%; left: 0; right: 0; height: 16px;
+    }
+    .drop-panel {
+      display: none; position: absolute;
+      top: calc(100% + 14px); left: 50%; transform: translateX(-50%);
+      background: rgba(10,22,40,0.98);
+      border: 1px solid rgba(96,165,250,0.15); border-radius: 12px;
+      padding: 0.6rem; min-width: 240px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.5); z-index: 200;
+    }
+    .nav-has-dropdown:hover .drop-panel { display: flex; flex-direction: column; gap: 4px; }
+    .drop-panel a {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.65rem 0.85rem; border-radius: 8px;
+      text-decoration: none; color: rgba(255,255,255,0.8);
+      font-size: 0.88rem; transition: background 0.2s, color 0.2s;
+    }
+    .drop-panel a:hover { background: rgba(59,130,246,0.12); color: #fff; }
+    .dp-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .dp-meta { display: flex; flex-direction: column; line-height: 1.3; }
+    .dp-meta small { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 1px; }
+
+    .mob-products-label {
+      color: rgba(255,255,255,0.5); font-size: 0.7rem !important;
+      letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600;
+      pointer-events: none; margin-top: 0.25rem;
+    }
+    .mob-sub { font-size: 0.95rem !important; color: rgba(255,255,255,0.65) !important; padding-left: 1.2rem; }
+
+    /* ─── PAGE HERO ──────────────────────────────────────── */
+    .page-hero {
+      position: relative;
+      padding: 140px 2rem 80px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .page-hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #0a1628 0%, #0f2044 50%, #0a1628 100%);
+    }
+    .page-hero-glow {
+      position: absolute;
+      width: 700px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(59,130,246,0.15) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .page-hero-content { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; }
+    .page-hero-label {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--accent-bright);
+      background: rgba(59,130,246,0.12);
+      border: 1px solid rgba(96,165,250,0.25);
+      padding: 0.4rem 1rem; border-radius: 100px;
+      margin-bottom: 1.4rem;
+    }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+    }
+    .page-hero h1 span { color: var(--accent-bright); }
+    .page-hero p {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: rgba(255,255,255,0.7);
+      line-height: 1.75;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    /* ─── BLOG FILTER / CATEGORY TABS ────────────────────── */
+    .blog-filter {
+      background: var(--navy);
+      padding: 2.5rem 2rem 0;
+    }
+    .blog-filter-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .filter-btn {
+      padding: 0.5rem 1.3rem;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid rgba(96,165,250,0.25);
+      background: rgba(59,130,246,0.08);
+      color: rgba(255,255,255,0.65);
+      transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    /* ─── FEATURED BLOG ──────────────────────────────────── */
+    .featured-section {
+      background: var(--navy);
+      padding: 3.5rem 2rem 0;
+    }
+    .featured-inner { max-width: 1160px; margin: 0 auto; }
+
+    .featured-card {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 0;
+      border-radius: 20px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .featured-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+    }
+    .featured-img {
+      position: relative;
+      overflow: hidden;
+    }
+    .featured-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s;
+    }
+    .featured-card:hover .featured-img img { transform: scale(1.04); }
+    .featured-badge {
+      position: absolute;
+      top: 1.2rem; left: 1.2rem;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 0.3rem 0.85rem; border-radius: 100px;
+    }
+    .featured-content {
+      padding: 2.8rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .featured-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.2rem;
+    }
+    .featured-category {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--accent-bright);
+    }
+    .featured-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,0.3); }
+    .featured-date { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+    .featured-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 900;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+    .featured-content p {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.75;
+      margin-bottom: 1.8rem;
+    }
+    .read-more-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.88rem;
+      font-weight: 700;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      width: fit-content;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .read-more-btn:hover { background: var(--accent-bright); transform: translateY(-2px); }
+
+    /* ─── BLOG GRID ──────────────────────────────────────── */
+    .blog-grid-section {
+      background: var(--navy);
+      padding: 3.5rem 2rem 5rem;
+    }
+    .blog-grid-inner { max-width: 1160px; margin: 0 auto; }
+
+    .section-label-small {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--accent-bright);
+      margin-bottom: 2.5rem;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+    }
+
+    .blog-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 56px rgba(0,0,0,0.35);
+      border-color: rgba(59,130,246,0.3);
+    }
+    .blog-card-img {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+    }
+    .blog-card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s;
+    }
+    .blog-card:hover .blog-card-img img { transform: scale(1.06); }
+    .blog-card-img .card-badge {
+      position: absolute;
+      top: 0.9rem; left: 0.9rem;
+      background: rgba(10,22,40,0.85);
+      color: var(--accent-bright);
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 1.2px; text-transform: uppercase;
+      padding: 0.25rem 0.7rem; border-radius: 100px;
+      border: 1px solid rgba(96,165,250,0.2);
+    }
+    .blog-card-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.8rem;
+    }
+    .card-cat {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 1.2px; text-transform: uppercase;
+      color: var(--accent-bright);
+    }
+    .card-sep { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.25); }
+    .card-date { font-size: 0.75rem; color: rgba(255,255,255,0.45); }
+    .blog-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.08rem;
+      font-weight: 700;
+      line-height: 1.35;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+    .blog-card p {
+      font-size: 0.84rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 1.2rem;
+    }
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent-bright);
+      text-decoration: none;
+      transition: gap 0.2s, color 0.2s;
+    }
+    .card-link:hover { gap: 0.65rem; color: #fff; }
+    .card-link svg { flex-shrink: 0; }
+
+    /* ─── NO-IMAGE CARD VARIANT ──────────────────────────── */
+    .blog-card.no-img {
+      background: rgba(255,255,255,0.04);
+    }
+    .blog-card.no-img .blog-card-placeholder {
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, rgba(59,130,246,0.12) 0%, rgba(96,165,250,0.06) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .blog-card.no-img .blog-card-placeholder svg {
+      opacity: 0.25;
+    }
+
+    /* ─── LEGACY / OLDER POSTS STRIP ─────────────────────── */
+    .older-posts {
+      background: #0d1f3c;
+      padding: 4rem 2rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .older-inner { max-width: 1160px; margin: 0 auto; }
+    .older-inner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 900;
+      margin-bottom: 2rem;
+      color: #fff;
+    }
+    .older-inner h2 span { color: var(--accent-bright); }
+
+    .older-list { display: flex; flex-direction: column; gap: 1.2rem; }
+    .older-item {
+      display: flex;
+      gap: 1.4rem;
+      align-items: center;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      padding: 1.2rem 1.5rem;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .older-item:hover {
+      background: rgba(59,130,246,0.08);
+      border-color: rgba(59,130,246,0.3);
+      transform: translateX(4px);
+    }
+    .older-item-img {
+      width: 80px; height: 60px;
+      border-radius: 10px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .older-item-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .older-item-body { flex: 1; }
+    .older-item-body h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.97rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.3rem;
+      line-height: 1.3;
+    }
+    .older-item-body p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.5;
+    }
+    .older-item-date {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.35);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .older-arrow {
+      color: var(--accent-bright);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .older-item:hover .older-arrow { transform: translateX(4px); }
+
+    /* ─── CTA BAND ───────────────────────────────────────── */
+    .blog-cta {
+      background: linear-gradient(135deg, var(--navy-mid) 0%, #0a1628 100%);
+      padding: 5rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .blog-cta-inner { max-width: 680px; margin: 0 auto; }
+    .blog-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 900;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+    .blog-cta h2 span { color: var(--accent-bright); }
+    .blog-cta p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+    .blog-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 0.85rem 2rem;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .blog-cta-btn:hover { background: var(--accent-bright); transform: translateY(-2px); }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    .site-footer {
+      background: #111827;
+      color: rgba(255,255,255,0.75);
+      font-family: 'DM Sans', sans-serif;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .footer-top {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-top .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .ft-logo-link {
+      display: inline-block;
+      margin-bottom: 0.75rem;
+      text-decoration: none;
+    }
+    .ft-logo-img {
+      height: 48px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+    .ft-tagline {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.55;
+      margin-bottom: 1.4rem;
+    }
+    .ft-office-phone {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 0.25rem;
+    }
+    .ft-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--accent, #3b82f6);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 0.75rem 1.6rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      margin-bottom: 1.8rem;
+    }
+    .ft-cta-btn:hover { background: #60a5fa; transform: translateY(-2px); }
+    .ft-socials {
+      display: flex;
+      gap: 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+    .ft-social-icon {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: rgba(59,130,246,0.12);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent-bright, #60a5fa);
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .ft-social-icon:hover { background: var(--accent, #3b82f6); color: #fff; }
+    .ft-email {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.88rem;
+    }
+    .ft-email a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .ft-email a:hover { color: #fff; }
+    .ft-offices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .ft-office-title {
+      font-weight: 700; font-size: 0.9rem; color: #fff; margin-bottom: 0.4rem;
+    }
+    .ft-office-addr {
+      font-size: 0.85rem; line-height: 1.6; color: rgba(255,255,255,0.55);
+    }
+    .footer-mid {
+      padding: 3rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-mid .footer-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+    .ft-col { display: flex; flex-direction: column; gap: 0.65rem; }
+    .ft-col-title {
+      font-weight: 700; font-size: 0.9rem; color: #fff;
+      margin-bottom: 0.5rem; letter-spacing: 0.3px;
+    }
+    .ft-col a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none; font-size: 0.85rem; transition: color 0.2s;
+    }
+    .ft-col a:hover { color: #fff; }
+    .footer-bottom { padding: 1.4rem 0; }
+    .footer-bottom .footer-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 0.8rem;
+    }
+    .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.45); }
+    .ft-bottom-links { display: flex; gap: 1.5rem; }
+    .ft-bottom-links a {
+      font-size: 0.82rem; color: rgba(255,255,255,0.45);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .ft-bottom-links a:hover { color: #fff; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .blog-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top .footer-inner { grid-template-columns: 1fr 1fr; }
+      .ft-offices { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .featured-card { grid-template-columns: 1fr; }
+      .featured-img { aspect-ratio: 16/9; }
+      .blog-grid { grid-template-columns: 1fr 1fr; }
+      .footer-top .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-mid .footer-inner { grid-template-columns: 1fr 1fr; gap: 1.8rem; }
+      .older-item-img { display: none; }
+      .logo img { max-width: 100px !important; height: 34px !important; }
+    }
+    @media (max-width: 560px) {
+      .blog-grid { grid-template-columns: 1fr; }
+      .page-hero { padding: 120px 1.25rem 60px; }
+      .blog-grid-section, .older-posts { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .footer-inner { padding: 0 1.25rem; }
+      .footer-bottom .footer-inner { flex-direction: column; align-items: flex-start; }
+      .ft-bottom-links { flex-wrap: wrap; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav id="navbar">
+    <a href="index.html" class="logo"><img src="./img/logo.png" alt="Gagstek" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"><span style="display:none;font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:#fff;">Gags<span style="color:#60a5fa;">tek</span></span></a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="client.html">Clients</a></li>
+      <li class="nav-has-dropdown">
+        <span class="nav-drop-label">
+          Products
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </span>
+        <div class="drop-panel">
+          <a href="icrm.html">
+            <div class="dp-icon" style="background:rgba(59,130,246,0.15);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+            <div class="dp-meta">E2E Sales<small>Lead to Invoice, automated</small></div>
+          </a>
+          <a href="stockpro.html">
+            <div class="dp-icon" style="background:rgba(34,197,94,0.15);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
+            <div class="dp-meta">StockPro<small>Smart inventory management</small></div>
+          </a>
+        </div>
+      </li>
+      <li><a href="career.html">Career</a></li>
+      <li><a href="blogs.html" style="color:#60a5fa;">Blogs</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li>
+        <div class="nav-socials">
+          <a href="https://api.whatsapp.com/send?phone=919049023824" class="nav-social-icon" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.93 11.93 0 0012 0C5.37 0 0 5.37 0 12a11.9 11.9 0 001.64 6.07L0 24l6.13-1.61A11.93 11.93 0 0012 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.22-3.48-8.52zm-8.52 18.44a9.9 9.9 0 01-5.04-1.38l-.36-.21-3.74.98.99-3.64-.24-.38A9.9 9.9 0 012.1 12c0-5.46 4.44-9.9 9.9-9.9 2.64 0 5.12 1.03 6.99 2.9a9.84 9.84 0 012.9 6.99c0 5.47-4.44 9.93-9.9 9.93z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@GagstekLLP" class="nav-social-icon" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#111827"/></svg>
+          </a>
+          <a href="https://www.instagram.com/gagstek___/" class="nav-social-icon" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://in.linkedin.com/company/gagstek" class="nav-social-icon" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </li>
+      <li><a href="contact.html" class="nav-cta">Get Started</a></li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="services.html">Services</a>
+    <a href="client.html">Clients</a>
+    <span class="mob-products-label">Products</span>
+    <a href="icrm.html" class="mob-sub">E2E Sales</a>
+    <a href="stockpro.html" class="mob-sub">StockPro</a>
+    <a href="career.html">Career</a>
+    <a href="blogs.html" class="mob-active" style="color:var(--accent-bright)">Blogs</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="mob-cta">Get Started ↗</a>
+  </div>
+
+  <!-- ═══ PAGE HERO ═══ -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-glow"></div>
+    <div class="page-hero-content">
+      <span class="page-hero-label">Knowledge Hub</span>
+      <h1>Insights, Ideas &amp; <span>Innovation</span></h1>
+      <p>Explore expert perspectives on Salesforce, AI, cloud transformation, and the future of enterprise technology — written by the people building it.</p>
+    </div>
+  </section>
+
+  <!-- ═══ FILTER TABS ═══ -->
+  <section class="blog-filter">
+    <div class="blog-filter-inner">
+      <button class="filter-btn active">All Posts</button>
+      <button class="filter-btn">Salesforce</button>
+      <button class="filter-btn">Artificial Intelligence</button>
+      <button class="filter-btn">CRM Strategy</button>
+      <button class="filter-btn">Data & Integration</button>
+      <button class="filter-btn">Staffing & Talent</button>
+    </div>
+  </section>
+
+  <!-- ═══ FEATURED POST ═══ -->
+  <section class="featured-section">
+    <div class="featured-inner">
+      <a href="https://gagstek.com/salesforce-implementation-mistakes/" class="featured-card" target="_blank" rel="noopener" style="text-decoration:none;">
+        <div class="featured-img">
+          <img src="https://gagstek.com/wp-content/uploads/2026/03/s4.png" alt="Salesforce Implementation Mistakes" loading="eager">
+          <span class="featured-badge">✦ Featured</span>
+        </div>
+        <div class="featured-content">
+          <div class="featured-meta">
+            <span class="featured-category">Salesforce</span>
+            <div class="featured-dot"></div>
+            <span class="featured-date">Mar 3, 2026</span>
+          </div>
+          <h2>Salesforce Implementation Mistakes That Cost Companies Millions</h2>
+          <p>Discover the most common Salesforce implementation mistakes that lead to failed CRM projects. Learn how businesses can avoid costly errors and ensure a successful Salesforce deployment.</p>
+          <span class="read-more-btn">
+            Read Article
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══ BLOG GRID ═══ -->
+  <section class="blog-grid-section">
+    <div class="blog-grid-inner">
+      <span class="section-label-small">Latest Articles</span>
+
+      <div class="blog-grid">
+
+        <!-- Card 1 -->
+        <a href="https://gagstek.com/ai-workflow-automation/" class="blog-card" target="_blank" rel="noopener" style="text-decoration:none;">
+          <div class="blog-card-img">
+            <img src="https://gagstek.com/wp-content/uploads/2026/03/s2.png" alt="AI Workflow Automation" loading="lazy">
+            <span class="card-badge">AI</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="card-meta">
+              <span class="card-cat">Artificial Intelligence</span>
+              <div class="card-sep"></div>
+              <span class="card-date">Mar 3, 2026</span>
+            </div>
+            <h3>AI Workflow Automation: How Businesses Reduce Operational Costs by 30–50%</h3>
+            <p>Learn how AI workflow automation helps businesses reduce operational costs by automating repetitive tasks, improving efficiency, and streamlining business processes.</p>
+            <span class="card-link">
+              Read More
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 2 -->
+        <a href="https://gagstek.com/ai-copilot-for-crm/" class="blog-card" target="_blank" rel="noopener" style="text-decoration:none;">
+          <div class="blog-card-img">
+            <img src="https://gagstek.com/wp-content/uploads/2026/03/s3.png" alt="AI Copilot for CRM" loading="lazy">
+            <span class="card-badge">AI + CRM</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="card-meta">
+              <span class="card-cat">CRM Strategy</span>
+              <div class="card-sep"></div>
+              <span class="card-date">Mar 3, 2026</span>
+            </div>
+            <h3>AI Copilot for CRM: How AI Assistants Are Transforming CRM Adoption</h3>
+            <p>Discover how an AI copilot for CRM helps businesses improve CRM adoption by automating data entry, generating insights, and assisting sales teams with smarter workflows.</p>
+            <span class="card-link">
+              Read More
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="https://gagstek.com/crm-implementations-fail/" class="blog-card" target="_blank" rel="noopener" style="text-decoration:none;">
+          <div class="blog-card-img">
+            <img src="https://gagstek.com/wp-content/uploads/2026/02/m2.png" alt="Why Most CRM Implementations Fail" loading="lazy">
+            <span class="card-badge">CRM</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="card-meta">
+              <span class="card-cat">CRM Strategy</span>
+              <div class="card-sep"></div>
+              <span class="card-date">Feb 13, 2026</span>
+            </div>
+            <h3>Why Most CRM Implementations Fail</h3>
+            <p>Most CRM failures are not technology problems — they are strategy gaps. Without defined sales processes, structured automation, and executive accountability, CRM becomes a passive database.</p>
+            <span class="card-link">
+              Read More
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 4 -->
+        <a href="https://gagstek.com/ai-augmented-sales-operations/" class="blog-card" target="_blank" rel="noopener" style="text-decoration:none;">
+          <div class="blog-card-img">
+            <img src="https://gagstek.com/wp-content/uploads/2026/02/2150165588.jpg" alt="AI-Augmented Sales Operations" loading="lazy">
+            <span class="card-badge">AI</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="card-meta">
+              <span class="card-cat">Artificial Intelligence</span>
+              <div class="card-sep"></div>
+              <span class="card-date">Feb 13, 2026</span>
+            </div>
+            <h3>The Rise of AI-Augmented Sales Operations in Enterprise Organizations</h3>
+            <p>AI in sales is not about replacing people — it enhances decision-making. From predictive scoring to pipeline risk detection and intelligent forecasting, AI strengthens revenue visibility and execution.</p>
+            <span class="card-link">
+              Read More
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 5 -->
+        <a href="https://gagstek.com/unified-growth-architecture/" class="blog-card" target="_blank" rel="noopener" style="text-decoration:none;">
+          <div class="blog-card-img">
+            <img src="https://gagstek.com/wp-content/uploads/2026/02/df.png" alt="From Fragmented Systems to Unified Growth Architecture" loading="lazy">
+            <span class="card-badge">Strategy</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="card-meta">
+              <span class="card-cat">Data & Integration</span>
+              <div class="card-sep"></div>
+              <span class="card-date">Feb 13, 2026</span>
+            </div>
+            <h3>From Fragmented Systems to Unified Growth Architecture</h3>
+            <p>Fragmented systems create blind spots across sales, finance, and marketing. Growth accelerates when CRM, ERP, and data platforms operate as one connected architecture.</p>
+            <span class="card-link">
+              Read More
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 6 -->
+        <a href="https://gagstek.com/salesforce-revenue-cloud/" class="blog-card" target="_blank" rel="noopener" style="text-decoration:none;">
+          <div class="blog-card-img">
+            <img src="https://gagstek.com/wp-content/uploads/2025/12/generated-image-2-scaled.jpg" alt="Salesforce Revenue Cloud" loading="lazy">
+            <span class="card-badge">Salesforce</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="card-meta">
+              <span class="card-cat">Salesforce</span>
+              <div class="card-sep"></div>
+              <span class="card-date">Dec 5, 2025</span>
+            </div>
+            <h3>Salesforce Revenue Cloud vs Traditional ERP vs Zuora/Oracle CPQ</h3>
+            <p>For fast-growing companies, the quote-to-cash process has become too critical to leave to disconnected tools and manual spreadsheets. Revenue teams need a platform that can handle complex pricing, subscriptions, billing, and revenue recognition.</p>
+            <span class="card-link">
+              Read More
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 7 -->
+        <a href="https://gagstek.com/data-integration/" class="blog-card" target="_blank" rel="noopener" style="text-decoration:none;">
+          <div class="blog-card-img">
+            <img src="https://gagstek.com/wp-content/uploads/2025/12/generated-image-scaled.jpg" alt="Data Integration" loading="lazy">
+            <span class="card-badge">Integration</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="card-meta">
+              <span class="card-cat">Data & Integration</span>
+              <div class="card-sep"></div>
+              <span class="card-date">Dec 5, 2025</span>
+            </div>
+            <h3>Gagstek Insight: How Salesforce + Informatica Redefine Enterprise Data & AI</h3>
+            <p>Salesforce's acquisition of Informatica signals a new phase where CRM, data integration, data governance, and AI sit on one coordinated enterprise platform.</p>
+            <span class="card-link">
+              Read More
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 8 -->
+        <a href="https://gagstek.com/salesforce-automation/" class="blog-card" target="_blank" rel="noopener" style="text-decoration:none;">
+          <div class="blog-card-img">
+            <img src="https://gagstek.com/wp-content/uploads/2025/12/1764747289887.jpg" alt="Salesforce Automation" loading="lazy">
+            <span class="card-badge">Salesforce</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="card-meta">
+              <span class="card-cat">Salesforce</span>
+              <div class="card-sep"></div>
+              <span class="card-date">Dec 5, 2025</span>
+            </div>
+            <h3>Salesforce Automation Excellence: How Gagstek Turns CRM into a High-Performance Growth Engine</h3>
+            <p>Gagstek is helping clients turn their CRM from a static database into a living network of intelligent agents that automate sales, service, and marketing work end to end.</p>
+            <span class="card-link">
+              Read More
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 9 -->
+        <a href="https://gagstek.com/rise-of-agentic-ai/" class="blog-card" target="_blank" rel="noopener" style="text-decoration:none;">
+          <div class="blog-card-img">
+            <img src="https://gagstek.com/wp-content/uploads/2025/07/agentic-ai.jpg" alt="Agentic AI" loading="lazy">
+            <span class="card-badge">AI</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="card-meta">
+              <span class="card-cat">Artificial Intelligence</span>
+              <div class="card-sep"></div>
+              <span class="card-date">Jul 29, 2025</span>
+            </div>
+            <h3>The Rise of Agentic AI: Transforming Business Operations in 2025</h3>
+            <p>Remember when AI was just clunky chatbots that barely understood you? We're witnessing something revolutionary—agentic AI—and it's changing everything about how we work.</p>
+            <span class="card-link">
+              Read More
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 10 -->
+        <a href="https://gagstek.com/why-staffing-agencies/" class="blog-card" target="_blank" rel="noopener" style="text-decoration:none;">
+          <div class="blog-card-img">
+            <img src="https://gagstek.com/wp-content/uploads/2025/07/staffing.jpg" alt="Staffing Agencies" loading="lazy">
+            <span class="card-badge">Staffing</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="card-meta">
+              <span class="card-cat">Staffing & Talent</span>
+              <div class="card-sep"></div>
+              <span class="card-date">Jul 29, 2025</span>
+            </div>
+            <h3>Why Staffing Agencies Are Your Secret Weapon in the AI Era</h3>
+            <p>It's 2025's hiring paradox: your AI recruiting tool just sent you 247 "perfect matches" that somehow all miss the mark completely. Discover how staffing agencies cut through the noise.</p>
+            <span class="card-link">
+              Read More
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 11 -->
+        <a href="https://gagstek.com/salesforce-developers/" class="blog-card" target="_blank" rel="noopener" style="text-decoration:none;">
+          <div class="blog-card-img">
+            <img src="https://gagstek.com/wp-content/uploads/2025/07/salesforce-dev.jpg" alt="Salesforce Developers" loading="lazy">
+            <span class="card-badge">Salesforce</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="card-meta">
+              <span class="card-cat">Staffing & Talent</span>
+              <div class="card-sep"></div>
+              <span class="card-date">Jul 29, 2025</span>
+            </div>
+            <h3>Why Every Company is Fighting Over Salesforce Developers Right Now</h3>
+            <p>While everyone debates if AI will replace developers, smart companies are desperately hunting for Salesforce talent. Here's what's really driving the demand — and for good reason.</p>
+            <span class="card-link">
+              Read More
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ OLDER / ARCHIVE POSTS ═══ -->
+  <section class="older-posts">
+    <div class="older-inner">
+      <h2>More from the <span>Archive</span></h2>
+      <div class="older-list">
+
+        <a href="https://gagstek.com/agentforce-ai-empowered-intelligent-bots/" class="older-item" target="_blank" rel="noopener">
+          <div class="older-item-img">
+            <img src="https://gagstek.com/wp-content/uploads/2025/04/2149524379.jpg" alt="Agentforce" loading="lazy">
+          </div>
+          <div class="older-item-body">
+            <h4>Agentforce — AI Empowered Intelligent Bots</h4>
+            <p>AgentForce is shaping the future of work for agents and clients alike, connecting intelligent automation with human expertise.</p>
+          </div>
+          <span class="older-item-date">Aug 12, 2024</span>
+          <svg class="older-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+
+        <a href="https://gagstek.com/integrating-salesforce-with-sap/" class="older-item" target="_blank" rel="noopener">
+          <div class="older-item-img">
+            <img src="https://gagstek.com/wp-content/uploads/2025/04/2150038853.jpg" alt="Salesforce SAP Integration" loading="lazy">
+          </div>
+          <div class="older-item-body">
+            <h4>Integrating Salesforce with SAP</h4>
+            <p>Enabling Salesforce users to realize the full potential of customer-related information by integrating seamlessly with SAP systems of record.</p>
+          </div>
+          <span class="older-item-date">Jan 22, 2022</span>
+          <svg class="older-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+
+        <a href="https://gagstek.com/salesforce-data-cloud/" class="older-item" target="_blank" rel="noopener">
+          <div class="older-item-img">
+            <img src="https://gagstek.com/wp-content/uploads/2025/04/12071198_SL-101820-36860-11-scaled.jpg" alt="Salesforce Data Cloud" loading="lazy">
+          </div>
+          <div class="older-item-body">
+            <h4>Salesforce Data Cloud</h4>
+            <p>Bringing structured and unstructured enterprise data together to power AI applications, from email transcripts to knowledge articles, at scale.</p>
+          </div>
+          <span class="older-item-date">Oct 12, 2024</span>
+          <svg class="older-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+
+        <a href="https://gagstek.com/advances-in-gen-ai/" class="older-item" target="_blank" rel="noopener">
+          <div class="older-item-img">
+            <img src="https://gagstek.com/wp-content/uploads/2025/04/491.jpg" alt="Advances in Gen AI" loading="lazy">
+          </div>
+          <div class="older-item-body">
+            <h4>Advances in Gen AI</h4>
+            <p>Generative AI is expanding rapidly, shifting from single-domain proficiency to multimodal models capable of processing diverse data types — from text to image to video.</p>
+          </div>
+          <span class="older-item-date">Jan 14, 2025</span>
+          <svg class="older-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+
+        <a href="https://gagstek.com/ai-augmented-apps-and-services/" class="older-item" target="_blank" rel="noopener">
+          <div class="older-item-img">
+            <img src="https://gagstek.com/wp-content/uploads/2025/04/2149216655.jpg" alt="AI-Augmented Apps" loading="lazy">
+          </div>
+          <div class="older-item-body">
+            <h4>AI-Augmented Apps and Services</h4>
+            <p>In 2025, AI-augmented applications are redefining efficiency and personalization across content creation, healthcare, and enterprise software.</p>
+          </div>
+          <span class="older-item-date">Mar 12, 2025</span>
+          <svg class="older-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA BAND ═══ -->
+  <section class="blog-cta">
+    <div class="blog-cta-inner">
+      <h2>Ready to <span>Transform</span> Your Business?</h2>
+      <p>Let's talk about how Gagstek's Salesforce and AI expertise can drive real results for your organization — from strategy to execution.</p>
+      <a href="contact.html" class="blog-cta-btn">
+        Get Started ↗
+      </a>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─────────────────────────────────────────── -->
+  <footer class="site-footer">
+
+    <div class="footer-top">
+      <div class="footer-inner">
+
+        <div class="ft-left">
+          <a href="https://gagstek.com" class="ft-logo-link">
+            <img
+              src="logo.png"
+              alt="Gagstek"
+              class="ft-logo-img"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"
+            /><span class="ft-logo-fallback" style="display:none;font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;color:#fff;">Gags<span style="color:#60a5fa;">tek</span></span>
+          </a>
+          <p class="ft-tagline">Unleashing Business Potential<br>with Cloud &amp; AI</p>
+          <a href="https://gagstek.com/contact-us/" class="ft-cta-btn">Get Started ↗</a>
+          <div class="ft-socials">
+            <a href="https://api.whatsapp.com/send?phone=919049023824" aria-label="WhatsApp" class="ft-social-icon" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.93 11.93 0 0012 0C5.37 0 0 5.37 0 12a11.9 11.9 0 001.64 6.07L0 24l6.13-1.61A11.93 11.93 0 0012 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.22-3.48-8.52zm-8.52 18.44a9.9 9.9 0 01-5.04-1.38l-.36-.21-3.74.98.99-3.64-.24-.38A9.9 9.9 0 012.1 12c0-5.46 4.44-9.9 9.9-9.9 2.64 0 5.12 1.03 6.99 2.9a9.84 9.84 0 012.9 6.99c0 5.47-4.44 9.93-9.9 9.93z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/gagstek___/" aria-label="Instagram" class="ft-social-icon" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://in.linkedin.com/company/gagstek" aria-label="LinkedIn" class="ft-social-icon" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@GagstekLLP" aria-label="YouTube" class="ft-social-icon" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="rgba(10,22,40,0.85)"/></svg>
+            </a>
+          </div>
+          <div class="ft-email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:info@gagstek.com">info@gagstek.com</a>
+          </div>
+        </div>
+
+        <div class="ft-offices">
+          <div class="ft-office">
+            <p class="ft-office-title">United States Office 🇺🇸</p>
+            <p class="ft-office-addr">16192 Coastal Highway, Lewes,<br>Delaware 19958, County of Sussex</p>
+            <p class="ft-office-phone">📞 +1-567-399-2506</p>
+          </div>
+          <div class="ft-office">
+            <p class="ft-office-title">India Office 🇮🇳</p>
+            <p class="ft-office-addr">P3-001 Pentagon Tower,<br>Magarpatta City, Pune 411013</p>
+          </div>
+          <div class="ft-office">
+            <p class="ft-office-title">Australia Office 🇦🇺</p>
+            <p class="ft-office-addr">161 Collins St,<br>Melbourne VIC, 3000</p>
+            <p class="ft-office-phone">📞 +61-473118458</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-mid">
+      <div class="footer-inner">
+        <div class="ft-col">
+          <p class="ft-col-title">Salesforce Services</p>
+          <a href="services.html">Business Consulting & Advisory</a>
+          <a href="services.html">Implementation & Development</a>
+          <a href="services.html">Quote-To-Cash Services</a>
+          <a href="services.html">Administration & Support</a>
+          <a href="services.html">Data Migration</a>
+          <a href="services.html">Staff Augmentation</a>
+        </div>
+        <div class="ft-col">
+          <p class="ft-col-title">AI Services</p>
+          <a href="services.html">AI Sales Automation</a>
+          <a href="services.html">AI Lead Intelligence</a>
+          <a href="services.html">Conversational AI Systems</a>
+          <a href="services.html">AI Workflow Orchestration</a>
+          <a href="services.html">AI Data Engineering</a>
+          <a href="services.html">Custom AI Product Builds</a>
+        </div>
+        <div class="ft-col">
+          <p class="ft-col-title">Products</p>
+          <a href="icrm.html">E2E Sales</a>
+          <a href="stockpro.html">StockPro</a>
+        </div>
+        <div class="ft-col">
+          <p class="ft-col-title">Company</p>
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="client.html">Clients</a>
+          <a href="employee-review.html">Employee Review</a>
+          <a href="career.html">Career</a>
+          <a href="case-study.html">Case Studies</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-inner">
+        <p>© 2026 Gagstek. All Rights Reserved.</p>
+        <div class="ft-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms Of Services</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+  <script>
+    // Sticky nav
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    // Hamburger toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Filter buttons (visual toggle only)
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

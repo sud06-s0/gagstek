@@ -183,6 +183,13 @@
       background-position: center;
       filter: brightness(0.25) saturate(1.1);
     }
+    /* Mobile hero: portrait-optimized image */
+    @media (max-width: 768px) {
+      .page-hero-bg {
+        background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80&fit=crop&crop=center');
+        background-position: center top;
+      }
+    }
     .page-hero-overlay {
       position: absolute;
       inset: 0;
@@ -1065,6 +1072,7 @@
     .mob-sub.mob-active { color: var(--accent-bright) !important; }
 
     </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
 
@@ -1080,15 +1088,15 @@
       <li class="nav-has-dropdown">
         <span class="nav-drop-label">
           Products
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          <i class="fa-solid fa-chevron-down" style="font-size:11px;"></i>
         </span>
         <div class="drop-panel">
           <a href="icrm.html">
-            <div class="dp-icon" style="background:rgba(59,130,246,0.15);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+            <div class="dp-icon" style="background:rgba(59,130,246,0.15);"><i class="fa-solid fa-users" style="color:#60a5fa;font-size:14px;"></i></div>
             <div class="dp-meta">E2E Sales<small>Lead to Invoice, automated</small></div>
           </a>
           <a href="stockpro.html">
-            <div class="dp-icon" style="background:rgba(34,197,94,0.15);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
+            <div class="dp-icon" style="background:rgba(34,197,94,0.15);"><i class="fa-solid fa-boxes-stacked" style="color:#4ade80;font-size:14px;"></i></div>
             <div class="dp-meta">StockPro<small>Smart inventory management</small></div>
           </a>
         </div>
@@ -1102,16 +1110,16 @@
     <!-- Nav Social Icons -->
     <div class="nav-socials">
       <a href="https://api.whatsapp.com/send?phone=919049023824" aria-label="WhatsApp" class="nav-social-icon" target="_blank" rel="noopener">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.93 11.93 0 0012 0C5.37 0 0 5.37 0 12a11.9 11.9 0 001.64 6.07L0 24l6.13-1.61A11.93 11.93 0 0012 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.22-3.48-8.52zm-8.52 18.44a9.9 9.9 0 01-5.04-1.38l-.36-.21-3.74.98.99-3.64-.24-.38A9.9 9.9 0 012.1 12c0-5.46 4.44-9.9 9.9-9.9 2.64 0 5.12 1.03 6.99 2.9a9.84 9.84 0 012.9 6.99c0 5.47-4.44 9.93-9.9 9.93zm5.43-7.41c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07a8.13 8.13 0 01-2.4-1.48 9.02 9.02 0 01-1.66-2.07c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.09 3.19 5.07 4.47.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35z"/></svg>
+        <i class="fa-brands fa-whatsapp" style="font-size:17px;"></i>
       </a>
       <a href="https://www.youtube.com/@GagstekLLP" aria-label="YouTube" class="nav-social-icon" target="_blank" rel="noopener">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="rgba(10,22,40,0.97)"/></svg>
+        <i class="fa-brands fa-youtube" style="font-size:17px;"></i>
       </a>
       <a href="https://www.instagram.com/gagstek___/" aria-label="Instagram" class="nav-social-icon" target="_blank" rel="noopener">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        <i class="fa-brands fa-instagram" style="font-size:17px;"></i>
       </a>
       <a href="https://in.linkedin.com/company/gagstek" aria-label="LinkedIn" class="nav-social-icon" target="_blank" rel="noopener">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        <i class="fa-brands fa-linkedin-in" style="font-size:17px;"></i>
       </a>
     </div>
 
@@ -1185,20 +1193,17 @@
 
         <!-- Featured card -->
         <div class="vid-card featured reveal">
-          <div class="vid-thumb">
-            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=900&q=80&fit=crop" alt="Andrew Riggs" loading="lazy" />
-            <div class="vid-thumb-overlay"></div>
-            <div class="vid-play-btn">
-              <svg viewBox="0 0 24 24" fill="white" width="22" height="22"><polygon points="6,4 20,12 6,20"/></svg>
+          <div class="vid-thumb video-mode">
+            <div class="vid-iframe-wrap">
+              <iframe src="./vid/3w.mp4" title="Client Testimonial - IT Partnership" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
             </div>
             <div class="vid-tag">Featured</div>
-            <div class="vid-duration">3:24</div>
           </div>
           <div class="vid-body">
             <div class="vid-industry">IT & Technology</div>
             <h3 class="vid-title">Co-Managed Success: Partnering Through the Entire Implementation</h3>
             <div class="vid-person">
-              <img class="vid-avatar" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&q=80&fit=crop&crop=face" alt="Andrew Riggs" />
+              <img class="vid-avatar" src="./img/21w.png" alt="Andrew Riggs" />
               <div>
                 <span class="vid-name">Andrew Riggs</span>
                 <span class="vid-role">Director of IT, SCE Power Plus</span>
@@ -1211,20 +1216,17 @@
 
         <!-- Card 2 -->
         <div class="vid-card reveal reveal-delay-1">
-          <div class="vid-thumb">
-            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80&fit=crop&crop=top" alt="Energy Efficiency Client" loading="lazy" />
-            <div class="vid-thumb-overlay"></div>
-            <div class="vid-play-btn">
-              <svg viewBox="0 0 24 24" fill="white" width="20" height="20"><polygon points="6,4 20,12 6,20"/></svg>
+          <div class="vid-thumb video-mode">
+            <div class="vid-iframe-wrap">
+              <iframe src="./vid/1w.mp4" title="Client Testimonial - Energy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
             </div>
             <div class="vid-tag">Energy</div>
-            <div class="vid-duration">2:47</div>
           </div>
           <div class="vid-body">
             <div class="vid-industry">Energy & Utilities</div>
             <h3 class="vid-title">Gagstek Asked the Questions No One Else Did</h3>
             <div class="vid-person">
-              <img class="vid-avatar" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&q=80&fit=crop&crop=face" alt="Energy Client" />
+              <img class="vid-avatar" src="./img/1w.png" alt="Energy Client" />
               <div>
                 <span class="vid-name">Energy Efficiency Client</span>
                 <span class="vid-role">Operations Head, USA</span>
@@ -1237,20 +1239,17 @@
 
         <!-- Card 3 -->
         <div class="vid-card reveal">
-          <div class="vid-thumb">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&fit=crop&crop=top" alt="Brad Schwind" loading="lazy" />
-            <div class="vid-thumb-overlay"></div>
-            <div class="vid-play-btn">
-              <svg viewBox="0 0 24 24" fill="white" width="20" height="20"><polygon points="6,4 20,12 6,20"/></svg>
+          <div class="vid-thumb video-mode">
+            <div class="vid-iframe-wrap">
+              <iframe src="./vid/2w.mp4" title="Client Testimonial - Manufacturing" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
             </div>
             <div class="vid-tag">Manufacturing</div>
-            <div class="vid-duration">2:11</div>
           </div>
           <div class="vid-body">
             <div class="vid-industry">Manufacturing</div>
             <h3 class="vid-title">How Gagstek Gained Our Client's Trust Before Writing a Line of Code</h3>
             <div class="vid-person">
-              <img class="vid-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80&fit=crop&crop=face" alt="Brad Schwind" />
+              <img class="vid-avatar" src="./img/2w.png" alt="Brad Schwind" />
               <div>
                 <span class="vid-name">Brad Schwind</span>
                 <span class="vid-role">Marketing Manager</span>
@@ -1263,20 +1262,17 @@
 
         <!-- Card 4 -->
         <div class="vid-card reveal reveal-delay-1">
-          <div class="vid-thumb">
-            <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?w=600&q=80&fit=crop&crop=top" alt="Energy Client" loading="lazy" />
-            <div class="vid-thumb-overlay"></div>
-            <div class="vid-play-btn">
-              <svg viewBox="0 0 24 24" fill="white" width="20" height="20"><polygon points="6,4 20,12 6,20"/></svg>
+          <div class="vid-thumb video-mode">
+            <div class="vid-iframe-wrap">
+              <iframe src="./vid/4w.mp4" title="Client Testimonial - Sales Growth" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
             </div>
             <div class="vid-tag">Energy</div>
-            <div class="vid-duration">3:05</div>
           </div>
           <div class="vid-body">
             <div class="vid-industry">Energy & Utilities</div>
             <h3 class="vid-title">How Salesforce Helped Our Client Book $105M in One Month</h3>
             <div class="vid-person">
-              <img class="vid-avatar" src="https://images.unsplash.com/photo-1554151228-14d9def656e4?w=80&q=80&fit=crop&crop=face" alt="Energy Client" />
+              <img class="vid-avatar" src="./img/4w.png" alt="Energy Client" />
               <div>
                 <span class="vid-name">Energy Efficiency Client</span>
                 <span class="vid-role">VP Sales Operations, USA</span>
@@ -1289,20 +1285,17 @@
 
         <!-- Card 5 -->
         <div class="vid-card reveal reveal-delay-2">
-          <div class="vid-thumb">
-            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=80&fit=crop&crop=top" alt="Manufacturing Client" loading="lazy" />
-            <div class="vid-thumb-overlay"></div>
-            <div class="vid-play-btn">
-              <svg viewBox="0 0 24 24" fill="white" width="20" height="20"><polygon points="6,4 20,12 6,20"/></svg>
+          <div class="vid-thumb video-mode">
+            <div class="vid-iframe-wrap">
+              <iframe src="./vid/5w.mp4" title="Client Testimonial - Opportunities" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
             </div>
             <div class="vid-tag">Manufacturing</div>
-            <div class="vid-duration">1:58</div>
           </div>
           <div class="vid-body">
             <div class="vid-industry">Manufacturing</div>
             <h3 class="vid-title">How Gagstek Helped This Client See and Win More Opportunities</h3>
             <div class="vid-person">
-              <img class="vid-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80&fit=crop&crop=face" alt="Manufacturing Client" />
+              <img class="vid-avatar" src="./img/5w.png" alt="Manufacturing Client" />
               <div>
                 <span class="vid-name">Manufacturing Client</span>
                 <span class="vid-role">Head of Sales, UK</span>
@@ -1466,156 +1459,6 @@
     </div>
   </section>
 
-  <!-- ═══ CASE STUDIES ═══ -->
-  <section class="cases-section">
-    <div class="section-inner">
-      <p class="section-eyebrow reveal">Featured Case Studies</p>
-      <h2 class="section-title reveal">Transformations We've <span class="accent">Delivered</span></h2>
-      <p class="section-sub reveal">Deep dives into real projects, real outcomes, and the strategies that drove them.</p>
-
-      <div class="cases-grid">
-
-        <div class="case-card reveal">
-          <div class="case-thumb">
-            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=700&q=80&fit=crop" alt="Quote-to-Cash" loading="lazy" />
-            <div class="case-thumb-gradient"></div>
-            <div class="case-industry-badge">MedTech</div>
-          </div>
-          <div class="case-body">
-            <span class="case-label">Featured Case Study</span>
-            <h3 class="case-title">Modernizing Quote-to-Cash for a Global Medical Device Manufacturer</h3>
-            <div class="case-outcomes">
-              <div class="case-outcome-item">
-                <span class="case-outcome-num">60%</span>
-                <span class="case-outcome-label">Faster Quoting</span>
-              </div>
-              <div class="case-outcome-item">
-                <span class="case-outcome-num">3x</span>
-                <span class="case-outcome-label">Revenue Visibility</span>
-              </div>
-            </div>
-            <a href="https://gagstek.com/case-study-modernizing-quote-to-cash/" class="case-link">Read Case Study →</a>
-          </div>
-        </div>
-
-        <div class="case-card reveal reveal-delay-1">
-          <div class="case-thumb">
-            <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=700&q=80&fit=crop" alt="AI Sales Dashboard" loading="lazy" />
-            <div class="case-thumb-gradient"></div>
-            <div class="case-industry-badge">AI & Sales</div>
-          </div>
-          <div class="case-body">
-            <span class="case-label">Featured Case Study</span>
-            <h3 class="case-title">AI Sales Dashboard for a Mid-Sized Sales-Driven Organisation</h3>
-            <div class="case-outcomes">
-              <div class="case-outcome-item">
-                <span class="case-outcome-num">40%</span>
-                <span class="case-outcome-label">Lead Conversion Up</span>
-              </div>
-              <div class="case-outcome-item">
-                <span class="case-outcome-num">Real-time</span>
-                <span class="case-outcome-label">Pipeline Visibility</span>
-              </div>
-            </div>
-            <a href="https://gagstek.com/case-study-ai-sales-dashboard/" class="case-link">Read Case Study →</a>
-          </div>
-        </div>
-
-        <div class="case-card reveal reveal-delay-2">
-          <div class="case-thumb">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&q=80&fit=crop" alt="Lead Generation Engine" loading="lazy" />
-            <div class="case-thumb-gradient"></div>
-            <div class="case-industry-badge">Growth</div>
-          </div>
-          <div class="case-body">
-            <span class="case-label">Featured Case Study</span>
-            <h3 class="case-title">Scalable Lead Generation Engine for Outbound Growth</h3>
-            <div class="case-outcomes">
-              <div class="case-outcome-item">
-                <span class="case-outcome-num">2x</span>
-                <span class="case-outcome-label">Monthly Bookings</span>
-              </div>
-              <div class="case-outcome-item">
-                <span class="case-outcome-num">$105M</span>
-                <span class="case-outcome-label">In One Month</span>
-              </div>
-            </div>
-            <a href="https://gagstek.com/case-study-lead-generation-engine/" class="case-link">Read Case Study →</a>
-          </div>
-        </div>
-
-        <div class="case-card reveal">
-          <div class="case-thumb">
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80&fit=crop" alt="Force.com" loading="lazy" />
-            <div class="case-thumb-gradient"></div>
-            <div class="case-industry-badge">FinTech</div>
-          </div>
-          <div class="case-body">
-            <span class="case-label">Featured Case Study</span>
-            <h3 class="case-title">Force.com Implementation for a Leading Financial Institution</h3>
-            <div class="case-outcomes">
-              <div class="case-outcome-item">
-                <span class="case-outcome-num">15%</span>
-                <span class="case-outcome-label">TAT Reduction</span>
-              </div>
-              <div class="case-outcome-item">
-                <span class="case-outcome-num">100%</span>
-                <span class="case-outcome-label">SF Certified Team</span>
-              </div>
-            </div>
-            <a href="https://gagstek.com/caste-study-force/" class="case-link">Read Case Study →</a>
-          </div>
-        </div>
-
-        <div class="case-card reveal reveal-delay-1">
-          <div class="case-thumb">
-            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=700&q=80&fit=crop" alt="MuleSoft" loading="lazy" />
-            <div class="case-thumb-gradient"></div>
-            <div class="case-industry-badge">Integration</div>
-          </div>
-          <div class="case-body">
-            <span class="case-label">Featured Case Study</span>
-            <h3 class="case-title">MuleSoft Implementation for a German Enterprise Client</h3>
-            <div class="case-outcomes">
-              <div class="case-outcome-item">
-                <span class="case-outcome-num">Zero</span>
-                <span class="case-outcome-label">Data Silos</span>
-              </div>
-              <div class="case-outcome-item">
-                <span class="case-outcome-num">Real-time</span>
-                <span class="case-outcome-label">System Sync</span>
-              </div>
-            </div>
-            <a href="https://gagstek.com/case-study-mulesoft/" class="case-link">Read Case Study →</a>
-          </div>
-        </div>
-
-        <div class="case-card reveal reveal-delay-2">
-          <div class="case-thumb">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=80&fit=crop" alt="Salesforce Analytics" loading="lazy" />
-            <div class="case-thumb-gradient"></div>
-            <div class="case-industry-badge">Analytics & AI</div>
-          </div>
-          <div class="case-body">
-            <span class="case-label">Featured Case Study</span>
-            <h3 class="case-title">Salesforce Analytics Enrichment Using Open-Source AI (Alt to Agentforce)</h3>
-            <div class="case-outcomes">
-              <div class="case-outcome-item">
-                <span class="case-outcome-num">Open</span>
-                <span class="case-outcome-label">Source AI Stack</span>
-              </div>
-              <div class="case-outcome-item">
-                <span class="case-outcome-num">50%</span>
-                <span class="case-outcome-label">Cost Reduction</span>
-              </div>
-            </div>
-            <a href="https://gagstek.com/case-study-salesforce-analytics/" class="case-link">Read Case Study →</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
 
   <!-- ═══ CTA BAND ═══ -->
   <div class="cta-band">
@@ -1653,23 +1496,23 @@
           <div class="ft-socials">
             <!-- WhatsApp -->
             <a href="https://api.whatsapp.com/send?phone=919049023824" aria-label="WhatsApp" class="ft-social-icon" target="_blank" rel="noopener">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.93 11.93 0 0012 0C5.37 0 0 5.37 0 12a11.9 11.9 0 001.64 6.07L0 24l6.13-1.61A11.93 11.93 0 0012 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.22-3.48-8.52zm-8.52 18.44a9.9 9.9 0 01-5.04-1.38l-.36-.21-3.74.98.99-3.64-.24-.38A9.9 9.9 0 012.1 12c0-5.46 4.44-9.9 9.9-9.9 2.64 0 5.12 1.03 6.99 2.9a9.84 9.84 0 012.9 6.99c0 5.47-4.44 9.93-9.9 9.93zm5.43-7.41c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07a8.13 8.13 0 01-2.4-1.48 9.02 9.02 0 01-1.66-2.07c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.09 3.19 5.07 4.47.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35z"/></svg>
+              <i class="fa-brands fa-whatsapp" style="font-size:20px;"></i>
             </a>
             <!-- Instagram -->
             <a href="https://www.instagram.com/gagstek___/" aria-label="Instagram" class="ft-social-icon" target="_blank" rel="noopener">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              <i class="fa-brands fa-instagram" style="font-size:20px;"></i>
             </a>
             <!-- LinkedIn -->
             <a href="https://in.linkedin.com/company/gagstek" aria-label="LinkedIn" class="ft-social-icon" target="_blank" rel="noopener">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              <i class="fa-brands fa-linkedin-in" style="font-size:20px;"></i>
             </a>
             <!-- YouTube -->
             <a href="https://www.youtube.com/@GagstekLLP" aria-label="YouTube" class="ft-social-icon" target="_blank" rel="noopener">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="rgba(10,22,40,0.85)"/></svg>
+              <i class="fa-brands fa-youtube" style="font-size:20px;"></i>
             </a>
           </div>
           <div class="ft-email">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <i class="fa-solid fa-envelope" style="font-size:14px;"></i>
             <a href="mailto:info@gagstek.com">info@gagstek.com</a>
           </div>
         </div>
