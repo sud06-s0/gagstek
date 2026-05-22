@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gagstek – Nordic Automotive Case Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:        #0d1117;
+    --ink-mid:    #1e2330;
+    --ink-body:   #3a3f50;
+    --accent:     #1a4fdb;
+    --pale:       #eef2fb;
+    --rule:       #d4daea;
+    --white:      #ffffff;
+    --dark:       #0f1623;
+    --dark2:      #162035;
+    --light-muted:#6b7590;
+    --dark-muted: #a8b8d0;
+    --gold:       #c8a84b;
+    --font-head:  'Playfair Display', Georgia, serif;
+    --font-body:  'Lato', sans-serif;
+  }
+
+  body {
+    background: #b0b6c2;
+    font-family: var(--font-body);
+    color: var(--ink);
+    display: flex;
+    justify-content: center;
+    padding: 32px 0 48px;
+  }
+
+  .page {
+    width: 794px;
+    background: var(--white);
+    box-shadow: 0 12px 60px rgba(0,0,0,.28);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    min-height: 216px;
+    background: var(--dark);
+  }
+
+  .header-left {
+    padding: 24px 32px 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+
+  .header-left > img {
+    display: block !important;
+    height: 36px !important;
+    width: auto !important;
+    max-width: 160px !important;
+    object-fit: contain !important;
+    object-position: left center !important;
+    align-self: flex-start !important;
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+  }
+
+  .logo-placeholder {
+    width: 130px;
+    height: 40px;
+    border: 1.5px dashed rgba(255,255,255,.35);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.4);
+  }
+
+  .header-eyebrow {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+    margin-top:20px;
+  }
+
+  .header-title {
+    font-family: var(--font-head);
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 1.12;
+    color: #ffffff;
+  }
+
+  .header-title em {
+    font-style: normal;
+    color: #88b4f7;
+  }
+
+  .header-subtitle {
+    margin-top: 9px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #c0cde0;
+    letter-spacing: .02em;
+  }
+
+  /* ── IMAGE SLOT ── */
+  .header-right {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .img-placeholder {
+    width: 100%;
+    height: 100%;
+    min-height: 216px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(160deg, #1e2e50 0%, #111d38 100%);
+    border-left: 1px solid rgba(255,255,255,.07);
+  }
+
+  .img-placeholder i {
+    font-size: 40px;
+    color: rgba(136,180,247,.4);
+  }
+
+  .img-placeholder span {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.3);
+  }
+
+  .corner-accent {
+    position: absolute;
+    top: 0; right: 0;
+    width: 0; height: 0;
+    border-style: solid;
+    border-width: 0 44px 44px 0;
+    border-color: transparent var(--accent) transparent transparent;
+  }
+
+  /* ── STRIP ── */
+  .strip {
+    background: var(--accent);
+    padding: 10px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .strip-label {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    color: #ffffff;
+  }
+
+  .strip-tags { display: flex; gap: 8px; }
+
+  .tag {
+    background: rgba(255,255,255,.18);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 2px;
+    padding: 3px 10px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+
+  /* ── OVERVIEW ── */
+  .overview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 26px 32px 24px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .overview-text {
+    padding-right: 26px;
+    border-right: 1px solid var(--rule);
+  }
+
+  .overview-text p {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.78;
+    color: var(--ink-body);
+  }
+
+  .overview-text p + p { margin-top: 9px; }
+
+  .overview-meta {
+    padding-left: 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .meta-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .meta-row i {
+    color: var(--accent);
+    font-size: 14px;
+    width: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .meta-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--light-muted);
+    margin-bottom: 2px;
+  }
+
+  .meta-val {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--ink-mid);
+    line-height: 1.5;
+  }
+
+  /* ── SECTION HEADING ── */
+  .sec-head {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-bottom: 7px;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+
+  /* ── TWO-COL ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 24px 32px 0;
+  }
+
+  .col-l {
+    padding-right: 26px;
+    border-right: 1px solid var(--rule);
+  }
+
+  .col-r { padding-left: 26px; }
+
+  /* Objectives */
+  .obj { margin-bottom: 16px; }
+
+  .obj-title {
+    font-family: var(--font-head);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink-mid);
+    margin-bottom: 4px;
+  }
+
+  .obj p {
+    font-size: 11.5px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--ink-body);
+  }
+
+  /* Solutions */
+  .sol-grp { margin-bottom: 15px; }
+
+  .sol-grp-title {
+    font-family: var(--font-head);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink-mid);
+    margin-bottom: 7px;
+  }
+
+  .sol-list { list-style: none; }
+
+  .sol-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 11.5px;
+    font-weight: 400;
+    color: var(--ink-body);
+    line-height: 1.6;
+    padding: 2.5px 0;
+  }
+
+  .sol-list li i {
+    color: var(--accent);
+    font-size: 7px;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+
+  /* ── RESULTS ── */
+  .results {
+    background: var(--dark);
+    margin-top: 24px;
+    padding: 24px 32px 28px;
+  }
+
+  .results .sec-head {
+    color: var(--gold);
+    border-color: var(--gold);
+  }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 18px;
+  }
+
+  .res-card {
+    padding-right: 24px;
+    border-right: 1px solid rgba(255,255,255,.1);
+  }
+
+  .res-card:last-child { border-right: none; padding-right: 0; }
+  .res-card:not(:first-child) { padding-left: 24px; }
+
+  .res-num {
+    font-family: var(--font-head);
+    font-size: 36px;
+    font-weight: 900;
+    color: #88b4f7;
+    line-height: 1;
+    margin-bottom: 5px;
+  }
+
+  .res-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+    letter-spacing: .02em;
+  }
+
+  .res-card p {
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--dark-muted);
+  }
+
+  /* ── CONCLUSION ── */
+  .conclusion {
+    display: grid;
+    grid-template-columns: 54px 1fr;
+    gap: 18px;
+    padding: 20px 32px 18px;
+    border-top: 1px solid var(--rule);
+    align-items: start;
+  }
+
+  .concl-icon {
+    width: 54px;
+    height: 54px;
+    background: var(--pale);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .concl-icon i {
+    color: var(--accent);
+    font-size: 18px;
+  }
+
+  .concl-inner .sec-head { margin-bottom: 9px; }
+
+  .concl-inner p {
+    font-size: 11.5px;
+    font-weight: 400;
+    line-height: 1.75;
+    color: var(--ink-body);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--dark2);
+    padding: 13px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .foot-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 400;
+    color: #c0cde0;
+  }
+
+  .foot-item i {
+    font-size: 12px;
+    color: #6f90c0;
+  }
+
+  .foot-sep {
+    width: 1px;
+    height: 16px;
+    background: rgba(255,255,255,.12);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <img src="./img/logo.png" style="height:36px; width:auto; display:block; object-fit:contain; object-position:left; max-width:160px; align-self:flex-start; flex-shrink:0;"/>
+      <div>
+        <div class="header-eyebrow">Client Success Story</div>
+        <h1 class="header-title">How a Nordic<br/><em>Automotive Manufacturer</em><br/>Scaled with AI</h1>
+        <p class="header-subtitle">Cloud &amp; Salesforce Transformation by Gagstek</p>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <img src="./img/bus.png" style="width:100%; height:100%; min-height:216px; object-fit:cover; display:block;"/>
+      <div class="corner-accent"></div>
+    </div>
+  </div>
+
+  <!-- STRIP -->
+  <div class="strip">
+    <span class="strip-label">Nordic Automotive &amp; Manufacturing — Salesforce · AI · Cloud Integration</span>
+    <div class="strip-tags">
+      <span class="tag">Automotive</span>
+      <span class="tag">Manufacturing</span>
+      <span class="tag">2024–25</span>
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="overview">
+    <div class="overview-text">
+      <div class="sec-head">Overview</div>
+      <p>A leading Nordic automotive manufacturer, operating across Scandinavia with a dealer network spanning three countries, faced escalating pressure from digital-native competitors. Legacy CRM systems, manual quoting workflows, and siloed production data were compressing margins and slowing deal velocity.</p>
+      <p>Gagstek was engaged as the Cloud &amp; AI Systems integration partner to modernise their sales infrastructure, automate cross-functional workflows, and build a unified data layer — turning operational complexity into measurable competitive advantage.</p>
+    </div>
+    <div class="overview-meta">
+      <div class="meta-row">
+        <i class="fa-solid fa-industry"></i>
+        <div>
+          <div class="meta-label">Industry</div>
+          <div class="meta-val">Automotive Manufacturing &amp; Distribution</div>
+        </div>
+      </div>
+      <div class="meta-row">
+        <i class="fa-solid fa-location-dot"></i>
+        <div>
+          <div class="meta-label">Region</div>
+          <div class="meta-val">Sweden · Norway · Denmark</div>
+        </div>
+      </div>
+      <div class="meta-row">
+        <i class="fa-solid fa-gears"></i>
+        <div>
+          <div class="meta-label">Solutions Deployed</div>
+          <div class="meta-val">Salesforce Sales Cloud, CPQ, AI Automation, ERP Integration</div>
+        </div>
+      </div>
+      <div class="meta-row">
+        <i class="fa-solid fa-calendar-check"></i>
+        <div>
+          <div class="meta-label">Engagement Duration</div>
+          <div class="meta-val">12-month phased implementation · Ongoing support</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TWO-COL -->
+  <div class="two-col">
+    <div class="col-l">
+      <div class="sec-head">Challenges &amp; Objectives</div>
+
+      <div class="obj">
+        <div class="obj-title">Fragmented Sales Pipeline</div>
+        <p>Dealer networks across three countries operated on disconnected spreadsheets and a decade-old CRM, causing quote delays of up to 11 business days and a 28% deal-loss rate attributable to slow response time.</p>
+      </div>
+
+      <div class="obj">
+        <div class="obj-title">Manual Production Forecasting</div>
+        <p>Demand signals were relayed from sales to manufacturing via email, leading to inventory misalignment, delayed builds, and excess carrying costs estimated at €1.4M annually.</p>
+      </div>
+
+      <div class="obj">
+        <div class="obj-title">Weak Aftersales Engagement</div>
+        <p>No structured lifecycle touchpoints post-delivery meant poor service contract renewal rates and missed upsell revenue across an existing fleet of 12,000+ vehicles.</p>
+      </div>
+
+      <div class="obj">
+        <div class="obj-title">Data Locked in Silos</div>
+        <p>Finance, logistics, and CRM data lived in three separate systems with no unified reporting, making real-time business intelligence impossible at the executive level.</p>
+      </div>
+    </div>
+
+    <div class="col-r">
+      <div class="sec-head">Gagstek's Solution</div>
+
+      <div class="sol-grp">
+        <div class="sol-grp-title">Salesforce Sales Cloud &amp; CPQ</div>
+        <ul class="sol-list">
+          <li><i class="fa-solid fa-circle"></i>Unified dealer portal with real-time pipeline visibility</li>
+          <li><i class="fa-solid fa-circle"></i>Automated CPQ reducing quote time from 11 days to 4 hours</li>
+          <li><i class="fa-solid fa-circle"></i>Custom Lightning components for vehicle configuration</li>
+        </ul>
+      </div>
+
+      <div class="sol-grp">
+        <div class="sol-grp-title">AI-Powered Demand Forecasting</div>
+        <ul class="sol-list">
+          <li><i class="fa-solid fa-circle"></i>AI workflows connecting CRM pipeline to ERP inventory</li>
+          <li><i class="fa-solid fa-circle"></i>Predictive build-schedule triggers based on deal signals</li>
+          <li><i class="fa-solid fa-circle"></i>Zero manual handoffs between sales and manufacturing</li>
+        </ul>
+      </div>
+
+      <div class="sol-grp">
+        <div class="sol-grp-title">Aftersales &amp; Customer Automation</div>
+        <ul class="sol-list">
+          <li><i class="fa-solid fa-circle"></i>WhatsApp &amp; SMS bots for automated service reminders</li>
+          <li><i class="fa-solid fa-circle"></i>AI-driven service contract renewal campaigns</li>
+          <li><i class="fa-solid fa-circle"></i>360° customer view with full vehicle ownership history</li>
+        </ul>
+      </div>
+
+      <div class="sol-grp">
+        <div class="sol-grp-title">Unified Analytics &amp; Reporting</div>
+        <ul class="sol-list">
+          <li><i class="fa-solid fa-circle"></i>Salesforce dashboards aggregating ERP, CRM &amp; logistics</li>
+          <li><i class="fa-solid fa-circle"></i>Automated executive KPI reports delivered daily</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="results">
+    <div class="sec-head">Outcomes &amp; Impact</div>
+    <div class="results-grid">
+      <div class="res-card">
+        <div class="res-num">↓ 96%</div>
+        <div class="res-label">Quote Turnaround Time</div>
+        <p>Reduced from 11 business days to under 4 hours, directly eliminating the primary driver of lost deals across the Nordic dealer network.</p>
+      </div>
+      <div class="res-card">
+        <div class="res-num">€1.8M</div>
+        <div class="res-label">Annual Cost Savings</div>
+        <p>Achieved through inventory optimisation and elimination of manual data entry across finance, logistics, and CRM functions.</p>
+      </div>
+      <div class="res-card">
+        <div class="res-num">+62%</div>
+        <div class="res-label">Aftersales Revenue Growth</div>
+        <p>Service contract renewal rate climbed from 31% to 51% within Year 1, driven by AI-triggered lifecycle engagement.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONCLUSION -->
+  <div class="conclusion">
+    <div class="concl-icon">
+      <i class="fa-solid fa-check-double"></i>
+    </div>
+    <div class="concl-inner">
+      <div class="sec-head">Conclusion</div>
+      <p>This Nordic automotive manufacturer's transformation demonstrates how a disciplined Cloud &amp; AI integration strategy creates measurable value at every stage of the value chain. By combining Salesforce's enterprise CRM capabilities with Gagstek's AI-first integration approach, the business moved from reactive operations to a proactive, data-driven model — positioning itself as a digital leader in the Nordic automotive market. The engagement continues with a second phase targeting connected-vehicle data and predictive maintenance services.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="foot-item">
+      <i class="fa-solid fa-globe"></i>
+      gagstek.com
+    </div>
+    <div class="foot-sep"></div>
+    <div class="foot-item">
+      <i class="fa-solid fa-envelope"></i>
+      contact@gagstek.com
+    </div>
+    <div class="foot-sep"></div>
+    <div class="foot-item">
+      <i class="fa-solid fa-location-dot"></i>
+      16192 Coastal Highway, Lewes, Delaware 19958, USA
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
