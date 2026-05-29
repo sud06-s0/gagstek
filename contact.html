@@ -4,6 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact Us – Gagstek | Speak With Our Team</title>
+  <link rel="icon" type="image/png" href="./img/gag.png" />
+  <meta name="description" content="Get in touch with Gagstek's team to discuss your digital transformation goals, Salesforce needs, or AI strategy." />
+  <meta name="keywords" content="contact Gagstek, Salesforce consultation, digital transformation inquiry, AI consulting contact" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Gagstek" />
+  <meta property="og:title" content="Contact Us – Gagstek | Speak With Our Team" />
+  <meta property="og:description" content="Get in touch with Gagstek's team to discuss your digital transformation goals, Salesforce needs, or AI strategy." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gagstek.com/contact" />
+  <meta property="og:image" content="./img/gag.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact Us – Gagstek | Speak With Our Team" />
+  <meta name="twitter:description" content="Get in touch with Gagstek's team to discuss your digital transformation goals, Salesforce needs, or AI strategy." />
+  <meta name="twitter:image" content="./img/gag.png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
@@ -1253,7 +1267,51 @@
       .footer-mid .footer-inner { grid-template-columns: 1fr; }
     }
   
-  </style>
+  
+    /* =====================================================
+       1080p+ FONT SCALING  (desktop only, min-width 1200px)
+       Mobile (<768px) is completely unaffected.
+       ===================================================== */
+    @media (min-width: 1200px) {
+      html { font-size: 106%; }
+    }
+    @media (min-width: 1600px) {
+      html { font-size: 112%; }
+
+      /* Hero headings (clamp or explicit px) */
+      h1, .hero-title, .post-hero-content h1,
+      .hero h1, .page-title { font-size: clamp(3rem, 4vw, 4.2rem); }
+
+      h2, .section-title, .svc-section-title,
+      .svc-title, .process-title, .faq-title,
+      .testi-title, .clients-label, .welcome-title,
+      .blog-hero h1, .case-title { font-size: clamp(2.2rem, 3vw, 3.2rem); }
+
+      h3, .card-title, .feat-title,
+      .svc-name, .step-title { font-size: clamp(1.3rem, 1.8vw, 1.7rem); }
+
+      /* Body / paragraph text */
+      p, .svc-desc, .hero-sub, .post-body p,
+      .section-desc, .svc-section-desc,
+      .process-subtitle, .faq-subtitle { font-size: 1.08rem; }
+
+      /* Nav links */
+      .nav-links a, .nav-drop-label { font-size: 1rem; }
+
+      /* Buttons */
+      .btn-primary, .btn-outline, .btn-dark,
+      .btn-blue-outline, .nav-cta { font-size: 1rem; }
+
+      /* Small / meta text */
+      .badge, .tag, .label, .eyebrow,
+      small, .dp-meta small,
+      .ft-col a, .footer-bottom p { font-size: 0.85rem; }
+
+      /* Stat numbers */
+      .stat-num { font-size: 1.8rem; }
+      .stat-label { font-size: 0.82rem; }
+    }
+</style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
@@ -1318,7 +1376,7 @@
     <a href="services.html">Services</a>
     <a href="client.html">Clients</a>
     
-    <a href="#" class="mob-products-label">Products</a>
+    <a href="services.html" class="mob-products-label">Products</a>
     <a href="icrm.html" class="mob-sub">→ E2E Sales</a>
     <a href="stockpro.html" class="mob-sub">→ StockPro</a>
     <a href="career.html">Career</a>
@@ -1862,9 +1920,9 @@
       <div class="footer-inner">
         <p>© 2026 Gagstek. All Rights Reserved.</p>
         <div class="ft-bottom-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms Of Services</a>
-          <a href="#">Sitemap</a>
+          <a href="contact.html">Privacy Policy</a>
+          <a href="contact.html">Terms Of Services</a>
+          <a href="services.html">Sitemap</a>
         </div>
       </div>
     </div>
@@ -1940,6 +1998,143 @@
       observer.observe(el);
     });
   </script>
+
+
+<style>
+/* ===== GAGSTEK DESKTOP FIXES — min-width 769px only ===== */
+@media (min-width: 769px) {
+
+  /* ── NAV ──────────────────────────────────────────────── */
+  nav {
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+  }
+  .nav-links a { font-size: 1rem !important; }
+
+  /* ── SECTION SIDE PADDING (2rem → 4rem) ──────────────── */
+  .welcome-section, .testimonials-section, .services-section,
+  .obstacles-section, .why-top, .why-dark, .trust-section,
+  .case-section, .tech-section, .about-intro, .stats-band,
+  .stats-bar, .values-section, .journey-section, .expertise-section,
+  .team-section, .offices-section, .faq-section, .apply-section,
+  .why-section, .roles-section, .voices-section, .locations-section,
+  .blog-cta, .post-hero, .page-hero, .breadcrumb-strip,
+  .clients-section, .featured-section, .blog-grid-section,
+  .older-posts, .reviews-section, .culture-section, .cta-section,
+  .contact-hero, .client-hero, .client-main, .case-hero, .case-main,
+  .svc-hero, .svc-main, .career-hero, .career-main {
+    padding-left: 4rem !important;
+    padding-right: 4rem !important;
+  }
+
+  /* ── INNER CONTAINERS: expand max-width ──────────────── */
+  .clients-inner, .testi-inner, .services-inner, .obs-inner,
+  .trust-inner, .tech-inner, .exp-inner, .exp-cards,
+  .stats-band-inner, .stats-bar-inner, .values-inner,
+  .journey-inner, .team-inner, .expertise-inner, .offices-inner,
+  .why-inner, .roles-inner, .voices-inner, .locations-inner,
+  .faq-inner, .case-inner, .welcome-inner, .about-intro-inner,
+  .apply-inner, .blog-cta-inner, .blog-filter-inner, .blog-grid-inner,
+  .breadcrumb-inner, .contact-hero-inner, .cta-band-inner, .cta-inner,
+  .culture-inner, .featured-inner, .footer-inner, .older-inner,
+  .process-inner, .reviews-inner, .section-inner, .testi-cta-inner,
+  .voices-inner, .welcome-inner {
+    max-width: 1440px !important;
+  }
+
+  .post-layout, .svc-layout, .svc-hero-content, .hero-content {
+    max-width: 1440px !important;
+    padding-left: 4rem !important;
+    padding-right: 4rem !important;
+  }
+
+  .footer-inner {
+    max-width: 1440px !important;
+    padding-left: 4rem !important;
+    padding-right: 4rem !important;
+  }
+
+  /* ── FONT SIZES ───────────────────────────────────────── */
+
+  /* --- NAV & UI --- */
+  .nav-links a, .db-text   { font-size: 1rem !important; }
+
+  /* --- EYEBROW / LABEL text (keep small but readable) --- */
+  .section-eyebrow, .sb-label, .sbar-label, .stat-label,
+  .badge-label, .hero-stat-label, .case-label, .case-outcome-label,
+  .vid-industry, .vid-role, .quote-meta, .quote-industry,
+  .featured-label, .card-category, .industry-tag,
+  .post-category-badge, .post-meta-item, .breadcrumb,
+  .breadcrumb-current, .voice-stars, .voice-role,
+  .apply-testi-role, .featured-date, .card-date,
+  .ft-rating-score, .ft-rating-sub, .iso-text,
+  .review-role-tag, .review-stars, .author-role,
+  .post-share-label, .dp-meta small {
+    font-size: 0.82rem !important;
+  }
+
+  /* --- CARD BODY / DESCRIPTION text (main readability fix) --- */
+  .vid-blurb, .vid-name, .quote-text, .quote-name,
+  .case-title, .case-desc, .case-watch,
+  .svc-desc, .svc-section-desc, .process-card-desc,
+  .obs-body, .value-body, .value-card,
+  .about-intro-text, .about-intro-text p,
+  .tl-content, .feat-list, .feature-card, .feature-body,
+  .exp-card p, .exp-link,
+  .perk-desc, .perk-title,
+  .culture-body, .culture-img-badge,
+  .voice-name, .apply-copy, .apply-form-sub, .apply-testi-name,
+  .step-desc, .step-title,
+  .loc-address, .loc-phone, .sales-detail, .sales-label,
+  .faq-answer-inner, .faq-aside-desc,
+  .cta-sub, .cta-desc,
+  .post-section, .post-list, .post-callout, .post-final,
+  .post-body p, .post-body li,
+  .about-card p, .sidebar-card-title,
+  .related-info, .toc-list li,
+  .client-card-body, .compare-table, .fit-card, .stat-card,
+  .form-note, .form-success, .file-upload-text,
+  .sf-text, .logo-pill,
+  .review-name,
+  .featured-role,
+  .dp-meta { font-size: 1rem !important; line-height: 1.7 !important; }
+
+  /* --- CARD TITLES (slightly larger) --- */
+  .vid-title, .case-title, .ft-col-title, .ft-office-title,
+  .sidebar-card-title, .stat-card h3, .feature-card h3,
+  .about-card h3, .fit-card h3 {
+    font-size: 1.15rem !important;
+  }
+
+  /* --- HERO sub-text --- */
+  .page-hero-sub, .hero-sub, .testi-sub, .services-desc,
+  .welcome-body, .section-desc {
+    font-size: 1.1rem !important;
+    line-height: 1.8 !important;
+  }
+
+  /* --- FOOTER --- */
+  .ft-tagline        { font-size: 1rem !important; }
+  .ft-col-link, .ft-link, .ft-bottom-links a,
+  .ft-office-addr, .ft-office-phone, .ft-email,
+  .footer-bottom p   { font-size: 0.9rem !important; }
+  .ft-col-title, .ft-office-title { font-size: 1rem !important; }
+  .ft-cta-btn        { font-size: 1rem !important; }
+  .ft-badge, .ft-badge-iso { font-size: 0.82rem !important; }
+
+  /* --- BLOG POST body --- */
+  .post-body p, .post-body li { font-size: 1.05rem !important; line-height: 1.85 !important; }
+  .post-body h3 { font-size: 1.4rem !important; }
+  .post-body h4 { font-size: 1.2rem !important; }
+
+  /* --- SIDEBAR --- */
+  .sidebar-cta, .sidebar-nav a { font-size: 0.95rem !important; }
+
+  /* --- SERVICES page --- */
+  .testi-cta-name  { font-size: 1rem !important; }
+  .testi-cta-role  { font-size: 0.85rem !important; }
+}
+</style>
 
 </body>
 </html>

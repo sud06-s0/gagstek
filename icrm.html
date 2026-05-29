@@ -4,6 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>iCRM – E2E Sales Suite | Gagstek</title>
+  <link rel="icon" type="image/png" href="./img/gag.png" />
+  <meta name="description" content="iCRM by Gagstek is an end-to-end sales suite designed to streamline your entire sales cycle — from lead capture to deal closure — powered by AI and automation." />
+  <meta name="keywords" content="iCRM, E2E sales suite, Gagstek CRM, sales automation tool, end-to-end CRM, AI sales platform" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Gagstek" />
+  <meta property="og:title" content="iCRM – E2E Sales Suite | Gagstek" />
+  <meta property="og:description" content="iCRM by Gagstek is an end-to-end sales suite designed to streamline your entire sales cycle — from lead capture to deal closure — powered by AI and automation." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gagstek.com/icrm" />
+  <meta property="og:image" content="./img/gag.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="iCRM – E2E Sales Suite | Gagstek" />
+  <meta name="twitter:description" content="iCRM by Gagstek is an end-to-end sales suite designed to streamline your entire sales cycle — from lead capture to deal closure — powered by AI and automation." />
+  <meta name="twitter:image" content="./img/gag.png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
@@ -1146,7 +1160,51 @@
       .cta-row { flex-direction: column; align-items: center; }
     }
   
-  </style>
+  
+    /* =====================================================
+       1080p+ FONT SCALING  (desktop only, min-width 1200px)
+       Mobile (<768px) is completely unaffected.
+       ===================================================== */
+    @media (min-width: 1200px) {
+      html { font-size: 106%; }
+    }
+    @media (min-width: 1600px) {
+      html { font-size: 112%; }
+
+      /* Hero headings (clamp or explicit px) */
+      h1, .hero-title, .post-hero-content h1,
+      .hero h1, .page-title { font-size: clamp(3rem, 4vw, 4.2rem); }
+
+      h2, .section-title, .svc-section-title,
+      .svc-title, .process-title, .faq-title,
+      .testi-title, .clients-label, .welcome-title,
+      .blog-hero h1, .case-title { font-size: clamp(2.2rem, 3vw, 3.2rem); }
+
+      h3, .card-title, .feat-title,
+      .svc-name, .step-title { font-size: clamp(1.3rem, 1.8vw, 1.7rem); }
+
+      /* Body / paragraph text */
+      p, .svc-desc, .hero-sub, .post-body p,
+      .section-desc, .svc-section-desc,
+      .process-subtitle, .faq-subtitle { font-size: 1.08rem; }
+
+      /* Nav links */
+      .nav-links a, .nav-drop-label { font-size: 1rem; }
+
+      /* Buttons */
+      .btn-primary, .btn-outline, .btn-dark,
+      .btn-blue-outline, .nav-cta { font-size: 1rem; }
+
+      /* Small / meta text */
+      .badge, .tag, .label, .eyebrow,
+      small, .dp-meta small,
+      .ft-col a, .footer-bottom p { font-size: 0.85rem; }
+
+      /* Stat numbers */
+      .stat-num { font-size: 1.8rem; }
+      .stat-label { font-size: 0.82rem; }
+    }
+</style>
 </head>
 <body>
 
@@ -1210,7 +1268,7 @@
     <a href="services.html">Services</a>
     <a href="client.html">Clients</a>
     
-    <a href="#" class="mob-products-label">Products</a>
+    <a href="services.html" class="mob-products-label">Products</a>
     <a href="icrm.html" class="mob-sub mob-active">→ E2E Sales</a>
     <a href="stockpro.html" class="mob-sub">→ StockPro</a>
     <a href="career.html">Career</a>
@@ -1241,7 +1299,7 @@
         <p>Designed by former Management &amp; Technology Consulting executives, iCRM eliminates data silos and gives your team a modern interface with task management, activity tracking, and real-time collaboration baked in.</p>
         <p>Gain a clear view of your opportunity pipeline with a drag-and-drop board. Customize stages for each sales team, analyze lost opportunities, and log every interaction instantly within the opportunity's timeline.</p>
         <div class="btn-row">
-          <a href="#" class="btn-fill">Start Selling →</a>
+          <a href="contact.html" class="btn-fill">Start Selling →</a>
           <a href="#features" class="btn-stroke">Explore Features</a>
         </div>
       </div>
@@ -1323,7 +1381,7 @@
         <h2>Every Conversation, <span>In One Place</span></h2>
         <p>Reusable email templates for mass and repetitive communications. All emails are automatically mapped to the correct opportunity — and new leads can be created directly from incoming emails.</p>
         <p>Dial customers directly from the browser using VoIP — automatically or manually. A full console provides a view of all logged calls, with account details and interaction history at your fingertips.</p>
-        <div class="btn-row"><a href="#" class="btn-fill">Start Selling →</a></div>
+        <div class="btn-row"><a href="contact.html" class="btn-fill">Start Selling →</a></div>
       </div>
     </div>
   </section>
@@ -1362,12 +1420,12 @@
         <p>iCRM integrates with your existing tools through OAuth 2.0 — secure, reliable, and fully bi-directional.</p>
       </div>
       <div class="expertise-grid">
-        <div class="exp-card"><div class="exp-icon" style="background:rgba(59,130,246,0.15);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div><div><h4>Quotes Module</h4><p>Create quotes from opportunities in a few clicks. Full customer journey visibility from first contact to paid invoice.</p><a href="#" class="exp-link">Discover →</a></div></div>
+        <div class="exp-card"><div class="exp-icon" style="background:rgba(59,130,246,0.15);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div><div><h4>Quotes Module</h4><p>Create quotes from opportunities in a few clicks. Full customer journey visibility from first contact to paid invoice.</p><a href="contact.html" class="exp-link">Discover →</a></div></div>
         <div class="exp-card"><div class="exp-icon" style="background:rgba(34,197,94,0.15);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg></div><div><h4>StockPro — Stock Register</h4><p>Check product availability and initiate orders directly from within a quote — no tool switching required.</p><a href="stockpro.html" class="exp-link">Discover →</a></div></div>
-        <div class="exp-card"><div class="exp-icon" style="background:rgba(245,158,11,0.15);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><h4>Email Marketing</h4><p>Boost lead acquisition and nurture campaigns with unified, trackable communication workflows.</p><a href="#" class="exp-link">Discover →</a></div></div>
-        <div class="exp-card"><div class="exp-icon" style="background:rgba(168,85,247,0.15);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><path d="M8 21h8M12 17v4"/></svg></div><div><h4>Google Workspace</h4><p>Sync meetings to Google Calendar and auto-map all emails to opportunities through Gmail routing rules.</p><a href="#" class="exp-link">Discover →</a></div></div>
-        <div class="exp-card"><div class="exp-icon" style="background:rgba(14,165,233,0.15);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.07 2.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><h4>VoIP Telephony</h4><p>Dial from the browser with a full computer telephony console — call logging, account context, and team activity tracking.</p><a href="#" class="exp-link">Discover →</a></div></div>
-        <div class="exp-card"><div class="exp-icon" style="background:rgba(239,68,68,0.15);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div><h4>Salesforce Platform</h4><p>Deep Salesforce integration using OAuth 2.0 for secure, fully bi-directional data sync across your CRM ecosystem.</p><a href="#" class="exp-link">Discover →</a></div></div>
+        <div class="exp-card"><div class="exp-icon" style="background:rgba(245,158,11,0.15);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><h4>Email Marketing</h4><p>Boost lead acquisition and nurture campaigns with unified, trackable communication workflows.</p><a href="contact.html" class="exp-link">Discover →</a></div></div>
+        <div class="exp-card"><div class="exp-icon" style="background:rgba(168,85,247,0.15);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><path d="M8 21h8M12 17v4"/></svg></div><div><h4>Google Workspace</h4><p>Sync meetings to Google Calendar and auto-map all emails to opportunities through Gmail routing rules.</p><a href="contact.html" class="exp-link">Discover →</a></div></div>
+        <div class="exp-card"><div class="exp-icon" style="background:rgba(14,165,233,0.15);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.07 2.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><h4>VoIP Telephony</h4><p>Dial from the browser with a full computer telephony console — call logging, account context, and team activity tracking.</p><a href="contact.html" class="exp-link">Discover →</a></div></div>
+        <div class="exp-card"><div class="exp-icon" style="background:rgba(239,68,68,0.15);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div><h4>Salesforce Platform</h4><p>Deep Salesforce integration using OAuth 2.0 for secure, fully bi-directional data sync across your CRM ecosystem.</p><a href="salesforce-automation.html" class="exp-link">Discover →</a></div></div>
       </div>
     </div>
   </section>
@@ -1381,7 +1439,7 @@
         <p>Contact Gagstek today to unlock the full potential of your sales operations. Our team will have you set up and selling faster than you think.</p>
       </div>
       <div class="cta-row">
-        <a href="#" class="cta-primary">Get Started Today →</a>
+        <a href="contact.html" class="cta-primary">Get Started Today →</a>
         <a href="stockpro.html" class="cta-secondary">Explore StockPro</a>
       </div>
     </div>
@@ -1503,9 +1561,9 @@
       <div class="footer-inner">
         <p>© 2026 Gagstek. All Rights Reserved.</p>
         <div class="ft-bottom-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms Of Services</a>
-          <a href="#">Sitemap</a>
+          <a href="contact.html">Privacy Policy</a>
+          <a href="contact.html">Terms Of Services</a>
+          <a href="services.html">Sitemap</a>
         </div>
       </div>
     </div>
@@ -1513,6 +1571,11 @@
   </footer>
 
   <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
     hamburger.addEventListener('click', () => {
@@ -1526,5 +1589,142 @@
       });
     });
   </script>
+
+<style>
+/* ===== GAGSTEK DESKTOP FIXES — min-width 769px only ===== */
+@media (min-width: 769px) {
+
+  /* ── NAV ──────────────────────────────────────────────── */
+  nav {
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+  }
+  .nav-links a { font-size: 1rem !important; }
+
+  /* ── SECTION SIDE PADDING (2rem → 4rem) ──────────────── */
+  .welcome-section, .testimonials-section, .services-section,
+  .obstacles-section, .why-top, .why-dark, .trust-section,
+  .case-section, .tech-section, .about-intro, .stats-band,
+  .stats-bar, .values-section, .journey-section, .expertise-section,
+  .team-section, .offices-section, .faq-section, .apply-section,
+  .why-section, .roles-section, .voices-section, .locations-section,
+  .blog-cta, .post-hero, .page-hero, .breadcrumb-strip,
+  .clients-section, .featured-section, .blog-grid-section,
+  .older-posts, .reviews-section, .culture-section, .cta-section,
+  .contact-hero, .client-hero, .client-main, .case-hero, .case-main,
+  .svc-hero, .svc-main, .career-hero, .career-main {
+    padding-left: 4rem !important;
+    padding-right: 4rem !important;
+  }
+
+  /* ── INNER CONTAINERS: expand max-width ──────────────── */
+  .clients-inner, .testi-inner, .services-inner, .obs-inner,
+  .trust-inner, .tech-inner, .exp-inner, .exp-cards,
+  .stats-band-inner, .stats-bar-inner, .values-inner,
+  .journey-inner, .team-inner, .expertise-inner, .offices-inner,
+  .why-inner, .roles-inner, .voices-inner, .locations-inner,
+  .faq-inner, .case-inner, .welcome-inner, .about-intro-inner,
+  .apply-inner, .blog-cta-inner, .blog-filter-inner, .blog-grid-inner,
+  .breadcrumb-inner, .contact-hero-inner, .cta-band-inner, .cta-inner,
+  .culture-inner, .featured-inner, .footer-inner, .older-inner,
+  .process-inner, .reviews-inner, .section-inner, .testi-cta-inner,
+  .voices-inner, .welcome-inner {
+    max-width: 1440px !important;
+  }
+
+  .post-layout, .svc-layout, .svc-hero-content, .hero-content {
+    max-width: 1440px !important;
+    padding-left: 4rem !important;
+    padding-right: 4rem !important;
+  }
+
+  .footer-inner {
+    max-width: 1440px !important;
+    padding-left: 4rem !important;
+    padding-right: 4rem !important;
+  }
+
+  /* ── FONT SIZES ───────────────────────────────────────── */
+
+  /* --- NAV & UI --- */
+  .nav-links a, .db-text   { font-size: 1rem !important; }
+
+  /* --- EYEBROW / LABEL text (keep small but readable) --- */
+  .section-eyebrow, .sb-label, .sbar-label, .stat-label,
+  .badge-label, .hero-stat-label, .case-label, .case-outcome-label,
+  .vid-industry, .vid-role, .quote-meta, .quote-industry,
+  .featured-label, .card-category, .industry-tag,
+  .post-category-badge, .post-meta-item, .breadcrumb,
+  .breadcrumb-current, .voice-stars, .voice-role,
+  .apply-testi-role, .featured-date, .card-date,
+  .ft-rating-score, .ft-rating-sub, .iso-text,
+  .review-role-tag, .review-stars, .author-role,
+  .post-share-label, .dp-meta small {
+    font-size: 0.82rem !important;
+  }
+
+  /* --- CARD BODY / DESCRIPTION text (main readability fix) --- */
+  .vid-blurb, .vid-name, .quote-text, .quote-name,
+  .case-title, .case-desc, .case-watch,
+  .svc-desc, .svc-section-desc, .process-card-desc,
+  .obs-body, .value-body, .value-card,
+  .about-intro-text, .about-intro-text p,
+  .tl-content, .feat-list, .feature-card, .feature-body,
+  .exp-card p, .exp-link,
+  .perk-desc, .perk-title,
+  .culture-body, .culture-img-badge,
+  .voice-name, .apply-copy, .apply-form-sub, .apply-testi-name,
+  .step-desc, .step-title,
+  .loc-address, .loc-phone, .sales-detail, .sales-label,
+  .faq-answer-inner, .faq-aside-desc,
+  .cta-sub, .cta-desc,
+  .post-section, .post-list, .post-callout, .post-final,
+  .post-body p, .post-body li,
+  .about-card p, .sidebar-card-title,
+  .related-info, .toc-list li,
+  .client-card-body, .compare-table, .fit-card, .stat-card,
+  .form-note, .form-success, .file-upload-text,
+  .sf-text, .logo-pill,
+  .review-name,
+  .featured-role,
+  .dp-meta { font-size: 1rem !important; line-height: 1.7 !important; }
+
+  /* --- CARD TITLES (slightly larger) --- */
+  .vid-title, .case-title, .ft-col-title, .ft-office-title,
+  .sidebar-card-title, .stat-card h3, .feature-card h3,
+  .about-card h3, .fit-card h3 {
+    font-size: 1.15rem !important;
+  }
+
+  /* --- HERO sub-text --- */
+  .page-hero-sub, .hero-sub, .testi-sub, .services-desc,
+  .welcome-body, .section-desc {
+    font-size: 1.1rem !important;
+    line-height: 1.8 !important;
+  }
+
+  /* --- FOOTER --- */
+  .ft-tagline        { font-size: 1rem !important; }
+  .ft-col-link, .ft-link, .ft-bottom-links a,
+  .ft-office-addr, .ft-office-phone, .ft-email,
+  .footer-bottom p   { font-size: 0.9rem !important; }
+  .ft-col-title, .ft-office-title { font-size: 1rem !important; }
+  .ft-cta-btn        { font-size: 1rem !important; }
+  .ft-badge, .ft-badge-iso { font-size: 0.82rem !important; }
+
+  /* --- BLOG POST body --- */
+  .post-body p, .post-body li { font-size: 1.05rem !important; line-height: 1.85 !important; }
+  .post-body h3 { font-size: 1.4rem !important; }
+  .post-body h4 { font-size: 1.2rem !important; }
+
+  /* --- SIDEBAR --- */
+  .sidebar-cta, .sidebar-nav a { font-size: 0.95rem !important; }
+
+  /* --- SERVICES page --- */
+  .testi-cta-name  { font-size: 1rem !important; }
+  .testi-cta-role  { font-size: 0.85rem !important; }
+}
+</style>
+
 </body>
 </html>

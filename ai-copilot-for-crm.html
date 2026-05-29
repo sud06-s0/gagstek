@@ -4,6 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI Copilot for CRM: How AI Assistants Are Transforming CRM Adoption – Gagstek</title>
+  <link rel="icon" type="image/png" href="./img/gag.png" />
+  <meta name="description" content="Explore how AI copilots are dramatically improving CRM adoption, data quality, and user productivity inside Salesforce and other platforms." />
+  <meta name="keywords" content="AI copilot CRM, AI for Salesforce, CRM adoption AI, Gagstek AI CRM, intelligent CRM assistant" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Gagstek" />
+  <meta property="og:title" content="AI Copilot for CRM: How AI Assistants Are Transforming CRM Adoption – Gagstek" />
+  <meta property="og:description" content="Explore how AI copilots are dramatically improving CRM adoption, data quality, and user productivity inside Salesforce and other platforms." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gagstek.com/ai-copilot-for-crm" />
+  <meta property="og:image" content="./img/gag.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AI Copilot for CRM: How AI Assistants Are Transforming CRM Adoption – Gagstek" />
+  <meta name="twitter:description" content="Explore how AI copilots are dramatically improving CRM adoption, data quality, and user productivity inside Salesforce and other platforms." />
+  <meta name="twitter:image" content="./img/gag.png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -187,7 +201,51 @@
     @media (max-width:1024px) { .post-layout { grid-template-columns: 1fr; } .post-sidebar { position: static; } .footer-top .footer-inner { grid-template-columns: 1fr 1fr; } .ft-offices { grid-template-columns: 1fr 1fr; } }
     @media (max-width:768px) { .nav-links { display: none; } .hamburger { display: flex; } .nav-socials { display: none; } .post-body { padding: 2rem 1.5rem; } .footer-top .footer-inner { grid-template-columns: 1fr; gap: 2rem; } .footer-mid .footer-inner { grid-template-columns: 1fr 1fr; } }
     @media (max-width:560px) { .post-hero { padding: 50px 1.25rem 50px; } .post-layout { padding-left: 1.25rem; padding-right: 1.25rem; } .post-hero-img { padding: 0 1.25rem; } .footer-inner { padding: 0 1.25rem; } .footer-bottom .footer-inner { flex-direction: column; align-items: flex-start; } .ft-bottom-links { flex-wrap: wrap; gap: 1rem; } }
-  </style>
+  
+    /* =====================================================
+       1080p+ FONT SCALING  (desktop only, min-width 1200px)
+       Mobile (<768px) is completely unaffected.
+       ===================================================== */
+    @media (min-width: 1200px) {
+      html { font-size: 106%; }
+    }
+    @media (min-width: 1600px) {
+      html { font-size: 112%; }
+
+      /* Hero headings (clamp or explicit px) */
+      h1, .hero-title, .post-hero-content h1,
+      .hero h1, .page-title { font-size: clamp(3rem, 4vw, 4.2rem); }
+
+      h2, .section-title, .svc-section-title,
+      .svc-title, .process-title, .faq-title,
+      .testi-title, .clients-label, .welcome-title,
+      .blog-hero h1, .case-title { font-size: clamp(2.2rem, 3vw, 3.2rem); }
+
+      h3, .card-title, .feat-title,
+      .svc-name, .step-title { font-size: clamp(1.3rem, 1.8vw, 1.7rem); }
+
+      /* Body / paragraph text */
+      p, .svc-desc, .hero-sub, .post-body p,
+      .section-desc, .svc-section-desc,
+      .process-subtitle, .faq-subtitle { font-size: 1.08rem; }
+
+      /* Nav links */
+      .nav-links a, .nav-drop-label { font-size: 1rem; }
+
+      /* Buttons */
+      .btn-primary, .btn-outline, .btn-dark,
+      .btn-blue-outline, .nav-cta { font-size: 1rem; }
+
+      /* Small / meta text */
+      .badge, .tag, .label, .eyebrow,
+      small, .dp-meta small,
+      .ft-col a, .footer-bottom p { font-size: 0.85rem; }
+
+      /* Stat numbers */
+      .stat-num { font-size: 1.8rem; }
+      .stat-label { font-size: 0.82rem; }
+    }
+</style>
 </head>
 <body>
 
@@ -513,9 +571,9 @@
       <div class="footer-inner">
         <p>© 2026 Gagstek. All Rights Reserved.</p>
         <div class="ft-bottom-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms Of Services</a>
-          <a href="#">Sitemap</a>
+          <a href="contact.html">Privacy Policy</a>
+          <a href="contact.html">Terms Of Services</a>
+          <a href="services.html">Sitemap</a>
         </div>
       </div>
     </div>
@@ -542,5 +600,93 @@
       });
     });
   </script>
+
+
+<style>
+/* ===== GAGSTEK DESKTOP FIXES — min-width 769px only ===== */
+@media (min-width: 769px) {
+
+  nav {
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+  }
+  .nav-links a { font-size: 1rem !important; }
+
+  .welcome-section, .testimonials-section, .services-section,
+  .obstacles-section, .why-top, .trust-section,
+  .case-section, .tech-section, .about-intro, .stats-band,
+  .stats-bar, .values-section, .journey-section, .expertise-section,
+  .team-section, .offices-section, .faq-section, .apply-section,
+  .why-section, .roles-section, .voices-section, .locations-section,
+  .blog-cta, .post-hero, .page-hero, .breadcrumb-strip,
+  .clients-section, .featured-section, .blog-grid-section,
+  .older-posts, .reviews-section, .culture-section, .cta-section,
+  .contact-hero, .client-hero, .client-main, .case-hero, .case-main,
+  .svc-hero, .svc-main, .career-hero, .career-main {
+    padding-left: 4rem !important;
+    padding-right: 4rem !important;
+  }
+
+  .clients-inner, .testi-inner, .services-inner, .obs-inner,
+  .trust-inner, .tech-inner, .exp-inner, .exp-cards,
+  .stats-band-inner, .stats-bar-inner, .values-inner,
+  .journey-inner, .team-inner, .expertise-inner, .offices-inner,
+  .why-inner, .roles-inner, .voices-inner, .locations-inner,
+  .faq-inner, .case-inner, .welcome-inner, .about-intro-inner,
+  .apply-inner, .blog-cta-inner, .blog-filter-inner, .blog-grid-inner,
+  .breadcrumb-inner, .contact-hero-inner, .cta-band-inner, .cta-inner,
+  .culture-inner, .featured-inner, .footer-inner, .older-inner,
+  .process-inner, .reviews-inner, .section-inner, .testi-cta-inner {
+    max-width: 1440px !important;
+  }
+
+  .post-layout, .svc-layout, .svc-hero-content, .hero-content {
+    max-width: 1440px !important;
+    padding-left: 4rem !important;
+    padding-right: 4rem !important;
+  }
+
+  .footer-inner {
+    max-width: 1440px !important;
+    padding-left: 4rem !important;
+    padding-right: 4rem !important;
+  }
+
+  /* Font fixes */
+  .testi-sub, .services-desc, .obs-desc, .why-top-sub, .hero-sub,
+  .welcome-body, .about-intro-text p, .svc-desc, .case-desc,
+  .section-desc { font-size: 1.1rem !important; line-height: 1.8 !important; }
+
+  .vid-blurb, .vid-name, .quote-text, .quote-name,
+  .case-desc, .obs-body, .value-body, .value-card,
+  .exp-card p, .perk-desc, .culture-body,
+  .voice-name, .step-desc, .loc-address, .loc-phone,
+  .faq-answer-inner, .cta-sub, .cta-desc,
+  .post-section, .post-list, .post-callout, .post-final,
+  .post-body p, .post-body li, .about-card p, .sf-text,
+  .dp-meta { font-size: 1rem !important; line-height: 1.7 !important; }
+
+  .vid-title, .case-title, .ft-col-title, .ft-office-title {
+    font-size: 1.15rem !important;
+  }
+
+  .stat-label, .sbar-label, .section-eyebrow, .badge-label,
+  .hero-stat-label, .post-meta-item, .author-role,
+  .ft-rating-score, .ft-rating-sub, .iso-text {
+    font-size: 0.82rem !important;
+  }
+
+  .ft-tagline        { font-size: 1rem !important; }
+  .ft-col-link, .ft-link, .ft-office-addr, .ft-office-phone,
+  .ft-email, .footer-bottom p { font-size: 0.9rem !important; }
+  .ft-col-title, .ft-office-title { font-size: 1rem !important; }
+  .ft-cta-btn        { font-size: 1rem !important; }
+
+  .post-body p, .post-body li { font-size: 1.05rem !important; line-height: 1.85 !important; }
+  .post-body h3 { font-size: 1.4rem !important; }
+  .post-body h4 { font-size: 1.2rem !important; }
+}
+</style>
+
 </body>
 </html>
