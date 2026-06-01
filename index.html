@@ -545,47 +545,299 @@
 
     
     /* =====================================================
-       1080p+ FONT SCALING  (desktop only, min-width 1200px)
-       Mobile (<768px) is completely unaffected.
+       FLUID RESPONSIVE SYSTEM — scales across ALL resolutions
+       No fixed pixel breakpoints. Everything uses clamp() and
+       viewport-relative units so the page looks great from
+       768px all the way to 2560px+.
        ===================================================== */
-    @media (min-width: 1200px) {
-      html { font-size: 106%; }
+
+    /* ── Root fluid base font: shrinks on small, grows on large ── */
+    html {
+      font-size: clamp(14px, 1.1vw, 18px);
     }
+
+    /* ── Fluid section vertical padding (scales with viewport height) ── */
+    .welcome-section,
+    .clients-section,
+    .testimonials-section,
+    .services-section,
+    .obstacles-section,
+    .trust-section,
+    .case-section,
+    .tech-section,
+    .experiences-section,
+    .why-section,
+    .why-dark,
+    .cta-section,
+    .contact-section,
+    .stats-bar,
+    .idx-stats-bar {
+      padding-top: clamp(2.5rem, 5vh, 6rem);
+      padding-bottom: clamp(2.5rem, 5vh, 6rem);
+    }
+
+    /* ── Fluid horizontal padding for all section containers ── */
+    .welcome-section, .clients-section, .testimonials-section,
+    .services-section, .obstacles-section, .trust-section,
+    .case-section, .tech-section, .experiences-section,
+    .why-section, .why-dark, .cta-section, .contact-section,
+    .tech-section, .trust-section {
+      padding-left: clamp(1rem, 4vw, 5rem);
+      padding-right: clamp(1rem, 4vw, 5rem);
+    }
+
+    /* ── All inner/max-width containers: fully fluid, no hard cap ── */
+    .clients-inner, .testi-inner, .services-inner, .obs-inner,
+    .trust-inner, .tech-inner, .exp-inner, .exp-cards,
+    .idx-stats-bar-inner, .welcome-inner,
+    .why-inner, .case-inner, .footer-inner {
+      max-width: min(1400px, 94vw);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── Navbar: fluid height and padding ── */
+    nav {
+      height: clamp(56px, 6vh, 80px);
+      padding-left: clamp(1rem, 3vw, 4rem) !important;
+      padding-right: clamp(1rem, 3vw, 4rem) !important;
+    }
+    .nav-links {
+      gap: clamp(0.8rem, 1.5vw, 2rem);
+    }
+    .nav-links a,
+    .nav-drop-label {
+      font-size: clamp(0.78rem, 0.9vw, 1rem) !important;
+    }
+    .logo {
+      width: clamp(90px, 9vw, 140px);
+    }
+
+    /* ── Hero: always full viewport ── */
+    .hero {
+      min-height: 100vh;
+      padding-top: clamp(56px, 6vh, 80px);
+    }
+    .hero-content {
+      max-width: clamp(480px, 65vw, 860px);
+      padding: clamp(1rem, 3vh, 3rem) clamp(1rem, 3vw, 2rem);
+    }
+    .hero-title {
+      font-size: clamp(2rem, 5.5vw, 5.2rem) !important;
+      letter-spacing: clamp(-0.5px, -0.15vw, -2px);
+    }
+    .hero-sub {
+      font-size: clamp(0.9rem, 1.4vw, 1.25rem) !important;
+      max-width: clamp(300px, 50vw, 580px);
+    }
+    .hero-badge {
+      font-size: clamp(0.65rem, 0.7vw, 0.85rem);
+    }
+    .btn-primary, .btn-outline {
+      font-size: clamp(0.82rem, 0.9vw, 1.05rem) !important;
+      padding: clamp(0.6rem, 0.8vh, 1rem) clamp(1.2rem, 2vw, 2.5rem);
+    }
+
+    /* ── Stats bar: fluid numbers ── */
+    .idx-sbar-num {
+      font-size: clamp(1.6rem, 2.8vw, 3rem) !important;
+    }
+    .idx-sbar-label {
+      font-size: clamp(0.65rem, 0.7vw, 0.9rem) !important;
+    }
+
+    /* ── Section headings: fluid ── */
+    .welcome-title, .clients-label, .testi-title,
+    .services-title, .trust-title, .exp-title,
+    .case-title, .tech-title, .why-title {
+      font-size: clamp(1.5rem, 3.2vw, 3rem) !important;
+    }
+    .services-eyebrow, .case-eyebrow, .section-eyebrow {
+      font-size: clamp(0.65rem, 0.75vw, 0.88rem) !important;
+    }
+    .services-desc, .testi-sub, .welcome-body,
+    .exp-tagline, .why-sub, .obs-desc {
+      font-size: clamp(0.85rem, 1vw, 1.1rem) !important;
+      line-height: 1.75;
+    }
+
+    /* ── Services cards: fluid grid ── */
+    .services-grid {
+      grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 28vw, 340px), 1fr));
+    }
+    .svc-title {
+      font-size: clamp(1rem, 1.3vw, 1.35rem) !important;
+    }
+    .svc-desc {
+      font-size: clamp(0.8rem, 0.9vw, 1rem) !important;
+    }
+
+    /* ── Trust circles: fluid size ── */
+    .trust-circle {
+      width: clamp(130px, 13vw, 200px) !important;
+      height: clamp(130px, 13vw, 200px) !important;
+    }
+    .tc-front {
+      font-size: clamp(1.5rem, 2.2vw, 2.8rem) !important;
+    }
+    .tc-back {
+      font-size: clamp(0.68rem, 0.75vw, 0.9rem) !important;
+    }
+
+    /* ── Footer: fluid ── */
+    .footer-top, .footer-mid, .footer-bottom {
+      padding-left: clamp(1rem, 4vw, 5rem);
+      padding-right: clamp(1rem, 4vw, 5rem);
+    }
+    .footer-top {
+      padding-top: clamp(2.5rem, 4vh, 5rem);
+      padding-bottom: clamp(2rem, 3vh, 4rem);
+    }
+    .footer-mid {
+      padding-top: clamp(2rem, 3vh, 3.5rem);
+      padding-bottom: clamp(2rem, 3vh, 3.5rem);
+    }
+    .ft-tagline {
+      font-size: clamp(0.8rem, 0.9vw, 1.05rem) !important;
+    }
+    .ft-col-title, .ft-office-title {
+      font-size: clamp(0.82rem, 0.9vw, 1.05rem) !important;
+    }
+    .ft-col a, .ft-office-addr, .ft-office-phone,
+    .ft-email a, .footer-bottom p {
+      font-size: clamp(0.75rem, 0.85vw, 0.95rem) !important;
+    }
+    .ft-cta-btn {
+      font-size: clamp(0.82rem, 0.9vw, 1rem) !important;
+    }
+
+    /* ── Testimonial cards: fluid ── */
+    .testi-name {
+      font-size: clamp(0.8rem, 0.9vw, 1rem) !important;
+    }
+    .testi-role {
+      font-size: clamp(0.72rem, 0.78vw, 0.88rem) !important;
+    }
+    .testi-quote {
+      font-size: clamp(0.78rem, 0.88vw, 0.95rem) !important;
+    }
+
+    /* ── Case study section: fluid ── */
+    .case-tag { font-size: clamp(0.65rem, 0.72vw, 0.82rem) !important; }
+    .case-title { font-size: clamp(1.4rem, 2.8vw, 2.6rem) !important; }
+
+    /* ── Full-width coverage: sections fill 100% width ── */
+    section, footer, nav, .idx-stats-bar,
+    .clients-section, .testimonials-section,
+    .services-section, .trust-section,
+    .tech-section, .experiences-section,
+    .case-section, .why-dark, .site-footer {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* ── Wider screens (1600px+): slightly more breathing room ── */
     @media (min-width: 1600px) {
-      html { font-size: 112%; }
+      .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .footer-mid .footer-inner {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .exp-cards {
+        grid-template-columns: repeat(3, 1fr);
+        min-width: unset;
+      }
+    }
 
-      /* Hero headings (clamp or explicit px) */
-      h1, .hero-title, .post-hero-content h1,
-      .hero h1, .page-title { font-size: clamp(3rem, 4vw, 4.2rem); }
+    /* ── Small screens (≤1024px): compact gracefully ── */
+    @media (max-width: 1024px) {
+      .nav-links {
+        gap: clamp(0.5rem, 1vw, 1.2rem);
+      }
+      .trust-circles {
+        gap: clamp(1rem, 2vw, 2.5rem);
+      }
+      .tech-body {
+        grid-template-columns: 1fr;
+      }
+    }
 
-      h2, .section-title, .svc-section-title,
-      .svc-title, .process-title, .faq-title,
-      .testi-title, .clients-label, .welcome-title,
-      .blog-hero h1, .case-title { font-size: clamp(2.2rem, 3vw, 3.2rem); }
-
-      h3, .card-title, .feat-title,
-      .svc-name, .step-title { font-size: clamp(1.3rem, 1.8vw, 1.7rem); }
-
-      /* Body / paragraph text */
-      p, .svc-desc, .hero-sub, .post-body p,
-      .section-desc, .svc-section-desc,
-      .process-subtitle, .faq-subtitle { font-size: 1.08rem; }
-
-      /* Nav links */
-      .nav-links a, .nav-drop-label { font-size: 1rem; }
-
-      /* Buttons */
-      .btn-primary, .btn-outline, .btn-dark,
-      .btn-blue-outline, .nav-cta { font-size: 1rem; }
-
-      /* Small / meta text */
-      .badge, .tag, .label, .eyebrow,
-      small, .dp-meta small,
-      .ft-col a, .footer-bottom p { font-size: 0.85rem; }
-
-      /* Stat numbers */
-      .stat-num { font-size: 1.8rem; }
-      .stat-label { font-size: 0.82rem; }
+    /* ── Override any old hard-coded desktop padding blocks ── */
+    @media (min-width: 769px) {
+      nav {
+        padding-left: clamp(1.5rem, 3vw, 4rem) !important;
+        padding-right: clamp(1.5rem, 3vw, 4rem) !important;
+      }
+      .welcome-section, .clients-section, .testimonials-section,
+      .services-section, .obstacles-section, .trust-section,
+      .case-section, .tech-section, .experiences-section,
+      .why-section, .why-dark, .cta-section, .contact-section,
+      .stats-bar, .blog-cta, .post-hero, .page-hero,
+      .breadcrumb-strip, .featured-section, .blog-grid-section,
+      .older-posts, .reviews-section, .culture-section,
+      .contact-hero, .client-hero, .client-main, .case-hero,
+      .case-main, .svc-hero, .svc-main, .career-hero, .career-main,
+      .about-intro, .stats-band, .stats-bar, .values-section,
+      .journey-section, .expertise-section, .team-section,
+      .offices-section, .faq-section, .apply-section,
+      .roles-section, .voices-section, .locations-section {
+        padding-left: clamp(1.5rem, 4vw, 5rem) !important;
+        padding-right: clamp(1.5rem, 4vw, 5rem) !important;
+      }
+      .clients-inner, .testi-inner, .services-inner, .obs-inner,
+      .trust-inner, .tech-inner, .exp-inner, .exp-cards,
+      .stats-band-inner, .stats-bar-inner, .values-inner,
+      .journey-inner, .team-inner, .expertise-inner, .offices-inner,
+      .why-inner, .roles-inner, .voices-inner, .locations-inner,
+      .faq-inner, .case-inner, .welcome-inner, .about-intro-inner,
+      .apply-inner, .blog-cta-inner, .blog-filter-inner, .blog-grid-inner,
+      .breadcrumb-inner, .contact-hero-inner, .cta-band-inner, .cta-inner,
+      .culture-inner, .featured-inner, .footer-inner, .older-inner,
+      .process-inner, .reviews-inner, .section-inner, .testi-cta-inner {
+        max-width: min(1440px, 96vw) !important;
+      }
+      .post-layout, .svc-layout, .svc-hero-content, .hero-content {
+        max-width: min(1440px, 96vw) !important;
+        padding-left: clamp(1.5rem, 4vw, 5rem) !important;
+        padding-right: clamp(1.5rem, 4vw, 5rem) !important;
+      }
+      .footer-inner {
+        max-width: min(1440px, 96vw) !important;
+        padding-left: clamp(1.5rem, 4vw, 5rem) !important;
+        padding-right: clamp(1.5rem, 4vw, 5rem) !important;
+      }
+      .why-dark {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+      .why-content {
+        max-width: 100% !important;
+        padding-left: clamp(1.5rem, 4vw, 5rem);
+        padding-right: clamp(1.5rem, 4vw, 5rem);
+      }
+      .team-photo {
+        aspect-ratio: 16/7 !important;
+        max-height: clamp(280px, 35vh, 520px) !important;
+        object-fit: cover !important;
+        object-position: center top !important;
+      }
+      .team-photo-wrap {
+        max-width: clamp(600px, 80vw, 1100px) !important;
+        margin: 0 auto !important;
+      }
+      .services-header { text-align: center !important; }
+      .services-title {
+        max-width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        text-align: center !important;
+      }
+      .services-eyebrow, .services-desc {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
     }
 </style>
 </head>
@@ -3282,139 +3534,7 @@
   </style>
 
 
-<style>
-/* ===== GAGSTEK DESKTOP FIXES — min-width 769px only ===== */
-@media (min-width: 769px) {
-
-  nav {
-    padding-left: 3rem !important;
-    padding-right: 3rem !important;
-  }
-  .nav-links a { font-size: 1rem !important; }
-
-  .welcome-section, .testimonials-section, .services-section,
-  .obstacles-section, .why-top, .trust-section,
-  .case-section, .tech-section, .about-intro, .stats-band,
-  .stats-bar, .values-section, .journey-section, .expertise-section,
-  .team-section, .offices-section, .faq-section, .apply-section,
-  .why-section, .roles-section, .voices-section, .locations-section,
-  .blog-cta, .post-hero, .page-hero, .breadcrumb-strip,
-  .clients-section, .featured-section, .blog-grid-section,
-  .older-posts, .reviews-section, .culture-section, .cta-section,
-  .contact-hero, .client-hero, .client-main, .case-hero, .case-main,
-  .svc-hero, .svc-main, .career-hero, .career-main {
-    padding-left: 4rem !important;
-    padding-right: 4rem !important;
-  }
-
-  .clients-inner, .testi-inner, .services-inner, .obs-inner,
-  .trust-inner, .tech-inner, .exp-inner, .exp-cards,
-  .stats-band-inner, .stats-bar-inner, .values-inner,
-  .journey-inner, .team-inner, .expertise-inner, .offices-inner,
-  .why-inner, .roles-inner, .voices-inner, .locations-inner,
-  .faq-inner, .case-inner, .welcome-inner, .about-intro-inner,
-  .apply-inner, .blog-cta-inner, .blog-filter-inner, .blog-grid-inner,
-  .breadcrumb-inner, .contact-hero-inner, .cta-band-inner, .cta-inner,
-  .culture-inner, .featured-inner, .footer-inner, .older-inner,
-  .process-inner, .reviews-inner, .section-inner, .testi-cta-inner {
-    max-width: 1440px !important;
-  }
-
-  .post-layout, .svc-layout, .svc-hero-content, .hero-content {
-    max-width: 1440px !important;
-    padding-left: 4rem !important;
-    padding-right: 4rem !important;
-  }
-
-  .footer-inner {
-    max-width: 1440px !important;
-    padding-left: 4rem !important;
-    padding-right: 4rem !important;
-  }
-
-  /* Font fixes */
-  .testi-sub, .services-desc, .obs-desc, .why-top-sub, .hero-sub,
-  .welcome-body, .about-intro-text p, .svc-desc, .case-desc,
-  .section-desc { font-size: 1.1rem !important; line-height: 1.8 !important; }
-
-  .vid-blurb, .vid-name, .quote-text, .quote-name,
-  .case-desc, .obs-body, .value-body, .value-card,
-  .exp-card p, .perk-desc, .culture-body,
-  .voice-name, .step-desc, .loc-address, .loc-phone,
-  .faq-answer-inner, .cta-sub, .cta-desc,
-  .post-section, .post-list, .post-callout, .post-final,
-  .post-body p, .post-body li, .about-card p, .sf-text,
-  .dp-meta { font-size: 1rem !important; line-height: 1.7 !important; }
-
-  .vid-title, .case-title, .ft-col-title, .ft-office-title {
-    font-size: 1.15rem !important;
-  }
-
-  .stat-label, .sbar-label, .section-eyebrow, .badge-label,
-  .hero-stat-label, .post-meta-item, .author-role,
-  .ft-rating-score, .ft-rating-sub, .iso-text {
-    font-size: 0.82rem !important;
-  }
-
-  .ft-tagline        { font-size: 1rem !important; }
-  .ft-col-link, .ft-link, .ft-office-addr, .ft-office-phone,
-  .ft-email, .footer-bottom p { font-size: 0.9rem !important; }
-  .ft-col-title, .ft-office-title { font-size: 1rem !important; }
-  .ft-cta-btn        { font-size: 1rem !important; }
-
-  .post-body p, .post-body li { font-size: 1.05rem !important; line-height: 1.85 !important; }
-  .post-body h3 { font-size: 1.4rem !important; }
-  .post-body h4 { font-size: 1.2rem !important; }
-}
-</style>
-
-<style>
-/* ===== INDEX.HTML — 3 SPECIFIC FIXES (desktop only) ===== */
-@media (min-width: 769px) {
-
-  /* FIX 1: why-dark section — remove left/right space, fill full width */
-  .why-dark {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
-  .why-content {
-    max-width: 100% !important;
-    padding-left: 4rem;
-    padding-right: 4rem;
-  }
-
-  /* FIX 2: Team photo — make it smaller, not full page height */
-  .team-photo {
-    aspect-ratio: 16/7 !important;
-    max-height: 480px !important;
-    object-fit: cover !important;
-    object-position: center top !important;
-  }
-  .team-photo-wrap {
-    max-width: 1100px !important;
-    margin: 0 auto !important;
-  }
-
-  /* FIX 3: Services section heading — center aligned */
-  .services-header {
-    text-align: center !important;
-  }
-  .services-title {
-    max-width: 100% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    text-align: center !important;
-  }
-  .services-eyebrow {
-    text-align: center !important;
-  }
-  .services-desc {
-    text-align: center !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-}
-</style>
+<!-- Fluid responsive system is handled in the <head> style block above -->
 
 </body>
 </html>

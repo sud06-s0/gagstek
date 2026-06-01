@@ -34,7 +34,7 @@
     body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; padding-top: 72px; }
 
     /* ── NAVBAR ── */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 2rem; height: 72px; display: flex; align-items: center; justify-content: space-between; transition: background 0.4s, box-shadow 0.4s; background: rgba(10,22,40,0.97); backdrop-filter: blur(12px); }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 2rem; height: clamp(56px, 6vh, 80px); display: flex; align-items: center; justify-content: space-between; transition: background 0.4s, box-shadow 0.4s; background: rgba(10,22,40,0.97); backdrop-filter: blur(12px); }
     nav.scrolled { background: rgba(10,22,40,0.97); box-shadow: 0 2px 24px rgba(0,0,0,0.4); }
     .logo-wrap { display: flex; align-items: center; text-decoration: none; }
     .logo-wrap img { height: 38px; width: auto; object-fit: contain; }
@@ -73,10 +73,10 @@
     .mob-sub { font-size: 0.95rem !important; color: rgba(255,255,255,0.65) !important; padding-left: 1.2rem; }
 
     /* ── POST HERO ── */
-    .post-hero { position: relative; padding: 68px 2rem 70px; text-align: center; overflow: hidden; }
+    .post-hero { position: relative; padding: clamp(56px, 8vh, 110px) clamp(1rem, 4vw, 5rem) clamp(2.5rem, 5vh, 5rem); text-align: center; overflow: hidden; }
     .post-hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #0a1628 0%, #0f2044 55%, #0a1628 100%); }
     .post-hero-glow { position: absolute; width: 700px; height: 400px; border-radius: 50%; background: radial-gradient(ellipse, rgba(59,130,246,0.14) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; }
-    .post-hero-content { position: relative; z-index: 2; max-width: 840px; margin: 0 auto; }
+    .post-hero-content { position: relative; z-index: 2; max-width: min(900px, 90vw); margin: 0 auto; }
     .breadcrumb { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 1.4rem; flex-wrap: wrap; }
     .breadcrumb a { font-size: 0.78rem; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
     .breadcrumb a:hover { color: var(--accent-bright); }
@@ -91,11 +91,11 @@
     .post-meta-divider { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,0.2); }
 
     /* ── HERO IMAGE ── */
-    .post-hero-img { max-width: 960px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 2; transform: translateY(-2rem); }
+    .post-hero-img { max-width: min(1000px, 92vw); margin: 0 auto; padding: 0 clamp(1rem, 3vw, 3rem); position: relative; z-index: 2; transform: translateY(-2rem); }
     .post-hero-img img { width: 100%; border-radius: 20px; display: block; box-shadow: 0 32px 80px rgba(0,0,0,0.45); }
 
     /* ── LAYOUT ── */
-    .post-layout { max-width: 1160px; margin: 0 auto; padding: 0 2rem 6rem; display: grid; grid-template-columns: 1fr 320px; gap: 3.5rem; align-items: start; }
+    .post-layout { max-width: min(1200px, 94vw); margin: 0 auto; padding: 0 clamp(1rem, 3vw, 4rem) clamp(3rem, 6vh, 6rem); display: grid; grid-template-columns: 1fr 320px; gap: 3.5rem; align-items: start; }
 
     /* ── ARTICLE ── */
     .post-body { background: #fff; border-radius: 20px; padding: 3rem; color: #1e293b; }
@@ -144,7 +144,7 @@
     .toc-list li a i { color: rgba(96,165,250,0.45); font-size: 0.5rem; margin-top: 0.3rem; flex-shrink: 0; }
     .toc-list li a:hover, .toc-list li a:hover i { color: var(--accent-bright); }
     .about-card { background: linear-gradient(135deg, rgba(59,130,246,0.12) 0%, rgba(15,32,68,0.8) 100%); border: 1px solid rgba(96,165,250,0.2); border-radius: 16px; padding: 1.6rem; text-align: center; }
-    .author-avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent-bright)); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: #fff; }
+    .author-avatar { width: 72px; height: clamp(56px, 6vh, 80px); border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent-bright)); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: #fff; }
     .about-card h3 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 900; color: #fff; margin-bottom: 0.3rem; }
     .about-card .author-role { font-size: 0.74rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--accent-bright); margin-bottom: 0.8rem; }
     .about-card p { font-size: 0.82rem; color: rgba(255,255,255,0.6); line-height: 1.65; margin-bottom: 1.2rem; }
@@ -159,8 +159,8 @@
     .related-info span { font-size: 0.72rem; color: rgba(255,255,255,0.4); }
 
     /* ── CTA ── */
-    .blog-cta { background: linear-gradient(135deg, var(--navy-mid) 0%, #0a1628 100%); padding: 5rem 2rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.06); }
-    .blog-cta-inner { max-width: 680px; margin: 0 auto; }
+    .blog-cta { background: linear-gradient(135deg, var(--navy-mid) 0%, #0a1628 100%); padding: clamp(2.5rem, 4.5vh, 5rem) clamp(1rem, 4vw, 5rem); text-align: center; border-top: 1px solid rgba(255,255,255,0.06); }
+    .blog-cta-inner { max-width: min(740px, 90vw); margin: 0 auto; }
     .blog-cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem,3.5vw,2.5rem); font-weight: 900; margin-bottom: 1rem; color: #fff; }
     .blog-cta h2 span { color: var(--accent-bright); }
     .blog-cta p { font-size: 1rem; color: rgba(255,255,255,0.65); line-height: 1.75; margin-bottom: 2rem; }
@@ -169,7 +169,7 @@
 
     /* ── FOOTER ── */
     .site-footer { background: #111827; color: rgba(255,255,255,0.75); }
-    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .footer-inner { max-width: min(1400px, 94vw); margin: 0 auto; padding: 0 clamp(1rem, 3vw, 4rem); }
     .footer-top { padding: 4rem 0 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
     .footer-top .footer-inner { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: start; }
     .ft-logo-link { display: inline-block; margin-bottom: 0.75rem; text-decoration: none; }
@@ -208,47 +208,190 @@
     @media (max-width:560px) { .post-hero { padding: 50px 1.25rem 50px; } .post-layout { padding-left: 1.25rem; padding-right: 1.25rem; } .post-hero-img { padding: 0 1.25rem; } .footer-inner { padding: 0 1.25rem; } .footer-bottom .footer-inner { flex-direction: column; align-items: flex-start; } .ft-bottom-links { flex-wrap: wrap; gap: 1rem; } }
   
     /* =====================================================
-       1080p+ FONT SCALING  (desktop only, min-width 1200px)
-       Mobile (<768px) is completely unaffected.
+       FLUID RESPONSIVE SYSTEM — scales across ALL resolutions
+       No fixed pixel breakpoints. Everything uses clamp() and
+       viewport-relative units so the page looks great from
+       768px all the way to 2560px+.
        ===================================================== */
-    @media (min-width: 1200px) {
-      html { font-size: 106%; }
+
+    /* ── Root fluid base font: shrinks on small, grows on large ── */
+    html {
+      font-size: clamp(14px, 1.1vw, 18px);
     }
+
+    /* ── Navbar: fluid height and padding ── */
+    nav {
+      height: clamp(56px, 6vh, 80px) !important;
+      padding-left: clamp(1rem, 3vw, 4rem) !important;
+      padding-right: clamp(1rem, 3vw, 4rem) !important;
+    }
+    .nav-links {
+      gap: clamp(0.8rem, 1.5vw, 2rem) !important;
+    }
+    .nav-links a,
+    .nav-drop-label {
+      font-size: clamp(0.78rem, 0.9vw, 1rem) !important;
+    }
+    .logo, .logo img {
+      width: clamp(90px, 9vw, 140px) !important;
+    }
+
+    /* ── Post / page hero: fluid padding ── */
+    .post-hero, .page-hero, .svc-hero,
+    .career-hero, .contact-hero, .client-hero {
+      padding: clamp(56px, 8vh, 110px) clamp(1rem, 4vw, 5rem) clamp(2.5rem, 5vh, 5rem) !important;
+    }
+    .post-hero-content, .page-hero-content {
+      max-width: min(900px, 90vw) !important;
+    }
+    .post-hero h1 {
+      font-size: clamp(1.8rem, 4vw, 3.4rem) !important;
+    }
+    .post-hero-img, .stats-strip {
+      max-width: min(1000px, 92vw) !important;
+      padding-left: clamp(1rem, 3vw, 3rem) !important;
+      padding-right: clamp(1rem, 3vw, 3rem) !important;
+    }
+
+    /* ── Post layout: fluid 2-col grid ── */
+    .post-layout {
+      max-width: min(1200px, 94vw) !important;
+      padding: 0 clamp(1rem, 3vw, 4rem) clamp(3rem, 6vh, 6rem) !important;
+      grid-template-columns: 1fr clamp(260px, 24vw, 340px) !important;
+    }
+    .post-body {
+      padding: clamp(1.5rem, 2.5vw, 3.5rem) !important;
+    }
+    .post-body p, .post-body li {
+      font-size: clamp(0.88rem, 1vw, 1.08rem) !important;
+      line-height: 1.82;
+    }
+    .post-section h2 {
+      font-size: clamp(1.15rem, 2vw, 1.7rem) !important;
+    }
+    .post-body h3 {
+      font-size: clamp(1.05rem, 1.6vw, 1.45rem) !important;
+    }
+    .post-body h4 {
+      font-size: clamp(0.95rem, 1.3vw, 1.25rem) !important;
+    }
+
+    /* ── Blog CTA section: fluid ── */
+    .blog-cta {
+      padding: clamp(2.5rem, 5vh, 6rem) clamp(1rem, 4vw, 5rem) !important;
+    }
+    .blog-cta-inner {
+      max-width: min(720px, 90vw) !important;
+    }
+    .blog-cta h2 {
+      font-size: clamp(1.5rem, 3vw, 2.6rem) !important;
+    }
+
+    /* ── All section vertical padding ── */
+    section, .about-intro, .stats-band, .stats-bar,
+    .values-section, .journey-section, .expertise-section,
+    .team-section, .offices-section, .faq-section,
+    .apply-section, .why-section, .roles-section,
+    .voices-section, .locations-section, .trust-section,
+    .clients-section, .testimonials-section, .services-section,
+    .obstacles-section, .case-section, .tech-section,
+    .experiences-section, .cta-section, .culture-section,
+    .reviews-section, .blog-grid-section, .featured-section,
+    .svc-main, .career-main, .contact-main, .client-main,
+    .case-main, .process-section {
+      padding-top: clamp(2.5rem, 5vh, 6.5rem) !important;
+      padding-bottom: clamp(2.5rem, 5vh, 6.5rem) !important;
+    }
+
+    /* ── All inner containers: fluid max-width ── */
+    .clients-inner, .testi-inner, .services-inner, .obs-inner,
+    .trust-inner, .tech-inner, .exp-inner, .exp-cards,
+    .stats-band-inner, .stats-bar-inner, .values-inner,
+    .journey-inner, .team-inner, .expertise-inner, .offices-inner,
+    .why-inner, .roles-inner, .voices-inner, .locations-inner,
+    .faq-inner, .case-inner, .welcome-inner, .about-intro-inner,
+    .apply-inner, .blog-cta-inner, .blog-filter-inner, .blog-grid-inner,
+    .breadcrumb-inner, .contact-hero-inner, .cta-band-inner, .cta-inner,
+    .culture-inner, .featured-inner, .footer-inner, .older-inner,
+    .process-inner, .reviews-inner, .section-inner, .testi-cta-inner {
+      max-width: min(1400px, 94vw) !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    /* ── Section headings: fluid ── */
+    h2, .section-title, .svc-section-title, .process-title,
+    .faq-title, .testi-title, .clients-label, .welcome-title,
+    .trust-title, .case-title, .career-title,
+    .contact-title, .client-title {
+      font-size: clamp(1.5rem, 3.2vw, 3.2rem) !important;
+    }
+    h3, .card-title, .feat-title, .svc-name, .step-title {
+      font-size: clamp(1rem, 1.6vw, 1.75rem) !important;
+    }
+    .section-eyebrow, .svc-eyebrow, .page-eyebrow,
+    .badge-label, .case-eyebrow, .post-category-badge {
+      font-size: clamp(0.62rem, 0.72vw, 0.82rem) !important;
+    }
+
+    /* ── Body / paragraph text ── */
+    p, .svc-desc, .hero-sub,
+    .section-desc, .svc-section-desc,
+    .process-subtitle, .faq-subtitle {
+      font-size: clamp(0.85rem, 1vw, 1.1rem) !important;
+      line-height: 1.78;
+    }
+
+    /* ── Buttons: fluid ── */
+    .btn-primary, .btn-outline, .btn-dark,
+    .btn-blue-outline, .nav-cta, .blog-cta-btn {
+      font-size: clamp(0.8rem, 0.9vw, 1.05rem) !important;
+      padding: clamp(0.55rem, 0.8vh, 1rem) clamp(1.1rem, 1.8vw, 2.4rem) !important;
+    }
+
+    /* ── Stat numbers ── */
+    .stat-num, .idx-sbar-num, .sbar-num {
+      font-size: clamp(1.5rem, 2.5vw, 3rem) !important;
+    }
+    .stat-label, .sbar-label {
+      font-size: clamp(0.62rem, 0.7vw, 0.88rem) !important;
+    }
+
+    /* ── Small / meta text ── */
+    .badge, .tag, .label, .eyebrow,
+    small, .dp-meta small,
+    .ft-col a, .footer-bottom p,
+    .post-meta-item, .author-role {
+      font-size: clamp(0.7rem, 0.8vw, 0.9rem) !important;
+    }
+
+    /* ── Footer: fluid ── */
+    .ft-tagline { font-size: clamp(0.8rem, 0.9vw, 1.05rem) !important; }
+    .ft-col-title, .ft-office-title { font-size: clamp(0.82rem, 0.9vw, 1.05rem) !important; }
+    .ft-col a, .ft-office-addr, .ft-office-phone,
+    .ft-email a, .footer-bottom p { font-size: clamp(0.72rem, 0.82vw, 0.95rem) !important; }
+    .ft-cta-btn { font-size: clamp(0.8rem, 0.9vw, 1rem) !important; }
+
+    /* ── Ensure full-width coverage ── */
+    section, footer, nav,
+    .site-footer, .post-hero, .blog-cta {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* ── Wider screens (1600px+) ── */
     @media (min-width: 1600px) {
-      html { font-size: 112%; }
+      .footer-mid .footer-inner {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
 
-      /* Hero headings (clamp or explicit px) */
-      h1, .hero-title, .post-hero-content h1,
-      .hero h1, .page-title { font-size: clamp(3rem, 4vw, 4.2rem); }
-
-      h2, .section-title, .svc-section-title,
-      .svc-title, .process-title, .faq-title,
-      .testi-title, .clients-label, .welcome-title,
-      .blog-hero h1, .case-title { font-size: clamp(2.2rem, 3vw, 3.2rem); }
-
-      h3, .card-title, .feat-title,
-      .svc-name, .step-title { font-size: clamp(1.3rem, 1.8vw, 1.7rem); }
-
-      /* Body / paragraph text */
-      p, .svc-desc, .hero-sub, .post-body p,
-      .section-desc, .svc-section-desc,
-      .process-subtitle, .faq-subtitle { font-size: 1.08rem; }
-
-      /* Nav links */
-      .nav-links a, .nav-drop-label { font-size: 1rem; }
-
-      /* Buttons */
-      .btn-primary, .btn-outline, .btn-dark,
-      .btn-blue-outline, .nav-cta { font-size: 1rem; }
-
-      /* Small / meta text */
-      .badge, .tag, .label, .eyebrow,
-      small, .dp-meta small,
-      .ft-col a, .footer-bottom p { font-size: 0.85rem; }
-
-      /* Stat numbers */
-      .stat-num { font-size: 1.8rem; }
-      .stat-label { font-size: 0.82rem; }
+    /* ── Medium screens compact ── */
+    @media (max-width: 1024px) {
+      .nav-links { gap: clamp(0.5rem, 1vw, 1.2rem) !important; }
+      .post-layout {
+        grid-template-columns: 1fr !important;
+      }
     }
 </style>
 </head>
@@ -571,91 +714,7 @@
   </script>
 
 
-<style>
-/* ===== GAGSTEK DESKTOP FIXES — min-width 769px only ===== */
-@media (min-width: 769px) {
-
-  nav {
-    padding-left: 3rem !important;
-    padding-right: 3rem !important;
-  }
-  .nav-links a { font-size: 1rem !important; }
-
-  .welcome-section, .testimonials-section, .services-section,
-  .obstacles-section, .why-top, .trust-section,
-  .case-section, .tech-section, .about-intro, .stats-band,
-  .stats-bar, .values-section, .journey-section, .expertise-section,
-  .team-section, .offices-section, .faq-section, .apply-section,
-  .why-section, .roles-section, .voices-section, .locations-section,
-  .blog-cta, .post-hero, .page-hero, .breadcrumb-strip,
-  .clients-section, .featured-section, .blog-grid-section,
-  .older-posts, .reviews-section, .culture-section, .cta-section,
-  .contact-hero, .client-hero, .client-main, .case-hero, .case-main,
-  .svc-hero, .svc-main, .career-hero, .career-main {
-    padding-left: 4rem !important;
-    padding-right: 4rem !important;
-  }
-
-  .clients-inner, .testi-inner, .services-inner, .obs-inner,
-  .trust-inner, .tech-inner, .exp-inner, .exp-cards,
-  .stats-band-inner, .stats-bar-inner, .values-inner,
-  .journey-inner, .team-inner, .expertise-inner, .offices-inner,
-  .why-inner, .roles-inner, .voices-inner, .locations-inner,
-  .faq-inner, .case-inner, .welcome-inner, .about-intro-inner,
-  .apply-inner, .blog-cta-inner, .blog-filter-inner, .blog-grid-inner,
-  .breadcrumb-inner, .contact-hero-inner, .cta-band-inner, .cta-inner,
-  .culture-inner, .featured-inner, .footer-inner, .older-inner,
-  .process-inner, .reviews-inner, .section-inner, .testi-cta-inner {
-    max-width: 1440px !important;
-  }
-
-  .post-layout, .svc-layout, .svc-hero-content, .hero-content {
-    max-width: 1440px !important;
-    padding-left: 4rem !important;
-    padding-right: 4rem !important;
-  }
-
-  .footer-inner {
-    max-width: 1440px !important;
-    padding-left: 4rem !important;
-    padding-right: 4rem !important;
-  }
-
-  /* Font fixes */
-  .testi-sub, .services-desc, .obs-desc, .why-top-sub, .hero-sub,
-  .welcome-body, .about-intro-text p, .svc-desc, .case-desc,
-  .section-desc { font-size: 1.1rem !important; line-height: 1.8 !important; }
-
-  .vid-blurb, .vid-name, .quote-text, .quote-name,
-  .case-desc, .obs-body, .value-body, .value-card,
-  .exp-card p, .perk-desc, .culture-body,
-  .voice-name, .step-desc, .loc-address, .loc-phone,
-  .faq-answer-inner, .cta-sub, .cta-desc,
-  .post-section, .post-list, .post-callout, .post-final,
-  .post-body p, .post-body li, .about-card p, .sf-text,
-  .dp-meta { font-size: 1rem !important; line-height: 1.7 !important; }
-
-  .vid-title, .case-title, .ft-col-title, .ft-office-title {
-    font-size: 1.15rem !important;
-  }
-
-  .stat-label, .sbar-label, .section-eyebrow, .badge-label,
-  .hero-stat-label, .post-meta-item, .author-role,
-  .ft-rating-score, .ft-rating-sub, .iso-text {
-    font-size: 0.82rem !important;
-  }
-
-  .ft-tagline        { font-size: 1rem !important; }
-  .ft-col-link, .ft-link, .ft-office-addr, .ft-office-phone,
-  .ft-email, .footer-bottom p { font-size: 0.9rem !important; }
-  .ft-col-title, .ft-office-title { font-size: 1rem !important; }
-  .ft-cta-btn        { font-size: 1rem !important; }
-
-  .post-body p, .post-body li { font-size: 1.05rem !important; line-height: 1.85 !important; }
-  .post-body h3 { font-size: 1.4rem !important; }
-  .post-body h4 { font-size: 1.2rem !important; }
-}
-</style>
+<!-- Fluid responsive system already applied in <head> above -->
 
 </body>
 </html>
