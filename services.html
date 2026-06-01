@@ -36,7 +36,7 @@
     /* ─── NAVBAR ─────────────────────────────────────────── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 0 2rem; height: 72px;
+      padding: clamp(1rem, 3vw, 4rem) clamp(1rem, 3vw, 4rem); height: clamp(56px, 6vh, 80px);
       display: flex; align-items: center; justify-content: space-between;
       transition: background 0.4s, box-shadow 0.4s;
     }
@@ -96,8 +96,8 @@
     /* ─── HERO ───────────────────────────────────────────── */
     .svc-hero {
       position: relative;
-      padding-top: 72px;
-      min-height: 440px;
+      padding-top: clamp(56px, 8vh, 100px);
+      min-height: clamp(280px, 40vh, 500px);
       display: flex;
       align-items: center;
       overflow: hidden;
@@ -124,7 +124,7 @@
     }
     .svc-hero-content {
       position: relative; z-index: 10;
-      max-width: 1200px; margin: 0 auto; padding: 4rem 2rem;
+      max-width: min(1400px, 94vw); margin: 0 auto; padding: clamp(2rem, 4vh, 4rem) clamp(1rem, 4vw, 5rem);
       width: 100%;
     }
     .svc-hero-eyebrow {
@@ -168,7 +168,7 @@
       padding: 0.85rem 2rem;
     }
     .breadcrumb-inner {
-      max-width: 1200px; margin: 0 auto;
+      max-width: min(1400px, 94vw); margin: 0 auto;
       display: flex; align-items: center; gap: 0.5rem;
       font-size: 0.82rem; color: rgba(255,255,255,0.45);
     }
@@ -178,7 +178,7 @@
 
     /* ─── MAIN LAYOUT: SIDEBAR + CONTENT ───────────────── */
     .svc-layout {
-      max-width: 1200px; margin: 0 auto;
+      max-width: min(1400px, 94vw); margin: 0 auto;
       display: grid; grid-template-columns: 280px 1fr;
       gap: 0; padding: 0 2rem 6rem;
       align-items: start;
@@ -332,10 +332,10 @@
     /* ─── PROCESS SECTION ───────────────────────────────── */
     .process-section {
       background: #0d1f3c;
-      padding: 6rem 2rem;
+      padding: clamp(3rem, 5vh, 6rem) clamp(1rem, 4vw, 5rem);
       border-top: 1px solid rgba(255,255,255,0.06);
     }
-    .process-inner { max-width: 1200px; margin: 0 auto; }
+    .process-inner { max-width: min(1400px, 94vw); margin: 0 auto; }
     .process-header { text-align: center; margin-bottom: 4rem; }
     .process-eyebrow {
       font-size: 0.72rem; font-weight: 700; letter-spacing: 2.5px;
@@ -394,7 +394,7 @@
       padding: 2.5rem 2rem;
     }
     .stats-bar-inner {
-      max-width: 1200px; margin: 0 auto;
+      max-width: min(1400px, 94vw); margin: 0 auto;
       display: grid; grid-template-columns: repeat(4, 1fr);
       gap: 2rem; text-align: center;
     }
@@ -409,10 +409,10 @@
     /* ─── TESTIMONIAL CTA ───────────────────────────────── */
     .testi-cta-section {
       background: #f8faff;
-      padding: 6rem 2rem;
+      padding: clamp(3rem, 5vh, 6rem) clamp(1rem, 4vw, 5rem);
     }
     .testi-cta-inner {
-      max-width: 1100px; margin: 0 auto;
+      max-width: min(1300px, 94vw); margin: 0 auto;
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 5rem; align-items: center;
     }
@@ -454,8 +454,8 @@
     .btn-blue-outline:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
 
     /* ─── FAQ ───────────────────────────────────────────── */
-    .faq-section { background: var(--navy); padding: 6rem 2rem; }
-    .faq-inner { max-width: 860px; margin: 0 auto; }
+    .faq-section { background: var(--navy); padding: clamp(3rem, 5vh, 6rem) clamp(1rem, 4vw, 5rem); }
+    .faq-inner { max-width: min(920px, 90vw); margin: 0 auto; }
     .faq-header { text-align: center; margin-bottom: 3.5rem; }
     .faq-title {
       font-family: 'Playfair Display', serif;
@@ -493,7 +493,7 @@
 
     /* ─── FOOTER ─────────────────────────────────────────── */
     .site-footer { background: #111827; color: rgba(255,255,255,0.75); font-family: 'DM Sans', sans-serif; }
-    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .footer-inner { max-width: min(1400px, 94vw); margin: 0 auto; padding: 0 clamp(1rem, 3vw, 4rem); }
     .footer-top { padding: 4rem 0 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
     .footer-top .footer-inner { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: start; }
     .ft-logo-link { display: inline-block; margin-bottom: 0.75rem; text-decoration: none; }
@@ -630,49 +630,228 @@
 
     
     /* =====================================================
-       1080p+ FONT SCALING  (desktop only, min-width 1200px)
-       Mobile (<768px) is completely unaffected.
+       FLUID RESPONSIVE SYSTEM — scales across ALL resolutions
+       No fixed pixel breakpoints. Everything uses clamp() and
+       viewport-relative units so the page looks great from
+       768px all the way to 2560px+.
        ===================================================== */
-    @media (min-width: 1200px) {
-      html { font-size: 106%; }
+
+    /* ── Root fluid base font: shrinks on small, grows on large ── */
+    html {
+      font-size: clamp(14px, 1.1vw, 18px);
     }
+
+    /* ── Navbar: fluid height and padding ── */
+    nav {
+      height: clamp(56px, 6vh, 80px) !important;
+      padding-left: clamp(1rem, 3vw, 4rem) !important;
+      padding-right: clamp(1rem, 3vw, 4rem) !important;
+    }
+    .nav-links {
+      gap: clamp(0.8rem, 1.5vw, 2rem) !important;
+    }
+    .nav-links a,
+    .nav-drop-label {
+      font-size: clamp(0.78rem, 0.9vw, 1rem) !important;
+    }
+    .logo, .logo img {
+      width: clamp(90px, 9vw, 140px) !important;
+    }
+
+    /* ── Page hero: always full cover, fluid padding ── */
+    .page-hero, .svc-hero, .career-hero, .contact-hero,
+    .client-hero, .case-hero {
+      min-height: clamp(260px, 38vh, 480px);
+      padding-top: clamp(80px, 12vh, 160px) !important;
+      padding-bottom: clamp(3rem, 6vh, 6rem) !important;
+    }
+    .page-hero-content, .svc-hero-content,
+    .career-hero-inner, .contact-hero-inner, .client-hero-inner {
+      max-width: min(860px, 88vw) !important;
+    }
+
+    /* ── Hero headings ── */
+    .page-title, .svc-hero h1, .career-hero h1,
+    .contact-hero h1, .client-hero h1,
+    h1, .hero-title {
+      font-size: clamp(1.8rem, 4.5vw, 4.5rem) !important;
+      letter-spacing: clamp(-0.3px, -0.1vw, -1.5px);
+    }
+    .page-hero-sub, .hero-sub, .svc-hero p {
+      font-size: clamp(0.88rem, 1.2vw, 1.2rem) !important;
+      max-width: clamp(300px, 50vw, 640px);
+    }
+
+    /* ── Fluid section vertical padding ── */
+    section, .about-intro, .stats-band, .stats-bar,
+    .values-section, .journey-section, .expertise-section,
+    .team-section, .offices-section, .faq-section,
+    .apply-section, .why-section, .roles-section,
+    .voices-section, .locations-section, .trust-section,
+    .clients-section, .testimonials-section, .services-section,
+    .obstacles-section, .case-section, .tech-section,
+    .experiences-section, .cta-section, .culture-section,
+    .reviews-section, .blog-grid-section, .featured-section,
+    .svc-main, .career-main, .contact-main, .client-main,
+    .case-main, .process-section {
+      padding-top: clamp(2.5rem, 5vh, 6.5rem) !important;
+      padding-bottom: clamp(2.5rem, 5vh, 6.5rem) !important;
+    }
+
+    /* ── Fluid horizontal padding for all sections ── */
+    section, .about-intro, .stats-band, .values-section,
+    .journey-section, .expertise-section, .team-section,
+    .offices-section, .faq-section, .apply-section,
+    .why-section, .roles-section, .voices-section,
+    .locations-section, .trust-section, .clients-section,
+    .testimonials-section, .services-section, .obstacles-section,
+    .case-section, .tech-section, .experiences-section,
+    .cta-section, .culture-section, .reviews-section,
+    .blog-grid-section, .featured-section, .svc-main,
+    .career-main, .contact-main, .client-main, .case-main,
+    .process-section, .footer-top, .footer-mid, .footer-bottom {
+      padding-left: clamp(1rem, 4vw, 5rem) !important;
+      padding-right: clamp(1rem, 4vw, 5rem) !important;
+    }
+
+    /* ── All inner containers: fluid max-width ── */
+    .clients-inner, .testi-inner, .services-inner, .obs-inner,
+    .trust-inner, .tech-inner, .exp-inner, .exp-cards,
+    .stats-band-inner, .stats-bar-inner, .values-inner,
+    .journey-inner, .team-inner, .expertise-inner, .offices-inner,
+    .why-inner, .roles-inner, .voices-inner, .locations-inner,
+    .faq-inner, .case-inner, .welcome-inner, .about-intro-inner,
+    .apply-inner, .blog-cta-inner, .blog-filter-inner, .blog-grid-inner,
+    .breadcrumb-inner, .contact-hero-inner, .cta-band-inner, .cta-inner,
+    .culture-inner, .featured-inner, .footer-inner, .older-inner,
+    .process-inner, .reviews-inner, .section-inner, .testi-cta-inner,
+    .post-layout, .svc-layout, .career-inner, .contact-inner,
+    .client-inner, .case-inner {
+      max-width: min(1400px, 94vw) !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    /* ── Section headings: fluid ── */
+    h2, .section-title, .svc-section-title, .process-title,
+    .faq-title, .testi-title, .clients-label, .welcome-title,
+    .about-title, .values-title, .journey-title, .team-title,
+    .offices-title, .apply-title, .why-title, .roles-title,
+    .voices-title, .locs-title, .trust-title, .case-title,
+    .career-title, .contact-title, .client-title {
+      font-size: clamp(1.5rem, 3.2vw, 3.2rem) !important;
+    }
+    h3, .card-title, .feat-title, .svc-name, .step-title,
+    .value-title, .role-card h3, .perk-title {
+      font-size: clamp(1rem, 1.6vw, 1.75rem) !important;
+    }
+    .section-eyebrow, .svc-eyebrow, .page-eyebrow,
+    .badge-label, .case-eyebrow {
+      font-size: clamp(0.62rem, 0.72vw, 0.82rem) !important;
+    }
+
+    /* ── Body / paragraph text ── */
+    p, .svc-desc, .hero-sub, .post-body p,
+    .section-desc, .svc-section-desc,
+    .process-subtitle, .faq-subtitle,
+    .value-body, .step-desc, .perk-desc,
+    .about-body, .contact-body, .career-body {
+      font-size: clamp(0.85rem, 1vw, 1.1rem) !important;
+      line-height: 1.78;
+    }
+
+    /* ── Buttons: fluid ── */
+    .btn-primary, .btn-outline, .btn-dark,
+    .btn-blue-outline, .nav-cta, .svc-cta-btn,
+    .apply-btn, .career-btn, .contact-btn {
+      font-size: clamp(0.8rem, 0.9vw, 1.05rem) !important;
+      padding: clamp(0.55rem, 0.8vh, 1rem) clamp(1.1rem, 1.8vw, 2.4rem) !important;
+    }
+
+    /* ── Stat numbers ── */
+    .stat-num, .idx-sbar-num, .sbar-num {
+      font-size: clamp(1.5rem, 2.5vw, 3rem) !important;
+    }
+    .stat-label, .sbar-label, .idx-sbar-label {
+      font-size: clamp(0.62rem, 0.7vw, 0.88rem) !important;
+    }
+
+    /* ── Small / meta text ── */
+    .badge, .tag, .label, .eyebrow,
+    small, .dp-meta small,
+    .ft-col a, .footer-bottom p,
+    .post-meta-item, .author-role {
+      font-size: clamp(0.7rem, 0.8vw, 0.9rem) !important;
+    }
+
+    /* ── Footer: fluid ── */
+    .ft-tagline { font-size: clamp(0.8rem, 0.9vw, 1.05rem) !important; }
+    .ft-col-title, .ft-office-title { font-size: clamp(0.82rem, 0.9vw, 1.05rem) !important; }
+    .ft-col a, .ft-office-addr, .ft-office-phone,
+    .ft-email a, .footer-bottom p { font-size: clamp(0.72rem, 0.82vw, 0.95rem) !important; }
+    .ft-cta-btn { font-size: clamp(0.8rem, 0.9vw, 1rem) !important; }
+
+    /* ── Ensure full-width coverage ── */
+    section, footer, nav,
+    .site-footer, .clients-section, .trust-section,
+    .experiences-section, .tech-section, .why-dark,
+    .page-hero, .svc-hero, .career-hero,
+    .contact-hero, .client-hero {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* ── Wider screens (1600px+): grid expansions ── */
     @media (min-width: 1600px) {
-      html { font-size: 112%; }
-
-      /* Hero headings (clamp or explicit px) */
-      h1, .hero-title, .post-hero-content h1,
-      .hero h1, .page-title { font-size: clamp(3rem, 4vw, 4.2rem); }
-
-      h2, .section-title, .svc-section-title,
-      .svc-title, .process-title, .faq-title,
-      .testi-title, .clients-label, .welcome-title,
-      .blog-hero h1, .case-title { font-size: clamp(2.2rem, 3vw, 3.2rem); }
-
-      h3, .card-title, .feat-title,
-      .svc-name, .step-title { font-size: clamp(1.3rem, 1.8vw, 1.7rem); }
-
-      /* Body / paragraph text */
-      p, .svc-desc, .hero-sub, .post-body p,
-      .section-desc, .svc-section-desc,
-      .process-subtitle, .faq-subtitle { font-size: 1.08rem; }
-
-      /* Nav links */
-      .nav-links a, .nav-drop-label { font-size: 1rem; }
-
-      /* Buttons */
-      .btn-primary, .btn-outline, .btn-dark,
-      .btn-blue-outline, .nav-cta { font-size: 1rem; }
-
-      /* Small / meta text */
-      .badge, .tag, .label, .eyebrow,
-      small, .dp-meta small,
-      .ft-col a, .footer-bottom p { font-size: 0.85rem; }
-
-      /* Stat numbers */
-      .stat-num { font-size: 1.8rem; }
-      .stat-label { font-size: 0.82rem; }
+      .footer-mid .footer-inner {
+        grid-template-columns: repeat(4, 1fr);
+      }
     }
-</style>
+
+    /* ── Compact gracefully on medium screens ── */
+    @media (max-width: 1024px) {
+      .nav-links { gap: clamp(0.5rem, 1vw, 1.2rem) !important; }
+    }
+
+    /* ── Social icon brand colors ── */
+    .nav-social-icon .fa-whatsapp,
+    .nav-social-icon .fa-brands.fa-whatsapp { color: #25D366 !important; }
+    .nav-social-icon .fa-youtube,
+    .nav-social-icon .fa-brands.fa-youtube { color: #FF0000 !important; }
+    .nav-social-icon .fa-instagram,
+    .nav-social-icon .fa-brands.fa-instagram { color: #E1306C !important; }
+    .nav-social-icon .fa-linkedin-in,
+    .nav-social-icon .fa-brands.fa-linkedin-in { color: #0A66C2 !important; }
+    .nav-social-icon:hover .fa-whatsapp,
+    .nav-social-icon:hover .fa-brands.fa-whatsapp { color: #fff !important; }
+    .nav-social-icon:hover .fa-youtube,
+    .nav-social-icon:hover .fa-brands.fa-youtube { color: #fff !important; }
+    .nav-social-icon:hover .fa-instagram,
+    .nav-social-icon:hover .fa-brands.fa-instagram { color: #fff !important; }
+    .nav-social-icon:hover .fa-linkedin-in,
+    .nav-social-icon:hover .fa-brands.fa-linkedin-in { color: #fff !important; }
+    .nav-social-icon:hover {
+      background: rgba(255,255,255,0.12) !important;
+    }
+    /* Footer social icon brand colors */
+    .ft-social-icon .fa-whatsapp,
+    .ft-social-icon .fa-brands.fa-whatsapp { color: #25D366 !important; }
+    .ft-social-icon .fa-youtube,
+    .ft-social-icon .fa-brands.fa-youtube { color: #FF0000 !important; }
+    .ft-social-icon .fa-instagram,
+    .ft-social-icon .fa-brands.fa-instagram { color: #E1306C !important; }
+    .ft-social-icon .fa-linkedin-in,
+    .ft-social-icon .fa-brands.fa-linkedin-in { color: #0A66C2 !important; }
+    .ft-social-icon:hover { background: rgba(255,255,255,0.15) !important; }
+    .ft-social-icon:hover .fa-whatsapp,
+    .ft-social-icon:hover .fa-brands.fa-whatsapp { color: #fff !important; }
+    .ft-social-icon:hover .fa-youtube,
+    .ft-social-icon:hover .fa-brands.fa-youtube { color: #fff !important; }
+    .ft-social-icon:hover .fa-instagram,
+    .ft-social-icon:hover .fa-brands.fa-instagram { color: #fff !important; }
+    .ft-social-icon:hover .fa-linkedin-in,
+    .ft-social-icon:hover .fa-brands.fa-linkedin-in { color: #fff !important; }
+    </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
@@ -683,7 +862,7 @@
 
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
+      <li><a href="about.html">About</a></li>
       <li><a href="services.html" style="color:#60a5fa;">Services</a></li>
       <li><a href="client.html">Clients</a></li>
       <li class="nav-has-dropdown">
@@ -702,11 +881,9 @@
           </a>
         </div>
       </li>
-      <li><a href="career.html">Career</a></li>
       <li><a href="case-study.html">Case Studies</a></li>
-      <li><a href="blog.html">Newsletter</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <li><a href="contact.html" class="nav-cta">Request a Meeting</a></li>
+      <li><a href="contact.html" class="nav-cta">Get Started</a></li>
     </ul>
 
     <!-- Nav Social Icons -->
@@ -733,18 +910,16 @@
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="index.html">Home</a>
-    <a href="about.html">About Us</a>
+    <a href="about.html">About</a>
     <a href="services.html" style="color:#60a5fa;">Services</a>
     <a href="client.html">Clients</a>
     
     <a href="services.html" class="mob-products-label">Products</a>
     <a href="icrm.html" class="mob-sub">→ E2E Sales</a>
     <a href="stockpro.html" class="mob-sub">→ StockPro</a>
-    <a href="career.html">Career</a>
     <a href="case-study.html">Case Studies</a>
-    <a href="blog.html">Newsletter</a>
     <a href="contact.html">Contact</a>
-    <a href="contact.html" class="mob-cta">Request a Meeting</a>
+    <a href="contact.html" class="mob-cta">Get Started</a>
   </div>
 
   <!-- ═══ HERO ═══ -->
@@ -1372,7 +1547,7 @@
                 <div class="ft-col">
           <p class="ft-col-title">Company</p>
           <a href="index.html">Home</a>
-          <a href="about.html">About Us</a>
+          <a href="about.html">About</a>
           <a href="client.html">Clients</a>
           <a href="employee-review.html">Employee Review</a>
           <a href="career.html">Career</a>

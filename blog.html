@@ -45,8 +45,8 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      padding: 0 2rem;
-      height: 72px;
+      padding: clamp(1rem, 3vw, 4rem) clamp(1rem, 3vw, 4rem);
+      height: clamp(56px, 6vh, 80px);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -223,7 +223,7 @@
     /* ─── PAGE HERO ──────────────────────────────────────── */
     .page-hero {
       position: relative;
-      padding: 140px 2rem 80px;
+      padding: clamp(80px, 12vh, 160px) clamp(1rem, 4vw, 5rem) clamp(2.5rem, 6vh, 5rem);
       text-align: center;
       overflow: hidden;
     }
@@ -240,7 +240,7 @@
       transform: translate(-50%, -50%);
       pointer-events: none;
     }
-    .page-hero-content { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; }
+    .page-hero-content { position: relative; z-index: 2; max-width: min(820px, 90vw); margin: 0 auto; }
     .page-hero-label {
       display: inline-block;
       font-size: 0.75rem; font-weight: 700;
@@ -270,7 +270,7 @@
     /* ─── BLOG FILTER / CATEGORY TABS ────────────────────── */
     .blog-filter {
       background: var(--navy);
-      padding: 2.5rem 2rem 0;
+      padding: clamp(1.5rem, 2.5vh, 2.5rem) clamp(1rem, 4vw, 5rem) 0;
     }
     .blog-filter-inner {
       max-width: 1160px;
@@ -300,9 +300,9 @@
     /* ─── FEATURED BLOG ──────────────────────────────────── */
     .featured-section {
       background: var(--navy);
-      padding: 3.5rem 2rem 0;
+      padding: clamp(2rem, 3.5vh, 3.5rem) clamp(1rem, 4vw, 5rem) 0;
     }
-    .featured-inner { max-width: 1160px; margin: 0 auto; }
+    .featured-inner { max-width: min(1400px, 94vw); margin: 0 auto; }
 
     .featured-card {
       display: grid;
@@ -390,9 +390,9 @@
     /* ─── BLOG GRID ──────────────────────────────────────── */
     .blog-grid-section {
       background: var(--navy);
-      padding: 3.5rem 2rem 5rem;
+      padding: clamp(2rem, 3.5vh, 3.5rem) clamp(1rem, 4vw, 5rem) clamp(2.5rem, 4.5vh, 5rem);
     }
-    .blog-grid-inner { max-width: 1160px; margin: 0 auto; }
+    .blog-grid-inner { max-width: min(1400px, 94vw); margin: 0 auto; }
 
     .section-label-small {
       display: inline-block;
@@ -509,10 +509,10 @@
     /* ─── LEGACY / OLDER POSTS STRIP ─────────────────────── */
     .older-posts {
       background: #0d1f3c;
-      padding: 4rem 2rem;
+      padding: clamp(2rem, 4vh, 4rem) clamp(1rem, 4vw, 5rem);
       border-top: 1px solid rgba(255,255,255,0.06);
     }
-    .older-inner { max-width: 1160px; margin: 0 auto; }
+    .older-inner { max-width: min(1400px, 94vw); margin: 0 auto; }
     .older-inner h2 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(1.4rem, 3vw, 2rem);
@@ -576,11 +576,11 @@
     /* ─── CTA BAND ───────────────────────────────────────── */
     .blog-cta {
       background: linear-gradient(135deg, var(--navy-mid) 0%, #0a1628 100%);
-      padding: 5rem 2rem;
+      padding: clamp(2.5rem, 4.5vh, 5rem) clamp(1rem, 4vw, 5rem);
       text-align: center;
       border-top: 1px solid rgba(255,255,255,0.06);
     }
-    .blog-cta-inner { max-width: 680px; margin: 0 auto; }
+    .blog-cta-inner { max-width: min(740px, 90vw); margin: 0 auto; }
     .blog-cta h2 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(1.8rem, 3.5vw, 2.5rem);
@@ -758,49 +758,259 @@
     }
   
     /* =====================================================
-       1080p+ FONT SCALING  (desktop only, min-width 1200px)
-       Mobile (<768px) is completely unaffected.
+       FLUID RESPONSIVE SYSTEM — scales across ALL resolutions
+       No fixed pixel breakpoints. Everything uses clamp() and
+       viewport-relative units so the page looks great from
+       768px all the way to 2560px+.
        ===================================================== */
-    @media (min-width: 1200px) {
-      html { font-size: 106%; }
+
+    /* ── Root fluid base font ── */
+    html {
+      font-size: clamp(14px, 1.1vw, 18px);
     }
+
+    /* ── Navbar: fluid height and padding ── */
+    nav {
+      height: clamp(56px, 6vh, 80px) !important;
+      padding-left: clamp(1rem, 3vw, 4rem) !important;
+      padding-right: clamp(1rem, 3vw, 4rem) !important;
+    }
+    .nav-links {
+      gap: clamp(0.8rem, 1.5vw, 2rem) !important;
+    }
+    .nav-links a, .nav-drop-label {
+      font-size: clamp(0.78rem, 0.9vw, 1rem) !important;
+    }
+    .logo, .logo img {
+      width: clamp(90px, 9vw, 140px) !important;
+    }
+
+    /* ── Post / article hero: fluid ── */
+    .post-hero, .page-hero, .svc-hero,
+    .career-hero, .contact-hero, .client-hero {
+      padding: clamp(56px, 8vh, 110px) clamp(1rem, 4vw, 5rem) clamp(2.5rem, 5vh, 5rem) !important;
+    }
+    .post-hero-content, .page-hero-content {
+      max-width: min(900px, 90vw) !important;
+    }
+    .post-hero h1 {
+      font-size: clamp(1.8rem, 4vw, 3.4rem) !important;
+    }
+    .post-hero-img, .stats-strip {
+      max-width: min(1000px, 92vw) !important;
+      padding-left: clamp(1rem, 3vw, 3rem) !important;
+      padding-right: clamp(1rem, 3vw, 3rem) !important;
+    }
+
+    /* ── Post layout: fluid 2-col grid ── */
+    .post-layout {
+      max-width: min(1200px, 94vw) !important;
+      padding: 0 clamp(1rem, 3vw, 4rem) clamp(3rem, 6vh, 6rem) !important;
+      grid-template-columns: 1fr clamp(260px, 24vw, 340px) !important;
+    }
+    .post-body {
+      padding: clamp(1.5rem, 2.5vw, 3.5rem) !important;
+    }
+    .post-body p, .post-body li {
+      font-size: clamp(0.88rem, 1vw, 1.08rem) !important;
+      line-height: 1.82;
+    }
+    .post-section h2 {
+      font-size: clamp(1.15rem, 2vw, 1.7rem) !important;
+    }
+    .post-body h3 { font-size: clamp(1.05rem, 1.6vw, 1.45rem) !important; }
+    .post-body h4 { font-size: clamp(0.95rem, 1.3vw, 1.25rem) !important; }
+
+    /* ── Blog listing page: hero, filter bar, featured, grid ── */
+    .blog-hero, .blog-filter {
+      padding-left: clamp(1rem, 4vw, 5rem) !important;
+      padding-right: clamp(1rem, 4vw, 5rem) !important;
+    }
+    .blog-filter-inner, .blog-grid-inner, .featured-inner {
+      max-width: min(1300px, 94vw) !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    .featured-section {
+      padding: clamp(2rem, 4vh, 4rem) clamp(1rem, 4vw, 5rem) !important;
+    }
+    .blog-grid-section {
+      padding: clamp(2rem, 4vh, 4rem) clamp(1rem, 4vw, 5rem) clamp(3rem, 5vh, 5rem) !important;
+    }
+    .featured-content h2 {
+      font-size: clamp(1.4rem, 2.8vw, 2.4rem) !important;
+    }
+    .blog-card h3 {
+      font-size: clamp(0.95rem, 1.4vw, 1.4rem) !important;
+    }
+    .blog-card p {
+      font-size: clamp(0.8rem, 0.95vw, 1rem) !important;
+    }
+
+    /* ── Case study page: hero, grid, cards ── */
+    .case-hero, .case-main {
+      padding-left: clamp(1rem, 4vw, 5rem) !important;
+      padding-right: clamp(1rem, 4vw, 5rem) !important;
+    }
+    .case-inner {
+      max-width: min(1300px, 94vw) !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    /* ── Blog CTA section ── */
+    .blog-cta {
+      padding: clamp(2.5rem, 5vh, 6rem) clamp(1rem, 4vw, 5rem) !important;
+    }
+    .blog-cta-inner {
+      max-width: min(720px, 90vw) !important;
+    }
+    .blog-cta h2 {
+      font-size: clamp(1.5rem, 3vw, 2.6rem) !important;
+    }
+
+    /* ── All general sections: fluid vertical padding ── */
+    section, .about-intro, .stats-band, .stats-bar,
+    .values-section, .journey-section, .expertise-section,
+    .team-section, .offices-section, .faq-section,
+    .apply-section, .why-section, .roles-section,
+    .voices-section, .locations-section, .trust-section,
+    .clients-section, .testimonials-section, .services-section,
+    .obstacles-section, .case-section, .tech-section,
+    .experiences-section, .cta-section, .culture-section,
+    .reviews-section, .older-posts, .process-section {
+      padding-top: clamp(2.5rem, 5vh, 6.5rem) !important;
+      padding-bottom: clamp(2.5rem, 5vh, 6.5rem) !important;
+    }
+
+    /* ── All inner containers: fluid max-width ── */
+    .clients-inner, .testi-inner, .services-inner, .obs-inner,
+    .trust-inner, .tech-inner, .exp-inner, .exp-cards,
+    .stats-band-inner, .stats-bar-inner, .values-inner,
+    .journey-inner, .team-inner, .expertise-inner, .offices-inner,
+    .why-inner, .roles-inner, .voices-inner, .locations-inner,
+    .faq-inner, .welcome-inner, .about-intro-inner,
+    .apply-inner, .blog-cta-inner, .breadcrumb-inner,
+    .contact-hero-inner, .cta-band-inner, .cta-inner,
+    .culture-inner, .featured-inner, .footer-inner, .older-inner,
+    .process-inner, .reviews-inner, .section-inner, .testi-cta-inner {
+      max-width: min(1400px, 94vw) !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    /* ── Section headings: fluid ── */
+    h2, .section-title, .svc-section-title, .process-title,
+    .faq-title, .testi-title, .clients-label, .welcome-title,
+    .trust-title, .case-title, .career-title,
+    .contact-title, .client-title {
+      font-size: clamp(1.5rem, 3.2vw, 3.2rem) !important;
+    }
+    h3, .card-title, .feat-title, .svc-name, .step-title {
+      font-size: clamp(1rem, 1.6vw, 1.75rem) !important;
+    }
+    .section-eyebrow, .svc-eyebrow, .page-eyebrow,
+    .badge-label, .case-eyebrow, .post-category-badge {
+      font-size: clamp(0.62rem, 0.72vw, 0.82rem) !important;
+    }
+
+    /* ── Body text ── */
+    p, .svc-desc, .hero-sub,
+    .section-desc, .svc-section-desc,
+    .process-subtitle, .faq-subtitle {
+      font-size: clamp(0.85rem, 1vw, 1.1rem) !important;
+      line-height: 1.78;
+    }
+
+    /* ── Buttons: fluid ── */
+    .btn-primary, .btn-outline, .btn-dark,
+    .btn-blue-outline, .nav-cta, .blog-cta-btn {
+      font-size: clamp(0.8rem, 0.9vw, 1.05rem) !important;
+      padding: clamp(0.55rem, 0.8vh, 1rem) clamp(1.1rem, 1.8vw, 2.4rem) !important;
+    }
+
+    /* ── Stat numbers ── */
+    .stat-num, .idx-sbar-num, .sbar-num {
+      font-size: clamp(1.5rem, 2.5vw, 3rem) !important;
+    }
+    .stat-label, .sbar-label {
+      font-size: clamp(0.62rem, 0.7vw, 0.88rem) !important;
+    }
+
+    /* ── Small / meta text ── */
+    .badge, .tag, .label, .eyebrow,
+    small, .dp-meta small, .ft-col a,
+    .footer-bottom p, .post-meta-item, .author-role {
+      font-size: clamp(0.7rem, 0.8vw, 0.9rem) !important;
+    }
+
+    /* ── Footer ── */
+    .ft-tagline { font-size: clamp(0.8rem, 0.9vw, 1.05rem) !important; }
+    .ft-col-title, .ft-office-title { font-size: clamp(0.82rem, 0.9vw, 1.05rem) !important; }
+    .ft-col a, .ft-office-addr, .ft-office-phone,
+    .ft-email a, .footer-bottom p { font-size: clamp(0.72rem, 0.82vw, 0.95rem) !important; }
+    .ft-cta-btn { font-size: clamp(0.8rem, 0.9vw, 1rem) !important; }
+
+    /* ── Full-width coverage ── */
+    section, footer, nav,
+    .site-footer, .post-hero, .blog-cta,
+    .blog-hero, .featured-section, .blog-grid-section,
+    .blog-filter, .case-hero {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* ── Wider screens (1600px+) ── */
     @media (min-width: 1600px) {
-      html { font-size: 112%; }
-
-      /* Hero headings (clamp or explicit px) */
-      h1, .hero-title, .post-hero-content h1,
-      .hero h1, .page-title { font-size: clamp(3rem, 4vw, 4.2rem); }
-
-      h2, .section-title, .svc-section-title,
-      .svc-title, .process-title, .faq-title,
-      .testi-title, .clients-label, .welcome-title,
-      .blog-hero h1, .case-title { font-size: clamp(2.2rem, 3vw, 3.2rem); }
-
-      h3, .card-title, .feat-title,
-      .svc-name, .step-title { font-size: clamp(1.3rem, 1.8vw, 1.7rem); }
-
-      /* Body / paragraph text */
-      p, .svc-desc, .hero-sub, .post-body p,
-      .section-desc, .svc-section-desc,
-      .process-subtitle, .faq-subtitle { font-size: 1.08rem; }
-
-      /* Nav links */
-      .nav-links a, .nav-drop-label { font-size: 1rem; }
-
-      /* Buttons */
-      .btn-primary, .btn-outline, .btn-dark,
-      .btn-blue-outline, .nav-cta { font-size: 1rem; }
-
-      /* Small / meta text */
-      .badge, .tag, .label, .eyebrow,
-      small, .dp-meta small,
-      .ft-col a, .footer-bottom p { font-size: 0.85rem; }
-
-      /* Stat numbers */
-      .stat-num { font-size: 1.8rem; }
-      .stat-label { font-size: 0.82rem; }
+      .blog-grid { grid-template-columns: repeat(3, 1fr) !important; }
+      .footer-mid .footer-inner { grid-template-columns: repeat(4, 1fr); }
     }
-</style>
+
+    /* ── Medium screens: collapse post layout ── */
+    @media (max-width: 1024px) {
+      .nav-links { gap: clamp(0.5rem, 1vw, 1.2rem) !important; }
+      .post-layout { grid-template-columns: 1fr !important; }
+    }
+
+    /* ── Social icon brand colors ── */
+    .nav-social-icon .fa-whatsapp,
+    .nav-social-icon .fa-brands.fa-whatsapp { color: #25D366 !important; }
+    .nav-social-icon .fa-youtube,
+    .nav-social-icon .fa-brands.fa-youtube { color: #FF0000 !important; }
+    .nav-social-icon .fa-instagram,
+    .nav-social-icon .fa-brands.fa-instagram { color: #E1306C !important; }
+    .nav-social-icon .fa-linkedin-in,
+    .nav-social-icon .fa-brands.fa-linkedin-in { color: #0A66C2 !important; }
+    .nav-social-icon:hover .fa-whatsapp,
+    .nav-social-icon:hover .fa-brands.fa-whatsapp { color: #fff !important; }
+    .nav-social-icon:hover .fa-youtube,
+    .nav-social-icon:hover .fa-brands.fa-youtube { color: #fff !important; }
+    .nav-social-icon:hover .fa-instagram,
+    .nav-social-icon:hover .fa-brands.fa-instagram { color: #fff !important; }
+    .nav-social-icon:hover .fa-linkedin-in,
+    .nav-social-icon:hover .fa-brands.fa-linkedin-in { color: #fff !important; }
+    .nav-social-icon:hover {
+      background: rgba(255,255,255,0.12) !important;
+    }
+    /* Footer social icon brand colors */
+    .ft-social-icon .fa-whatsapp,
+    .ft-social-icon .fa-brands.fa-whatsapp { color: #25D366 !important; }
+    .ft-social-icon .fa-youtube,
+    .ft-social-icon .fa-brands.fa-youtube { color: #FF0000 !important; }
+    .ft-social-icon .fa-instagram,
+    .ft-social-icon .fa-brands.fa-instagram { color: #E1306C !important; }
+    .ft-social-icon .fa-linkedin-in,
+    .ft-social-icon .fa-brands.fa-linkedin-in { color: #0A66C2 !important; }
+    .ft-social-icon:hover { background: rgba(255,255,255,0.15) !important; }
+    .ft-social-icon:hover .fa-whatsapp,
+    .ft-social-icon:hover .fa-brands.fa-whatsapp { color: #fff !important; }
+    .ft-social-icon:hover .fa-youtube,
+    .ft-social-icon:hover .fa-brands.fa-youtube { color: #fff !important; }
+    .ft-social-icon:hover .fa-instagram,
+    .ft-social-icon:hover .fa-brands.fa-instagram { color: #fff !important; }
+    .ft-social-icon:hover .fa-linkedin-in,
+    .ft-social-icon:hover .fa-brands.fa-linkedin-in { color: #fff !important; }
+    </style>
 </head>
 <body>
 
@@ -810,7 +1020,7 @@
 
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
+      <li><a href="about.html">About</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="client.html">Clients</a></li>
       <li class="nav-has-dropdown">
@@ -829,7 +1039,6 @@
           </a>
         </div>
       </li>
-      <li><a href="career.html">Career</a></li>
        <li><a href="case-study.html">Case Studies</a></li>
       <li><a href="blogs.html" style="color:#60a5fa;">Blogs</a></li>
       <li><a href="contact.html">Contact</a></li>
@@ -860,13 +1069,12 @@
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="index.html">Home</a>
-    <a href="about.html">About Us</a>
+    <a href="about.html">About</a>
     <a href="services.html">Services</a>
     <a href="client.html">Clients</a>
     <span class="mob-products-label">Products</span>
     <a href="icrm.html" class="mob-sub">E2E Sales</a>
     <a href="stockpro.html" class="mob-sub">StockPro</a>
-    <a href="career.html">Career</a>
     <a href="case-study.html">Case Studies</a>
     <a href="blogs.html" class="mob-active" style="color:var(--accent-bright)">Blogs</a>
     <a href="contact.html">Contact</a>
@@ -1329,7 +1537,7 @@
         <div class="ft-col">
           <p class="ft-col-title">Company</p>
           <a href="index.html">Home</a>
-          <a href="about.html">About Us</a>
+          <a href="about.html">About</a>
           <a href="client.html">Clients</a>
           <a href="employee-review.html">Employee Review</a>
           <a href="career.html">Career</a>
@@ -1387,141 +1595,7 @@
   </script>
 
 
-<style>
-/* ===== GAGSTEK DESKTOP FIXES — min-width 769px only ===== */
-@media (min-width: 769px) {
-
-  /* ── NAV ──────────────────────────────────────────────── */
-  nav {
-    padding-left: 3rem !important;
-    padding-right: 3rem !important;
-  }
-  .nav-links a { font-size: 1rem !important; }
-
-  /* ── SECTION SIDE PADDING (2rem → 4rem) ──────────────── */
-  .welcome-section, .testimonials-section, .services-section,
-  .obstacles-section, .why-top, .why-dark, .trust-section,
-  .case-section, .tech-section, .about-intro, .stats-band,
-  .stats-bar, .values-section, .journey-section, .expertise-section,
-  .team-section, .offices-section, .faq-section, .apply-section,
-  .why-section, .roles-section, .voices-section, .locations-section,
-  .blog-cta, .post-hero, .page-hero, .breadcrumb-strip,
-  .clients-section, .featured-section, .blog-grid-section,
-  .older-posts, .reviews-section, .culture-section, .cta-section,
-  .contact-hero, .client-hero, .client-main, .case-hero, .case-main,
-  .svc-hero, .svc-main, .career-hero, .career-main {
-    padding-left: 4rem !important;
-    padding-right: 4rem !important;
-  }
-
-  /* ── INNER CONTAINERS: expand max-width ──────────────── */
-  .clients-inner, .testi-inner, .services-inner, .obs-inner,
-  .trust-inner, .tech-inner, .exp-inner, .exp-cards,
-  .stats-band-inner, .stats-bar-inner, .values-inner,
-  .journey-inner, .team-inner, .expertise-inner, .offices-inner,
-  .why-inner, .roles-inner, .voices-inner, .locations-inner,
-  .faq-inner, .case-inner, .welcome-inner, .about-intro-inner,
-  .apply-inner, .blog-cta-inner, .blog-filter-inner, .blog-grid-inner,
-  .breadcrumb-inner, .contact-hero-inner, .cta-band-inner, .cta-inner,
-  .culture-inner, .featured-inner, .footer-inner, .older-inner,
-  .process-inner, .reviews-inner, .section-inner, .testi-cta-inner,
-  .voices-inner, .welcome-inner {
-    max-width: 1440px !important;
-  }
-
-  .post-layout, .svc-layout, .svc-hero-content, .hero-content {
-    max-width: 1440px !important;
-    padding-left: 4rem !important;
-    padding-right: 4rem !important;
-  }
-
-  .footer-inner {
-    max-width: 1440px !important;
-    padding-left: 4rem !important;
-    padding-right: 4rem !important;
-  }
-
-  /* ── FONT SIZES ───────────────────────────────────────── */
-
-  /* --- NAV & UI --- */
-  .nav-links a, .db-text   { font-size: 1rem !important; }
-
-  /* --- EYEBROW / LABEL text (keep small but readable) --- */
-  .section-eyebrow, .sb-label, .sbar-label, .stat-label,
-  .badge-label, .hero-stat-label, .case-label, .case-outcome-label,
-  .vid-industry, .vid-role, .quote-meta, .quote-industry,
-  .featured-label, .card-category, .industry-tag,
-  .post-category-badge, .post-meta-item, .breadcrumb,
-  .breadcrumb-current, .voice-stars, .voice-role,
-  .apply-testi-role, .featured-date, .card-date,
-  .ft-rating-score, .ft-rating-sub, .iso-text,
-  .review-role-tag, .review-stars, .author-role,
-  .post-share-label, .dp-meta small {
-    font-size: 0.82rem !important;
-  }
-
-  /* --- CARD BODY / DESCRIPTION text (main readability fix) --- */
-  .vid-blurb, .vid-name, .quote-text, .quote-name,
-  .case-title, .case-desc, .case-watch,
-  .svc-desc, .svc-section-desc, .process-card-desc,
-  .obs-body, .value-body, .value-card,
-  .about-intro-text, .about-intro-text p,
-  .tl-content, .feat-list, .feature-card, .feature-body,
-  .exp-card p, .exp-link,
-  .perk-desc, .perk-title,
-  .culture-body, .culture-img-badge,
-  .voice-name, .apply-copy, .apply-form-sub, .apply-testi-name,
-  .step-desc, .step-title,
-  .loc-address, .loc-phone, .sales-detail, .sales-label,
-  .faq-answer-inner, .faq-aside-desc,
-  .cta-sub, .cta-desc,
-  .post-section, .post-list, .post-callout, .post-final,
-  .post-body p, .post-body li,
-  .about-card p, .sidebar-card-title,
-  .related-info, .toc-list li,
-  .client-card-body, .compare-table, .fit-card, .stat-card,
-  .form-note, .form-success, .file-upload-text,
-  .sf-text, .logo-pill,
-  .review-name,
-  .featured-role,
-  .dp-meta { font-size: 1rem !important; line-height: 1.7 !important; }
-
-  /* --- CARD TITLES (slightly larger) --- */
-  .vid-title, .case-title, .ft-col-title, .ft-office-title,
-  .sidebar-card-title, .stat-card h3, .feature-card h3,
-  .about-card h3, .fit-card h3 {
-    font-size: 1.15rem !important;
-  }
-
-  /* --- HERO sub-text --- */
-  .page-hero-sub, .hero-sub, .testi-sub, .services-desc,
-  .welcome-body, .section-desc {
-    font-size: 1.1rem !important;
-    line-height: 1.8 !important;
-  }
-
-  /* --- FOOTER --- */
-  .ft-tagline        { font-size: 1rem !important; }
-  .ft-col-link, .ft-link, .ft-bottom-links a,
-  .ft-office-addr, .ft-office-phone, .ft-email,
-  .footer-bottom p   { font-size: 0.9rem !important; }
-  .ft-col-title, .ft-office-title { font-size: 1rem !important; }
-  .ft-cta-btn        { font-size: 1rem !important; }
-  .ft-badge, .ft-badge-iso { font-size: 0.82rem !important; }
-
-  /* --- BLOG POST body --- */
-  .post-body p, .post-body li { font-size: 1.05rem !important; line-height: 1.85 !important; }
-  .post-body h3 { font-size: 1.4rem !important; }
-  .post-body h4 { font-size: 1.2rem !important; }
-
-  /* --- SIDEBAR --- */
-  .sidebar-cta, .sidebar-nav a { font-size: 0.95rem !important; }
-
-  /* --- SERVICES page --- */
-  .testi-cta-name  { font-size: 1rem !important; }
-  .testi-cta-role  { font-size: 0.85rem !important; }
-}
-</style>
+<!-- Fluid responsive system already applied in <head> above -->
 
 </body>
 </html>
