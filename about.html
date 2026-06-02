@@ -241,7 +241,7 @@
       padding: clamp(3rem, 5vh, 6rem) clamp(1rem, 4vw, 5rem);
     }
     .about-intro-inner {
-      max-width: min(1400px, 94vw); margin: 0 auto;
+      max-width: 100%; margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 5rem;
@@ -300,7 +300,7 @@
       padding: clamp(2.5rem, 4.5vh, 5rem) clamp(1rem, 4vw, 5rem);
     }
     .stats-band-inner {
-      max-width: min(1300px, 94vw); margin: 0 auto;
+      max-width: 100%; margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 2rem;
@@ -326,7 +326,7 @@
       background: #f1f5f9;
       padding: clamp(3rem, 5vh, 6rem) clamp(1rem, 4vw, 5rem);
     }
-    .values-inner { max-width: min(1300px, 94vw); margin: 0 auto; }
+    .values-inner { max-width: 100%; margin: 0 auto; }
     .section-header { text-align: center; margin-bottom: 3.5rem; }
     .section-header h2 {
       font-family: 'Playfair Display', serif;
@@ -381,7 +381,7 @@
       background: var(--navy);
       padding: clamp(3rem, 5vh, 6rem) clamp(1rem, 4vw, 5rem);
     }
-    .journey-inner { max-width: min(960px, 90vw); margin: 0 auto; }
+    .journey-inner { max-width: 100%; margin: 0 auto; }
     .journey-section .section-header h2 { color: #fff; }
     .journey-section .section-header p { color: rgba(255,255,255,0.6); }
 
@@ -446,7 +446,7 @@
       background: #fff;
       padding: clamp(3rem, 5vh, 6rem) clamp(1rem, 4vw, 5rem);
     }
-    .team-inner { max-width: min(1300px, 94vw); margin: 0 auto; }
+    .team-inner { max-width: 100%; margin: 0 auto; }
     .team-section .section-header h2 { color: #0a1628; }
     .team-section .section-header p { color: #64748b; }
     .team-grid {
@@ -506,7 +506,7 @@
       background: var(--navy-mid);
       padding: clamp(2.5rem, 4.5vh, 5rem) clamp(1rem, 4vw, 5rem);
     }
-    .expertise-inner { max-width: min(1300px, 94vw); margin: 0 auto; }
+    .expertise-inner { max-width: 100%; margin: 0 auto; }
     .expertise-section .section-header h2 { color: #fff; }
     .expertise-section .section-header p { color: rgba(255,255,255,0.6); }
     .expertise-grid {
@@ -541,7 +541,7 @@
       background: #f1f5f9;
       padding: clamp(3rem, 5vh, 6rem) clamp(1rem, 4vw, 5rem);
     }
-    .offices-inner { max-width: min(1300px, 94vw); margin: 0 auto; }
+    .offices-inner { max-width: 100%; margin: 0 auto; }
     .offices-section .section-header h2 { color: #0a1628; }
     .offices-section .section-header p { color: #64748b; }
     .offices-grid {
@@ -596,7 +596,7 @@
     }
 
     .footer-inner {
-      max-width: min(1400px, 94vw);
+      max-width: 100%;
       margin: 0 auto;
       padding: 0 2rem;
     }
@@ -990,7 +990,7 @@
     .process-inner, .reviews-inner, .section-inner, .testi-cta-inner,
     .post-layout, .svc-layout, .career-inner, .contact-inner,
     .client-inner, .case-inner {
-      max-width: min(1400px, 94vw) !important;
+      max-width: 100% !important;
       margin-left: auto !important;
       margin-right: auto !important;
     }
@@ -1116,6 +1116,57 @@
     .ft-social-icon:hover .fa-brands.fa-linkedin-in { color: #fff !important; }
     </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- ═══ FULL-WIDTH FLUID OVERRIDE ═══ -->
+  <style>
+    /* Force html/body and all sections to always fill 100% screen width */
+    html, body {
+      width: 100%;
+      max-width: 100% !important;
+      overflow-x: hidden;
+    }
+    section, header, footer, nav,
+    .site-footer, .idx-stats-bar, .stats-bar,
+    .stats-band, .clients-section, .testimonials-section,
+    .services-section, .trust-section, .tech-section,
+    .experiences-section, .case-section, .why-dark,
+    .why-section, .about-intro, .values-section,
+    .journey-section, .team-section, .expertise-section,
+    .offices-section, .faq-section, .contact-hero,
+    .client-hero, .client-main, .case-hero, .case-main,
+    .svc-hero, .svc-main, .career-hero, .career-main,
+    .featured-section, .reviews-section, .culture-section,
+    .cta-section, .obstacles-section, .logo-strip-outer,
+    .page-hero, .breadcrumb-strip, .roles-section,
+    .voices-section, .locations-section, .apply-section,
+    .employee-hero, .employee-main, .blog-cta,
+    .welcome-section, .post-hero {
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box;
+    }
+    /* Inner containers: fluid horizontal padding, no hard width cap */
+    .clients-inner, .testi-inner, .services-inner, .obs-inner,
+    .trust-inner, .tech-inner, .exp-inner, .exp-cards,
+    .idx-stats-bar-inner, .welcome-inner, .why-inner,
+    .case-inner, .footer-inner, .stats-band-inner,
+    .stats-bar-inner, .values-inner, .journey-inner,
+    .team-inner, .expertise-inner, .offices-inner,
+    .roles-inner, .voices-inner, .locations-inner,
+    .faq-inner, .about-intro-inner, .apply-inner,
+    .blog-cta-inner, .blog-filter-inner, .blog-grid-inner,
+    .breadcrumb-inner, .contact-hero-inner, .cta-band-inner,
+    .cta-inner, .culture-inner, .featured-inner,
+    .older-inner, .process-inner, .reviews-inner,
+    .section-inner, .testi-cta-inner, .client-inner,
+    .hero-inner, .career-inner, .svc-inner {
+      max-width: 100% !important;
+      width: 100%;
+      box-sizing: border-box;
+      padding-left: clamp(1.5rem, 5vw, 6rem);
+      padding-right: clamp(1.5rem, 5vw, 6rem);
+    }
+  </style>
 </head>
 <body>
 
@@ -1735,17 +1786,17 @@
   .culture-inner, .featured-inner, .footer-inner, .older-inner,
   .process-inner, .reviews-inner, .section-inner, .testi-cta-inner,
   .voices-inner, .welcome-inner {
-    max-width: 1440px !important;
+    max-width: 100% !important;
   }
 
   .post-layout, .svc-layout, .svc-hero-content, .hero-content {
-    max-width: 1440px !important;
+    max-width: 100% !important;
     padding-left: 4rem !important;
     padding-right: 4rem !important;
   }
 
   .footer-inner {
-    max-width: 1440px !important;
+    max-width: 100% !important;
     padding-left: 4rem !important;
     padding-right: 4rem !important;
   }

@@ -591,7 +591,7 @@
     .trust-inner, .tech-inner, .exp-inner, .exp-cards,
     .idx-stats-bar-inner, .welcome-inner,
     .why-inner, .case-inner, .footer-inner {
-      max-width: min(1400px, 94vw);
+      max-width: 100%;
       margin-left: auto;
       margin-right: auto;
     }
@@ -795,15 +795,15 @@
       .breadcrumb-inner, .contact-hero-inner, .cta-band-inner, .cta-inner,
       .culture-inner, .featured-inner, .footer-inner, .older-inner,
       .process-inner, .reviews-inner, .section-inner, .testi-cta-inner {
-        max-width: min(1440px, 96vw) !important;
+        max-width: 100% !important;
       }
       .post-layout, .svc-layout, .svc-hero-content, .hero-content {
-        max-width: min(1440px, 96vw) !important;
+        max-width: 100% !important;
         padding-left: clamp(1.5rem, 4vw, 5rem) !important;
         padding-right: clamp(1.5rem, 4vw, 5rem) !important;
       }
       .footer-inner {
-        max-width: min(1440px, 96vw) !important;
+        max-width: 100% !important;
         padding-left: clamp(1.5rem, 4vw, 5rem) !important;
         padding-right: clamp(1.5rem, 4vw, 5rem) !important;
       }
@@ -879,6 +879,57 @@
     .ft-social-icon:hover .fa-linkedin-in,
     .ft-social-icon:hover .fa-brands.fa-linkedin-in { color: #fff !important; }
     </style>
+
+  <!-- ═══ FULL-WIDTH FLUID OVERRIDE ═══ -->
+  <style>
+    /* Force html/body and all sections to always fill 100% screen width */
+    html, body {
+      width: 100%;
+      max-width: 100% !important;
+      overflow-x: hidden;
+    }
+    section, header, footer, nav,
+    .site-footer, .idx-stats-bar, .stats-bar,
+    .stats-band, .clients-section, .testimonials-section,
+    .services-section, .trust-section, .tech-section,
+    .experiences-section, .case-section, .why-dark,
+    .why-section, .about-intro, .values-section,
+    .journey-section, .team-section, .expertise-section,
+    .offices-section, .faq-section, .contact-hero,
+    .client-hero, .client-main, .case-hero, .case-main,
+    .svc-hero, .svc-main, .career-hero, .career-main,
+    .featured-section, .reviews-section, .culture-section,
+    .cta-section, .obstacles-section, .logo-strip-outer,
+    .page-hero, .breadcrumb-strip, .roles-section,
+    .voices-section, .locations-section, .apply-section,
+    .employee-hero, .employee-main, .blog-cta,
+    .welcome-section, .post-hero {
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box;
+    }
+    /* Inner containers: fluid horizontal padding, no hard width cap */
+    .clients-inner, .testi-inner, .services-inner, .obs-inner,
+    .trust-inner, .tech-inner, .exp-inner, .exp-cards,
+    .idx-stats-bar-inner, .welcome-inner, .why-inner,
+    .case-inner, .footer-inner, .stats-band-inner,
+    .stats-bar-inner, .values-inner, .journey-inner,
+    .team-inner, .expertise-inner, .offices-inner,
+    .roles-inner, .voices-inner, .locations-inner,
+    .faq-inner, .about-intro-inner, .apply-inner,
+    .blog-cta-inner, .blog-filter-inner, .blog-grid-inner,
+    .breadcrumb-inner, .contact-hero-inner, .cta-band-inner,
+    .cta-inner, .culture-inner, .featured-inner,
+    .older-inner, .process-inner, .reviews-inner,
+    .section-inner, .testi-cta-inner, .client-inner,
+    .hero-inner, .career-inner, .svc-inner {
+      max-width: 100% !important;
+      width: 100%;
+      box-sizing: border-box;
+      padding-left: clamp(1.5rem, 5vw, 6rem);
+      padding-right: clamp(1.5rem, 5vw, 6rem);
+    }
+  </style>
 </head>
 <body>
 
@@ -1020,7 +1071,7 @@
       padding: 3.5rem 2rem;
     }
     .idx-stats-bar-inner {
-      max-width: 1200px; margin: 0 auto;
+      max-width: 100%; margin: 0 auto;
       display: grid; grid-template-columns: repeat(5, 1fr); gap: 2rem; text-align: center;
     }
     .idx-sbar-item {}
@@ -1130,8 +1181,7 @@
       overflow: hidden;
     }
     .clients-inner {
-      max-width: 1200px;
-      margin: 0 auto;
+      max-width: 100%; margin: 0 auto;
       text-align: center;
     }
     .clients-label {
@@ -1647,7 +1697,7 @@
 
   <style>
     .testimonials-section { background:#fff; padding:6rem 2rem; }
-    .testi-inner { max-width:1160px; margin:0 auto; }
+    .testi-inner { max-width: 100%; margin: 0 auto; }
     .testi-header { text-align:center; margin-bottom:3.5rem; }
     .testi-title { font-family:'Playfair Display',serif; font-size:clamp(1.9rem,4vw,2.8rem); font-weight:900; color:#0a1628; letter-spacing:-0.5px; margin-bottom:.75rem; }
     .testi-accent { color:#3b82f6; }
@@ -1887,7 +1937,7 @@
 
   <style>
     .services-section { background:#f8faff; padding:6rem 2rem; }
-    .services-inner { max-width:1160px; margin:0 auto; }
+    .services-inner { max-width: 100%; margin: 0 auto; }
     .services-header { margin-bottom:3rem; }
     .services-eyebrow { font-size:.75rem; font-weight:700; letter-spacing:2.5px; color:#3b82f6; text-transform:uppercase; margin-bottom:.75rem; }
     .services-title { font-family:'Playfair Display',serif; font-size:clamp(1.7rem,3.5vw,2.6rem); font-weight:900; color:#0a1628; line-height:1.18; letter-spacing:-.5px; margin-bottom:1rem; max-width:780px; }
@@ -1972,8 +2022,7 @@
       padding: 6rem 2rem;
     }
     .obs-inner {
-      max-width: 1160px;
-      margin: 0 auto;
+      max-width: 100%; margin: 0 auto;
     }
     .obs-header {
       text-align: center;
@@ -2367,8 +2416,7 @@
       padding: 6rem 2rem;
     }
     .trust-inner {
-      max-width: 1100px;
-      margin: 0 auto;
+      max-width: 100%; margin: 0 auto;
       text-align: center;
     }
     .trust-title {
@@ -2548,8 +2596,7 @@
       padding: 5rem 0 5rem;
     }
     .exp-inner {
-      max-width: 1160px;
-      margin: 0 auto;
+      max-width: 100%; margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3rem;
@@ -2608,8 +2655,7 @@
     }
     .exp-cards-wrap::-webkit-scrollbar { display:none; }
     .exp-cards {
-      max-width: 1160px;
-      margin: 0 auto;
+      max-width: 100%; margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(3,1fr);
       gap: 1.5rem;
@@ -2824,7 +2870,7 @@
 
   <style>
     .case-section { background:#f8faff; padding:5.5rem 2rem; }
-    .case-inner { max-width:1000px; margin:0 auto; text-align:center; }
+    .case-inner { max-width:100%; margin:0 auto; text-align:center; }
     .case-eyebrow { font-size:.75rem; font-weight:700; letter-spacing:2.5px; color:#3b82f6; text-transform:uppercase; margin-bottom:.6rem; }
     .case-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.6rem); font-weight:900; color:#0a1628; margin-bottom:2.8rem; }
 
@@ -3085,7 +3131,7 @@
 
   <style>
     .tech-section { background:#f1f5f9; padding:5.5rem 2rem; }
-    .tech-inner { max-width:1100px; margin:0 auto; }
+    .tech-inner { max-width: 100%; margin: 0 auto; }
 
     .tech-header {
       display:flex;
@@ -3345,8 +3391,7 @@
     }
 
     .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
+      max-width: 100%; margin: 0 auto;
       padding: 0 2rem;
     }
 
