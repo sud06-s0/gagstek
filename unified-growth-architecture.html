@@ -91,11 +91,11 @@
     .post-meta-divider { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,0.2); }
 
     /* ── HERO IMAGE ── */
-    .post-hero-img { max-width: min(1000px, 92vw); margin: 0 auto; padding: 0 clamp(1rem, 3vw, 3rem); position: relative; z-index: 2; transform: translateY(-2rem); }
+    .post-hero-img { max-width: 100%; margin: 0 auto; padding: 0 clamp(1rem, 3vw, 3rem); position: relative; z-index: 2; transform: translateY(-2rem); }
     .post-hero-img img { width: 100%; border-radius: 20px; display: block; box-shadow: 0 32px 80px rgba(0,0,0,0.45); }
 
     /* ── LAYOUT ── */
-    .post-layout { max-width: min(1200px, 94vw); margin: 0 auto; padding: 0 clamp(1rem, 3vw, 4rem) clamp(3rem, 6vh, 6rem); display: grid; grid-template-columns: 1fr 320px; gap: 3.5rem; align-items: start; }
+    .post-layout { max-width: 100%; margin: 0 auto; padding: 0 clamp(1rem, 3vw, 4rem) clamp(3rem, 6vh, 6rem); display: grid; grid-template-columns: 1fr 320px; gap: 3.5rem; align-items: start; }
 
     /* ── ARTICLE ── */
     .post-body { background: #fff; border-radius: 20px; padding: 3rem; color: #1e293b; }
@@ -189,7 +189,7 @@
 
     /* ── FOOTER ── */
     .site-footer { background: #111827; color: rgba(255,255,255,0.75); }
-    .footer-inner { max-width: min(1400px, 94vw); margin: 0 auto; padding: 0 clamp(1rem, 3vw, 4rem); }
+    .footer-inner { max-width: 100%; margin: 0 auto; padding: 0 clamp(1rem, 3vw, 4rem); }
     .footer-top { padding: 4rem 0 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
     .footer-top .footer-inner { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: start; }
     .ft-logo-link { display: inline-block; margin-bottom: 0.75rem; text-decoration: none; }
@@ -268,14 +268,14 @@
       font-size: clamp(1.8rem, 4vw, 3.4rem) !important;
     }
     .post-hero-img, .stats-strip {
-      max-width: min(1000px, 92vw) !important;
+      max-width: 100%;
       padding-left: clamp(1rem, 3vw, 3rem) !important;
       padding-right: clamp(1rem, 3vw, 3rem) !important;
     }
 
     /* ── Post layout: fluid 2-col grid ── */
     .post-layout {
-      max-width: min(1200px, 94vw) !important;
+      max-width: 100%;
       padding: 0 clamp(1rem, 3vw, 4rem) clamp(3rem, 6vh, 6rem) !important;
       grid-template-columns: 1fr clamp(260px, 24vw, 340px) !important;
     }
@@ -334,7 +334,7 @@
     .breadcrumb-inner, .contact-hero-inner, .cta-band-inner, .cta-inner,
     .culture-inner, .featured-inner, .footer-inner, .older-inner,
     .process-inner, .reviews-inner, .section-inner, .testi-cta-inner {
-      max-width: min(1400px, 94vw) !important;
+      max-width: 100%;
       margin-left: auto !important;
       margin-right: auto !important;
     }
@@ -453,6 +453,58 @@
     .ft-social-icon:hover .fa-linkedin-in,
     .ft-social-icon:hover .fa-brands.fa-linkedin-in { color: #fff !important; }
     </style>
+
+  <!-- ═══ FULL-WIDTH FLUID OVERRIDE ═══ -->
+  <style>
+    html, body {
+      width: 100%;
+      max-width: 100% !important;
+      overflow-x: hidden;
+    }
+    section, header, footer, nav,
+    .site-footer, .stats-bar, .stats-band,
+    .clients-section, .testimonials-section,
+    .services-section, .trust-section, .tech-section,
+    .experiences-section, .case-section, .why-dark,
+    .why-section, .about-intro, .values-section,
+    .journey-section, .team-section, .expertise-section,
+    .offices-section, .faq-section, .contact-hero,
+    .client-hero, .client-main, .case-hero, .case-main,
+    .svc-hero, .svc-main, .career-hero, .career-main,
+    .featured-section, .reviews-section, .culture-section,
+    .cta-section, .obstacles-section, .logo-strip-outer,
+    .page-hero, .breadcrumb-strip, .roles-section,
+    .voices-section, .locations-section, .apply-section,
+    .employee-hero, .employee-main, .blog-cta,
+    .welcome-section, .post-hero, .post-section,
+    .blog-hero, .blog-featured, .blog-grid, .blog-older,
+    .blog-filter, .stats-strip-wrap {
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box;
+    }
+    .clients-inner, .testi-inner, .services-inner, .obs-inner,
+    .trust-inner, .tech-inner, .exp-inner, .exp-cards,
+    .idx-stats-bar-inner, .welcome-inner, .why-inner,
+    .case-inner, .footer-inner, .stats-band-inner,
+    .stats-bar-inner, .values-inner, .journey-inner,
+    .team-inner, .expertise-inner, .offices-inner,
+    .roles-inner, .voices-inner, .locations-inner,
+    .faq-inner, .about-intro-inner, .apply-inner,
+    .blog-cta-inner, .blog-filter-inner, .blog-grid-inner,
+    .breadcrumb-inner, .contact-hero-inner, .cta-band-inner,
+    .cta-inner, .culture-inner, .featured-inner,
+    .older-inner, .process-inner, .reviews-inner,
+    .section-inner, .testi-cta-inner, .client-inner,
+    .hero-inner, .career-inner, .svc-inner,
+    .post-layout, .svc-layout, .stats-strip {
+      max-width: 100% !important;
+      width: 100%;
+      box-sizing: border-box;
+      padding-left: clamp(1.5rem, 5vw, 6rem);
+      padding-right: clamp(1.5rem, 5vw, 6rem);
+    }
+  </style>
 </head>
 <body>
 

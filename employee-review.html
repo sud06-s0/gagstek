@@ -459,7 +459,8 @@
     }
 
     .footer-inner {
-      max-width: 100%; margin: 0 auto;
+      max-width: 100%;
+      margin: 0 auto;
       padding: 0 2rem;
     }
 
@@ -736,14 +737,14 @@
       font-size: clamp(1.8rem, 4vw, 3.4rem) !important;
     }
     .post-hero-img, .stats-strip {
-      max-width: 100% !important;
+      max-width: 100%;
       padding-left: clamp(1rem, 3vw, 3rem) !important;
       padding-right: clamp(1rem, 3vw, 3rem) !important;
     }
 
     /* ── Post layout: fluid 2-col grid ── */
     .post-layout {
-      max-width: 100% !important;
+      max-width: 100%;
       padding: 0 clamp(1rem, 3vw, 4rem) clamp(3rem, 6vh, 6rem) !important;
       grid-template-columns: 1fr clamp(260px, 24vw, 340px) !important;
     }
@@ -802,7 +803,7 @@
     .breadcrumb-inner, .contact-hero-inner, .cta-band-inner, .cta-inner,
     .culture-inner, .featured-inner, .footer-inner, .older-inner,
     .process-inner, .reviews-inner, .section-inner, .testi-cta-inner {
-      max-width: 100% !important;
+      max-width: 100%;
       margin-left: auto !important;
       margin-right: auto !important;
     }
@@ -924,15 +925,14 @@
 
   <!-- ═══ FULL-WIDTH FLUID OVERRIDE ═══ -->
   <style>
-    /* Force html/body and all sections to always fill 100% screen width */
     html, body {
       width: 100%;
       max-width: 100% !important;
       overflow-x: hidden;
     }
     section, header, footer, nav,
-    .site-footer, .idx-stats-bar, .stats-bar,
-    .stats-band, .clients-section, .testimonials-section,
+    .site-footer, .stats-bar, .stats-band,
+    .clients-section, .testimonials-section,
     .services-section, .trust-section, .tech-section,
     .experiences-section, .case-section, .why-dark,
     .why-section, .about-intro, .values-section,
@@ -945,12 +945,13 @@
     .page-hero, .breadcrumb-strip, .roles-section,
     .voices-section, .locations-section, .apply-section,
     .employee-hero, .employee-main, .blog-cta,
-    .welcome-section, .post-hero {
+    .welcome-section, .post-hero, .post-section,
+    .blog-hero, .blog-featured, .blog-grid, .blog-older,
+    .blog-filter, .stats-strip-wrap {
       width: 100% !important;
       max-width: 100% !important;
       box-sizing: border-box;
     }
-    /* Inner containers: fluid horizontal padding, no hard width cap */
     .clients-inner, .testi-inner, .services-inner, .obs-inner,
     .trust-inner, .tech-inner, .exp-inner, .exp-cards,
     .idx-stats-bar-inner, .welcome-inner, .why-inner,
@@ -964,7 +965,8 @@
     .cta-inner, .culture-inner, .featured-inner,
     .older-inner, .process-inner, .reviews-inner,
     .section-inner, .testi-cta-inner, .client-inner,
-    .hero-inner, .career-inner, .svc-inner {
+    .hero-inner, .career-inner, .svc-inner,
+    .post-layout, .svc-layout, .stats-strip {
       max-width: 100% !important;
       width: 100%;
       box-sizing: border-box;

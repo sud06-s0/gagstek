@@ -273,7 +273,7 @@
       padding: clamp(1.5rem, 2.5vh, 2.5rem) clamp(1rem, 4vw, 5rem) 0;
     }
     .blog-filter-inner {
-      max-width: 1160px;
+      max-width: 100%;
       margin: 0 auto;
       display: flex;
       gap: 0.75rem;
@@ -302,7 +302,7 @@
       background: var(--navy);
       padding: clamp(2rem, 3.5vh, 3.5rem) clamp(1rem, 4vw, 5rem) 0;
     }
-    .featured-inner { max-width: min(1400px, 94vw); margin: 0 auto; }
+    .featured-inner { max-width: 100%; margin: 0 auto; }
 
     .featured-card {
       display: grid;
@@ -392,7 +392,7 @@
       background: var(--navy);
       padding: clamp(2rem, 3.5vh, 3.5rem) clamp(1rem, 4vw, 5rem) clamp(2.5rem, 4.5vh, 5rem);
     }
-    .blog-grid-inner { max-width: min(1400px, 94vw); margin: 0 auto; }
+    .blog-grid-inner { max-width: 100%; margin: 0 auto; }
 
     .section-label-small {
       display: inline-block;
@@ -512,7 +512,7 @@
       padding: clamp(2rem, 4vh, 4rem) clamp(1rem, 4vw, 5rem);
       border-top: 1px solid rgba(255,255,255,0.06);
     }
-    .older-inner { max-width: min(1400px, 94vw); margin: 0 auto; }
+    .older-inner { max-width: 100%; margin: 0 auto; }
     .older-inner h2 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(1.4rem, 3vw, 2rem);
@@ -617,7 +617,7 @@
       font-family: 'DM Sans', sans-serif;
     }
     .footer-inner {
-      max-width: 1200px;
+      max-width: 100%;
       margin: 0 auto;
       padding: 0 2rem;
     }
@@ -797,14 +797,14 @@
       font-size: clamp(1.8rem, 4vw, 3.4rem) !important;
     }
     .post-hero-img, .stats-strip {
-      max-width: min(1000px, 92vw) !important;
+      max-width: 100%;
       padding-left: clamp(1rem, 3vw, 3rem) !important;
       padding-right: clamp(1rem, 3vw, 3rem) !important;
     }
 
     /* ── Post layout: fluid 2-col grid ── */
     .post-layout {
-      max-width: min(1200px, 94vw) !important;
+      max-width: 100%;
       padding: 0 clamp(1rem, 3vw, 4rem) clamp(3rem, 6vh, 6rem) !important;
       grid-template-columns: 1fr clamp(260px, 24vw, 340px) !important;
     }
@@ -827,7 +827,7 @@
       padding-right: clamp(1rem, 4vw, 5rem) !important;
     }
     .blog-filter-inner, .blog-grid-inner, .featured-inner {
-      max-width: min(1300px, 94vw) !important;
+      max-width: 100%;
       margin-left: auto !important;
       margin-right: auto !important;
     }
@@ -853,7 +853,7 @@
       padding-right: clamp(1rem, 4vw, 5rem) !important;
     }
     .case-inner {
-      max-width: min(1300px, 94vw) !important;
+      max-width: 100%;
       margin-left: auto !important;
       margin-right: auto !important;
     }
@@ -894,7 +894,7 @@
     .contact-hero-inner, .cta-band-inner, .cta-inner,
     .culture-inner, .featured-inner, .footer-inner, .older-inner,
     .process-inner, .reviews-inner, .section-inner, .testi-cta-inner {
-      max-width: min(1400px, 94vw) !important;
+      max-width: 100%;
       margin-left: auto !important;
       margin-right: auto !important;
     }
@@ -1011,6 +1011,58 @@
     .ft-social-icon:hover .fa-linkedin-in,
     .ft-social-icon:hover .fa-brands.fa-linkedin-in { color: #fff !important; }
     </style>
+
+  <!-- ═══ FULL-WIDTH FLUID OVERRIDE ═══ -->
+  <style>
+    html, body {
+      width: 100%;
+      max-width: 100% !important;
+      overflow-x: hidden;
+    }
+    section, header, footer, nav,
+    .site-footer, .stats-bar, .stats-band,
+    .clients-section, .testimonials-section,
+    .services-section, .trust-section, .tech-section,
+    .experiences-section, .case-section, .why-dark,
+    .why-section, .about-intro, .values-section,
+    .journey-section, .team-section, .expertise-section,
+    .offices-section, .faq-section, .contact-hero,
+    .client-hero, .client-main, .case-hero, .case-main,
+    .svc-hero, .svc-main, .career-hero, .career-main,
+    .featured-section, .reviews-section, .culture-section,
+    .cta-section, .obstacles-section, .logo-strip-outer,
+    .page-hero, .breadcrumb-strip, .roles-section,
+    .voices-section, .locations-section, .apply-section,
+    .employee-hero, .employee-main, .blog-cta,
+    .welcome-section, .post-hero, .post-section,
+    .blog-hero, .blog-featured, .blog-grid, .blog-older,
+    .blog-filter, .stats-strip-wrap {
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box;
+    }
+    .clients-inner, .testi-inner, .services-inner, .obs-inner,
+    .trust-inner, .tech-inner, .exp-inner, .exp-cards,
+    .idx-stats-bar-inner, .welcome-inner, .why-inner,
+    .case-inner, .footer-inner, .stats-band-inner,
+    .stats-bar-inner, .values-inner, .journey-inner,
+    .team-inner, .expertise-inner, .offices-inner,
+    .roles-inner, .voices-inner, .locations-inner,
+    .faq-inner, .about-intro-inner, .apply-inner,
+    .blog-cta-inner, .blog-filter-inner, .blog-grid-inner,
+    .breadcrumb-inner, .contact-hero-inner, .cta-band-inner,
+    .cta-inner, .culture-inner, .featured-inner,
+    .older-inner, .process-inner, .reviews-inner,
+    .section-inner, .testi-cta-inner, .client-inner,
+    .hero-inner, .career-inner, .svc-inner,
+    .post-layout, .svc-layout, .stats-strip {
+      max-width: 100% !important;
+      width: 100%;
+      box-sizing: border-box;
+      padding-left: clamp(1.5rem, 5vw, 6rem);
+      padding-right: clamp(1.5rem, 5vw, 6rem);
+    }
+  </style>
 </head>
 <body>
 
