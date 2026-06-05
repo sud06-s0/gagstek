@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gagstek – Agentforce & Data Cloud Case Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:        #0d1117;
+    --ink-mid:    #1e2330;
+    --ink-body:   #3a3f50;
+    --accent:     #1a4fdb;
+    --accent2:    #0c3298;
+    --pale:       #eef2fb;
+    --rule:       #d4daea;
+    --white:      #ffffff;
+    --dark:       #0f1623;
+    --dark2:      #162035;
+    --light-muted:#6b7590;
+    --dark-muted: #a8b8d0;
+    --gold:       #c8a84b;
+    --sf-teal:    #00a1e0;   /* Salesforce brand teal */
+    --sf-cloud:   #1b96ff;   /* Agentforce / Data Cloud blue */
+    --font-head:  'Playfair Display', Georgia, serif;
+    --font-body:  'Lato', sans-serif;
+  }
+
+  body {
+    background: #b0b6c2;
+    font-family: var(--font-body);
+    color: var(--ink);
+    display: flex;
+    justify-content: center;
+    padding: 32px 0 48px;
+  }
+
+  .page {
+    width: 794px;
+    background: var(--white);
+    box-shadow: 0 12px 60px rgba(0,0,0,.28);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    display: grid;
+    grid-template-columns: 1fr 275px;
+    min-height: 224px;
+    background: var(--dark);
+  }
+
+  .header-left {
+    padding: 24px 32px 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    border-right: 1px solid rgba(255,255,255,.07);
+  }
+
+  .header-left > img {
+    display: block !important;
+    height: 36px !important;
+    width: auto !important;
+    max-width: 160px !important;
+    object-fit: contain !important;
+    object-position: left center !important;
+    align-self: flex-start !important;
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+  }
+
+  .header-eyebrow {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .header-title {
+    font-family: var(--font-head);
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 1.13;
+    color: #ffffff;
+  }
+
+  .header-title em {
+    font-style: normal;
+    color: #88b4f7;
+  }
+
+  .header-subtitle {
+    margin-top: 9px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #c0cde0;
+    letter-spacing: .02em;
+  }
+
+  /* ── TECH BADGE ROW ── */
+  .tech-badges {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .tech-badge {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(27,150,255,.15);
+    border: 1px solid rgba(27,150,255,.3);
+    border-radius: 3px;
+    padding: 4px 10px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .05em;
+    color: #88b4f7;
+    text-transform: uppercase;
+  }
+
+  .tech-badge i { font-size: 10px; color: var(--sf-cloud); }
+
+  /* ── IMAGE SLOT ── */
+  .header-right {
+    position: relative;
+    overflow: hidden;
+    background: var(--dark2);
+  }
+
+  .header-right img {
+    width: 100%;
+    height: 100%;
+    min-height: 224px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .corner-accent {
+    position: absolute;
+    top: 0; right: 0;
+    width: 0; height: 0;
+    border-style: solid;
+    border-width: 0 48px 48px 0;
+    border-color: transparent var(--sf-cloud) transparent transparent;
+  }
+
+  /* ── STRIP ── */
+  .strip {
+    background: var(--accent);
+    padding: 10px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .strip-label {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    color: #ffffff;
+  }
+
+  .strip-tags { display: flex; gap: 7px; }
+
+  .tag {
+    background: rgba(255,255,255,.18);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 2px;
+    padding: 3px 10px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+
+  /* ── OVERVIEW ── */
+  .overview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 26px 32px 24px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .overview-text {
+    padding-right: 26px;
+    border-right: 1px solid var(--rule);
+  }
+
+  .overview-text p {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.78;
+    color: var(--ink-body);
+  }
+
+  .overview-text p + p { margin-top: 9px; }
+
+  .overview-meta {
+    padding-left: 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 13px;
+  }
+
+  .meta-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .meta-row i {
+    color: var(--accent);
+    font-size: 14px;
+    width: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .meta-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--light-muted);
+    margin-bottom: 2px;
+  }
+
+  .meta-val {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--ink-mid);
+    line-height: 1.5;
+  }
+
+  /* ── SECTION HEADING ── */
+  .sec-head {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-bottom: 7px;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+
+  /* ── TWO-COL ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 24px 32px 0;
+  }
+
+  .col-l {
+    padding-right: 26px;
+    border-right: 1px solid var(--rule);
+  }
+
+  .col-r { padding-left: 26px; }
+
+  .obj { margin-bottom: 15px; }
+
+  .obj-title {
+    font-family: var(--font-head);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink-mid);
+    margin-bottom: 4px;
+  }
+
+  .obj p {
+    font-size: 11.5px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--ink-body);
+  }
+
+  .sol-grp { margin-bottom: 14px; }
+
+  .sol-grp-title {
+    font-family: var(--font-head);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink-mid);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .sol-grp-title .sf-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--sf-cloud);
+    flex-shrink: 0;
+  }
+
+  .sol-list { list-style: none; }
+
+  .sol-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 11.5px;
+    font-weight: 400;
+    color: var(--ink-body);
+    line-height: 1.6;
+    padding: 2.5px 0;
+  }
+
+  .sol-list li i {
+    color: var(--accent);
+    font-size: 7px;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+
+  /* ── RESULTS ── */
+  .results {
+    background: var(--dark);
+    margin-top: 24px;
+    padding: 24px 32px 28px;
+    border-top: 3px solid var(--sf-cloud);
+  }
+
+  .results .sec-head {
+    color: var(--gold);
+    border-color: var(--gold);
+  }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 18px;
+  }
+
+  .res-card {
+    padding-right: 24px;
+    border-right: 1px solid rgba(255,255,255,.1);
+  }
+
+  .res-card:last-child { border-right: none; padding-right: 0; }
+  .res-card:not(:first-child) { padding-left: 24px; }
+
+  .res-num {
+    font-family: var(--font-head);
+    font-size: 36px;
+    font-weight: 900;
+    color: #88b4f7;
+    line-height: 1;
+    margin-bottom: 5px;
+  }
+
+  .res-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+    letter-spacing: .02em;
+  }
+
+  .res-card p {
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--dark-muted);
+  }
+
+  /* ── CONCLUSION ── */
+  .conclusion {
+    display: grid;
+    grid-template-columns: 54px 1fr;
+    gap: 18px;
+    padding: 20px 32px 18px;
+    border-top: 1px solid var(--rule);
+    align-items: start;
+  }
+
+  .concl-icon {
+    width: 54px;
+    height: 54px;
+    background: var(--pale);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .concl-icon i { color: var(--accent); font-size: 18px; }
+
+  .concl-inner .sec-head { margin-bottom: 9px; }
+
+  .concl-inner p {
+    font-size: 11.5px;
+    font-weight: 400;
+    line-height: 1.75;
+    color: var(--ink-body);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--dark2);
+    padding: 13px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 2px solid var(--sf-cloud);
+  }
+
+  .foot-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 400;
+    color: #c0cde0;
+  }
+
+  .foot-item i { font-size: 12px; color: #6f90c0; }
+
+  .foot-sep {
+    width: 1px;
+    height: 16px;
+    background: rgba(255,255,255,.12);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <img src="./img/logo.png"/>
+      <div>
+        <div class="header-eyebrow">Client Success Story</div>
+        <h1 class="header-title">How a European<br/><em>Industrial Manufacturer</em><br/>Transformed with Agentforce</h1>
+        <p class="header-subtitle">Salesforce Agentforce &amp; Data Cloud Implementation by Gagstek</p>
+        <div class="tech-badges">
+          <span class="tech-badge"><i class="fa-solid fa-robot"></i> Agentforce</span>
+          <span class="tech-badge"><i class="fa-solid fa-database"></i> Data Cloud</span>
+          <span class="tech-badge"><i class="fa-solid fa-cloud"></i> Sales Cloud</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <img src="./img/bus.png"/>
+      <div class="corner-accent"></div>
+    </div>
+  </div>
+
+  <!-- STRIP -->
+  <div class="strip">
+    <span class="strip-label">European Industrial Manufacturing — Agentforce · Data Cloud · AI Automation</span>
+    <div class="strip-tags">
+      <span class="tag">Manufacturing</span>
+      <span class="tag">Europe</span>
+      <span class="tag">2025–26</span>
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="overview">
+    <div class="overview-text">
+      <div class="sec-head">Overview</div>
+      <p>A mid-sized industrial manufacturer based in Central Europe — operating across Germany, Poland, and the Netherlands — was struggling to act on its own data. Despite years of Salesforce investment, customer and operational data sat fragmented across multiple clouds and legacy ERPs, making unified intelligence impossible and AI-driven automation out of reach.</p>
+      <p>Gagstek was engaged to unify the client's data estate on Salesforce Data Cloud and deploy Agentforce — a suite of autonomous AI agents — to automate service resolution, sales follow-up, and field operations, creating measurable ROI within the first two quarters of go-live.</p>
+    </div>
+    <div class="overview-meta">
+      <div class="meta-row">
+        <i class="fa-solid fa-industry"></i>
+        <div>
+          <div class="meta-label">Industry</div>
+          <div class="meta-val">Industrial Manufacturing &amp; B2B Distribution</div>
+        </div>
+      </div>
+      <div class="meta-row">
+        <i class="fa-solid fa-location-dot"></i>
+        <div>
+          <div class="meta-label">Region</div>
+          <div class="meta-val">Germany · Poland · Netherlands</div>
+        </div>
+      </div>
+      <div class="meta-row">
+        <i class="fa-solid fa-robot"></i>
+        <div>
+          <div class="meta-label">Solutions Deployed</div>
+          <div class="meta-val">Salesforce Agentforce, Data Cloud, Sales Cloud, Service Cloud, MuleSoft</div>
+        </div>
+      </div>
+      <div class="meta-row">
+        <i class="fa-solid fa-calendar-check"></i>
+        <div>
+          <div class="meta-label">Engagement</div>
+          <div class="meta-val">Phase 1: Jan–Jun 2025 · Phase 2: Jul–Dec 2025 · Ongoing</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TWO-COL -->
+  <div class="two-col">
+    <div class="col-l">
+      <div class="sec-head">Challenges &amp; Objectives</div>
+
+      <div class="obj">
+        <div class="obj-title">Data Fragmented Across 5 Systems</div>
+        <p>Customer records, order history, warranty data, and service tickets lived in separate systems — Salesforce CRM, SAP ERP, a legacy ticketing tool, and two regional databases — with no unified customer profile available to any team in real time.</p>
+      </div>
+
+      <div class="obj">
+        <div class="obj-title">High Volume of Manual Service Tasks</div>
+        <p>The service team was handling over 2,400 inbound B2B service queries per month manually — from order status checks to warranty validations — consuming significant agent capacity that should have been directed at complex escalations.</p>
+      </div>
+
+      <div class="obj">
+        <div class="obj-title">Missed Sales Follow-Up Opportunities</div>
+        <p>Sales reps were missing renewal windows and reorder signals due to no unified view of buying behaviour. An estimated 18% of reorder revenue was being lost annually to competitors responding faster.</p>
+      </div>
+
+      <div class="obj">
+        <div class="obj-title">No Actionable AI Foundation</div>
+        <p>The client wanted to leverage Salesforce AI capabilities but lacked the unified, clean data layer required for Agentforce to function — making any AI deployment impossible without first resolving the data architecture.</p>
+      </div>
+    </div>
+
+    <div class="col-r">
+      <div class="sec-head">Gagstek's Solution</div>
+
+      <div class="sol-grp">
+        <div class="sol-grp-title"><span class="sf-dot"></span>Salesforce Data Cloud Implementation</div>
+        <ul class="sol-list">
+          <li><i class="fa-solid fa-circle"></i>Unified customer data from SAP, Salesforce CRM, and 3 legacy sources</li>
+          <li><i class="fa-solid fa-circle"></i>Real-time unified customer profiles with full purchase &amp; service history</li>
+          <li><i class="fa-solid fa-circle"></i>MuleSoft integration layer for live ERP-to-Data Cloud sync</li>
+          <li><i class="fa-solid fa-circle"></i>GDPR-compliant data governance and consent management configured</li>
+        </ul>
+      </div>
+
+      <div class="sol-grp">
+        <div class="sol-grp-title"><span class="sf-dot"></span>Agentforce Service Agent Deployment</div>
+        <ul class="sol-list">
+          <li><i class="fa-solid fa-circle"></i>Autonomous AI agent handling order status, warranty checks &amp; FAQs</li>
+          <li><i class="fa-solid fa-circle"></i>Grounded on Data Cloud unified profiles for accurate, contextual responses</li>
+          <li><i class="fa-solid fa-circle"></i>Seamless human handoff for complex cases with full context transfer</li>
+        </ul>
+      </div>
+
+      <div class="sol-grp">
+        <div class="sol-grp-title"><span class="sf-dot"></span>Agentforce Sales Development Agent</div>
+        <ul class="sol-list">
+          <li><i class="fa-solid fa-circle"></i>AI agent monitoring reorder signals and renewal windows from Data Cloud</li>
+          <li><i class="fa-solid fa-circle"></i>Automated personalised outreach triggered on buying behaviour patterns</li>
+          <li><i class="fa-solid fa-circle"></i>Sales reps alerted only when human engagement is required</li>
+        </ul>
+      </div>
+
+      <div class="sol-grp">
+        <div class="sol-grp-title"><span class="sf-dot"></span>Analytics &amp; Einstein Insights</div>
+        <ul class="sol-list">
+          <li><i class="fa-solid fa-circle"></i>Real-time executive dashboards powered by Data Cloud segments</li>
+          <li><i class="fa-solid fa-circle"></i>Predictive churn and reorder scoring surfaced inside Sales Cloud</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="results">
+    <div class="sec-head">Outcomes &amp; Impact</div>
+    <div class="results-grid">
+      <div class="res-card">
+        <div class="res-num">68%</div>
+        <div class="res-label">Service Queries Resolved by AI</div>
+        <p>Agentforce autonomously resolved 68% of the 2,400 monthly inbound service queries — freeing the human team entirely for complex escalations and relationship management.</p>
+      </div>
+      <div class="res-card">
+        <div class="res-num">+34%</div>
+        <div class="res-label">Reorder Revenue Captured</div>
+        <p>The Agentforce Sales Development Agent recovered missed reorder windows, driving a 34% increase in repeat-order revenue within two quarters of go-live across all three markets.</p>
+      </div>
+      <div class="res-card">
+        <div class="res-num">1 View</div>
+        <div class="res-label">Unified Customer Profile</div>
+        <p>Five disconnected data sources unified into a single real-time customer profile in Data Cloud — giving every team — sales, service, and leadership — the same accurate, live view of every account.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONCLUSION -->
+  <div class="conclusion">
+    <div class="concl-icon">
+      <i class="fa-solid fa-robot"></i>
+    </div>
+    <div class="concl-inner">
+      <div class="sec-head">Conclusion</div>
+      <p>This engagement demonstrates that Agentforce is only as powerful as the data it is grounded on. By first building a robust, unified data estate on Salesforce Data Cloud — connecting SAP, CRM, and legacy systems — Gagstek created the foundation for AI agents that could act with genuine accuracy and context. The result was not just automation, but autonomous intelligence: agents that resolve service queries, identify sales opportunities, and surface insights without human intervention. For this European manufacturer, the combination of Data Cloud and Agentforce has fundamentally shifted how the business operates — from reactive, manual processes to a proactive, AI-first model that scales across borders.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="foot-item">
+      <i class="fa-solid fa-globe"></i>
+      gagstek.com
+    </div>
+    <div class="foot-sep"></div>
+    <div class="foot-item">
+      <i class="fa-solid fa-envelope"></i>
+      contact@gagstek.com
+    </div>
+    <div class="foot-sep"></div>
+    <div class="foot-item">
+      <i class="fa-solid fa-location-dot"></i>
+      16192 Coastal Highway, Lewes, Delaware 19958, USA
+    </div>
+    <div class="foot-sep"></div>
+    <div class="foot-item">
+      <i class="fa-solid fa-phone"></i>
+      +1-567-399-2506
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
