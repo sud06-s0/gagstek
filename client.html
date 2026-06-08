@@ -886,168 +886,102 @@
       font-family: 'DM Sans', sans-serif;
     }
 
-    .footer-inner {
-      max-width: 100%;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* TOP BAND */
-    .footer-top {
-      padding: 4rem 0 3rem;
+    /* ── MAIN ROW ────────────────────────────────────────── */
+    .footer-main {
+      padding: 3rem 0 2.5rem;
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-    .footer-top .footer-inner {
+    .footer-main-inner {
+      max-width: 100%;
+      padding: 0 clamp(1.5rem, 4vw, 5rem);
       display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 3rem;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr 1.4fr;
+      gap: 2rem;
       align-items: start;
     }
 
-    /* Footer Logo */
-    .ft-logo-link {
-      display: inline-block;
-      margin-bottom: 0.75rem;
-      text-decoration: none;
+    /* ── BRAND COL ───────────────────────────────────────── */
+    .ft-brand { display: flex; flex-direction: column; gap: 0.55rem; }
+    .ft-logo-link { display: inline-block; margin-bottom: 0.1rem; text-decoration: none; }
+    .ft-logo-img { height: 40px; width: auto; display: block; object-fit: contain; }
+    .ft-tagline { font-size: 0.78rem; color: rgba(255,255,255,0.5); line-height: 1.55; margin: 0; }
+    .ft-socials { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 0.1rem 0; }
+    .ft-social-icon {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(59,130,246,0.12);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; font-size: 0.9rem;
+      transition: background 0.2s;
     }
-    .ft-logo-img {
-      height: 48px;
-      width: auto;
-      display: block;
-      object-fit: contain;
+    .ft-social-icon:hover { background: rgba(96,165,250,0.25); }
+    .ft-social-icon .fa-instagram { color: #E1306C; }
+    .ft-social-icon .fa-linkedin-in { color: #0A66C2; }
+    .ft-social-icon .fa-youtube { color: #FF0000; }
+    .ft-social-icon:hover i { color: #fff !important; }
+    .ft-contact-link {
+      font-size: 0.76rem; color: rgba(255,255,255,0.45);
+      text-decoration: none; display: flex; align-items: center; gap: 0.35rem;
+      transition: color 0.2s;
     }
-    .ft-tagline {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.6);
-      line-height: 1.55;
-      margin-bottom: 1.4rem;
-    }
-    .ft-office-phone {
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.5);
-      margin-top: 0.25rem;
-    }
-
-    /* CTA left */
-    .ft-left {}
+    .ft-contact-link:hover { color: #fff; }
     .ft-cta-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: var(--accent, #3b82f6);
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.9rem;
-      padding: 0.75rem 1.6rem;
-      border-radius: 8px;
-      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      background: #3b82f6; color: #fff;
+      font-weight: 700; font-size: 0.8rem;
+      padding: 0.5rem 1.1rem; border-radius: 6px;
+      text-decoration: none; width: fit-content;
       transition: background 0.2s, transform 0.15s;
-      margin-bottom: 1.8rem;
     }
     .ft-cta-btn:hover { background: #60a5fa; transform: translateY(-2px); }
 
-    .ft-socials {
-      display: flex;
-      gap: 0.9rem;
-      margin-bottom: 1.2rem;
-    }
-    .ft-social-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: rgba(59,130,246,0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--accent-bright, #60a5fa);
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s;
-    }
-    .ft-social-icon:hover { background: var(--accent, #3b82f6); color: #fff; }
-
-    .ft-email {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.88rem;
-    }
-    .ft-email a {
-      color: rgba(255,255,255,0.65);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .ft-email a:hover { color: #fff; }
-
-    /* Offices */
-    .ft-offices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .ft-office-title {
-      font-weight: 700;
-      font-size: 0.9rem;
-      color: #fff;
-      margin-bottom: 0.4rem;
-    }
-    .ft-office-addr {
-      font-size: 0.85rem;
-      line-height: 1.6;
-      color: rgba(255,255,255,0.55);
-    }
-
-    /* MID BAND */
-    .footer-mid {
-      padding: 3rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .footer-mid .footer-inner {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-    }
-
-    .ft-col { display: flex; flex-direction: column; gap: 0.65rem; }
+    /* ── NAV COLS ────────────────────────────────────────── */
+    .ft-col { display: flex; flex-direction: column; gap: 0.48rem; }
     .ft-col-title {
-      font-weight: 700;
-      font-size: 0.9rem;
-      color: #fff;
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.3px;
+      font-weight: 700; color: #fff; margin-bottom: 0.35rem;
+      text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.8px;
     }
-    .ft-col a {
-      color: rgba(255,255,255,0.55);
-      text-decoration: none;
-      font-size: 0.85rem;
-      transition: color 0.2s;
-    }
+    .ft-col a { color: rgba(255,255,255,0.48); text-decoration: none; font-size: 0.78rem; transition: color 0.2s; }
     .ft-col a:hover { color: #fff; }
 
-    /* BOTTOM BAR */
-    .footer-bottom { padding: 1.4rem 0; }
-    .footer-bottom .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-    }
-    .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.45); }
-    .ft-bottom-links { display: flex; gap: 1.5rem; }
-    .ft-bottom-links a {
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.45);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .ft-bottom-links a:hover { color: #fff; }
+    /* ── OFFICES COL (last) ──────────────────────────────── */
+    .ft-offices-col {}
+    .ft-offices { display: flex; flex-direction: column; gap: 0.9rem; margin-top: 0.5rem; }
+    .ft-office-title { font-weight: 700; font-size: 0.8rem; color: #fff; margin-bottom: 0.1rem; }
+    .ft-office-addr { font-size: 0.75rem; line-height: 1.55; color: rgba(255,255,255,0.48); margin: 0; }
+    .ft-office-phone { font-size: 0.72rem; color: rgba(255,255,255,0.38); margin-top: 0.08rem; }
 
-    /* ─── REVEAL ANIMATION ──────────────────────────── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+    /* ── BOTTOM BAR ──────────────────────────────────────── */
+    .footer-bottom { padding: 0.9rem 0; }
+    .footer-bottom-inner {
+      max-width: 100%;
+      padding: 0 clamp(1.5rem, 4vw, 5rem);
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
     }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
+    .footer-bottom p { font-size: 0.75rem; color: rgba(255,255,255,0.3); margin: 0; }
+    .ft-bottom-links { display: flex; gap: 1.4rem; }
+    .ft-bottom-links a { font-size: 0.75rem; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+    .ft-bottom-links a:hover { color: rgba(255,255,255,0.75); }
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 1200px) {
+      .footer-main-inner { grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 1.8rem; }
+      .ft-brand { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; gap: 2rem; align-items: flex-start; }
+      .ft-offices-col { grid-column: 1 / -1; }
+      .ft-offices { flex-direction: row; flex-wrap: wrap; gap: 1.5rem; }
+      .ft-office { flex: 1 1 150px; }
+    }
+    @media (max-width: 768px) {
+      .footer-main-inner { grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+      .ft-brand { grid-column: 1 / -1; flex-direction: column; }
+      .ft-offices-col { grid-column: 1 / -1; }
+      .ft-offices { flex-wrap: wrap; }
+    }
+    @media (max-width: 480px) {
+      .footer-main-inner { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+      .footer-bottom-inner { flex-direction: column; align-items: flex-start; }
+      .ft-bottom-links { flex-wrap: wrap; gap: 0.8rem; }
+    }
 
     /* ─── RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 1024px) {
@@ -1868,7 +1802,47 @@
           <a href="contact.html" class="ft-cta-btn">Get Started ↗</a>
         </div>
 
-        <!-- Col 2: Offices -->
+        <!-- Col 2: Salesforce -->
+        <div class="ft-col">
+          <p class="ft-col-title">Salesforce</p>
+          <a href="services.html">Business Consulting</a>
+          <a href="services.html">Implementation &amp; Dev</a>
+          <a href="services.html">Quote-To-Cash</a>
+          <a href="services.html">Admin &amp; Support</a>
+          <a href="services.html">Data Migration</a>
+          <a href="services.html">Staff Augmentation</a>
+        </div>
+
+        <!-- Col 3: AI Services -->
+        <div class="ft-col">
+          <p class="ft-col-title">AI Services</p>
+          <a href="services.html">AI Sales Automation</a>
+          <a href="services.html">AI Lead Intelligence</a>
+          <a href="services.html">Conversational AI</a>
+          <a href="services.html">AI Workflow</a>
+          <a href="services.html">AI Data Engineering</a>
+          <a href="services.html">Custom AI Builds</a>
+        </div>
+
+        <!-- Col 4: Products -->
+        <div class="ft-col">
+          <p class="ft-col-title">Products</p>
+          <a href="icrm.html">E2E Sales (iCRM)</a>
+          <a href="stockpro.html">StockPro</a>
+        </div>
+
+        <!-- Col 5: Company -->
+        <div class="ft-col">
+          <p class="ft-col-title">Company</p>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="client.html">Clients</a>
+          <a href="case-study.html">Case Studies</a>
+          <a href="career.html">Career</a>
+          <a href="contact.html">Contact</a>
+        </div>
+
+        <!-- Col 6: Offices (last) -->
         <div class="ft-offices-col">
           <p class="ft-col-title">Our Offices</p>
           <div class="ft-offices">
@@ -1889,40 +1863,7 @@
           </div>
         </div>
 
-        <!-- Col 3: Salesforce -->
-        <div class="ft-col">
-          <p class="ft-col-title">Salesforce</p>
-          <a href="services.html">Business Consulting</a>
-          <a href="services.html">Implementation &amp; Dev</a>
-          <a href="services.html">Quote-To-Cash</a>
-          <a href="services.html">Admin &amp; Support</a>
-          <a href="services.html">Data Migration</a>
-          <a href="services.html">Staff Augmentation</a>
-        </div>
-
-        <!-- Col 4: AI Services -->
-        <div class="ft-col">
-          <p class="ft-col-title">AI Services</p>
-          <a href="services.html">AI Sales Automation</a>
-          <a href="services.html">AI Lead Intelligence</a>
-          <a href="services.html">Conversational AI</a>
-          <a href="services.html">AI Workflow</a>
-          <a href="services.html">AI Data Engineering</a>
-          <a href="services.html">Custom AI Builds</a>
-        </div>
-
-        <!-- Col 5: Company -->
-        <div class="ft-col">
-          <p class="ft-col-title">Company</p>
-          <a href="index.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="client.html">Clients</a>
-          <a href="case-study.html">Case Studies</a>
-          <a href="career.html">Career</a>
-          <a href="contact.html">Contact</a>
-          <a href="icrm.html">E2E Sales</a>
-          <a href="stockpro.html">StockPro</a>
-        </div>
+      
 
       </div>
     </div>
