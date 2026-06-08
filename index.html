@@ -3274,117 +3274,99 @@
   <!-- ─── FOOTER ─────────────────────────────────────────── -->
   <footer class="site-footer">
 
-    <!-- Top band: Logo + Social + Office addresses + Badges -->
-    <div class="footer-top">
-      <div class="footer-inner">
+    <!-- Single main row -->
+    <div class="footer-main">
+      <div class="footer-main-inner">
 
-        <!-- Left: Logo + Social + Email -->
-        <div class="ft-left">
-          <!-- GAGSTEK LOGO: replace "logo.png" with your actual logo file path -->
-          <a href="https://gagstek.com" class="ft-logo-link">
-            <img
-              src="logo.png"
-              alt="Gagstek"
-              class="ft-logo-img"
-              onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"
-            /><span class="ft-logo-fallback" style="display:none;font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;color:#fff;">Gags<span style="color:#60a5fa;">tek</span></span>
+        <!-- Col 1: Brand -->
+        <div class="ft-brand">
+          <a href="index.html" class="ft-logo-link">
+            <img src="./img/logo.png" alt="Gagstek" class="ft-logo-img"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline';" />
+            <span class="ft-logo-fallback" style="display:none;font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:#fff;">Gags<span style="color:#60a5fa;">tek</span></span>
           </a>
           <p class="ft-tagline">Unleashing Business Potential<br>with Cloud &amp; AI</p>
-          <a href="https://gagstek.com/contact-us/" class="ft-cta-btn">Get Started ↗</a>
-                    <div class="ft-socials">
-            <!-- Instagram -->
+          <div class="ft-socials">
             <a href="https://www.instagram.com/gagstek___/" aria-label="Instagram" class="ft-social-icon" target="_blank" rel="noopener">
-              <i class="fa-brands fa-instagram" style="font-size:1.1rem;"></i>
+              <i class="fa-brands fa-instagram"></i>
             </a>
-            <!-- LinkedIn -->
             <a href="https://in.linkedin.com/company/gagstek" aria-label="LinkedIn" class="ft-social-icon" target="_blank" rel="noopener">
-              <i class="fa-brands fa-linkedin-in" style="font-size:1.1rem;"></i>
+              <i class="fa-brands fa-linkedin-in"></i>
             </a>
-            <!-- YouTube -->
             <a href="https://www.youtube.com/@GagstekLLP" aria-label="YouTube" class="ft-social-icon" target="_blank" rel="noopener">
-              <i class="fa-brands fa-youtube" style="font-size:1.1rem;"></i>
+              <i class="fa-brands fa-youtube"></i>
             </a>
           </div>
-          <div class="ft-email">
-            <i class="fa-solid fa-envelope" style="font-size:0.9rem;"></i>
-            <a href="mailto:info@gagstek.com">info@gagstek.com</a>
+          <a href="mailto:info@gagstek.com" class="ft-contact-link"><i class="fa-solid fa-envelope"></i> info@gagstek.com</a>
+          <a href="contact.html" class="ft-cta-btn">Get Started ↗</a>
+        </div>
+
+        <!-- Col 2: Offices -->
+        <div class="ft-offices-col">
+          <p class="ft-col-title">Our Offices</p>
+          <div class="ft-offices">
+            <div class="ft-office">
+              <p class="ft-office-title">🇺🇸 United States</p>
+              <p class="ft-office-addr">16192 Coastal Highway, Lewes,<br>Delaware 19958</p>
+              <p class="ft-office-phone">+1-567-399-2506</p>
+            </div>
+            <div class="ft-office">
+              <p class="ft-office-title">🇮🇳 India</p>
+              <p class="ft-office-addr">P3-001 Pentagon Tower,<br>Magarpatta City, Pune 411013</p>
+            </div>
+            <div class="ft-office">
+              <p class="ft-office-title">🇦🇺 Australia</p>
+              <p class="ft-office-addr">161 Collins St,<br>Melbourne VIC, 3000</p>
+              <p class="ft-office-phone">+61-473118458</p>
+            </div>
           </div>
         </div>
 
-        <!-- Middle: Office Addresses -->
-        <div class="ft-offices">
-          <div class="ft-office">
-            <p class="ft-office-title">United States Office 🇺🇸</p>
-            <p class="ft-office-addr">16192 Coastal Highway, Lewes,<br>Delaware 19958, County of Sussex</p>
-            <p class="ft-office-phone">📞 +1-567-399-2506</p>
-          </div>
-          <div class="ft-office">
-            <p class="ft-office-title">India Office 🇮🇳</p>
-            <p class="ft-office-addr">P3-001 Pentagon Tower,<br>Magarpatta City, Pune 411013</p>
-          </div>
-          <div class="ft-office">
-            <p class="ft-office-title">Australia Office 🇦🇺</p>
-            <p class="ft-office-addr">161 Collins St,<br>Melbourne VIC, 3000</p>
-            <p class="ft-office-phone">📞 +61-473118458</p>
-          </div>
-        </div>
-
-
-
-      </div>
-    </div>
-
-    <!-- Middle band: Nav links -->
-    <div class="footer-mid">
-      <div class="footer-inner">
-
+        <!-- Col 3: Salesforce -->
         <div class="ft-col">
-          <p class="ft-col-title">Salesforce Services</p>
-          <a href="services.html">Business Consulting & Advisory</a>
-          <a href="services.html">Implementation & Development</a>
-          <a href="services.html">Quote-To-Cash Services</a>
-          <a href="services.html">Administration & Support</a>
+          <p class="ft-col-title">Salesforce</p>
+          <a href="services.html">Business Consulting</a>
+          <a href="services.html">Implementation &amp; Dev</a>
+          <a href="services.html">Quote-To-Cash</a>
+          <a href="services.html">Admin &amp; Support</a>
           <a href="services.html">Data Migration</a>
           <a href="services.html">Staff Augmentation</a>
         </div>
 
+        <!-- Col 4: AI Services -->
         <div class="ft-col">
           <p class="ft-col-title">AI Services</p>
           <a href="services.html">AI Sales Automation</a>
           <a href="services.html">AI Lead Intelligence</a>
-          <a href="services.html">Conversational AI Systems</a>
-          <a href="services.html">AI Workflow Orchestration</a>
+          <a href="services.html">Conversational AI</a>
+          <a href="services.html">AI Workflow</a>
           <a href="services.html">AI Data Engineering</a>
-          <a href="services.html">Custom AI Product Builds</a>
+          <a href="services.html">Custom AI Builds</a>
         </div>
 
-                <div class="ft-col">
-          <p class="ft-col-title">Products</p>
-          <a href="icrm.html">E2E Sales</a>
-          <a href="stockpro.html">StockPro</a>
-        </div>
-
-                <div class="ft-col">
+        <!-- Col 5: Company -->
+        <div class="ft-col">
           <p class="ft-col-title">Company</p>
           <a href="index.html">Home</a>
           <a href="about.html">About</a>
           <a href="client.html">Clients</a>
-          <a href="employee-review.html">Employee Review</a>
           <a href="case-study.html">Case Studies</a>
           <a href="career.html">Career</a>
-          <a href="contact.html">Contact Us</a>
+          <a href="contact.html">Contact</a>
+          <a href="icrm.html">E2E Sales</a>
+          <a href="stockpro.html">StockPro</a>
         </div>
 
       </div>
     </div>
 
-    <!-- Bottom bar: copyright -->
+    <!-- Bottom bar -->
     <div class="footer-bottom">
-      <div class="footer-inner">
+      <div class="footer-bottom-inner">
         <p>© 2026 Gagstek. All Rights Reserved.</p>
         <div class="ft-bottom-links">
           <a href="contact.html">Privacy Policy</a>
-          <a href="contact.html">Terms Of Services</a>
+          <a href="contact.html">Terms of Service</a>
           <a href="services.html">Sitemap</a>
         </div>
       </div>
@@ -3392,248 +3374,144 @@
 
   </footer>
 
-  <style>
-    /* ─── FOOTER STYLES ──────────────────────────────────── */
+    <style>
+    /* ─── FOOTER ─────────────────────────────────────────── */
     .site-footer {
       background: #111827;
-      color: rgba(255,255,255,0.75);
+      color: rgba(255,255,255,0.7);
       font-family: 'DM Sans', sans-serif;
     }
 
-    .footer-inner {
-      max-width: 100%; margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* TOP BAND */
-    .footer-top {
-      padding: 4rem 0 3rem;
+    /* ── MAIN ROW ─────────────────────────────────────────── */
+    .footer-main {
+      padding: 3rem 0 2.5rem;
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-    .footer-top .footer-inner {
+    .footer-main-inner {
+      max-width: 100%;
+      padding: 0 clamp(1.5rem, 5vw, 6rem);
       display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 3rem;
+      grid-template-columns: 220px 260px 1fr 1fr 1fr;
+      gap: 2.5rem;
       align-items: start;
     }
 
-    /* Footer Logo */
-    .ft-logo-link {
-      display: inline-block;
-      margin-bottom: 0.75rem;
-      text-decoration: none;
-    }
-    .ft-logo-img {
-      height: 48px;
-      width: auto;
-      display: block;
-      object-fit: contain;
-    }
+    /* ── BRAND COL ─────────────────────────────────────────── */
+    .ft-brand { display: flex; flex-direction: column; gap: 0.6rem; }
+    .ft-logo-link { display: inline-block; margin-bottom: 0.2rem; text-decoration: none; }
+    .ft-logo-img { height: 42px; width: auto; display: block; object-fit: contain; }
     .ft-tagline {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.6);
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.55);
       line-height: 1.55;
-      margin-bottom: 1.4rem;
+      margin: 0;
     }
-    .ft-office-phone {
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.5);
-      margin-top: 0.25rem;
+    .ft-socials { display: flex; gap: 0.55rem; flex-wrap: wrap; margin: 0.2rem 0; }
+    .ft-social-icon {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: rgba(59,130,246,0.12);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; font-size: 0.95rem;
+      transition: background 0.2s, color 0.2s;
     }
+    .ft-social-icon:hover { background: rgba(96,165,250,0.25); }
+    /* Social brand colors */
+    .ft-social-icon .fa-instagram { color: #E1306C; }
+    .ft-social-icon .fa-linkedin-in { color: #0A66C2; }
+    .ft-social-icon .fa-youtube { color: #FF0000; }
+    .ft-social-icon:hover i { color: #fff !important; }
 
-    /* CTA left */
-    .ft-left {}
+    .ft-contact-row { margin: 0; }
+    .ft-contact-link {
+      font-size: 0.78rem; color: rgba(255,255,255,0.5);
+      text-decoration: none; transition: color 0.2s;
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .ft-contact-link:hover { color: #fff; }
     .ft-cta-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: var(--accent, #3b82f6);
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.9rem;
-      padding: 0.75rem 1.6rem;
-      border-radius: 8px;
-      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: #3b82f6; color: #fff;
+      font-weight: 700; font-size: 0.82rem;
+      padding: 0.55rem 1.2rem; border-radius: 6px;
+      text-decoration: none; width: fit-content;
       transition: background 0.2s, transform 0.15s;
-      margin-bottom: 1.8rem;
+      margin-top: 0.2rem;
     }
     .ft-cta-btn:hover { background: #60a5fa; transform: translateY(-2px); }
 
-    .ft-socials {
-      display: flex;
-      gap: 0.9rem;
-      margin-bottom: 1.2rem;
-    }
-    .ft-social-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: rgba(59,130,246,0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--accent-bright, #60a5fa);
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s;
-    }
-    .ft-social-icon:hover { background: var(--accent, #3b82f6); color: #fff; }
-
-    .ft-email {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.88rem;
-    }
-    .ft-email a {
-      color: rgba(255,255,255,0.65);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .ft-email a:hover { color: #fff; }
-
-    /* Offices */
-    .ft-offices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    /* ── OFFICES COL ───────────────────────────────────────── */
+    .ft-offices-col {}
+    .ft-offices { display: flex; flex-direction: column; gap: 0.9rem; margin-top: 0.5rem; }
     .ft-office-title {
-      font-weight: 700;
-      font-size: 0.9rem;
-      color: #fff;
-      margin-bottom: 0.4rem;
+      font-weight: 700; font-size: 0.82rem; color: #fff; margin-bottom: 0.15rem;
     }
     .ft-office-addr {
-      font-size: 0.85rem;
-      line-height: 1.6;
-      color: rgba(255,255,255,0.55);
+      font-size: 0.78rem; line-height: 1.55; color: rgba(255,255,255,0.5); margin: 0;
     }
-    .ft-rating {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 10px;
-      padding: 0.75rem 1rem;
-      width: fit-content;
-    }
-    .ft-rating-score { font-weight: 700; font-size: 0.9rem; color: #fff; }
-    .ft-rating-sub { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
-
-    /* Badges */
-    .ft-badges {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.9rem;
-    }
-    .ft-badge {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 10px;
-      padding: 0.75rem 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.78rem;
-    }
-    .ft-badge-iso .iso-text {
-      font-size: 0.72rem;
-      line-height: 1.3;
-      color: #e11d48;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-    .ft-badge-sf { align-items: center; }
-    .sf-text { display: flex; flex-direction: column; font-size: 0.72rem; color: rgba(255,255,255,0.7); line-height: 1.3; }
-    .sf-text span:first-child { font-weight: 700; color: #fff; }
-    .db-text { display: flex; flex-direction: column; font-size: 0.7rem; line-height: 1.4; color: rgba(255,255,255,0.65); }
-    .db-text span { font-weight: 700; color: #fff; font-size: 0.75rem; }
-
-    /* MID BAND */
-    .footer-mid {
-      padding: 3rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .footer-mid .footer-inner {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
+    .ft-office-phone {
+      font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 0.1rem;
     }
 
-    .ft-col { display: flex; flex-direction: column; gap: 0.65rem; }
+    /* ── NAV COLS ──────────────────────────────────────────── */
+    .ft-col { display: flex; flex-direction: column; gap: 0.5rem; }
     .ft-col-title {
-      font-weight: 700;
-      font-size: 0.9rem;
-      color: #fff;
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.3px;
+      font-weight: 700; font-size: 0.82rem; color: #fff;
+      margin-bottom: 0.3rem; letter-spacing: 0.3px;
+      text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.8px;
     }
     .ft-col a {
-      color: rgba(255,255,255,0.55);
-      text-decoration: none;
-      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none; font-size: 0.8rem;
       transition: color 0.2s;
     }
     .ft-col a:hover { color: #fff; }
 
-    /* BOTTOM BAR */
-    .footer-bottom { padding: 1.4rem 0; }
-    .footer-bottom .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.8rem;
+    /* ── BOTTOM BAR ────────────────────────────────────────── */
+    .footer-bottom { padding: 1rem 0; }
+    .footer-bottom-inner {
+      max-width: 100%;
+      padding: 0 clamp(1.5rem, 5vw, 6rem);
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 0.6rem;
     }
-    .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.45); }
-    .ft-bottom-links { display: flex; gap: 1.5rem; }
+    .footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.35); margin: 0; }
+    .ft-bottom-links { display: flex; gap: 1.4rem; }
     .ft-bottom-links a {
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.45);
-      text-decoration: none;
-      transition: color 0.2s;
+      font-size: 0.78rem; color: rgba(255,255,255,0.35);
+      text-decoration: none; transition: color 0.2s;
     }
-    .ft-bottom-links a:hover { color: #fff; }
-    /* ─── FOOTER ALIGNMENT FIXES ──────────────────────────── */
-    .footer-top .footer-inner {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 3rem;
-      align-items: start;
+    .ft-bottom-links a:hover { color: rgba(255,255,255,0.8); }
+
+    /* ── RESPONSIVE ────────────────────────────────────────── */
+    @media (max-width: 1200px) {
+      .footer-main-inner {
+        grid-template-columns: 200px 230px 1fr 1fr 1fr;
+        gap: 2rem;
+      }
     }
-    .ft-offices {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-    .footer-mid .footer-inner {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-    }
-    .footer-bottom .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-    }
-    /* Consistent ft-left spacing */
-    .ft-left { display: flex; flex-direction: column; gap: 0; }
-    .ft-socials { display: flex; gap: 0.75rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
-    .ft-email { display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; }
-    .ft-email a { color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
-    .ft-email a:hover { color: #fff; }
     @media (max-width: 1024px) {
-      .footer-top .footer-inner { grid-template-columns: 1fr 1fr; }
-      .ft-offices { grid-template-columns: 1fr 1fr; }
+      .footer-main-inner {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 2rem 2.5rem;
+      }
+      .ft-brand { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 1.5rem; }
+      .ft-brand-info { display: flex; flex-direction: column; gap: 0.5rem; }
     }
     @media (max-width: 768px) {
-      .footer-top .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
-      .ft-offices { grid-template-columns: 1fr; }
-      .footer-mid .footer-inner { grid-template-columns: 1fr 1fr; gap: 1.8rem; }
+      .footer-main-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.8rem 2rem;
+      }
+      .ft-brand { grid-column: 1 / -1; }
+      .ft-offices-col { grid-column: 1 / -1; }
+      .ft-offices { flex-direction: row; flex-wrap: wrap; gap: 1rem; }
+      .ft-office { flex: 1 1 140px; }
     }
     @media (max-width: 480px) {
-      .footer-mid .footer-inner { grid-template-columns: 1fr 1fr; gap: 1.4rem; }
-      .footer-bottom .footer-inner { flex-direction: column; align-items: flex-start; }
-      .ft-bottom-links { flex-wrap: wrap; gap: 1rem; }
+      .footer-main-inner { grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+      .ft-offices { flex-direction: column; }
+      .footer-bottom-inner { flex-direction: column; align-items: flex-start; }
+      .ft-bottom-links { flex-wrap: wrap; gap: 0.8rem; }
     }
   </style>
 

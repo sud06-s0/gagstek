@@ -1471,7 +1471,47 @@
       background: rgba(255,255,255,0.12) !important;
     }
     
-    </style>
+    
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    .site-footer { background: #111827; color: rgba(255,255,255,0.7); font-family: 'DM Sans', sans-serif; }
+    .footer-main { padding: 3rem 0 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-main-inner {
+      max-width: 100%; padding: 0 clamp(1.5rem, 5vw, 6rem);
+      display: grid; grid-template-columns: 210px 240px 1fr 1fr 1fr; gap: 2.5rem; align-items: start;
+    }
+    .ft-brand { display: flex; flex-direction: column; gap: 0.55rem; }
+    .ft-logo-link { display: inline-block; margin-bottom: 0.1rem; text-decoration: none; }
+    .ft-logo-img { height: 40px; width: auto; display: block; object-fit: contain; }
+    .ft-tagline { font-size: 0.78rem; color: rgba(255,255,255,0.5); line-height: 1.55; margin: 0; }
+    .ft-socials { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .ft-social-icon { width: 32px; height: 32px; border-radius: 50%; background: rgba(59,130,246,0.12); display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 0.9rem; transition: background 0.2s; }
+    .ft-social-icon:hover { background: rgba(96,165,250,0.25); }
+    .ft-social-icon .fa-instagram { color: #E1306C; }
+    .ft-social-icon .fa-linkedin-in { color: #0A66C2; }
+    .ft-social-icon .fa-youtube { color: #FF0000; }
+    .ft-social-icon:hover i { color: #fff !important; }
+    .ft-contact-link { font-size: 0.76rem; color: rgba(255,255,255,0.45); text-decoration: none; display: flex; align-items: center; gap: 0.35rem; transition: color 0.2s; }
+    .ft-contact-link:hover { color: #fff; }
+    .ft-cta-btn { display: inline-flex; align-items: center; gap: 0.35rem; background: #3b82f6; color: #fff; font-weight: 700; font-size: 0.8rem; padding: 0.5rem 1.1rem; border-radius: 6px; text-decoration: none; width: fit-content; transition: background 0.2s, transform 0.15s; }
+    .ft-cta-btn:hover { background: #60a5fa; transform: translateY(-2px); }
+    .ft-offices { display: flex; flex-direction: column; gap: 0.85rem; margin-top: 0.5rem; }
+    .ft-office-title { font-weight: 700; font-size: 0.8rem; color: #fff; margin-bottom: 0.1rem; }
+    .ft-office-addr { font-size: 0.75rem; line-height: 1.55; color: rgba(255,255,255,0.48); margin: 0; }
+    .ft-office-phone { font-size: 0.72rem; color: rgba(255,255,255,0.38); margin-top: 0.08rem; }
+    .ft-col { display: flex; flex-direction: column; gap: 0.48rem; }
+    .ft-col-title { font-weight: 700; color: #fff; margin-bottom: 0.35rem; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.8px; }
+    .ft-col a { color: rgba(255,255,255,0.48); text-decoration: none; font-size: 0.78rem; transition: color 0.2s; }
+    .ft-col a:hover { color: #fff; }
+    .footer-bottom { padding: 0.9rem 0; }
+    .footer-bottom-inner { max-width: 100%; padding: 0 clamp(1.5rem, 5vw, 6rem); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+    .footer-bottom p { font-size: 0.75rem; color: rgba(255,255,255,0.3); margin: 0; }
+    .ft-bottom-links { display: flex; gap: 1.4rem; }
+    .ft-bottom-links a { font-size: 0.75rem; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+    .ft-bottom-links a:hover { color: rgba(255,255,255,0.75); }
+    @media (max-width: 1024px) { .footer-main-inner { grid-template-columns: 1fr 1fr 1fr; gap: 2rem; } .ft-brand { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; gap: 2rem; } }
+    @media (max-width: 768px) { .footer-main-inner { grid-template-columns: 1fr 1fr; } .ft-brand { grid-column: 1 / -1; flex-direction: column; } .ft-offices-col { grid-column: 1 / -1; } .ft-offices { flex-direction: row; flex-wrap: wrap; } .ft-office { flex: 1 1 130px; } }
+    @media (max-width: 480px) { .footer-main-inner { grid-template-columns: 1fr 1fr; } .ft-offices { flex-direction: column; } .footer-bottom-inner { flex-direction: column; align-items: flex-start; } .ft-bottom-links { flex-wrap: wrap; } }
+  </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <!-- ═══ FULL-WIDTH FLUID OVERRIDE ═══ -->
@@ -1560,7 +1600,17 @@
       display: flex; align-items: center; justify-content: center;
       text-decoration: none; transition: background 0.2s, color 0.2s;
     }
-    </style>
+    
+    /* ── Form validation ─────────────────────────────────── */
+    .field-error {
+      display: none;
+      font-size: 0.75rem;
+      color: #ef4444;
+      margin-top: 0.3rem;
+      padding-left: 0.1rem;
+      line-height: 1.4;
+    }
+  </style>
 </head>
 <body>
 
@@ -1653,13 +1703,16 @@
             <div class="form-row">
               <div class="form-group">
                 <input type="text" id="fname" placeholder="Your name" />
+                <span class="field-error" id="fnameErr"></span>
               </div>
               <div class="form-group">
-                <input type="tel" id="fphone" placeholder="Phone number" />
+                <input type="tel" id="fphone" placeholder="Phone number" maxlength="15" />
+                <span class="field-error" id="fphoneErr"></span>
               </div>
             </div>
             <div class="form-group">
               <input type="email" id="femail" placeholder="Your business email" />
+            <span class="field-error" id="femailErr"></span>
             </div>
             <div class="form-group">
               <input type="text" id="fcompany" placeholder="Company name" />
@@ -2049,117 +2102,99 @@
   <!-- ═══ FOOTER ═══ -->
   <footer class="site-footer">
 
-    <!-- Top band: Logo + Social + Office addresses + Badges -->
-    <div class="footer-top">
-      <div class="footer-inner">
+    <!-- Single main row -->
+    <div class="footer-main">
+      <div class="footer-main-inner">
 
-        <!-- Left: Logo + Social + Email -->
-        <div class="ft-left">
-          <!-- GAGSTEK LOGO: replace "logo.png" with your actual logo file path -->
-          <a href="https://gagstek.com" class="ft-logo-link">
-            <img
-              src="logo.png"
-              alt="Gagstek"
-              class="ft-logo-img"
-              onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"
-            /><span class="ft-logo-fallback" style="display:none;font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;color:#fff;">Gags<span style="color:#60a5fa;">tek</span></span>
+        <!-- Col 1: Brand -->
+        <div class="ft-brand">
+          <a href="index.html" class="ft-logo-link">
+            <img src="./img/logo.png" alt="Gagstek" class="ft-logo-img"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline';" />
+            <span class="ft-logo-fallback" style="display:none;font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:#fff;">Gags<span style="color:#60a5fa;">tek</span></span>
           </a>
           <p class="ft-tagline">Unleashing Business Potential<br>with Cloud &amp; AI</p>
-          <a href="https://gagstek.com/contact-us/" class="ft-cta-btn">Get Started ↗</a>
-                    <div class="ft-socials">
-            <!-- Instagram -->
+          <div class="ft-socials">
             <a href="https://www.instagram.com/gagstek___/" aria-label="Instagram" class="ft-social-icon" target="_blank" rel="noopener">
-              <i class="fa-brands fa-instagram" style="font-size:1.1rem;"></i>
+              <i class="fa-brands fa-instagram"></i>
             </a>
-            <!-- LinkedIn -->
             <a href="https://in.linkedin.com/company/gagstek" aria-label="LinkedIn" class="ft-social-icon" target="_blank" rel="noopener">
-              <i class="fa-brands fa-linkedin-in" style="font-size:1.1rem;"></i>
+              <i class="fa-brands fa-linkedin-in"></i>
             </a>
-            <!-- YouTube -->
             <a href="https://www.youtube.com/@GagstekLLP" aria-label="YouTube" class="ft-social-icon" target="_blank" rel="noopener">
-              <i class="fa-brands fa-youtube" style="font-size:1.1rem;"></i>
+              <i class="fa-brands fa-youtube"></i>
             </a>
           </div>
-          <div class="ft-email">
-            <i class="fa-solid fa-envelope" style="font-size:14px;"></i>
-            <a href="mailto:info@gagstek.com">info@gagstek.com</a>
+          <a href="mailto:info@gagstek.com" class="ft-contact-link"><i class="fa-solid fa-envelope"></i> info@gagstek.com</a>
+          <a href="contact.html" class="ft-cta-btn">Get Started ↗</a>
+        </div>
+
+        <!-- Col 2: Offices -->
+        <div class="ft-offices-col">
+          <p class="ft-col-title">Our Offices</p>
+          <div class="ft-offices">
+            <div class="ft-office">
+              <p class="ft-office-title">🇺🇸 United States</p>
+              <p class="ft-office-addr">16192 Coastal Highway, Lewes,<br>Delaware 19958</p>
+              <p class="ft-office-phone">+1-567-399-2506</p>
+            </div>
+            <div class="ft-office">
+              <p class="ft-office-title">🇮🇳 India</p>
+              <p class="ft-office-addr">P3-001 Pentagon Tower,<br>Magarpatta City, Pune 411013</p>
+            </div>
+            <div class="ft-office">
+              <p class="ft-office-title">🇦🇺 Australia</p>
+              <p class="ft-office-addr">161 Collins St,<br>Melbourne VIC, 3000</p>
+              <p class="ft-office-phone">+61-473118458</p>
+            </div>
           </div>
         </div>
 
-        <!-- Middle: Office Addresses -->
-        <div class="ft-offices">
-          <div class="ft-office">
-            <p class="ft-office-title">United States Office 🇺🇸</p>
-            <p class="ft-office-addr">16192 Coastal Highway, Lewes,<br>Delaware 19958, County of Sussex</p>
-            <p class="ft-office-phone">📞 +1-567-399-2506</p>
-          </div>
-          <div class="ft-office">
-            <p class="ft-office-title">India Office 🇮🇳</p>
-            <p class="ft-office-addr">P3-001 Pentagon Tower,<br>Magarpatta City, Pune 411013</p>
-          </div>
-          <div class="ft-office">
-            <p class="ft-office-title">Australia Office 🇦🇺</p>
-            <p class="ft-office-addr">161 Collins St,<br>Melbourne VIC, 3000</p>
-            <p class="ft-office-phone">📞 +61-473118458</p>
-          </div>
-        </div>
-
-
-
-      </div>
-    </div>
-
-    <!-- Middle band: Nav links -->
-    <div class="footer-mid">
-      <div class="footer-inner">
-
+        <!-- Col 3: Salesforce -->
         <div class="ft-col">
-          <p class="ft-col-title">Salesforce Services</p>
-          <a href="services.html">Business Consulting & Advisory</a>
-          <a href="services.html">Implementation & Development</a>
-          <a href="services.html">Quote-To-Cash Services</a>
-          <a href="services.html">Administration & Support</a>
+          <p class="ft-col-title">Salesforce</p>
+          <a href="services.html">Business Consulting</a>
+          <a href="services.html">Implementation &amp; Dev</a>
+          <a href="services.html">Quote-To-Cash</a>
+          <a href="services.html">Admin &amp; Support</a>
           <a href="services.html">Data Migration</a>
           <a href="services.html">Staff Augmentation</a>
         </div>
 
+        <!-- Col 4: AI Services -->
         <div class="ft-col">
           <p class="ft-col-title">AI Services</p>
           <a href="services.html">AI Sales Automation</a>
           <a href="services.html">AI Lead Intelligence</a>
-          <a href="services.html">Conversational AI Systems</a>
-          <a href="services.html">AI Workflow Orchestration</a>
+          <a href="services.html">Conversational AI</a>
+          <a href="services.html">AI Workflow</a>
           <a href="services.html">AI Data Engineering</a>
-          <a href="services.html">Custom AI Product Builds</a>
+          <a href="services.html">Custom AI Builds</a>
         </div>
 
-                <div class="ft-col">
-          <p class="ft-col-title">Products</p>
-          <a href="icrm.html">E2E Sales</a>
-          <a href="stockpro.html">StockPro</a>
-        </div>
-
-                <div class="ft-col">
+        <!-- Col 5: Company -->
+        <div class="ft-col">
           <p class="ft-col-title">Company</p>
           <a href="index.html">Home</a>
           <a href="about.html">About</a>
           <a href="client.html">Clients</a>
-          <a href="employee-review.html">Employee Review</a>
           <a href="case-study.html">Case Studies</a>
           <a href="career.html">Career</a>
-          <a href="contact.html">Contact Us</a>
+          <a href="contact.html">Contact</a>
+          <a href="icrm.html">E2E Sales</a>
+          <a href="stockpro.html">StockPro</a>
         </div>
 
       </div>
     </div>
 
-    <!-- Bottom bar: copyright -->
+    <!-- Bottom bar -->
     <div class="footer-bottom">
-      <div class="footer-inner">
+      <div class="footer-bottom-inner">
         <p>© 2026 Gagstek. All Rights Reserved.</p>
         <div class="ft-bottom-links">
           <a href="contact.html">Privacy Policy</a>
-          <a href="contact.html">Terms Of Services</a>
+          <a href="contact.html">Terms of Service</a>
           <a href="services.html">Sitemap</a>
         </div>
       </div>
@@ -2206,15 +2241,73 @@
       }
     }
 
-    // Form submit
+    // Form submit with validation
+    function showErr(id, msg) {
+      const el = document.getElementById(id);
+      if (el) { el.textContent = msg; el.style.display = msg ? 'block' : 'none'; }
+    }
+    function clearErr(id) { showErr(id, ''); }
+    function markInput(id, isError) {
+      const el = document.getElementById(id);
+      if (el) el.style.borderColor = isError ? 'rgba(239,68,68,0.75)' : '';
+    }
+
+    // Live clear on fix
+    document.getElementById('fname').addEventListener('input', function() {
+      if (this.value.trim()) { clearErr('fnameErr'); markInput('fname', false); }
+    });
+    document.getElementById('femail').addEventListener('input', function() {
+      if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value.trim())) { clearErr('femailErr'); markInput('femail', false); }
+    });
+    document.getElementById('fphone').addEventListener('input', function() {
+      this.value = this.value.replace(/[^0-9+\-() ]/g, '');
+      const digits = this.value.replace(/\D/g, '');
+      if (digits.length === 10) { clearErr('fphoneErr'); markInput('fphone', false); }
+    });
+
     function handleSubmit() {
+      let valid = true;
+
+      // Name
       const name = document.getElementById('fname').value.trim();
-      const email = document.getElementById('femail').value.trim();
-      if (!name || !email) {
-        document.getElementById('fname').style.borderColor = !name ? 'rgba(239,68,68,0.7)' : '';
-        document.getElementById('femail').style.borderColor = !email ? 'rgba(239,68,68,0.7)' : '';
-        return;
+      if (!name) {
+        showErr('fnameErr', 'Your name is required.');
+        markInput('fname', true);
+        valid = false;
+      } else {
+        clearErr('fnameErr'); markInput('fname', false);
       }
+
+      // Email
+      const email = document.getElementById('femail').value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email) {
+        showErr('femailErr', 'Email address is required.');
+        markInput('femail', true);
+        valid = false;
+      } else if (!emailRegex.test(email)) {
+        showErr('femailErr', 'Please enter a valid email (e.g. you@example.com).');
+        markInput('femail', true);
+        valid = false;
+      } else {
+        clearErr('femailErr'); markInput('femail', false);
+      }
+
+      // Phone (optional but if filled must be 10 digits)
+      const phone = document.getElementById('fphone').value.trim();
+      if (phone) {
+        const digits = phone.replace(/\D/g, '');
+        if (digits.length !== 10) {
+          showErr('fphoneErr', 'Phone number must be exactly 10 digits.');
+          markInput('fphone', true);
+          valid = false;
+        } else {
+          clearErr('fphoneErr'); markInput('fphone', false);
+        }
+      }
+
+      if (!valid) return;
+
       document.getElementById('formView').style.display = 'none';
       document.getElementById('formSuccess').style.display = 'block';
     }
@@ -2238,7 +2331,7 @@
   </script>
 
 
-<style>
+  <style>
 /* ===== GAGSTEK DESKTOP FIXES — min-width 769px only ===== */
 @media (min-width: 769px) {
 
