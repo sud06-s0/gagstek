@@ -40,146 +40,14 @@
       overflow-x: hidden;
     }
 
-    /* ─── NAVBAR ─────────────────────────────────────────── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: clamp(1rem, 3vw, 4rem) clamp(1rem, 3vw, 4rem);
-      height: clamp(56px, 6vh, 80px);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: background 0.4s, box-shadow 0.4s;
-    }
-    nav.scrolled {
-      background: rgba(10,22,40,0.97);
-      box-shadow: 0 2px 24px rgba(0,0,0,0.4);
-      backdrop-filter: blur(12px);
-    }
-
-    .logo {
-      width:130px;
-    }
-    .logo span { color: var(--accent-bright); }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-      align-items: center;
-    }
-    .nav-links a {
-      color: rgba(255,255,255,0.8);
-      text-decoration: none;
-      font-size: 0.92rem;
-      font-weight: 500;
-      letter-spacing: 0.3px;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--white); }
-
-    .nav-cta {
-      background: var(--accent);
-      color: var(--white) !important;
-      padding: 0.55rem 1.3rem;
-      border-radius: 6px;
-      font-weight: 600 !important;
-      transition: background 0.2s, transform 0.15s !important;
-    }
-    .nav-cta:hover {
-      background: var(--accent-bright) !important;
-      transform: translateY(-1px);
-    }
-
-    /* Hamburger */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-      background: none;
-      border: none;
-    }
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--white);
-      border-radius: 2px;
-      transition: all 0.3s;
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    /* Nav Socials */
-    .nav-socials {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-left: 1rem;
-    }
-    .nav-social-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      color: var(--accent-bright);
-      text-decoration: none;
-      transition: color 0.2s, background 0.2s;
-    }
-    .nav-social-icon:hover {
-      color: var(--white);
-      background: rgba(96,165,250,0.15);
-    }
-    @media (max-width: 768px) {
-      .nav-socials { display: none; }
-    }
+    
+/* Hamburger */
+/* Nav Socials */
+@media (max-width: 768px) {
+}
 
     /* Mobile menu */
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      inset: 0;
-      top: 72px;
-      background: rgba(10,22,40,0.98);
-      backdrop-filter: blur(16px);
-      z-index: 99;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
-    }
-    .mobile-menu.open {
-      display: flex;
-      opacity: 1;
-      pointer-events: all;
-    }
-    .mobile-menu a {
-      color: var(--white);
-      text-decoration: none;
-      font-size: 1.4rem;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      transition: color 0.2s;
-    }
-    .mobile-menu a:hover { color: var(--accent-bright); }
-    .mobile-menu .mob-cta {
-      background: var(--accent);
-      padding: 0.75rem 2.5rem;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 1rem;
-    }
-
-    /* ─── PAGE HERO ──────────────────────────────────────── */
+/* ─── PAGE HERO ──────────────────────────────────────── */
     .page-hero {
       position: relative;
       padding: clamp(80px, 12vh, 160px) clamp(1rem, 4vw, 5rem) clamp(2.5rem, 6vh, 5rem);
@@ -805,9 +673,7 @@
       .team-grid { grid-template-columns: 1fr 1fr; max-width: 100%; }
     }
     @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .timeline::before { left: 24px; transform: none; }
+.timeline::before { left: 24px; transform: none; }
       .tl-item { grid-template-columns: 48px 1fr; gap: 0; }
       .tl-item .tl-content-wrap { grid-column: 2; grid-row: 1; padding-left: 1rem; }
       .tl-item.right .tl-content-wrap { grid-column: 2; }
@@ -836,91 +702,19 @@
 
     
     /* ─── NAV DROPDOWN (fixed hover gap) ─── */
-    .nav-has-dropdown { position: relative; }
-    .nav-drop-label {
-      display: flex; align-items: center; gap: 5px;
-      color: rgba(255,255,255,0.8); font-size: 0.92rem; font-weight: 500;
-      letter-spacing: 0.3px; cursor: pointer; transition: color 0.2s; user-select: none;
-    }
-    .nav-drop-label:hover { color: #fff; }
-    /* Invisible bridge fills the gap between label and panel so hover doesn't break */
-    .nav-has-dropdown::after {
-      content: ''; position: absolute;
-      top: 100%; left: 0; right: 0; height: 16px;
-    }
-    .drop-panel {
-      display: none; position: absolute;
-      top: calc(100% + 14px); left: 50%; transform: translateX(-50%);
-      background: rgba(10,22,40,0.98);
-      border: 1px solid rgba(96,165,250,0.15); border-radius: 12px;
-      padding: 0.6rem; min-width: 240px;
-      backdrop-filter: blur(16px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.5); z-index: 200;
-    }
-    .nav-has-dropdown:hover .drop-panel { display: flex; flex-direction: column; gap: 4px; }
-    .drop-panel a {
-      display: flex; align-items: center; gap: 0.75rem;
-      padding: 0.65rem 0.85rem; border-radius: 8px;
-      text-decoration: none; color: rgba(255,255,255,0.8);
-      font-size: 0.88rem; transition: background 0.2s, color 0.2s;
-    }
-    .drop-panel a:hover, .drop-panel a.dp-current { background: rgba(59,130,246,0.12); color: #fff; }
-    .dp-icon {
-      width: 32px; height: 32px; border-radius: 8px;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    }
-    .dp-meta { display: flex; flex-direction: column; line-height: 1.3; }
-    .dp-meta small { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 1px; }
-
-    /* ─── MOBILE MENU FIXES ─── */
+/* Invisible bridge fills the gap between label and panel so hover doesn't break */
+/* ─── MOBILE MENU FIXES ─── */
     /* Hide social icons on mobile */
     @media (max-width: 768px) {
-      .nav-socials { display: none !important; }
-      .logo img, .logo-img-wrap img { max-width: 100px !important; height: 34px !important; }
-      .logo-placeholder .logo-img-wrap img { max-width: 100px !important; height: 34px !important; }
+.logo-placeholder .logo-img-wrap img { max-width: 100px !important; height: 34px !important; }
     }
     /* Smaller, tighter mobile menu */
-    .mobile-menu a { font-size: 1.05rem !important; }
-    .mobile-menu .mob-cta { font-size: 0.95rem !important; padding: 0.6rem 2rem !important; }
-    /* Products sub-links in mobile */
-    .mob-products-label {
-      color: rgba(255,255,255,0.5); font-size: 0.7rem !important;
-      letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600;
-      pointer-events: none; margin-top: 0.25rem;
-    }
-    .mob-sub { font-size: 0.95rem !important; color: rgba(255,255,255,0.65) !important; padding-left: 1.2rem; }
-    .mob-sub.mob-active { color: var(--accent-bright) !important; }
-
-    
-    /* ─── PAGE STYLES ─── */
+/* Products sub-links in mobile */
+/* ─── PAGE STYLES ─── */
     body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; }
 
-    /* ─── NAVBAR ─────────────────────────────────────── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: clamp(1rem, 3vw, 4rem) clamp(1rem, 3vw, 4rem); height: clamp(56px, 6vh, 80px);
-      display: flex; align-items: center; justify-content: space-between;
-      transition: background 0.4s, box-shadow 0.4s;
-    }
-    nav.scrolled { background: rgba(10,22,40,0.97); box-shadow: 0 2px 24px rgba(0,0,0,0.4); backdrop-filter: blur(12px); }
-    .logo { width: 130px; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
-    .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.92rem; font-weight: 500; letter-spacing: 0.3px; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--white); }
-    .nav-links a.active { border-bottom: 2px solid var(--accent-bright); padding-bottom: 2px; }
-    .nav-cta { background: var(--accent); color: var(--white) !important; padding: 0.55rem 1.3rem; border-radius: 6px; font-weight: 600 !important; transition: background 0.2s, transform 0.15s !important; border-bottom: none !important; }
-    .nav-cta:hover { background: var(--accent-bright) !important; transform: translateY(-1px); }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
-    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .mobile-menu { display: none; position: fixed; inset: 0; top: 72px; background: rgba(10,22,40,0.98); backdrop-filter: blur(16px); z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
-    .mobile-menu.open { display: flex; opacity: 1; pointer-events: all; }
-    .mobile-menu a { color: var(--white); text-decoration: none; font-size: 1.4rem; font-weight: 500; transition: color 0.2s; }
-    .mobile-menu a:hover { color: var(--accent-bright); }
-    .mobile-menu .mob-cta { background: var(--accent); padding: 0.75rem 2.5rem; border-radius: 8px; font-weight: 600; font-size: 1rem; }
-    @media (max-width: 768px) { nav { padding: 0 1.25rem; } .nav-links { display: none; } .hamburger { display: flex; } }
+    
+@media (max-width: 768px) { nav { padding: 0 1.25rem; } .nav-links { display: none; } .hamburger { display: flex; } }
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes slowZoom { from { transform: scale(1.04); } to { transform: scale(1.1); } }
@@ -1098,13 +892,15 @@
     .locations-section { background: #0d1f3c; padding: clamp(2.5rem, 4.8vh, 5.5rem) clamp(1rem, 4vw, 5rem); border-top: 1px solid rgba(255,255,255,0.06); }
     .locations-inner { max-width: 100%; margin: 0 auto; }
     .locations-header { text-align: center; margin-bottom: 3rem; }
-    .locations-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .locations-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; align-items: stretch; }
 
     .location-card {
       background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
       border-radius: 20px; overflow: hidden;
       transition: transform 0.28s, border-color 0.28s, box-shadow 0.28s;
+      display: flex; flex-direction: column;
     }
+    .location-card .location-card-skyline { flex: 1; margin-top: 1.5rem; min-height: 180px; }
     .location-card:hover { transform: translateY(-5px); border-color: rgba(59,130,246,0.3); box-shadow: 0 20px 50px rgba(0,0,0,0.35); }
     .location-card.dark-card { background: var(--navy-mid); border-color: rgba(59,130,246,0.2); }
 
@@ -1121,10 +917,11 @@
     .loc-phone a { color: inherit; text-decoration: none; }
 
     .location-card-skyline {
-      margin-top: 1.5rem; height: 110px; overflow: hidden; position: relative;
+      margin-top: 1.5rem; height: 180px; overflow: hidden; position: relative;
     }
     .location-card-skyline img { width: 100%; height: 100%; object-fit: cover; object-position: bottom; display: block; }
     .location-card-skyline svg { width: 100%; height: 100%; display: block; }
+    .location-card-skyline iframe { width: 100%; height: 100%; display: block; border: none; filter: invert(90%) hue-rotate(180deg); }
 
     /* Sales card */
     .sales-card {
@@ -1281,23 +1078,7 @@
     }
 
     /* ── Navbar: fluid height and padding ── */
-    nav {
-      height: clamp(56px, 6vh, 80px) !important;
-      padding-left: clamp(1rem, 3vw, 4rem) !important;
-      padding-right: clamp(1rem, 3vw, 4rem) !important;
-    }
-    .nav-links {
-      gap: clamp(0.8rem, 1.5vw, 2rem) !important;
-    }
-    .nav-links a,
-    .nav-drop-label {
-      font-size: clamp(0.78rem, 0.9vw, 1rem) !important;
-    }
-    .logo, .logo img {
-      width: clamp(90px, 9vw, 140px) !important;
-    }
-
-    /* ── Page hero: always full cover, fluid padding ── */
+/* ── Page hero: always full cover, fluid padding ── */
     .page-hero, .svc-hero, .career-hero, .contact-hero,
     .client-hero, .case-hero {
       min-height: clamp(260px, 38vh, 480px);
@@ -1449,33 +1230,10 @@
 
     /* ── Compact gracefully on medium screens ── */
     @media (max-width: 1024px) {
-      .nav-links { gap: clamp(0.5rem, 1vw, 1.2rem) !important; }
-    }
+}
 
     /* ── Social icon brand colors ── */
-    .nav-social-icon .fa-whatsapp,
-    .nav-social-icon .fa-brands.fa-whatsapp { color: #25D366 !important; }
-    .nav-social-icon .fa-youtube,
-    .nav-social-icon .fa-brands.fa-youtube { color: #FF0000 !important; }
-    .nav-social-icon .fa-instagram,
-    .nav-social-icon .fa-brands.fa-instagram { color: #E1306C !important; }
-    .nav-social-icon .fa-linkedin-in,
-    .nav-social-icon .fa-brands.fa-linkedin-in { color: #0A66C2 !important; }
-    .nav-social-icon:hover .fa-whatsapp,
-    .nav-social-icon:hover .fa-brands.fa-whatsapp { color: #fff !important; }
-    .nav-social-icon:hover .fa-youtube,
-    .nav-social-icon:hover .fa-brands.fa-youtube { color: #fff !important; }
-    .nav-social-icon:hover .fa-instagram,
-    .nav-social-icon:hover .fa-brands.fa-instagram { color: #fff !important; }
-    .nav-social-icon:hover .fa-linkedin-in,
-    .nav-social-icon:hover .fa-brands.fa-linkedin-in { color: #fff !important; }
-    .nav-social-icon:hover {
-      background: rgba(255,255,255,0.12) !important;
-    }
-    /* Footer social icon brand colors */
-    .ft-social-icon .fa-whatsapp,
-    .ft-social-icon .fa-brands.fa-whatsapp { color: #25D366 !important; }
-    .ft-social-icon .fa-youtube,
+.ft-social-icon .fa-youtube,
     .ft-social-icon .fa-brands.fa-youtube { color: #FF0000 !important; }
     .ft-social-icon .fa-instagram,
     .ft-social-icon .fa-brands.fa-instagram { color: #E1306C !important; }
@@ -1491,14 +1249,8 @@
     .ft-social-icon:hover .fa-linkedin-in,
     .ft-social-icon:hover .fa-brands.fa-linkedin-in { color: #fff !important; }
     /* Nav default background */
-    nav { background: rgba(10,22,40,0.97); }
-    nav.scrolled { background: rgba(10,22,40,1) !important; box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
-
-    /* Nav social icon brand colors */
-    .nav-social-icon { display:flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:50%; background:rgba(255,255,255,0.07); transition:background 0.2s; }
-    .nav-social-icon:hover { background:rgba(255,255,255,0.15); }
-
-    /* Form validation */
+/* Nav social icon brand colors */
+/* Form validation */
     .field-error { display:none; font-size:0.75rem; color:#ef4444; margin-top:0.3rem; line-height:1.4; }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -1553,11 +1305,211 @@
       padding-right: clamp(1.5rem, 5vw, 6rem);
     }
   </style>
+
+  <style>
+    /* ─── NAVBAR ─────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 2rem;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10,22,40,0.97);
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(10,22,40,0.97);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.4);
+      backdrop-filter: blur(12px);
+    }
+    .logo { width: 130px; }
+    .logo span { color: var(--accent-bright); }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--accent);
+      color: var(--white) !important;
+      padding: 0.55rem 1.3rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+    .nav-cta:hover {
+      background: var(--accent-bright) !important;
+      transform: translateY(-1px);
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-socials {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-left: 1rem;
+    }
+    .nav-social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      color: var(--accent-bright);
+      text-decoration: none;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-social-icon:hover {
+      color: var(--white);
+      background: rgba(96,165,250,0.15);
+    }
+    @media (max-width: 768px) { .nav-socials { display: none; } }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      top: 72px;
+      background: rgba(10,22,40,0.98);
+      backdrop-filter: blur(16px);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .mobile-menu.open {
+      display: flex;
+      opacity: 1;
+      pointer-events: all;
+    }
+    .mobile-menu a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--accent-bright); }
+    .mobile-menu .mob-cta {
+      background: var(--accent);
+      padding: 0.75rem 2.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .nav-has-dropdown { position: relative; }
+    .nav-drop-label {
+      display: flex; align-items: center; gap: 5px;
+      color: rgba(255,255,255,0.8); font-size: 0.92rem; font-weight: 500;
+      letter-spacing: 0.3px; cursor: pointer; transition: color 0.2s; user-select: none;
+    }
+    .nav-drop-label:hover { color: #fff; }
+    .nav-has-dropdown::after {
+      content: ''; position: absolute;
+      top: 100%; left: 0; right: 0; height: 16px;
+    }
+    .drop-panel {
+      display: none; position: absolute;
+      top: calc(100% + 14px); left: 50%; transform: translateX(-50%);
+      background: rgba(10,22,40,0.98);
+      border: 1px solid rgba(96,165,250,0.15); border-radius: 12px;
+      padding: 0.6rem; min-width: 240px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.5); z-index: 200;
+    }
+    .nav-has-dropdown:hover .drop-panel { display: flex; flex-direction: column; gap: 4px; }
+    .drop-panel a {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.65rem 0.85rem; border-radius: 8px;
+      text-decoration: none; color: rgba(255,255,255,0.8);
+      font-size: 0.88rem; transition: background 0.2s, color 0.2s;
+    }
+    .drop-panel a:hover, .drop-panel a.dp-current { background: rgba(59,130,246,0.12); color: #fff; }
+    .dp-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .dp-meta { display: flex; flex-direction: column; line-height: 1.3; }
+    .dp-meta small { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 1px; }
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-socials { display: none !important; }
+      .logo img { max-width: 100px !important; height: 34px !important; }
+    }
+    .mobile-menu a { font-size: 1.05rem !important; }
+    .mobile-menu .mob-cta { font-size: 0.95rem !important; padding: 0.6rem 2rem !important; }
+    .mob-products-label {
+      color: rgba(255,255,255,0.5); font-size: 0.7rem !important;
+      letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600;
+      pointer-events: none; margin-top: 0.25rem;
+    }
+    .mob-sub { font-size: 0.95rem !important; color: rgba(255,255,255,0.65) !important; padding-left: 1.2rem; }
+    .mob-sub.mob-active { color: var(--accent-bright) !important; }
+    nav {
+      height: clamp(56px, 6vh, 80px);
+      padding-left: clamp(1rem, 3vw, 4rem) !important;
+      padding-right: clamp(1rem, 3vw, 4rem) !important;
+    }
+    .nav-links { gap: clamp(0.8rem, 1.5vw, 2rem); }
+    .nav-links a, .nav-drop-label { font-size: 0.92rem !important; }
+    .logo { width: clamp(90px, 9vw, 140px); }
+    .nav-social-icon .fa-youtube,
+    .nav-social-icon .fa-brands.fa-youtube { color: #FF0000 !important; }
+    .nav-social-icon .fa-instagram,
+    .nav-social-icon .fa-brands.fa-instagram { color: #E1306C !important; }
+    .nav-social-icon .fa-linkedin-in,
+    .nav-social-icon .fa-brands.fa-linkedin-in { color: #0A66C2 !important; }
+    .nav-social-icon:hover .fa-youtube,
+    .nav-social-icon:hover .fa-brands.fa-youtube { color: #fff !important; }
+    .nav-social-icon:hover .fa-instagram,
+    .nav-social-icon:hover .fa-brands.fa-instagram { color: #fff !important; }
+    .nav-social-icon:hover .fa-linkedin-in,
+    .nav-social-icon:hover .fa-brands.fa-linkedin-in { color: #fff !important; }
+    .nav-social-icon:hover { background: rgba(255,255,255,0.12) !important; }
+  </style>
 </head>
 <body>
 
-  <!-- ═══ NAVBAR ═══ -->
-  <nav id="navbar">
+    <!-- ═══ NAVBAR ═══ -->
+    <nav id="navbar">
     <a href="index.html" class="logo"><img src="./img/logo.png" alt="Gagstek"></a>
 
     <ul class="nav-links">
@@ -1568,22 +1520,23 @@
       <li class="nav-has-dropdown">
         <span class="nav-drop-label">
           Products
-          <i class="fa-solid fa-chevron-down" style="font-size:11px;"></i>
+          <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;"></i>
         </span>
         <div class="drop-panel">
           <a href="icrm.html">
-            <div class="dp-icon" style="background:rgba(59,130,246,0.15);"><i class="fa-solid fa-users" style="color:#60a5fa;font-size:14px;"></i></div>
+            <div class="dp-icon" style="background:rgba(59,130,246,0.15);"><i class="fa-solid fa-users" style="color:#60a5fa;font-size:0.85rem;"></i></div>
             <div class="dp-meta">E2E Sales<small>Lead to Invoice, automated</small></div>
           </a>
           <a href="stockpro.html">
-            <div class="dp-icon" style="background:rgba(34,197,94,0.15);"><i class="fa-solid fa-boxes-stacked" style="color:#4ade80;font-size:14px;"></i></div>
+            <div class="dp-icon" style="background:rgba(34,197,94,0.15);"><i class="fa-solid fa-briefcase" style="color:#4ade80;font-size:0.85rem;"></i></div>
             <div class="dp-meta">StockPro<small>Smart inventory management</small></div>
           </a>
         </div>
       </li>
       <li><a href="case-study.html">Case Studies</a></li>
-      <li><a href="contact.html" style="color:#60a5fa;">Contact</a></li>
-      <li><a href="contact.html" class="nav-cta">Get Started</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="https://calendly.com/gagstek/30min" class="nav-cta">Get Started</a></li>
     </ul>
 
     <!-- Nav Social Icons -->
@@ -1610,14 +1563,37 @@
     <a href="about.html">About</a>
     <a href="services.html">Services</a>
     <a href="client.html">Clients</a>
-    
-    <a href="services.html" class="mob-products-label">Products</a>
+    <span class="mob-products-label">Products</span>
     <a href="icrm.html" class="mob-sub">→ E2E Sales</a>
     <a href="stockpro.html" class="mob-sub">→ StockPro</a>
     <a href="case-study.html">Case Studies</a>
-    <a href="contact.html" style="color:#60a5fa;">Contact</a>
-    <a href="contact.html" class="mob-cta">Get Started</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://calendly.com/gagstek/30min" class="mob-cta">Get Started</a>
   </div>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 30);
+    });
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  </script>
+
+  
 
   <!-- Breadcrumb -->
   <div class="breadcrumb-strip">
@@ -1781,42 +1757,11 @@
             <div class="loc-phone"><a href="tel:+15673992506">+1-567-399-2506</a></div>
           </div>
           <div class="location-card-skyline">
-            <!-- US city SVG skyline -->
-            <svg viewBox="0 0 400 110" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
-              <defs>
-                <linearGradient id="usGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:0.3"/>
-                  <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0.15"/>
-                </linearGradient>
-              </defs>
-              <rect width="400" height="110" fill="url(#usGrad)"/>
-              <!-- Buildings -->
-              <rect x="10" y="60" width="18" height="50" fill="rgba(255,255,255,0.12)" rx="1"/>
-              <rect x="30" y="45" width="14" height="65" fill="rgba(255,255,255,0.15)" rx="1"/>
-              <rect x="46" y="70" width="20" height="40" fill="rgba(255,255,255,0.1)" rx="1"/>
-              <rect x="68" y="30" width="12" height="80" fill="rgba(255,255,255,0.18)" rx="1"/>
-              <rect x="68" y="20" width="4" height="14" fill="rgba(255,255,255,0.2)"/>
-              <rect x="82" y="50" width="16" height="60" fill="rgba(255,255,255,0.12)" rx="1"/>
-              <rect x="100" y="65" width="22" height="45" fill="rgba(255,255,255,0.1)" rx="1"/>
-              <rect x="124" y="40" width="14" height="70" fill="rgba(255,255,255,0.15)" rx="1"/>
-              <rect x="140" y="55" width="18" height="55" fill="rgba(255,255,255,0.12)" rx="1"/>
-              <rect x="160" y="35" width="10" height="75" fill="rgba(255,255,255,0.18)" rx="1"/>
-              <rect x="160" y="25" width="3" height="12" fill="rgba(255,255,255,0.22)"/>
-              <rect x="172" y="60" width="24" height="50" fill="rgba(255,255,255,0.1)" rx="1"/>
-              <rect x="198" y="45" width="16" height="65" fill="rgba(255,255,255,0.14)" rx="1"/>
-              <rect x="216" y="55" width="20" height="55" fill="rgba(255,255,255,0.11)" rx="1"/>
-              <rect x="238" y="38" width="12" height="72" fill="rgba(255,255,255,0.17)" rx="1"/>
-              <rect x="252" y="62" width="18" height="48" fill="rgba(255,255,255,0.1)" rx="1"/>
-              <rect x="272" y="48" width="14" height="62" fill="rgba(255,255,255,0.14)" rx="1"/>
-              <rect x="288" y="42" width="22" height="68" fill="rgba(255,255,255,0.12)" rx="1"/>
-              <rect x="312" y="58" width="16" height="52" fill="rgba(255,255,255,0.1)" rx="1"/>
-              <rect x="330" y="36" width="10" height="74" fill="rgba(255,255,255,0.18)" rx="1"/>
-              <rect x="342" y="52" width="20" height="58" fill="rgba(255,255,255,0.12)" rx="1"/>
-              <rect x="364" y="66" width="14" height="44" fill="rgba(255,255,255,0.1)" rx="1"/>
-              <rect x="380" y="44" width="16" height="66" fill="rgba(255,255,255,0.15)" rx="1"/>
-              <!-- Ground -->
-              <rect x="0" y="108" width="400" height="2" fill="rgba(255,255,255,0.15)"/>
-            </svg>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3097.2!2d-75.1393!3d38.7740!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b8d4f7e8f8f8f8%3A0x1!2s16192+Coastal+Hwy%2C+Lewes%2C+DE+19958!5e0!3m2!1sen!2sus!4v1700000000001"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              title="Gagstek US Office" allowfullscreen="">
+            </iframe>
           </div>
         </div>
 
@@ -1831,44 +1776,11 @@
             <div class="loc-phone" style="color: rgba(255,255,255,0.4); font-size: 0.78rem;">Primary development hub</div>
           </div>
           <div class="location-card-skyline">
-            <svg viewBox="0 0 400 110" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
-              <defs>
-                <linearGradient id="inGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" style="stop-color:#a78bfa;stop-opacity:0.25"/>
-                  <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:0.15"/>
-                </linearGradient>
-              </defs>
-              <rect width="400" height="110" fill="url(#inGrad)"/>
-              <!-- India Gate silhouette simplified -->
-              <rect x="170" y="55" width="60" height="55" fill="none"/>
-              <!-- arch -->
-              <path d="M175 110 L175 65 Q200 40 225 65 L225 110" fill="rgba(255,255,255,0.14)" stroke="none"/>
-              <!-- pillars -->
-              <rect x="175" y="60" width="8" height="50" fill="rgba(255,255,255,0.18)"/>
-              <rect x="217" y="60" width="8" height="50" fill="rgba(255,255,255,0.18)"/>
-              <!-- top platform -->
-              <rect x="165" y="55" width="70" height="8" fill="rgba(255,255,255,0.2)" rx="2"/>
-              <rect x="185" y="42" width="30" height="14" fill="rgba(255,255,255,0.15)" rx="1"/>
-              <rect x="195" y="34" width="10" height="10" fill="rgba(255,255,255,0.18)" rx="1"/>
-              <!-- flanking buildings -->
-              <rect x="20" y="65" width="14" height="45" fill="rgba(255,255,255,0.1)" rx="1"/>
-              <rect x="36" y="50" width="18" height="60" fill="rgba(255,255,255,0.13)" rx="1"/>
-              <rect x="56" y="70" width="14" height="40" fill="rgba(255,255,255,0.09)" rx="1"/>
-              <rect x="72" y="58" width="10" height="52" fill="rgba(255,255,255,0.12)" rx="1"/>
-              <rect x="84" y="74" width="20" height="36" fill="rgba(255,255,255,0.09)" rx="1"/>
-              <rect x="106" y="62" width="14" height="48" fill="rgba(255,255,255,0.11)" rx="1"/>
-              <rect x="122" y="55" width="10" height="55" fill="rgba(255,255,255,0.13)" rx="1"/>
-              <rect x="134" y="68" width="16" height="42" fill="rgba(255,255,255,0.09)" rx="1"/>
-              <rect x="248" y="68" width="16" height="42" fill="rgba(255,255,255,0.09)" rx="1"/>
-              <rect x="266" y="55" width="10" height="55" fill="rgba(255,255,255,0.13)" rx="1"/>
-              <rect x="278" y="62" width="14" height="48" fill="rgba(255,255,255,0.11)" rx="1"/>
-              <rect x="294" y="74" width="20" height="36" fill="rgba(255,255,255,0.09)" rx="1"/>
-              <rect x="316" y="58" width="10" height="52" fill="rgba(255,255,255,0.12)" rx="1"/>
-              <rect x="328" y="70" width="14" height="40" fill="rgba(255,255,255,0.09)" rx="1"/>
-              <rect x="344" y="50" width="18" height="60" fill="rgba(255,255,255,0.13)" rx="1"/>
-              <rect x="364" y="65" width="14" height="45" fill="rgba(255,255,255,0.1)" rx="1"/>
-              <rect x="0" y="108" width="400" height="2" fill="rgba(255,255,255,0.15)"/>
-            </svg>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.0!2d73.9282!3d18.5089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c1b7e8e8e8e8%3A0x1!2sPentagon+Tower+P3-001%2C+Magarpatta+City%2C+Pune+411013!5e0!3m2!1sen!2sin!4v1700000000002"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              title="Gagstek India Office" allowfullscreen="">
+            </iframe>
           </div>
         </div>
 
@@ -1883,36 +1795,11 @@
             <div class="loc-phone"><a href="tel:+61473118458">+61-473118458</a></div>
           </div>
           <div class="location-card-skyline">
-            <svg viewBox="0 0 400 110" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
-              <defs>
-                <linearGradient id="auGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" style="stop-color:#34d399;stop-opacity:0.2"/>
-                  <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:0.15"/>
-                </linearGradient>
-              </defs>
-              <rect width="400" height="110" fill="url(#auGrad)"/>
-              <path d="M175 110 Q180 72 190 55 Q200 40 205 55 Q210 40 220 55 Q228 72 233 110" fill="rgba(255,255,255,0.18)"/>
-              <path d="M180 110 Q183 77 190 60 Q197 77 200 110" fill="rgba(255,255,255,0.12)"/>
-              <rect x="10" y="60" width="16" height="50" fill="rgba(255,255,255,0.1)" rx="1"/>
-              <rect x="28" y="44" width="12" height="66" fill="rgba(255,255,255,0.14)" rx="1"/>
-              <rect x="42" y="68" width="18" height="42" fill="rgba(255,255,255,0.09)" rx="1"/>
-              <rect x="62" y="38" width="10" height="72" fill="rgba(255,255,255,0.16)" rx="1"/>
-              <rect x="74" y="54" width="14" height="56" fill="rgba(255,255,255,0.11)" rx="1"/>
-              <rect x="90" y="70" width="20" height="40" fill="rgba(255,255,255,0.09)" rx="1"/>
-              <rect x="112" y="50" width="14" height="60" fill="rgba(255,255,255,0.13)" rx="1"/>
-              <rect x="128" y="64" width="16" height="46" fill="rgba(255,255,255,0.1)" rx="1"/>
-              <rect x="146" y="44" width="10" height="66" fill="rgba(255,255,255,0.15)" rx="1"/>
-              <rect x="246" y="44" width="10" height="66" fill="rgba(255,255,255,0.15)" rx="1"/>
-              <rect x="258" y="64" width="16" height="46" fill="rgba(255,255,255,0.1)" rx="1"/>
-              <rect x="276" y="50" width="14" height="60" fill="rgba(255,255,255,0.13)" rx="1"/>
-              <rect x="292" y="70" width="20" height="40" fill="rgba(255,255,255,0.09)" rx="1"/>
-              <rect x="314" y="54" width="14" height="56" fill="rgba(255,255,255,0.11)" rx="1"/>
-              <rect x="330" y="38" width="10" height="72" fill="rgba(255,255,255,0.16)" rx="1"/>
-              <rect x="342" y="68" width="18" height="42" fill="rgba(255,255,255,0.09)" rx="1"/>
-              <rect x="362" y="44" width="12" height="66" fill="rgba(255,255,255,0.14)" rx="1"/>
-              <rect x="376" y="60" width="16" height="50" fill="rgba(255,255,255,0.1)" rx="1"/>
-              <rect x="0" y="108" width="400" height="2" fill="rgba(255,255,255,0.15)"/>
-            </svg>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.5!2d144.9586!3d-37.8136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2s161+Collins+St%2C+Melbourne+VIC+3000%2C+Australia!5e0!3m2!1sen!2sau!4v1700000000003"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              title="Gagstek Australia Office" allowfullscreen="">
+            </iframe>
           </div>
         </div>
 
