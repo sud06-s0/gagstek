@@ -1126,7 +1126,6 @@
         </div>
       </li>
       <li><a href="case-study.html">Case Studies</a></li>
-      <li><a href="blog.html" style="color:#60a5fa;">Blog</a></li>
       <li class="nav-has-dropdown">
         <span class="nav-drop-label">
           More
@@ -1175,34 +1174,12 @@
     <a href="icrm.html" class="mob-sub">→ E2E Sales</a>
     <a href="stockpro.html" class="mob-sub">→ StockPro</a>
     <a href="case-study.html">Case Studies</a>
-    <a href="blog.html" style="color:var(--accent-bright);">Blog</a>
     <a href="employee-review.html" class="mob-sub">→ Employee Reviews</a>
     <a href="blog.html" class="mob-sub">→ Newsletter</a>
     <a href="contact.html">Contact</a>
     <a href="https://calendly.com/gagstek/30min" class="mob-cta">Get Started</a>
   </div>
 
-  <script>
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 30);
-    });
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      mobileMenu.classList.toggle('open');
-      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-    });
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        mobileMenu.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-    });
-  </script>
-  
 
 
   <!-- ═══ PAGE HERO ═══ -->
@@ -1261,7 +1238,7 @@
       <div class="blog-grid">
 
         <!-- Card 1 -->
-        <a href="ai-workflow-automation.html" class="blog-card" style="text-decoration:none;">
+        <a href="ai-workflow-automation.html" class="blog-card" data-category="Artificial Intelligence" style="text-decoration:none;">
           <div class="blog-card-img">
             <img src="https://gagstek.com/wp-content/uploads/2026/03/s2.png" alt="AI Workflow Automation" loading="lazy">
             <span class="card-badge">AI</span>
@@ -1282,7 +1259,7 @@
         </a>
 
         <!-- Card 2 -->
-        <a href="ai-copilot-for-crm.html" class="blog-card" style="text-decoration:none;">
+        <a href="ai-copilot-for-crm.html" class="blog-card" data-category="CRM Strategy" style="text-decoration:none;">
           <div class="blog-card-img">
             <img src="https://gagstek.com/wp-content/uploads/2026/03/s3.png" alt="AI Copilot for CRM" loading="lazy">
             <span class="card-badge">AI + CRM</span>
@@ -1303,7 +1280,7 @@
         </a>
 
         <!-- Card 3 -->
-        <a href="crm-implementations-fail.html" class="blog-card" style="text-decoration:none;">
+        <a href="crm-implementations-fail.html" class="blog-card" data-category="CRM Strategy" style="text-decoration:none;">
           <div class="blog-card-img">
             <img src="https://gagstek.com/wp-content/uploads/2026/02/m2.png" alt="Why Most CRM Implementations Fail" loading="lazy">
             <span class="card-badge">CRM</span>
@@ -1324,7 +1301,7 @@
         </a>
 
         <!-- Card 4 -->
-        <a href="ai-augmented-sales-operations.html" class="blog-card" style="text-decoration:none;">
+        <a href="ai-augmented-sales-operations.html" class="blog-card" data-category="Artificial Intelligence" style="text-decoration:none;">
           <div class="blog-card-img">
             <img src="https://gagstek.com/wp-content/uploads/2026/02/2150165588.jpg" alt="AI-Augmented Sales Operations" loading="lazy">
             <span class="card-badge">AI</span>
@@ -1345,7 +1322,7 @@
         </a>
 
         <!-- Card 5 -->
-        <a href="unified-growth-architecture.html" class="blog-card" style="text-decoration:none;">
+        <a href="unified-growth-architecture.html" class="blog-card" data-category="Data & Integration" style="text-decoration:none;">
           <div class="blog-card-img">
             <img src="https://gagstek.com/wp-content/uploads/2026/02/df.png" alt="From Fragmented Systems to Unified Growth Architecture" loading="lazy">
             <span class="card-badge">Strategy</span>
@@ -1366,7 +1343,7 @@
         </a>
 
         <!-- Card 6 -->
-        <a href="salesforce-revenue-cloud.html" class="blog-card" style="text-decoration:none;">
+        <a href="salesforce-revenue-cloud.html" class="blog-card" data-category="Salesforce" style="text-decoration:none;">
           <div class="blog-card-img">
             <img src="https://gagstek.com/wp-content/uploads/2025/12/generated-image-2-scaled.jpg" alt="Salesforce Revenue Cloud" loading="lazy">
             <span class="card-badge">Salesforce</span>
@@ -1387,7 +1364,7 @@
         </a>
 
         <!-- Card 7 -->
-        <a href="data-integration.html" class="blog-card" style="text-decoration:none;">
+        <a href="data-integration.html" class="blog-card" data-category="Data & Integration" style="text-decoration:none;">
           <div class="blog-card-img">
             <img src="https://gagstek.com/wp-content/uploads/2025/12/generated-image-scaled.jpg" alt="Data Integration" loading="lazy">
             <span class="card-badge">Integration</span>
@@ -1408,7 +1385,7 @@
         </a>
 
         <!-- Card 8 -->
-        <a href="salesforce-automation.html" class="blog-card" style="text-decoration:none;">
+        <a href="salesforce-automation.html" class="blog-card" data-category="Salesforce" style="text-decoration:none;">
           <div class="blog-card-img">
             <img src="https://gagstek.com/wp-content/uploads/2025/12/1764747289887.jpg" alt="Salesforce Automation" loading="lazy">
             <span class="card-badge">Salesforce</span>
@@ -1429,7 +1406,7 @@
         </a>
 
         <!-- Card 9 -->
-        <a href="rise-of-agentic-ai.html" class="blog-card" style="text-decoration:none;">
+        <a href="rise-of-agentic-ai.html" class="blog-card" data-category="Artificial Intelligence" style="text-decoration:none;">
           <div class="blog-card-img">
             <img src="https://gagstek.com/wp-content/uploads/2025/07/agentic-ai.jpg" alt="Agentic AI" loading="lazy">
             <span class="card-badge">AI</span>
@@ -1450,7 +1427,7 @@
         </a>
 
         <!-- Card 10 -->
-        <a href="https://gagstek.com/why-staffing-agencies/" class="blog-card" target="_blank" rel="noopener" style="text-decoration:none;">
+        <a href="https://gagstek.com/why-staffing-agencies/" class="blog-card" data-category="Staffing & Talent" target="_blank" rel="noopener" style="text-decoration:none;">
           <div class="blog-card-img">
             <img src="https://gagstek.com/wp-content/uploads/2025/07/staffing.jpg" alt="Staffing Agencies" loading="lazy">
             <span class="card-badge">Staffing</span>
@@ -1471,7 +1448,7 @@
         </a>
 
         <!-- Card 11 -->
-        <a href="https://gagstek.com/salesforce-developers/" class="blog-card" target="_blank" rel="noopener" style="text-decoration:none;">
+        <a href="https://gagstek.com/salesforce-developers/" class="blog-card" data-category="Staffing & Talent" target="_blank" rel="noopener" style="text-decoration:none;">
           <div class="blog-card-img">
             <img src="https://gagstek.com/wp-content/uploads/2025/07/salesforce-dev.jpg" alt="Salesforce Developers" loading="lazy">
             <span class="card-badge">Salesforce</span>
@@ -1708,11 +1685,19 @@
       });
     });
 
-    // Filter buttons (visual toggle only)
+    // Filter buttons — show/hide cards by category
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
+        const selected = btn.textContent.trim();
+        document.querySelectorAll('.blog-card').forEach(card => {
+          if (selected === 'All Posts' || card.dataset.category === selected) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
       });
     });
   </script>

@@ -1043,7 +1043,7 @@
         </div>
       </li>
       <li><a href="case-study.html">Case Studies</a></li>
-      <li><a href="blog.html">Blog</a></li>
+      
       <li class="nav-has-dropdown">
         <span class="nav-drop-label">
           More
@@ -1092,7 +1092,7 @@
     <a href="icrm.html" class="mob-sub">→ E2E Sales</a>
     <a href="stockpro.html" class="mob-sub">→ StockPro</a>
     <a href="case-study.html">Case Studies</a>
-    <a href="blog.html">Blog</a>
+    
     <a href="employee-review.html" class="mob-sub">→ Employee Reviews</a>
     <a href="blog.html" class="mob-sub">→ Newsletter</a>
     <a href="contact.html">Contact</a>
@@ -1100,12 +1100,12 @@
   </div>
 
   <script>
-    const navbar = document.getElementById('navbar');
+    navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 30);
     });
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger = document.getElementById('hamburger');
+    mobileMenu = document.getElementById('mobileMenu');
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('open');
       mobileMenu.classList.toggle('open');
