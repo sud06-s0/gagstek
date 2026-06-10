@@ -177,34 +177,10 @@
     .dp-meta small { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 1px; }
 
     /* ─── PAGE HERO ─────────────────────────────────────── */
-    .cs-hero {
-      position: relative;
-      padding-top: clamp(100px, 14vh, 140px);
-      padding-bottom: clamp(3rem, 6vh, 6rem);
-      padding-left: clamp(1.5rem, 5vw, 6rem);
-      padding-right: clamp(1.5rem, 5vw, 6rem);
-      background: linear-gradient(135deg, #0a1628 0%, #0f2044 60%, #0a1628 100%);
-      overflow: hidden;
-      width: 100%;
-    }
-    .cs-hero::before {
-      content: '';
-      position: absolute; top: -200px; right: -200px;
-      width: 600px; height: 600px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(59,130,246,0.14) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .cs-hero::after {
-      content: '';
-      position: absolute; bottom: -150px; left: -100px;
-      width: 400px; height: 400px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(96,165,250,0.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .cs-hero-inner {
-      position: relative; z-index: 2; max-width: 900px;
-      animation: fadeUp 0.9s ease both;
-    }
+    
+    
+    
+    
     .cs-breadcrumb {
       display: flex; align-items: center; gap: 0.5rem;
       font-size: 0.8rem; color: rgba(255,255,255,0.45);
@@ -557,6 +533,44 @@
       from { opacity: 0; transform: translateY(24px); }
       to   { opacity: 1; transform: translateY(0); }
     }
+  
+    /* ── Hero background image ── */
+    .cs-hero {
+      position: relative;
+      padding-top: clamp(100px, 14vh, 140px);
+      padding-bottom: clamp(3rem, 6vh, 6rem);
+      padding-left: clamp(1.5rem, 5vw, 6rem);
+      padding-right: clamp(1.5rem, 5vw, 6rem);
+      overflow: hidden;
+      width: 100%;
+      background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1800&q=80&fit=crop');
+      background-size: cover;
+      background-position: center;
+    }
+    .cs-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(10,22,40,0.88) 0%, rgba(10,22,40,0.65) 55%, rgba(15,32,68,0.82) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .cs-hero::after {
+      content: '';
+      position: absolute; bottom: -150px; left: -100px;
+      width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%);
+      pointer-events: none; z-index: 1;
+    }
+    .cs-hero-inner {
+      position: relative; z-index: 2; max-width: 900px;
+      animation: fadeUp 0.9s ease both;
+    }
+    @media (max-width: 768px) {
+      .cs-hero {
+        background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80&fit=crop&crop=center');
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -587,23 +601,7 @@
         </div>
       </li>
       <li><a href="case-study.html" style="color:#60a5fa;">Case Studies</a></li>
-            <li class="nav-has-dropdown">
-        <span class="nav-drop-label">
-          More
-          <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;"></i>
-        </span>
-        <div class="drop-panel">
-          <a href="employee-review.html">
-            <div class="dp-icon" style="background:rgba(168,85,247,0.15);"><i class="fa-solid fa-star" style="color:#c084fc;font-size:0.85rem;"></i></div>
-            <div class="dp-meta">Employee Reviews<small>Hear from our team</small></div>
-          </a>
-          <a href="blog.html">
-            <div class="dp-icon" style="background:rgba(251,146,60,0.15);"><i class="fa-solid fa-newspaper" style="color:#fb923c;font-size:0.85rem;"></i></div>
-            <div class="dp-meta">Newsletter<small>Insights &amp; updates</small></div>
-          </a>
-        </div>
-      </li>
-<li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html">Contact</a></li>
       <li><a href="https://calendly.com/gagstek/30min" class="nav-cta">Get Started</a></li>
     </ul>
 
@@ -634,8 +632,6 @@
     <a href="icrm.html" class="mob-sub">→ E2E Sales</a>
     <a href="stockpro.html" class="mob-sub">→ StockPro</a>
     <a href="case-study.html" style="color:#60a5fa;">Case Studies</a>
-    <a href="employee-review.html" class="mob-sub">→ Employee Reviews</a>
-    <a href="blog.html" class="mob-sub">→ Newsletter</a>
     <a href="contact.html">Contact</a>
     <a href="https://calendly.com/gagstek/30min" class="mob-cta">Get Started</a>
   </div>
@@ -643,15 +639,7 @@
   <!-- ═══ HERO ═══ -->
   <section class="cs-hero">
     <div class="cs-hero-inner">
-      <nav class="cs-breadcrumb" aria-label="Breadcrumb">
-        <a href="index.html">Home</a>
-        <span class="sep">/</span>
-        <a href="case-study.html">Case Studies</a>
-        <span class="sep">/</span>
-        <span class="current">Force.com Implementation</span>
-      </nav>
-
-      <div class="cs-eyebrow">Case Study · Salesforce Force.com · BFSI</div>
+<div class="cs-eyebrow">Case Study · Salesforce Force.com · BFSI</div>
 
       <h1 class="cs-hero-title">
         Modernizing Credit Operations with<br>
@@ -666,12 +654,7 @@
         <span class="cs-tag"><strong>Users:</strong> 1,900+</span>
         <span class="cs-tag"><strong>Delivered By:</strong> Gagstek</span>
       </div>
-
-      <a href="case-study.html" class="cs-back-link">
-        <i class="fa-solid fa-arrow-left" style="font-size:0.75rem;"></i>
-        Back to All Case Studies
-      </a>
-    </div>
+</div>
   </section>
 
   <!-- ═══ RESULTS STRIP ═══ -->
