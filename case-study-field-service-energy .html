@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modernising Field Operations with Salesforce Field Service – Case Study | Gagstek</title>
+  <link rel="icon" type="image/png" href="./img/gag.png" />
+  <meta name="description" content="How Gagstek helped a Canadian energy utility reduce field dispatch time by 67%, eliminate paper-based workflows, and cut emergency response time from 4 hours to 48 minutes using Salesforce Field Service Lightning." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Gagstek" />
+  <meta property="og:title" content="Modernising Field Operations with Salesforce Field Service – Gagstek" />
+  <meta property="og:description" content="Gagstek implemented Salesforce Field Service Lightning for NorthGrid Energy, cutting emergency response time from 4 hours to 48 minutes and eliminating paper-based workflows entirely." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://gagstek.com/case-study-field-service-energy/" />
+  <meta property="og:image" content="./img/gag.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #0f2044;
+      --accent: #3b82f6;
+      --accent-bright: #60a5fa;
+      --gold: #f59e0b;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      font-size: clamp(14px, 1.1vw, 18px);
+      width: 100%;
+      max-width: 100% !important;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    /* ─── NAVBAR ─────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: clamp(56px, 6vh, 80px);
+      padding-left: clamp(1rem, 3vw, 4rem) !important;
+      padding-right: clamp(1rem, 3vw, 4rem) !important;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(10,22,40,0.97);
+      transition: background 0.4s, box-shadow 0.4s; width: 100% !important;
+    }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.4); backdrop-filter: blur(12px); }
+    .logo { width: clamp(90px, 9vw, 140px); }
+    .nav-links { display: flex; gap: clamp(0.8rem, 1.5vw, 2rem); list-style: none; align-items: center; }
+    .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.92rem !important; font-weight: 500; letter-spacing: 0.3px; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta { background: var(--accent); color: var(--white) !important; padding: 0.55rem 1.3rem; border-radius: 6px; font-weight: 600 !important; transition: background 0.2s, transform 0.15s !important; }
+    .nav-cta:hover { background: var(--accent-bright) !important; transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-socials { display: flex; align-items: center; gap: 0.5rem; margin-left: 1rem; }
+    .nav-social-icon { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; color: var(--accent-bright); text-decoration: none; transition: color 0.2s, background 0.2s; }
+    .nav-social-icon:hover { color: var(--white); background: rgba(255,255,255,0.12) !important; }
+    .mobile-menu { display: none; position: fixed; inset: 0; top: 72px; background: rgba(10,22,40,0.98); backdrop-filter: blur(16px); z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    .mobile-menu.open { display: flex; opacity: 1; pointer-events: all; }
+    .mobile-menu a { color: var(--white); text-decoration: none; font-size: 1.05rem !important; font-weight: 500; letter-spacing: 0.5px; transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--accent-bright); }
+    .mobile-menu .mob-cta { background: var(--accent); padding: 0.6rem 2rem !important; border-radius: 8px; font-weight: 600; font-size: 0.95rem !important; }
+    .mob-products-label { color: rgba(255,255,255,0.5); font-size: 0.7rem !important; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; pointer-events: none; margin-top: 0.25rem; }
+    .mob-sub { font-size: 0.95rem !important; color: rgba(255,255,255,0.65) !important; padding-left: 1.2rem; }
+    .nav-has-dropdown { position: relative; }
+    .nav-drop-label { display: flex; align-items: center; gap: 5px; color: rgba(255,255,255,0.8); font-size: 0.92rem !important; font-weight: 500; letter-spacing: 0.3px; cursor: pointer; transition: color 0.2s; user-select: none; }
+    .nav-drop-label:hover { color: #fff; }
+    .nav-has-dropdown::after { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 16px; }
+    .drop-panel { display: none; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%); background: rgba(10,22,40,0.98); border: 1px solid rgba(96,165,250,0.15); border-radius: 12px; padding: 0.6rem; min-width: 240px; backdrop-filter: blur(16px); box-shadow: 0 16px 40px rgba(0,0,0,0.5); z-index: 200; }
+    .nav-has-dropdown:hover .drop-panel { display: flex; flex-direction: column; gap: 4px; }
+    .drop-panel a { display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 0.85rem; border-radius: 8px; text-decoration: none; color: rgba(255,255,255,0.8); font-size: 0.88rem; transition: background 0.2s, color 0.2s; }
+    .drop-panel a:hover { background: rgba(59,130,246,0.12); color: #fff; }
+    .dp-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .dp-meta { display: flex; flex-direction: column; line-height: 1.3; }
+    .dp-meta small { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 1px; }
+
+    /* ─── HERO ─────────────────────────────────────────────── */
+    .cs-hero {
+      position: relative;
+      padding-top: clamp(100px, 14vh, 140px);
+      padding-bottom: clamp(3rem, 6vh, 6rem);
+      padding-left: clamp(1.5rem, 5vw, 6rem);
+      padding-right: clamp(1.5rem, 5vw, 6rem);
+      overflow: hidden; width: 100%;
+      background-image: url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1800&q=80&fit=crop');
+      background-size: cover; background-position: center 40%;
+    }
+    .cs-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,22,40,0.91) 0%, rgba(10,22,40,0.63) 55%, rgba(15,32,68,0.86) 100%); z-index: 1; pointer-events: none; }
+    .cs-hero::after { content: ''; position: absolute; bottom: -120px; right: -60px; width: 450px; height: 450px; border-radius: 50%; background: radial-gradient(circle, rgba(59,130,246,0.09) 0%, transparent 70%); pointer-events: none; z-index: 1; }
+    .cs-hero-inner { position: relative; z-index: 2; max-width: 900px; animation: fadeUp 0.9s ease both; }
+    @media (max-width: 768px) {
+      .cs-hero { background-image: url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=80&fit=crop&crop=center'); }
+    }
+
+    .cs-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.4); border-radius: 100px; padding: 0.38rem 1rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-bright); margin-bottom: 1.2rem; }
+    .cs-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--accent-bright); border-radius: 50%; }
+    .cs-hero-title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 4.5vw, 3.8rem); font-weight: 900; line-height: 1.1; letter-spacing: -1px; color: var(--white); margin-bottom: 1.5rem; }
+    .cs-hero-title .hl { color: var(--accent-bright); }
+    .cs-meta-tags { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-bottom: 2rem; }
+    .cs-tag { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.13); border-radius: 6px; padding: 0.38rem 0.85rem; font-size: 0.75rem; font-weight: 500; color: rgba(255,255,255,0.65); }
+    .cs-tag strong { color: rgba(255,255,255,0.9); font-weight: 600; }
+
+    /* ─── RESULTS STRIP ────────────────────────────────── */
+    .cs-results-strip { background: linear-gradient(135deg, var(--accent) 0%, #1d4ed8 100%); padding: clamp(2rem, 4vh, 3.5rem) clamp(1.5rem, 5vw, 6rem); width: 100%; }
+    .cs-results-inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; animation: fadeUp 0.9s 0.15s ease both; }
+    .cs-result-num { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 3rem); font-weight: 900; color: #fff; line-height: 1; margin-bottom: 0.4rem; }
+    .cs-result-label { font-size: clamp(0.7rem, 0.85vw, 0.9rem); font-weight: 600; color: rgba(255,255,255,0.88); letter-spacing: 0.3px; text-transform: uppercase; line-height: 1.4; }
+
+    /* ─── MAIN CONTENT ─────────────────────────────────── */
+    .cs-main { padding: clamp(2.5rem, 5vh, 5rem) clamp(1.5rem, 5vw, 6rem); width: 100%; }
+    .cs-layout { display: grid; grid-template-columns: 1fr 340px; gap: clamp(2rem, 4vw, 4rem); align-items: start; }
+    .cs-section { margin-bottom: clamp(2.5rem, 5vh, 4rem); }
+    .cs-section-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-bright); margin-bottom: 0.75rem; }
+    .cs-section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 2.5vw, 2.1rem); font-weight: 900; color: var(--white); line-height: 1.2; margin-bottom: 1.2rem; }
+    .cs-body { color: rgba(255,255,255,0.72); font-size: clamp(0.88rem, 1vw, 1.05rem); line-height: 1.8; }
+    .cs-body p { margin-bottom: 1rem; }
+    .cs-body p:last-child { margin-bottom: 0; }
+    .cs-body strong { color: var(--accent-bright); font-weight: 600; }
+    .cs-challenge-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem; }
+    .cs-challenge-list li { display: flex; align-items: flex-start; gap: 0.75rem; color: rgba(255,255,255,0.72); font-size: clamp(0.86rem, 0.98vw, 1rem); line-height: 1.65; }
+    .cs-challenge-list li::before { content: ''; flex-shrink: 0; margin-top: 0.45rem; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+    .cs-arch-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.2rem; }
+    .cs-arch-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(96,165,250,0.15); border-radius: 12px; padding: 1.1rem 1.25rem; transition: background 0.2s, border-color 0.2s; }
+    .cs-arch-card:hover { background: rgba(59,130,246,0.08); border-color: rgba(96,165,250,0.3); }
+    .cs-arch-icon { width: 36px; height: 36px; border-radius: 9px; background: rgba(59,130,246,0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 0.8rem; }
+    .cs-arch-icon i { color: var(--accent-bright); font-size: 0.95rem; }
+    .cs-arch-card-title { font-size: 0.88rem; font-weight: 600; color: var(--white); margin-bottom: 0.35rem; }
+    .cs-arch-card-desc { font-size: 0.78rem; color: rgba(255,255,255,0.52); line-height: 1.55; }
+    .cs-results-list { display: flex; flex-direction: column; gap: 0.9rem; margin-top: 1rem; }
+    .cs-result-row { display: flex; align-items: center; gap: 1rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(96,165,250,0.1); border-radius: 10px; padding: 0.9rem 1.2rem; transition: background 0.2s; }
+    .cs-result-row:hover { background: rgba(59,130,246,0.07); border-color: rgba(96,165,250,0.25); }
+    .cs-result-badge { flex-shrink: 0; background: linear-gradient(135deg, var(--accent), #1d4ed8); border-radius: 8px; padding: 0.45rem 0.75rem; font-family: 'Playfair Display', serif; font-size: clamp(0.7rem, 0.95vw, 1rem); font-weight: 900; color: #fff; white-space: nowrap; min-width: 70px; text-align: center; line-height: 1.3; }
+    .cs-result-text { font-size: clamp(0.82rem, 0.95vw, 0.97rem); color: rgba(255,255,255,0.75); line-height: 1.5; }
+    .cs-result-text strong { color: var(--white); font-weight: 600; }
+    .cs-divider { height: 1px; background: rgba(255,255,255,0.08); margin: clamp(1.5rem, 3vh, 2.5rem) 0; }
+    .cs-conclusion-box { background: rgba(59,130,246,0.07); border-left: 3px solid var(--accent-bright); border-radius: 0 10px 10px 0; padding: 1.1rem 1.4rem; margin-top: 1rem; font-size: clamp(0.88rem, 1vw, 1.02rem); color: rgba(255,255,255,0.78); line-height: 1.75; }
+    .cs-conclusion-box strong { color: var(--accent-bright); }
+    .cs-testimonial { background: linear-gradient(135deg, rgba(59,130,246,0.1) 0%, rgba(29,78,216,0.08) 100%); border: 1px solid rgba(96,165,250,0.2); border-radius: 16px; padding: clamp(1.5rem, 3vw, 2.5rem); margin-top: 1.5rem; position: relative; overflow: hidden; }
+    .cs-testimonial::before { content: '\201C'; position: absolute; top: -0.5rem; left: 1.2rem; font-family: 'Playfair Display', serif; font-size: 7rem; color: rgba(96,165,250,0.12); line-height: 1; pointer-events: none; }
+    .cs-testi-quote { font-size: clamp(0.9rem, 1.1vw, 1.1rem); color: rgba(255,255,255,0.82); line-height: 1.8; font-style: italic; margin-bottom: 1.2rem; position: relative; z-index: 1; }
+    .cs-testi-author { display: flex; align-items: center; gap: 0.85rem; }
+    .cs-testi-avatar { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), #1d4ed8); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 700; color: #fff; flex-shrink: 0; }
+    .cs-testi-name { font-weight: 700; font-size: 0.88rem; color: var(--white); }
+    .cs-testi-role { font-size: 0.76rem; color: rgba(255,255,255,0.48); margin-top: 1px; }
+
+    /* ─── TIMELINE ─────────────────────────────────────── */
+    .cs-timeline { display: flex; flex-direction: column; gap: 0; margin-top: 1.2rem; }
+    .cs-timeline-step { display: flex; gap: 1rem; align-items: flex-start; }
+    .cs-tl-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+    .cs-tl-dot { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), #1d4ed8); display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; color: #fff; flex-shrink: 0; }
+    .cs-tl-line { width: 2px; flex: 1; min-height: 24px; background: rgba(96,165,250,0.2); }
+    .cs-timeline-step:last-child .cs-tl-line { display: none; }
+    .cs-tl-body { padding: 0.05rem 0 1.3rem; }
+    .cs-tl-phase { font-size: 0.68rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--accent-bright); margin-bottom: 0.2rem; }
+    .cs-tl-title { font-size: 0.9rem; font-weight: 700; color: var(--white); margin-bottom: 0.25rem; }
+    .cs-tl-desc { font-size: 0.78rem; color: rgba(255,255,255,0.52); line-height: 1.55; }
+
+    /* ─── SIDEBAR ───────────────────────────────────────── */
+    .cs-sidebar { position: sticky; top: 100px; display: flex; flex-direction: column; gap: 1.5rem; }
+    .cs-sidebar-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(96,165,250,0.13); border-radius: 14px; padding: 1.4rem 1.5rem; }
+    .cs-sidebar-card-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: var(--accent-bright); margin-bottom: 1rem; }
+    .cs-project-details { display: flex; flex-direction: column; gap: 0.75rem; }
+    .cs-detail-row { display: flex; flex-direction: column; gap: 0.15rem; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .cs-detail-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .cs-detail-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+    .cs-detail-value { font-size: 0.84rem; font-weight: 600; color: rgba(255,255,255,0.85); }
+    .cs-before-after { display: flex; flex-direction: column; gap: 0.5rem; }
+    .cs-ba-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+    .cs-ba-cell { border-radius: 7px; padding: 0.55rem 0.7rem; font-size: 0.74rem; line-height: 1.45; }
+    .cs-ba-cell.before { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); color: rgba(255,255,255,0.55); }
+    .cs-ba-cell.after { background: rgba(59,130,246,0.1); border: 1px solid rgba(96,165,250,0.25); color: rgba(255,255,255,0.75); }
+    .cs-ba-header { font-size: 0.65rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.15rem; }
+    .cs-ba-cell.before .cs-ba-header { color: rgba(239,68,68,0.7); }
+    .cs-ba-cell.after .cs-ba-header { color: var(--accent-bright); }
+    .cs-systems-list { display: flex; flex-direction: column; gap: 0.5rem; }
+    .cs-system-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.8rem; color: rgba(255,255,255,0.65); }
+    .cs-system-item i { color: var(--accent-bright); font-size: 0.75rem; width: 14px; }
+    .cs-cta-card { background: linear-gradient(135deg, var(--accent) 0%, #1d4ed8 100%); border-radius: 14px; padding: 1.6rem 1.5rem; text-align: center; }
+    .cs-cta-card h3 { font-family: 'Playfair Display', serif; font-size: clamp(1rem, 1.4vw, 1.3rem); font-weight: 900; color: #fff; margin-bottom: 0.6rem; }
+    .cs-cta-card p { font-size: 0.8rem; color: rgba(255,255,255,0.82); line-height: 1.6; margin-bottom: 1.2rem; }
+    .cs-cta-btn { display: inline-flex; align-items: center; gap: 0.4rem; background: #fff; color: var(--accent); font-weight: 700; font-size: 0.85rem; padding: 0.65rem 1.4rem; border-radius: 8px; text-decoration: none; transition: transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+    .cs-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+
+    /* ─── STATS ROW ─────────────────────────────────────── */
+    .cs-stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.2rem; }
+    .cs-stat-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(96,165,250,0.13); border-radius: 12px; padding: 1.1rem 1.2rem; text-align: center; }
+    .cs-stat-num { font-family: 'Playfair Display', serif; font-size: clamp(1.3rem, 2vw, 1.9rem); font-weight: 900; color: var(--accent-bright); line-height: 1; margin-bottom: 0.35rem; }
+    .cs-stat-label { font-size: 0.72rem; font-weight: 600; color: rgba(255,255,255,0.5); line-height: 1.4; text-transform: uppercase; letter-spacing: 0.4px; }
+
+    @media (max-width: 1024px) { .cs-layout { grid-template-columns: 1fr; } .cs-sidebar { position: static; display: grid; grid-template-columns: repeat(2, 1fr); } .cs-cta-card { grid-column: 1 / -1; } }
+    @media (max-width: 768px) { nav { padding: 0 1.25rem; } .nav-links { display: none; } .hamburger { display: flex; } .nav-socials { display: none !important; } .cs-arch-grid { grid-template-columns: 1fr; } .cs-results-inner { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; } .cs-sidebar { grid-template-columns: 1fr; } .cs-ba-row { grid-template-columns: 1fr; } .cs-stats-row { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .cs-results-inner { grid-template-columns: repeat(2, 1fr); } .cs-meta-tags { gap: 0.45rem; } .cs-stats-row { grid-template-columns: 1fr; } }
+
+    /* FOOTER */
+    .site-footer { background: #111827; color: rgba(255,255,255,0.75); font-family: 'DM Sans', sans-serif; width: 100%; }
+    .footer-main { padding: 3rem 0 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-main-inner { max-width: 100%; padding: 0 clamp(1.5rem, 4vw, 5rem); display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr 1.4fr; gap: 2rem; align-items: start; }
+    .ft-brand { display: flex; flex-direction: column; gap: 0.55rem; }
+    .ft-logo-link { display: inline-block; margin-bottom: 0.1rem; text-decoration: none; }
+    .ft-logo-img { height: 55px; width: auto; display: block; object-fit: contain; }
+    .ft-tagline { font-size: 0.78rem; color: rgba(255,255,255,0.5); line-height: 1.55; margin: 0; }
+    .ft-socials { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 0.1rem 0; }
+    .ft-social-icon { width: 38px; height: 38px; border-radius: 50%; background: rgba(59,130,246,0.12); display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 0.9rem; transition: background 0.2s; }
+    .ft-social-icon:hover { background: rgba(255,255,255,0.15) !important; }
+    .ft-contact-link { font-size: 0.76rem; color: rgba(255,255,255,0.45); text-decoration: none; display: flex; align-items: center; gap: 0.35rem; transition: color 0.2s; }
+    .ft-contact-link:hover { color: #fff; }
+    .ft-cta-btn { display: inline-flex; align-items: center; gap: 0.35rem; background: #3b82f6; color: #fff; font-weight: 700; font-size: 0.8rem; padding: 0.5rem 1.1rem; border-radius: 6px; text-decoration: none; width: fit-content; transition: background 0.2s, transform 0.15s; }
+    .ft-cta-btn:hover { background: #60a5fa; transform: translateY(-2px); }
+    .ft-col { display: flex; flex-direction: column; gap: 0.48rem; }
+    .ft-col-title { font-weight: 700; color: #fff; margin-bottom: 0.35rem; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.8px; }
+    .ft-col a { color: rgba(255,255,255,0.48); text-decoration: none; font-size: 0.78rem; transition: color 0.2s; }
+    .ft-col a:hover { color: #fff; }
+    .ft-offices { display: flex; flex-direction: column; gap: 0.9rem; margin-top: 0.5rem; }
+    .ft-office-title { font-weight: 700; font-size: 0.8rem; color: #fff; margin-bottom: 0.1rem; }
+    .ft-office-addr { font-size: 0.75rem; line-height: 1.55; color: rgba(255,255,255,0.48); margin: 0; }
+    .ft-office-phone { font-size: 0.72rem; color: rgba(255,255,255,0.38); margin-top: 0.08rem; }
+    .footer-bottom { padding: 0.9rem 0; }
+    .footer-bottom-inner { max-width: 100%; padding: 0 clamp(1.5rem, 4vw, 5rem); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+    .footer-bottom p { font-size: 0.75rem; color: rgba(255,255,255,0.3); margin: 0; }
+    .ft-bottom-links { display: flex; gap: 1.4rem; }
+    .ft-bottom-links a { font-size: 0.75rem; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+    .ft-bottom-links a:hover { color: rgba(255,255,255,0.75); }
+    @media (max-width: 1200px) { .footer-main-inner { grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 1.8rem; } .ft-brand { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; gap: 2rem; align-items: flex-start; } .ft-offices-col { grid-column: 1 / -1; } .ft-offices { flex-direction: row; flex-wrap: wrap; gap: 1.5rem; } .ft-office { flex: 1 1 150px; } }
+    @media (max-width: 768px) { .footer-main-inner { grid-template-columns: 1fr 1fr; gap: 1.6rem; } .ft-brand { grid-column: 1 / -1; flex-direction: column; } .ft-offices-col { grid-column: 1 / -1; } }
+    @media (max-width: 480px) { .footer-main-inner { grid-template-columns: 1fr 1fr; gap: 1.2rem; } .footer-bottom-inner { flex-direction: column; align-items: flex-start; } .ft-bottom-links { flex-wrap: wrap; gap: 0.8rem; } }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav id="navbar">
+    <a href="index.html" class="logo"><img src="./img/logo.png" alt="Gagstek"></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="client.html">Clients</a></li>
+      <li class="nav-has-dropdown">
+        <span class="nav-drop-label">Products <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;"></i></span>
+        <div class="drop-panel">
+          <a href="icrm.html">
+            <div class="dp-icon" style="background:rgba(59,130,246,0.15);"><i class="fa-solid fa-users" style="color:#60a5fa;font-size:0.85rem;"></i></div>
+            <div class="dp-meta">E2E Sales<small>Lead to Invoice, automated</small></div>
+          </a>
+          <a href="stockpro.html">
+            <div class="dp-icon" style="background:rgba(34,197,94,0.15);"><i class="fa-solid fa-briefcase" style="color:#4ade80;font-size:0.85rem;"></i></div>
+            <div class="dp-meta">StockPro<small>Smart inventory management</small></div>
+          </a>
+        </div>
+      </li>
+      <li><a href="case-study.html" style="color:#60a5fa;">Case Studies</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="https://calendly.com/gagstek/30min" class="nav-cta">Get Started</a></li>
+    </ul>
+    <div class="nav-socials">
+      <a href="https://www.youtube.com/@GagstekLLP" aria-label="YouTube" class="nav-social-icon" target="_blank" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style="color:#FF0000"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></a>
+      <a href="https://www.instagram.com/gagstek___/" aria-label="Instagram" class="nav-social-icon" target="_blank" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style="color:#E1306C"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+      <a href="https://in.linkedin.com/company/gagstek" aria-label="LinkedIn" class="nav-social-icon" target="_blank" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style="color:#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="client.html">Clients</a>
+    <span class="mob-products-label">Products</span>
+    <a href="icrm.html" class="mob-sub">→ E2E Sales</a>
+    <a href="stockpro.html" class="mob-sub">→ StockPro</a>
+    <a href="case-study.html" style="color:#60a5fa;">Case Studies</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://calendly.com/gagstek/30min" class="mob-cta">Get Started</a>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="cs-hero">
+    <div class="cs-hero-inner">
+      <div class="cs-eyebrow">Case Study · Field Service Lightning · Energy &amp; Utilities</div>
+      <h1 class="cs-hero-title">
+        Emergency Response: 4 Hours to 48 Minutes —<br>
+        <span class="hl">Field Service Transformation for a Canadian Energy Utility</span>
+      </h1>
+      <div class="cs-meta-tags">
+        <span class="cs-tag"><strong>Client:</strong> NorthGrid Energy (Canada)</span>
+        <span class="cs-tag"><strong>Industry:</strong> Energy &amp; Utilities</span>
+        <span class="cs-tag"><strong>Region:</strong> Ontario &amp; Manitoba, Canada</span>
+        <span class="cs-tag"><strong>Services:</strong> Field Service Implementation &amp; Integration</span>
+        <span class="cs-tag"><strong>Delivered By:</strong> Gagstek</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ RESULTS STRIP ═══ -->
+  <div class="cs-results-strip">
+    <div class="cs-results-inner">
+      <div class="cs-result-item">
+        <div class="cs-result-num">80%</div>
+        <div class="cs-result-label">Faster Emergency<br>Response Time</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">67%</div>
+        <div class="cs-result-label">Reduction in<br>Dispatch Time</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">Zero</div>
+        <div class="cs-result-label">Paper-Based<br>Work Orders</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">CAD 4.2M</div>
+        <div class="cs-result-label">Annual Operational<br>Cost Savings</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ MAIN CONTENT ═══ -->
+  <div class="cs-main">
+    <div class="cs-layout">
+      <div class="cs-content">
+
+        <!-- Background -->
+        <div class="cs-section">
+          <p class="cs-section-label">Background</p>
+          <h2 class="cs-section-title">A Utility Company Running on Paper in a Digital World</h2>
+          <div class="cs-body">
+            <p>NorthGrid Energy distributes electricity to over 740,000 residential and commercial customers across Ontario and Manitoba, operating a field workforce of 620 technicians responsible for maintenance, outage response, meter installation, and safety inspections across a combined service territory of 180,000 square kilometres. At those distances and in those winters, operational efficiency isn't just a business metric — it's a safety imperative.</p>
+            <p>Yet NorthGrid's field operations were almost entirely paper-driven. Work orders were printed and handed to technicians at depot, job updates were radioed back to dispatch, and post-job documentation was completed manually and physically returned for data entry. <strong>Emergency fault calls averaged 4 hours from report to technician on-site</strong> — a figure that had attracted regulatory scrutiny from the Ontario Energy Board. NorthGrid engaged Gagstek to implement <strong>Salesforce Field Service Lightning</strong> and modernise every layer of their field operations, from intelligent scheduling through to mobile-first job completion and real-time GIS asset integration.</p>
+          </div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <!-- Field Scale -->
+        <div class="cs-section">
+          <p class="cs-section-label">Operational Scale</p>
+          <h2 class="cs-section-title">The Numbers Behind the Challenge</h2>
+          <div class="cs-stats-row">
+            <div class="cs-stat-card">
+              <div class="cs-stat-num">620</div>
+              <div class="cs-stat-label">Field Technicians Across 2 Provinces</div>
+            </div>
+            <div class="cs-stat-card">
+              <div class="cs-stat-num">180K km²</div>
+              <div class="cs-stat-label">Service Territory Coverage</div>
+            </div>
+            <div class="cs-stat-card">
+              <div class="cs-stat-num">3,400+</div>
+              <div class="cs-stat-label">Work Orders Per Week at Peak</div>
+            </div>
+            <div class="cs-stat-card">
+              <div class="cs-stat-num">740K</div>
+              <div class="cs-stat-label">Residential &amp; Commercial Customers</div>
+            </div>
+            <div class="cs-stat-card">
+              <div class="cs-stat-num">28</div>
+              <div class="cs-stat-label">Depot Locations Across Both Provinces</div>
+            </div>
+            <div class="cs-stat-card">
+              <div class="cs-stat-num">4 hrs</div>
+              <div class="cs-stat-label">Average Emergency Response — Before</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <!-- Challenges -->
+        <div class="cs-section">
+          <p class="cs-section-label">Key Business Challenges</p>
+          <h2 class="cs-section-title">Paper, Radio, and Manual Everything</h2>
+          <div class="cs-body">
+            <p>NorthGrid's operational fragmentation had compounded over decades of legacy systems and organic growth. By the time Gagstek's discovery team arrived, the business was running on six separate tools with no shared data layer.</p>
+          </div>
+          <ul class="cs-challenge-list">
+            <li><strong>All work orders were paper-based</strong> — printed at depot, carried in trucks, manually completed in the field, and physically returned for data entry; a process taking 2–3 days per job to close in the system</li>
+            <li>Emergency dispatch relied on <strong>radio and phone coordination</strong> between dispatchers and the nearest available technician — no real-time location visibility, no skill-matching, no optimised routing</li>
+            <li>NorthGrid's GIS asset database (containing 2.4 million network components) was <strong>entirely disconnected from work management</strong> — technicians arrived on-site without asset history, previous fault records, or schematic access</li>
+            <li><strong>No mobile capability</strong> for field technicians — job updates, part usage, safety sign-offs, and completion photos were all handled on paper and reconciled back at depot</li>
+            <li>Planned preventative maintenance scheduling was managed in <strong>spreadsheets updated weekly</strong> — meaning schedule conflicts, double-bookings, and unmet maintenance windows were routine</li>
+            <li>Regulatory compliance reporting to the OEB required <strong>manual extraction and reconciliation</strong> from three systems, consuming 40+ hours of staff time per reporting cycle</li>
+          </ul>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <!-- Solution -->
+        <div class="cs-section">
+          <p class="cs-section-label">Gagstek's Solution</p>
+          <h2 class="cs-section-title">A Connected Field Operation, End to End</h2>
+          <div class="cs-body">
+            <p>Gagstek structured the implementation in four phases over 18 weeks, prioritising emergency dispatch capability in Phase 1 given its regulatory urgency, then progressively rolling out mobile, GIS integration, and predictive maintenance across the subsequent phases.</p>
+          </div>
+          <div class="cs-arch-grid">
+            <div class="cs-arch-card">
+              <div class="cs-arch-icon"><i class="fa-solid fa-bolt"></i></div>
+              <div class="cs-arch-card-title">Intelligent Emergency Dispatch</div>
+              <div class="cs-arch-card-desc">Einstein Work Order Routing deployed for emergency fault calls — automatically identifying the nearest qualified technician based on real-time GPS location, skill certification, and vehicle parts inventory, then dispatching via push notification to the FSL mobile app.</div>
+            </div>
+            <div class="cs-arch-card">
+              <div class="cs-arch-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+              <div class="cs-arch-card-title">FSL Mobile App for 620 Technicians</div>
+              <div class="cs-arch-card-desc">Full Salesforce Field Service mobile deployment — technicians receive job assignments, access asset history, complete safety checklists, log parts, capture photos, and obtain digital customer sign-off entirely on device, with offline capability for remote areas with no signal.</div>
+            </div>
+            <div class="cs-arch-card">
+              <div class="cs-arch-icon"><i class="fa-solid fa-map"></i></div>
+              <div class="cs-arch-card-title">GIS Asset Integration</div>
+              <div class="cs-arch-card-desc">Bidirectional integration between Salesforce FSL and NorthGrid's Esri GIS platform — 2.4 million network assets linked to work orders, giving technicians single-tap access to equipment specs, fault history, last inspection date, and network schematics from the job screen.</div>
+            </div>
+            <div class="cs-arch-card">
+              <div class="cs-arch-icon"><i class="fa-solid fa-calendar-days"></i></div>
+              <div class="cs-arch-card-title">Automated Preventative Maintenance Scheduling</div>
+              <div class="cs-arch-card-desc">Rule-based PM scheduling engine replacing manual spreadsheets — maintenance windows auto-generated from asset inspection intervals, dynamically assigned to technicians based on territory, certification, and workload capacity across all 28 depots.</div>
+            </div>
+            <div class="cs-arch-card">
+              <div class="cs-arch-icon"><i class="fa-solid fa-warehouse"></i></div>
+              <div class="cs-arch-card-title">Van Stock &amp; Parts Management</div>
+              <div class="cs-arch-card-desc">Real-time vehicle inventory tracking integrated with the parts warehouse — parts consumed on each job automatically decrement stock, triggering restocking alerts at depot thresholds and reducing first-time fix failures due to missing parts by 44%.</div>
+            </div>
+            <div class="cs-arch-card">
+              <div class="cs-arch-icon"><i class="fa-solid fa-file-chart-column"></i></div>
+              <div class="cs-arch-card-title">OEB Regulatory Reporting Automation</div>
+              <div class="cs-arch-card-desc">Custom FSL dashboards and automated report packs built to Ontario Energy Board specification — eliminating the 40-hour manual reconciliation cycle and replacing it with a one-click export generated directly from live operational data.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <!-- Implementation Timeline -->
+        <div class="cs-section">
+          <p class="cs-section-label">Delivery Approach</p>
+          <h2 class="cs-section-title">Phased Rollout Across 28 Depots</h2>
+          <div class="cs-body">
+            <p>With 620 technicians and 28 depot locations across two provinces, a big-bang go-live was never an option. Gagstek designed a phased rollout that delivered regulatory-critical capability first, then systematically expanded across the workforce and territory.</p>
+          </div>
+          <div class="cs-timeline">
+            <div class="cs-timeline-step">
+              <div class="cs-tl-left">
+                <div class="cs-tl-dot">1</div>
+                <div class="cs-tl-line"></div>
+              </div>
+              <div class="cs-tl-body">
+                <div class="cs-tl-phase">Phase 1 · Weeks 1–4</div>
+                <div class="cs-tl-title">Emergency Dispatch &amp; Core FSL Configuration</div>
+                <div class="cs-tl-desc">Einstein routing configured for Severity 1 and Severity 2 fault calls. Real-time GPS tracking enabled for all vehicles. Emergency response time dropped from 4 hours to 48 minutes within the first week of live operation.</div>
+              </div>
+            </div>
+            <div class="cs-timeline-step">
+              <div class="cs-tl-left">
+                <div class="cs-tl-dot">2</div>
+                <div class="cs-tl-line"></div>
+              </div>
+              <div class="cs-tl-body">
+                <div class="cs-tl-phase">Phase 2 · Weeks 5–9</div>
+                <div class="cs-tl-title">Mobile App Deployment — Ontario Pilot (150 Technicians)</div>
+                <div class="cs-tl-desc">FSL mobile app rolled out to Ontario's Central Region — 150 technicians trained and live on mobile work orders, digital checklists, and photo capture. Paper work orders eliminated in the pilot zone. Offline mode validated across low-signal rural territories.</div>
+              </div>
+            </div>
+            <div class="cs-timeline-step">
+              <div class="cs-tl-left">
+                <div class="cs-tl-dot">3</div>
+                <div class="cs-tl-line"></div>
+              </div>
+              <div class="cs-tl-body">
+                <div class="cs-tl-phase">Phase 3 · Weeks 10–14</div>
+                <div class="cs-tl-title">GIS Integration &amp; Full Province Mobile Rollout</div>
+                <div class="cs-tl-desc">Esri GIS integration completed and activated. Remaining 470 technicians onboarded across Ontario and Manitoba. PM scheduling engine deployed. Van stock integration activated at all 28 depots. Paper work orders fully eliminated across the entire organisation.</div>
+              </div>
+            </div>
+            <div class="cs-timeline-step">
+              <div class="cs-tl-left">
+                <div class="cs-tl-dot">4</div>
+                <div class="cs-tl-line"></div>
+              </div>
+              <div class="cs-tl-body">
+                <div class="cs-tl-phase">Phase 4 · Weeks 15–18</div>
+                <div class="cs-tl-title">Regulatory Reporting, Analytics &amp; Hypercare</div>
+                <div class="cs-tl-desc">OEB reporting automation delivered and validated with NorthGrid's regulatory team. FSL Analytics dashboards deployed for operations management. Four-week Gagstek hypercare period with on-site support at key depots before full handover.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <!-- Results -->
+        <div class="cs-section">
+          <p class="cs-section-label">Business Impact</p>
+          <h2 class="cs-section-title">A Safer, Faster, and Significantly Cheaper Operation</h2>
+          <div class="cs-results-list">
+            <div class="cs-result-row">
+              <div class="cs-result-badge">48 min</div>
+              <div class="cs-result-text"><strong>Emergency fault response time fell from 4 hours to 48 minutes</strong> — an 80% improvement driven by Einstein routing, real-time GPS dispatch, and skill-matched technician assignment, directly resolving NorthGrid's OEB regulatory concern within the first month of go-live.</div>
+            </div>
+            <div class="cs-result-row">
+              <div class="cs-result-badge">67%</div>
+              <div class="cs-result-text"><strong>Standard dispatch time reduced by 67%</strong> — from an average of 2.3 hours to 46 minutes for planned work orders, as automated scheduling replaced manual coordinator decision-making across all 28 depots simultaneously.</div>
+            </div>
+            <div class="cs-result-row">
+              <div class="cs-result-badge">Zero</div>
+              <div class="cs-result-text"><strong>Paper work orders eliminated entirely</strong> across all 620 technicians and 28 depot locations — closing the 2–3 day job closure lag and giving operations management a real-time view of field progress for the first time in the company's history.</div>
+            </div>
+            <div class="cs-result-row">
+              <div class="cs-result-badge">44%</div>
+              <div class="cs-result-text"><strong>First-time fix rate improved by 44%</strong> as GIS asset integration gave technicians access to full equipment history and schematics before arriving on site, and van stock tracking ensured the right parts were loaded before departure.</div>
+            </div>
+            <div class="cs-result-row">
+              <div class="cs-result-badge">40 hrs</div>
+              <div class="cs-result-text"><strong>Regulatory reporting cycle eliminated</strong> — the 40-hour per-cycle manual extraction process replaced by a one-click OEB report export, freeing an entire reporting team for higher-value compliance and planning work.</div>
+            </div>
+            <div class="cs-result-row">
+              <div class="cs-result-badge">CAD 4.2M</div>
+              <div class="cs-result-text"><strong>CAD 4.2 million in annual operational savings</strong> identified across reduced overtime (faster jobs), eliminated data-entry headcount, lower fuel costs from optimised routing, and reduced repeat dispatch from improved first-time fix rates.</div>
+            </div>
+          </div>
+          <div class="cs-conclusion-box" style="margin-top:1.5rem;">
+            For a regulated utility, the stakes of slow field response extend beyond customer satisfaction into public safety, regulatory standing, and licence conditions. Gagstek's Field Service Lightning implementation gave NorthGrid Energy the <strong>digital foundation to meet those obligations reliably</strong> — while delivering a financial return that paid back the project cost inside the first eight months of operation.
+          </div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <!-- Testimonial -->
+        <div class="cs-section">
+          <p class="cs-section-label">Client Testimonial</p>
+          <h2 class="cs-section-title">What the Client Said</h2>
+          <div class="cs-testimonial">
+            <p class="cs-testi-quote">
+              "We were under real pressure from the OEB on response times, and we knew our paper-based processes were the root cause — but the scale of the challenge felt enormous. 620 technicians, 28 depots, two provinces. Gagstek didn't flinch. They phased the rollout intelligently, got our emergency response metric into compliance within the first month, and had every technician on mobile within 14 weeks. The GIS integration was the piece that surprised our field teams most — they couldn't believe they could pull up full asset history and network schematics from their phone on a pole in Northern Manitoba. That capability alone changed how our people work."
+            </p>
+            <div class="cs-testi-author">
+              <div class="cs-testi-avatar">R</div>
+              <div>
+                <div class="cs-testi-name">Director of Field Operations</div>
+                <div class="cs-testi-role">NorthGrid Energy, Ontario Canada</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.cs-content -->
+
+      <!-- SIDEBAR -->
+      <aside class="cs-sidebar">
+
+        <div class="cs-sidebar-card">
+          <p class="cs-sidebar-card-title">Project Details</p>
+          <div class="cs-project-details">
+            <div class="cs-detail-row"><span class="cs-detail-label">Client</span><span class="cs-detail-value">NorthGrid Energy (Canada)</span></div>
+            <div class="cs-detail-row"><span class="cs-detail-label">Industry</span><span class="cs-detail-value">Energy &amp; Utilities</span></div>
+            <div class="cs-detail-row"><span class="cs-detail-label">Region</span><span class="cs-detail-value">Ontario &amp; Manitoba, Canada</span></div>
+            <div class="cs-detail-row"><span class="cs-detail-label">Field Workforce</span><span class="cs-detail-value">620 Technicians</span></div>
+            <div class="cs-detail-row"><span class="cs-detail-label">Depot Locations</span><span class="cs-detail-value">28 Depots</span></div>
+            <div class="cs-detail-row"><span class="cs-detail-label">GIS Assets Integrated</span><span class="cs-detail-value">2.4 Million Components</span></div>
+            <div class="cs-detail-row"><span class="cs-detail-label">Duration</span><span class="cs-detail-value">18 Weeks (4 Phases)</span></div>
+            <div class="cs-detail-row"><span class="cs-detail-label">Delivered By</span><span class="cs-detail-value">Gagstek</span></div>
+          </div>
+        </div>
+
+        <div class="cs-sidebar-card">
+          <p class="cs-sidebar-card-title">Before vs. After</p>
+          <div class="cs-before-after">
+            <div class="cs-ba-row">
+              <div class="cs-ba-cell before"><div class="cs-ba-header">Before</div>4-hour emergency response</div>
+              <div class="cs-ba-cell after"><div class="cs-ba-header">After</div>48-minute response</div>
+            </div>
+            <div class="cs-ba-row">
+              <div class="cs-ba-cell before"><div class="cs-ba-header">Before</div>Paper work orders only</div>
+              <div class="cs-ba-cell after"><div class="cs-ba-header">After</div>100% digital mobile</div>
+            </div>
+            <div class="cs-ba-row">
+              <div class="cs-ba-cell before"><div class="cs-ba-header">Before</div>Radio/phone dispatch</div>
+              <div class="cs-ba-cell after"><div class="cs-ba-header">After</div>Einstein auto-routing</div>
+            </div>
+            <div class="cs-ba-row">
+              <div class="cs-ba-cell before"><div class="cs-ba-header">Before</div>No GIS access on-site</div>
+              <div class="cs-ba-cell after"><div class="cs-ba-header">After</div>Full Esri GIS on mobile</div>
+            </div>
+            <div class="cs-ba-row">
+              <div class="cs-ba-cell before"><div class="cs-ba-header">Before</div>40hr regulatory reports</div>
+              <div class="cs-ba-cell after"><div class="cs-ba-header">After</div>One-click OEB export</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-sidebar-card">
+          <p class="cs-sidebar-card-title">Technology Stack</p>
+          <div class="cs-systems-list">
+            <div class="cs-system-item"><i class="fa-solid fa-circle-check"></i> Salesforce Field Service Lightning</div>
+            <div class="cs-system-item"><i class="fa-solid fa-circle-check"></i> Einstein Work Order Routing</div>
+            <div class="cs-system-item"><i class="fa-solid fa-circle-check"></i> FSL Mobile App (iOS &amp; Android)</div>
+            <div class="cs-system-item"><i class="fa-solid fa-circle-check"></i> Esri ArcGIS Integration</div>
+            <div class="cs-system-item"><i class="fa-solid fa-circle-check"></i> Salesforce Service Cloud</div>
+            <div class="cs-system-item"><i class="fa-solid fa-circle-check"></i> FSL Connected Worker</div>
+            <div class="cs-system-item"><i class="fa-solid fa-circle-check"></i> Salesforce Field Service Analytics</div>
+          </div>
+        </div>
+
+        <div class="cs-cta-card">
+          <h3>Ready to modernise your field workforce operations?</h3>
+          <p>Let Gagstek design and implement Salesforce Field Service Lightning for your scale and complexity.</p>
+          <a href="https://calendly.com/gagstek/30min" class="cs-cta-btn" target="_blank" rel="noopener">Book a Free Consultation ↗</a>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-main-inner">
+        <div class="ft-brand">
+          <a href="index.html" class="ft-logo-link"><img src="./img/logo.png" alt="Gagstek" class="ft-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';" /><span class="ft-logo-fallback" style="display:none;font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:#fff;">Gags<span style="color:#60a5fa;">tek</span></span></a>
+          <p class="ft-tagline">Unleashing Business Potential<br>with Cloud &amp; AI</p>
+          <div class="ft-socials">
+            <a href="https://www.instagram.com/gagstek___/" aria-label="Instagram" class="ft-social-icon" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="color:#E1306C"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+            <a href="https://in.linkedin.com/company/gagstek" aria-label="LinkedIn" class="ft-social-icon" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="color:#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+            <a href="https://www.youtube.com/@GagstekLLP" aria-label="YouTube" class="ft-social-icon" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="color:#FF0000"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></a>
+          </div>
+          <a href="mailto:info@gagstek.com" class="ft-contact-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@gagstek.com</a>
+          <a href="https://calendly.com/gagstek/30min" class="ft-cta-btn">Get Started ↗</a>
+        </div>
+        <div class="ft-col"><p class="ft-col-title">Salesforce</p><a href="services.html">Business Consulting</a><a href="services.html">Implementation &amp; Dev</a><a href="services.html">Quote-To-Cash</a><a href="services.html">Admin &amp; Support</a><a href="services.html">Data Migration</a><a href="services.html">Staff Augmentation</a></div>
+        <div class="ft-col"><p class="ft-col-title">AI Services</p><a href="services.html">AI Sales Automation</a><a href="services.html">AI Lead Intelligence</a><a href="services.html">Conversational AI</a><a href="services.html">AI Workflow</a><a href="services.html">AI Data Engineering</a><a href="services.html">Custom AI Builds</a></div>
+        <div class="ft-col"><p class="ft-col-title">Products</p><a href="icrm.html">E2E Sales (iCRM)</a><a href="stockpro.html">StockPro</a></div>
+        <div class="ft-col"><p class="ft-col-title">Company</p><a href="index.html">Home</a><a href="about.html">About</a><a href="client.html">Clients</a><a href="case-study.html">Case Studies</a><a href="career.html">Career</a><a href="contact.html">Contact</a></div>
+        <div class="ft-offices-col">
+          <p class="ft-col-title">Our Offices</p>
+          <div class="ft-offices">
+            <div class="ft-office"><p class="ft-office-title">🇺🇸 United States</p><p class="ft-office-addr">16192 Coastal Highway, Lewes,<br>Delaware 19958</p><p class="ft-office-phone">+1-567-399-2506</p></div>
+            <div class="ft-office"><p class="ft-office-title">🇮🇳 India</p><p class="ft-office-addr">P3-001 Pentagon Tower,<br>Magarpatta City, Pune 411013</p></div>
+            <div class="ft-office"><p class="ft-office-title">🇦🇺 Australia</p><p class="ft-office-addr">161 Collins St,<br>Melbourne VIC, 3000</p><p class="ft-office-phone">+61-473118458</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <p>© 2026 Gagstek. All Rights Reserved.</p>
+        <div class="ft-bottom-links"><a href="contact.html">Privacy Policy</a><a href="contact.html">Terms of Service</a><a href="services.html">Sitemap</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+    mobileMenu.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }); });
+  </script>
+
+</body>
+</html>
