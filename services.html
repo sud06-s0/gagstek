@@ -555,8 +555,9 @@
       .svc-content { padding-left: 0; }
       .svc-entry { grid-template-columns: 1fr; gap: 1.5rem; }
       .svc-entry.reverse { direction: ltr; }
+      .svc-img-wrap { order: -1; }
       .testi-cta-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .stats-bar-inner { grid-template-columns: repeat(2, 1fr); }
+      .stats-bar-inner { grid-template-columns: 1fr; }
       .process-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
@@ -569,7 +570,7 @@
       .btn-primary, .btn-outline { width: 100%; max-width: 280px; text-align: center; }
       .footer-bottom .footer-inner { flex-direction: column; align-items: flex-start; }
       .ft-bottom-links { flex-wrap: wrap; gap: 1rem; }
-      .stats-bar-inner { grid-template-columns: 1fr 1fr; }
+      .stats-bar-inner { grid-template-columns: 1fr; }
       .footer-mid .footer-inner { grid-template-columns: 1fr; }
     }
 

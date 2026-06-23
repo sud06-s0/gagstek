@@ -485,7 +485,7 @@
     }
     @media (max-width: 900px) {
       .reviews-grid { grid-template-columns: 1fr 1fr; }
-      .stats-bar-inner { grid-template-columns: repeat(2,1fr); }
+      .stats-bar-inner { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       .reviews-grid { grid-template-columns: 1fr; }
@@ -502,6 +502,14 @@
       .ft-bottom-links { flex-wrap: wrap; gap: 1rem; }
       .footer-mid .footer-inner { grid-template-columns: 1fr; }
       .cta-btns { flex-direction: column; align-items: center; }
+      .featured-section { padding: 3.5rem 1.25rem 2.5rem; }
+      .featured-header { margin-bottom: 1.75rem; }
+      .featured-card { min-height: auto; }
+      .featured-img-wrap { aspect-ratio: 4 / 3; }
+      .featured-text { padding: 1.5rem 1.25rem; }
+      .featured-quote-icon { font-size: 2.75rem; }
+      .featured-author { align-items: flex-start; }
+      .featured-avatar { width: 44px; height: 44px; font-size: .9rem; }
     }
 
     
@@ -1099,26 +1107,6 @@
     <a href="https://calendly.com/gagstek/30min" class="mob-cta">Get Started</a>
   </div>
 
-  <script>
-    navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 30);
-    });
-    hamburger = document.getElementById('hamburger');
-    mobileMenu = document.getElementById('mobileMenu');
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      mobileMenu.classList.toggle('open');
-      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-    });
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        mobileMenu.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-    });
-  </script>
   
 
 
