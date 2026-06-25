@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eliminating Quote Errors with Salesforce CPQ – Case Study | Gagstek</title>
+  <title>Modernising Field Operations with Salesforce Field Service – Case Study | Gagstek</title>
   <link rel="icon" type="image/png" href="./img/gag.png" />
-  <meta name="description" content="How Gagstek helped an Australian MedTech manufacturer eliminate manual quoting errors, reduce quote turnaround from 9 days to 4 hours, and reclaim revenue with Salesforce CPQ." />
+  <meta name="description" content="How Gagstek helped a Canadian energy utility reduce field dispatch time by 67%, eliminate paper-based workflows, and cut emergency response time from 4 hours to 48 minutes using Salesforce Field Service Lightning." />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="Gagstek" />
-  <meta property="og:title" content="Eliminating Quote Errors with Salesforce CPQ – Case Study | Gagstek" />
-  <meta property="og:description" content="Gagstek implemented Salesforce CPQ for Meridian MedTech, cutting quote turnaround from 9 days to 4 hours and eliminating pricing errors entirely." />
+  <meta property="og:title" content="Modernising Field Operations with Salesforce Field Service – Gagstek" />
+  <meta property="og:description" content="Gagstek implemented Salesforce Field Service Lightning for NorthGrid Energy, cutting emergency response time from 4 hours to 48 minutes and eliminating paper-based workflows entirely." />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://gagstek.com/case-study-cpq-medtech/" />
+  <meta property="og:url" content="https://gagstek.com/case-study-field-service-energy/" />
   <meta property="og:image" content="./img/gag.png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
@@ -96,14 +96,14 @@
       padding-left: clamp(1.5rem, 5vw, 6rem);
       padding-right: clamp(1.5rem, 5vw, 6rem);
       overflow: hidden; width: 100%;
-      background-image: url('https://images.unsplash.com/photo-1530026405186-ed1f139313f3?w=1800&q=80&fit=crop');
-      background-size: cover; background-position: center top;
+      background-image: url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1800&q=80&fit=crop');
+      background-size: cover; background-position: center 40%;
     }
-    .cs-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,22,40,0.90) 0%, rgba(10,22,40,0.62) 55%, rgba(15,32,68,0.85) 100%); z-index: 1; pointer-events: none; }
-    .cs-hero::after { content: ''; position: absolute; bottom: -150px; right: -80px; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(59,130,246,0.10) 0%, transparent 70%); pointer-events: none; z-index: 1; }
+    .cs-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,22,40,0.91) 0%, rgba(10,22,40,0.63) 55%, rgba(15,32,68,0.86) 100%); z-index: 1; pointer-events: none; }
+    .cs-hero::after { content: ''; position: absolute; bottom: -120px; right: -60px; width: 450px; height: 450px; border-radius: 50%; background: radial-gradient(circle, rgba(59,130,246,0.09) 0%, transparent 70%); pointer-events: none; z-index: 1; }
     .cs-hero-inner { position: relative; z-index: 2; max-width: 900px; animation: fadeUp 0.9s ease both; }
     @media (max-width: 768px) {
-      .cs-hero { background-image: url('https://images.unsplash.com/photo-1530026405186-ed1f139313f3?w=800&q=80&fit=crop&crop=center'); }
+      .cs-hero { background-image: url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=80&fit=crop&crop=center'); }
     }
 
     .cs-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.4); border-radius: 100px; padding: 0.38rem 1rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-bright); margin-bottom: 1.2rem; }
@@ -157,6 +157,18 @@
     .cs-testi-name { font-weight: 700; font-size: 0.88rem; color: var(--white); }
     .cs-testi-role { font-size: 0.76rem; color: rgba(255,255,255,0.48); margin-top: 1px; }
 
+    /* ─── TIMELINE ─────────────────────────────────────── */
+    .cs-timeline { display: flex; flex-direction: column; gap: 0; margin-top: 1.2rem; }
+    .cs-timeline-step { display: flex; gap: 1rem; align-items: flex-start; }
+    .cs-tl-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+    .cs-tl-dot { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), #1d4ed8); display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; color: #fff; flex-shrink: 0; }
+    .cs-tl-line { width: 2px; flex: 1; min-height: 24px; background: rgba(96,165,250,0.2); }
+    .cs-timeline-step:last-child .cs-tl-line { display: none; }
+    .cs-tl-body { padding: 0.05rem 0 1.3rem; }
+    .cs-tl-phase { font-size: 0.68rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--accent-bright); margin-bottom: 0.2rem; }
+    .cs-tl-title { font-size: 0.9rem; font-weight: 700; color: var(--white); margin-bottom: 0.25rem; }
+    .cs-tl-desc { font-size: 0.78rem; color: rgba(255,255,255,0.52); line-height: 1.55; }
+
     /* ─── SIDEBAR ───────────────────────────────────────── */
     .cs-sidebar { position: sticky; top: 100px; display: flex; flex-direction: column; gap: 1.5rem; }
     .cs-sidebar-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(96,165,250,0.13); border-radius: 14px; padding: 1.4rem 1.5rem; }
@@ -183,9 +195,15 @@
     .cs-cta-btn { display: inline-flex; align-items: center; gap: 0.4rem; background: #fff; color: var(--accent); font-weight: 700; font-size: 0.85rem; padding: 0.65rem 1.4rem; border-radius: 8px; text-decoration: none; transition: transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
     .cs-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
 
+    /* ─── STATS ROW ─────────────────────────────────────── */
+    .cs-stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.2rem; }
+    .cs-stat-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(96,165,250,0.13); border-radius: 12px; padding: 1.1rem 1.2rem; text-align: center; }
+    .cs-stat-num { font-family: 'Playfair Display', serif; font-size: clamp(1.3rem, 2vw, 1.9rem); font-weight: 900; color: var(--accent-bright); line-height: 1; margin-bottom: 0.35rem; }
+    .cs-stat-label { font-size: 0.72rem; font-weight: 600; color: rgba(255,255,255,0.5); line-height: 1.4; text-transform: uppercase; letter-spacing: 0.4px; }
+
     @media (max-width: 1024px) { .cs-layout { grid-template-columns: 1fr; } .cs-sidebar { position: static; display: grid; grid-template-columns: repeat(2, 1fr); } .cs-cta-card { grid-column: 1 / -1; } }
-    @media (max-width: 768px) { nav { padding: 0 1.25rem; } .nav-links { display: none; } .hamburger { display: flex; } .nav-socials { display: none !important; } .cs-arch-grid { grid-template-columns: 1fr; } .cs-results-inner { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; } .cs-sidebar { grid-template-columns: 1fr; } .cs-ba-row { grid-template-columns: 1fr; } }
-    @media (max-width: 480px) { .cs-results-inner { grid-template-columns: repeat(2, 1fr); } .cs-meta-tags { gap: 0.45rem; } }
+    @media (max-width: 768px) { nav { padding: 0 1.25rem; } .nav-links { display: none; } .hamburger { display: flex; } .nav-socials { display: none !important; } .cs-arch-grid { grid-template-columns: 1fr; } .cs-results-inner { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; } .cs-sidebar { grid-template-columns: 1fr; } .cs-ba-row { grid-template-columns: 1fr; } .cs-stats-row { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .cs-results-inner { grid-template-columns: repeat(2, 1fr); } .cs-meta-tags { gap: 0.45rem; } .cs-stats-row { grid-template-columns: 1fr; } }
 
     /* FOOTER */
     .site-footer { background: #111827; color: rgba(255,255,255,0.75); font-family: 'DM Sans', sans-serif; width: 100%; }
@@ -299,16 +317,16 @@
   <!-- ═══ HERO ═══ -->
   <section class="cs-hero">
     <div class="cs-hero-inner">
-      <div class="cs-eyebrow">Case Study · Salesforce CPQ · MedTech</div>
+      <div class="cs-eyebrow">Case Study · Field Service Lightning · Energy &amp; Utilities</div>
       <h1 class="cs-hero-title">
-        From 9-Day Quotes to 4 Hours —<br>
-        <span class="hl">Salesforce CPQ for an Australian MedTech Manufacturer</span>
+        Emergency Response: 4 Hours to 48 Minutes —<br>
+        <span class="hl">Field Service Transformation for a Canadian Energy Utility</span>
       </h1>
       <div class="cs-meta-tags">
-        <span class="cs-tag"><strong>Client:</strong> Meridian MedTech (Australia)</span>
-        <span class="cs-tag"><strong>Industry:</strong> Medical Devices / Manufacturing</span>
-        <span class="cs-tag"><strong>Region:</strong> Australia &amp; New Zealand</span>
-        <span class="cs-tag"><strong>Services:</strong> CPQ Implementation &amp; Integration</span>
+        <span class="cs-tag"><strong>Client:</strong> NorthGrid Energy (Canada)</span>
+        <span class="cs-tag"><strong>Industry:</strong> Energy &amp; Utilities</span>
+        <span class="cs-tag"><strong>Region:</strong> Ontario &amp; Manitoba, Canada</span>
+        <span class="cs-tag"><strong>Services:</strong> Field Service Implementation &amp; Integration</span>
         <span class="cs-tag"><strong>Delivered By:</strong> Gagstek</span>
       </div>
     </div>
@@ -318,20 +336,20 @@
   <div class="cs-results-strip">
     <div class="cs-results-inner">
       <div class="cs-result-item">
-        <div class="cs-result-num">96%</div>
-        <div class="cs-result-label">Reduction in<br>Quote Turnaround</div>
+        <div class="cs-result-num">80%</div>
+        <div class="cs-result-label">Faster Emergency<br>Response Time</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">67%</div>
+        <div class="cs-result-label">Reduction in<br>Dispatch Time</div>
       </div>
       <div class="cs-result-item">
         <div class="cs-result-num">Zero</div>
-        <div class="cs-result-label">Pricing Errors<br>Post Go-Live</div>
+        <div class="cs-result-label">Paper-Based<br>Work Orders</div>
       </div>
       <div class="cs-result-item">
-        <div class="cs-result-num">42%</div>
-        <div class="cs-result-label">Higher Win Rate<br>on Quoted Deals</div>
-      </div>
-      <div class="cs-result-item">
-        <div class="cs-result-num">A$2.1M</div>
-        <div class="cs-result-label">Revenue Recovered<br>from Discount Leakage</div>
+        <div class="cs-result-num">CAD 4.2M</div>
+        <div class="cs-result-label">Annual Operational<br>Cost Savings</div>
       </div>
     </div>
   </div>
@@ -341,121 +359,221 @@
     <div class="cs-layout">
       <div class="cs-content">
 
+        <!-- Background -->
         <div class="cs-section">
           <p class="cs-section-label">Background</p>
-          <h2 class="cs-section-title">Complex Products, Broken Quoting Process</h2>
+          <h2 class="cs-section-title">A Utility Company Running on Paper in a Digital World</h2>
           <div class="cs-body">
-            <p>Meridian MedTech designs and manufactures surgical equipment and diagnostic devices sold to hospitals, private clinics, and government health systems across Australia and New Zealand. With a product catalogue of over 1,400 SKUs — each with complex configuration options, tiered hospital pricing, government contract rates, and TGA compliance documentation requirements — their quoting process had become a significant bottleneck to growth.</p>
-            <p>Sales reps were building quotes manually in Excel, cross-referencing multiple pricing spreadsheets, applying discounts by hand, and waiting up to 9 days for sign-off from pricing managers and legal — all before a proposal could reach the customer. The result: <strong>deal velocity was painfully slow</strong>, pricing errors were costing the business on both ends (over-discounting and compliance penalties), and competitors were consistently outpacing Meridian on response speed. They engaged Gagstek to implement <strong>Salesforce CPQ</strong> and eliminate the chaos at the heart of their revenue process.</p>
+            <p>NorthGrid Energy distributes electricity to over 740,000 residential and commercial customers across Ontario and Manitoba, operating a field workforce of 620 technicians responsible for maintenance, outage response, meter installation, and safety inspections across a combined service territory of 180,000 square kilometres. At those distances and in those winters, operational efficiency isn't just a business metric — it's a safety imperative.</p>
+            <p>Yet NorthGrid's field operations were almost entirely paper-driven. Work orders were printed and handed to technicians at depot, job updates were radioed back to dispatch, and post-job documentation was completed manually and physically returned for data entry. <strong>Emergency fault calls averaged 4 hours from report to technician on-site</strong> — a figure that had attracted regulatory scrutiny from the Ontario Energy Board. NorthGrid engaged Gagstek to implement <strong>Salesforce Field Service Lightning</strong> and modernise every layer of their field operations, from intelligent scheduling through to mobile-first job completion and real-time GIS asset integration.</p>
           </div>
         </div>
 
         <div class="cs-divider"></div>
 
+        <!-- Field Scale -->
+        <div class="cs-section">
+          <p class="cs-section-label">Operational Scale</p>
+          <h2 class="cs-section-title">The Numbers Behind the Challenge</h2>
+          <div class="cs-stats-row">
+            <div class="cs-stat-card">
+              <div class="cs-stat-num">620</div>
+              <div class="cs-stat-label">Field Technicians Across 2 Provinces</div>
+            </div>
+            <div class="cs-stat-card">
+              <div class="cs-stat-num">180K km²</div>
+              <div class="cs-stat-label">Service Territory Coverage</div>
+            </div>
+            <div class="cs-stat-card">
+              <div class="cs-stat-num">3,400+</div>
+              <div class="cs-stat-label">Work Orders Per Week at Peak</div>
+            </div>
+            <div class="cs-stat-card">
+              <div class="cs-stat-num">740K</div>
+              <div class="cs-stat-label">Residential &amp; Commercial Customers</div>
+            </div>
+            <div class="cs-stat-card">
+              <div class="cs-stat-num">28</div>
+              <div class="cs-stat-label">Depot Locations Across Both Provinces</div>
+            </div>
+            <div class="cs-stat-card">
+              <div class="cs-stat-num">4 hrs</div>
+              <div class="cs-stat-label">Average Emergency Response — Before</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <!-- Challenges -->
         <div class="cs-section">
           <p class="cs-section-label">Key Business Challenges</p>
-          <h2 class="cs-section-title">Where Revenue Was Leaking</h2>
+          <h2 class="cs-section-title">Paper, Radio, and Manual Everything</h2>
           <div class="cs-body">
-            <p>Gagstek's discovery process identified six root causes — each independently damaging, together catastrophic.</p>
+            <p>NorthGrid's operational fragmentation had compounded over decades of legacy systems and organic growth. By the time Gagstek's discovery team arrived, the business was running on six separate tools with no shared data layer.</p>
           </div>
           <ul class="cs-challenge-list">
-            <li><strong>Manual Excel quoting</strong> across 18 sales reps, each maintaining their own version of the pricing spreadsheet — leading to version drift and frequent errors on final proposal figures</li>
-            <li><strong>No product configuration rules</strong> — reps could quote incompatible device components, generating downstream order fulfilment failures and customer satisfaction issues</li>
-            <li>Government contract pricing and hospital group rates were stored in separate documents, causing <strong>incorrect tier application</strong> that routinely left margin on the table or triggered compliance disputes</li>
-            <li><strong>Approval workflows ran entirely by email</strong> — pricing manager and legal sign-off averaged 4.5 days each, with no visibility into where deals were stalled</li>
-            <li>TGA documentation bundles had to be manually compiled and attached per order, a process taking <strong>45–90 minutes per quote</strong> for a compliance officer</li>
-            <li>No integration between quoting and Salesforce CRM meant <strong>sales forecasting was unreliable</strong> — pipeline figures were manually keyed and frequently out of date</li>
+            <li><strong>All work orders were paper-based</strong> — printed at depot, carried in trucks, manually completed in the field, and physically returned for data entry; a process taking 2–3 days per job to close in the system</li>
+            <li>Emergency dispatch relied on <strong>radio and phone coordination</strong> between dispatchers and the nearest available technician — no real-time location visibility, no skill-matching, no optimised routing</li>
+            <li>NorthGrid's GIS asset database (containing 2.4 million network components) was <strong>entirely disconnected from work management</strong> — technicians arrived on-site without asset history, previous fault records, or schematic access</li>
+            <li><strong>No mobile capability</strong> for field technicians — job updates, part usage, safety sign-offs, and completion photos were all handled on paper and reconciled back at depot</li>
+            <li>Planned preventative maintenance scheduling was managed in <strong>spreadsheets updated weekly</strong> — meaning schedule conflicts, double-bookings, and unmet maintenance windows were routine</li>
+            <li>Regulatory compliance reporting to the OEB required <strong>manual extraction and reconciliation</strong> from three systems, consuming 40+ hours of staff time per reporting cycle</li>
           </ul>
         </div>
 
         <div class="cs-divider"></div>
 
+        <!-- Solution -->
         <div class="cs-section">
           <p class="cs-section-label">Gagstek's Solution</p>
-          <h2 class="cs-section-title">CPQ Built Around the Complexity of MedTech</h2>
+          <h2 class="cs-section-title">A Connected Field Operation, End to End</h2>
           <div class="cs-body">
-            <p>Gagstek's team spent the first three weeks mapping every pricing rule, discount authority matrix, and product configuration constraint before writing a single CPQ rule. The implementation was structured in four phases — product catalogue, pricing &amp; rules, approvals, and ERP integration — delivered over 14 weeks.</p>
+            <p>Gagstek structured the implementation in four phases over 18 weeks, prioritising emergency dispatch capability in Phase 1 given its regulatory urgency, then progressively rolling out mobile, GIS integration, and predictive maintenance across the subsequent phases.</p>
           </div>
           <div class="cs-arch-grid">
             <div class="cs-arch-card">
-              <div class="cs-arch-icon"><i class="fa-solid fa-cubes"></i></div>
-              <div class="cs-arch-card-title">Product Catalogue &amp; Configuration Rules</div>
-              <div class="cs-arch-card-desc">All 1,400+ SKUs loaded into CPQ with product bundles, compatibility constraints, required options, and feature picklists — eliminating incompatible configurations at the point of quoting.</div>
+              <div class="cs-arch-icon"><i class="fa-solid fa-bolt"></i></div>
+              <div class="cs-arch-card-title">Intelligent Emergency Dispatch</div>
+              <div class="cs-arch-card-desc">Einstein Work Order Routing deployed for emergency fault calls — automatically identifying the nearest qualified technician based on real-time GPS location, skill certification, and vehicle parts inventory, then dispatching via push notification to the FSL mobile app.</div>
             </div>
             <div class="cs-arch-card">
-              <div class="cs-arch-icon"><i class="fa-solid fa-tags"></i></div>
-              <div class="cs-arch-card-title">Multi-Tier Pricing Engine</div>
-              <div class="cs-arch-card-desc">Price books built for standard retail, hospital group tiers, government contracts, and ANZ distributor rates — with CPQ automatically applying the correct book based on account type and contract status.</div>
+              <div class="cs-arch-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+              <div class="cs-arch-card-title">FSL Mobile App for 620 Technicians</div>
+              <div class="cs-arch-card-desc">Full Salesforce Field Service mobile deployment — technicians receive job assignments, access asset history, complete safety checklists, log parts, capture photos, and obtain digital customer sign-off entirely on device, with offline capability for remote areas with no signal.</div>
             </div>
             <div class="cs-arch-card">
-              <div class="cs-arch-icon"><i class="fa-solid fa-shield-halved"></i></div>
-              <div class="cs-arch-card-title">Discount Guardrails &amp; Approval Routing</div>
-              <div class="cs-arch-card-desc">Automated approval workflows with threshold-based routing — reps within authority approve instantly; deeper discounts trigger pricing manager or CFO review with mobile-enabled push notifications.</div>
+              <div class="cs-arch-icon"><i class="fa-solid fa-map"></i></div>
+              <div class="cs-arch-card-title">GIS Asset Integration</div>
+              <div class="cs-arch-card-desc">Bidirectional integration between Salesforce FSL and NorthGrid's Esri GIS platform — 2.4 million network assets linked to work orders, giving technicians single-tap access to equipment specs, fault history, last inspection date, and network schematics from the job screen.</div>
             </div>
             <div class="cs-arch-card">
-              <div class="cs-arch-icon"><i class="fa-solid fa-file-medical"></i></div>
-              <div class="cs-arch-card-title">TGA Documentation Automation</div>
-              <div class="cs-arch-card-desc">Compliance document bundles auto-generated at quote creation, pulling the correct TGA registration certificates and IFUs per device, eliminating 45–90 minutes of manual compliance work per deal.</div>
+              <div class="cs-arch-icon"><i class="fa-solid fa-calendar-days"></i></div>
+              <div class="cs-arch-card-title">Automated Preventative Maintenance Scheduling</div>
+              <div class="cs-arch-card-desc">Rule-based PM scheduling engine replacing manual spreadsheets — maintenance windows auto-generated from asset inspection intervals, dynamically assigned to technicians based on territory, certification, and workload capacity across all 28 depots.</div>
             </div>
             <div class="cs-arch-card">
-              <div class="cs-arch-icon"><i class="fa-solid fa-arrow-right-arrow-left"></i></div>
-              <div class="cs-arch-card-title">ERP Integration</div>
-              <div class="cs-arch-card-desc">Bidirectional integration with the client's SAP ERP — approved quotes flow directly to order management with no re-keying, while SAP stock availability feeds back into CPQ to flag supply constraints at quoting time.</div>
+              <div class="cs-arch-icon"><i class="fa-solid fa-warehouse"></i></div>
+              <div class="cs-arch-card-title">Van Stock &amp; Parts Management</div>
+              <div class="cs-arch-card-desc">Real-time vehicle inventory tracking integrated with the parts warehouse — parts consumed on each job automatically decrement stock, triggering restocking alerts at depot thresholds and reducing first-time fix failures due to missing parts by 44%.</div>
             </div>
             <div class="cs-arch-card">
-              <div class="cs-arch-icon"><i class="fa-solid fa-file-signature"></i></div>
-              <div class="cs-arch-card-title">e-Signature &amp; Proposal Generation</div>
-              <div class="cs-arch-card-desc">Branded proposal documents auto-generated from CPQ and sent via DocuSign integration — customers receive and sign digitally, with executed contracts auto-attached to the Salesforce opportunity.</div>
+              <div class="cs-arch-icon"><i class="fa-solid fa-file-chart-column"></i></div>
+              <div class="cs-arch-card-title">OEB Regulatory Reporting Automation</div>
+              <div class="cs-arch-card-desc">Custom FSL dashboards and automated report packs built to Ontario Energy Board specification — eliminating the 40-hour manual reconciliation cycle and replacing it with a one-click export generated directly from live operational data.</div>
             </div>
           </div>
         </div>
 
         <div class="cs-divider"></div>
 
+        <!-- Implementation Timeline -->
+        <div class="cs-section">
+          <p class="cs-section-label">Delivery Approach</p>
+          <h2 class="cs-section-title">Phased Rollout Across 28 Depots</h2>
+          <div class="cs-body">
+            <p>With 620 technicians and 28 depot locations across two provinces, a big-bang go-live was never an option. Gagstek designed a phased rollout that delivered regulatory-critical capability first, then systematically expanded across the workforce and territory.</p>
+          </div>
+          <div class="cs-timeline">
+            <div class="cs-timeline-step">
+              <div class="cs-tl-left">
+                <div class="cs-tl-dot">1</div>
+                <div class="cs-tl-line"></div>
+              </div>
+              <div class="cs-tl-body">
+                <div class="cs-tl-phase">Phase 1 · Weeks 1–4</div>
+                <div class="cs-tl-title">Emergency Dispatch &amp; Core FSL Configuration</div>
+                <div class="cs-tl-desc">Einstein routing configured for Severity 1 and Severity 2 fault calls. Real-time GPS tracking enabled for all vehicles. Emergency response time dropped from 4 hours to 48 minutes within the first week of live operation.</div>
+              </div>
+            </div>
+            <div class="cs-timeline-step">
+              <div class="cs-tl-left">
+                <div class="cs-tl-dot">2</div>
+                <div class="cs-tl-line"></div>
+              </div>
+              <div class="cs-tl-body">
+                <div class="cs-tl-phase">Phase 2 · Weeks 5–9</div>
+                <div class="cs-tl-title">Mobile App Deployment — Ontario Pilot (150 Technicians)</div>
+                <div class="cs-tl-desc">FSL mobile app rolled out to Ontario's Central Region — 150 technicians trained and live on mobile work orders, digital checklists, and photo capture. Paper work orders eliminated in the pilot zone. Offline mode validated across low-signal rural territories.</div>
+              </div>
+            </div>
+            <div class="cs-timeline-step">
+              <div class="cs-tl-left">
+                <div class="cs-tl-dot">3</div>
+                <div class="cs-tl-line"></div>
+              </div>
+              <div class="cs-tl-body">
+                <div class="cs-tl-phase">Phase 3 · Weeks 10–14</div>
+                <div class="cs-tl-title">GIS Integration &amp; Full Province Mobile Rollout</div>
+                <div class="cs-tl-desc">Esri GIS integration completed and activated. Remaining 470 technicians onboarded across Ontario and Manitoba. PM scheduling engine deployed. Van stock integration activated at all 28 depots. Paper work orders fully eliminated across the entire organisation.</div>
+              </div>
+            </div>
+            <div class="cs-timeline-step">
+              <div class="cs-tl-left">
+                <div class="cs-tl-dot">4</div>
+                <div class="cs-tl-line"></div>
+              </div>
+              <div class="cs-tl-body">
+                <div class="cs-tl-phase">Phase 4 · Weeks 15–18</div>
+                <div class="cs-tl-title">Regulatory Reporting, Analytics &amp; Hypercare</div>
+                <div class="cs-tl-desc">OEB reporting automation delivered and validated with NorthGrid's regulatory team. FSL Analytics dashboards deployed for operations management. Four-week Gagstek hypercare period with on-site support at key depots before full handover.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <!-- Results -->
         <div class="cs-section">
           <p class="cs-section-label">Business Impact</p>
-          <h2 class="cs-section-title">Speed, Accuracy, and Recovered Margin</h2>
+          <h2 class="cs-section-title">A Safer, Faster, and Significantly Cheaper Operation</h2>
           <div class="cs-results-list">
             <div class="cs-result-row">
-              <div class="cs-result-badge">96%</div>
-              <div class="cs-result-text"><strong>Quote turnaround fell from 9 days to under 4 hours</strong> for standard deals — complex government tenders now completed in 1 day vs. the previous 3-week average, giving Meridian a decisive speed advantage in competitive tenders.</div>
+              <div class="cs-result-badge">48 min</div>
+              <div class="cs-result-text"><strong>Emergency fault response time fell from 4 hours to 48 minutes</strong> — an 80% improvement driven by Einstein routing, real-time GPS dispatch, and skill-matched technician assignment, directly resolving NorthGrid's OEB regulatory concern within the first month of go-live.</div>
+            </div>
+            <div class="cs-result-row">
+              <div class="cs-result-badge">67%</div>
+              <div class="cs-result-text"><strong>Standard dispatch time reduced by 67%</strong> — from an average of 2.3 hours to 46 minutes for planned work orders, as automated scheduling replaced manual coordinator decision-making across all 28 depots simultaneously.</div>
             </div>
             <div class="cs-result-row">
               <div class="cs-result-badge">Zero</div>
-              <div class="cs-result-text"><strong>Pricing errors dropped to zero</strong> in the six months post go-live — eliminating both the revenue leakage from over-discounting and the compliance disputes from incorrect government contract application.</div>
+              <div class="cs-result-text"><strong>Paper work orders eliminated entirely</strong> across all 620 technicians and 28 depot locations — closing the 2–3 day job closure lag and giving operations management a real-time view of field progress for the first time in the company's history.</div>
             </div>
             <div class="cs-result-row">
-              <div class="cs-result-badge">42%</div>
-              <div class="cs-result-text"><strong>Win rate on quoted deals improved by 42%</strong> — attributed to faster response times, professional proposal quality, and accurate pricing that built customer confidence in Meridian's commercial process.</div>
+              <div class="cs-result-badge">44%</div>
+              <div class="cs-result-text"><strong>First-time fix rate improved by 44%</strong> as GIS asset integration gave technicians access to full equipment history and schematics before arriving on site, and van stock tracking ensured the right parts were loaded before departure.</div>
             </div>
             <div class="cs-result-row">
-              <div class="cs-result-badge">A$2.1M</div>
-              <div class="cs-result-text"><strong>A$2.1 million in annual revenue recovered</strong> from previously uncontrolled discount leakage, identified through CPQ's discount analytics dashboard during the first 12 months of operation.</div>
+              <div class="cs-result-badge">40 hrs</div>
+              <div class="cs-result-text"><strong>Regulatory reporting cycle eliminated</strong> — the 40-hour per-cycle manual extraction process replaced by a one-click OEB report export, freeing an entire reporting team for higher-value compliance and planning work.</div>
             </div>
             <div class="cs-result-row">
-              <div class="cs-result-badge">90 min</div>
-              <div class="cs-result-text"><strong>TGA documentation time eliminated entirely</strong> — what previously consumed 45–90 minutes of compliance officer time per quote now happens automatically at deal creation, freeing that team for higher-value regulatory work.</div>
+              <div class="cs-result-badge">CAD 4.2M</div>
+              <div class="cs-result-text"><strong>CAD 4.2 million in annual operational savings</strong> identified across reduced overtime (faster jobs), eliminated data-entry headcount, lower fuel costs from optimised routing, and reduced repeat dispatch from improved first-time fix rates.</div>
             </div>
           </div>
           <div class="cs-conclusion-box" style="margin-top:1.5rem;">
-            For a business where deal size averages A$180,000 and competitive tender windows can be as short as 48 hours, <strong>speed and accuracy are not operational metrics — they are revenue metrics</strong>. Gagstek's CPQ implementation gave Meridian the commercial engine to compete and win at scale.
+            For a regulated utility, the stakes of slow field response extend beyond customer satisfaction into public safety, regulatory standing, and licence conditions. Gagstek's Field Service Lightning implementation gave NorthGrid Energy the <strong>digital foundation to meet those obligations reliably</strong> — while delivering a financial return that paid back the project cost inside the first eight months of operation.
           </div>
         </div>
 
         <div class="cs-divider"></div>
 
+        <!-- Testimonial -->
         <div class="cs-section">
           <p class="cs-section-label">Client Testimonial</p>
           <h2 class="cs-section-title">What the Client Said</h2>
           <div class="cs-testimonial">
             <p class="cs-testi-quote">
-              "Our quoting process was our biggest competitive disadvantage. By the time we got approval and sent a proposal, two of our competitors had already responded. Gagstek understood the complexity of our pricing — the TGA requirements, the government contract tiers, the device configurations — and built a CPQ solution that handles all of it automatically. We won a major hospital group tender last quarter that we would have missed entirely under the old process. The ROI was clear within the first 90 days."
+              "We were under real pressure from the OEB on response times, and we knew our paper-based processes were the root cause — but the scale of the challenge felt enormous. 620 technicians, 28 depots, two provinces. Gagstek didn't flinch. They phased the rollout intelligently, got our emergency response metric into compliance within the first month, and had every technician on mobile within 14 weeks. The GIS integration was the piece that surprised our field teams most — they couldn't believe they could pull up full asset history and network schematics from their phone on a pole in Northern Manitoba. That capability alone changed how our people work."
             </p>
             <div class="cs-testi-author">
-              <div class="cs-testi-avatar">M</div>
+              <div class="cs-testi-avatar">R</div>
               <div>
-                <div class="cs-testi-name">VP of Commercial Operations</div>
-                <div class="cs-testi-role">Meridian MedTech, Australia</div>
+                <div class="cs-testi-name">Director of Field Operations</div>
+                <div class="cs-testi-role">NorthGrid Energy, Ontario Canada</div>
               </div>
             </div>
           </div>
@@ -465,15 +583,17 @@
 
       <!-- SIDEBAR -->
       <aside class="cs-sidebar">
+
         <div class="cs-sidebar-card">
           <p class="cs-sidebar-card-title">Project Details</p>
           <div class="cs-project-details">
-            <div class="cs-detail-row"><span class="cs-detail-label">Client</span><span class="cs-detail-value">Meridian MedTech (Australia)</span></div>
-            <div class="cs-detail-row"><span class="cs-detail-label">Industry</span><span class="cs-detail-value">Medical Devices / Manufacturing</span></div>
-            <div class="cs-detail-row"><span class="cs-detail-label">Region</span><span class="cs-detail-value">Australia &amp; New Zealand</span></div>
-            <div class="cs-detail-row"><span class="cs-detail-label">Product Catalogue</span><span class="cs-detail-value">1,400+ SKUs</span></div>
-            <div class="cs-detail-row"><span class="cs-detail-label">Sales Team Size</span><span class="cs-detail-value">18 Reps + 6 Managers</span></div>
-            <div class="cs-detail-row"><span class="cs-detail-label">Duration</span><span class="cs-detail-value">14 Weeks</span></div>
+            <div class="cs-detail-row"><span class="cs-detail-label">Client</span><span class="cs-detail-value">NorthGrid Energy (Canada)</span></div>
+            <div class="cs-detail-row"><span class="cs-detail-label">Industry</span><span class="cs-detail-value">Energy &amp; Utilities</span></div>
+            <div class="cs-detail-row"><span class="cs-detail-label">Region</span><span class="cs-detail-value">Ontario &amp; Manitoba, Canada</span></div>
+            <div class="cs-detail-row"><span class="cs-detail-label">Field Workforce</span><span class="cs-detail-value">620 Technicians</span></div>
+            <div class="cs-detail-row"><span class="cs-detail-label">Depot Locations</span><span class="cs-detail-value">28 Depots</span></div>
+            <div class="cs-detail-row"><span class="cs-detail-label">GIS Assets Integrated</span><span class="cs-detail-value">2.4 Million Components</span></div>
+            <div class="cs-detail-row"><span class="cs-detail-label">Duration</span><span class="cs-detail-value">18 Weeks (4 Phases)</span></div>
             <div class="cs-detail-row"><span class="cs-detail-label">Delivered By</span><span class="cs-detail-value">Gagstek</span></div>
           </div>
         </div>
@@ -482,24 +602,24 @@
           <p class="cs-sidebar-card-title">Before vs. After</p>
           <div class="cs-before-after">
             <div class="cs-ba-row">
-              <div class="cs-ba-cell before"><div class="cs-ba-header">Before</div>9-day quote turnaround</div>
-              <div class="cs-ba-cell after"><div class="cs-ba-header">After</div>Under 4 hours</div>
+              <div class="cs-ba-cell before"><div class="cs-ba-header">Before</div>4-hour emergency response</div>
+              <div class="cs-ba-cell after"><div class="cs-ba-header">After</div>48-minute response</div>
             </div>
             <div class="cs-ba-row">
-              <div class="cs-ba-cell before"><div class="cs-ba-header">Before</div>Manual Excel pricing</div>
-              <div class="cs-ba-cell after"><div class="cs-ba-header">After</div>Automated CPQ rules</div>
+              <div class="cs-ba-cell before"><div class="cs-ba-header">Before</div>Paper work orders only</div>
+              <div class="cs-ba-cell after"><div class="cs-ba-header">After</div>100% digital mobile</div>
             </div>
             <div class="cs-ba-row">
-              <div class="cs-ba-cell before"><div class="cs-ba-header">Before</div>Frequent pricing errors</div>
-              <div class="cs-ba-cell after"><div class="cs-ba-header">After</div>Zero errors post go-live</div>
+              <div class="cs-ba-cell before"><div class="cs-ba-header">Before</div>Radio/phone dispatch</div>
+              <div class="cs-ba-cell after"><div class="cs-ba-header">After</div>Einstein auto-routing</div>
             </div>
             <div class="cs-ba-row">
-              <div class="cs-ba-cell before"><div class="cs-ba-header">Before</div>Email approval chains</div>
-              <div class="cs-ba-cell after"><div class="cs-ba-header">After</div>Instant routed approvals</div>
+              <div class="cs-ba-cell before"><div class="cs-ba-header">Before</div>No GIS access on-site</div>
+              <div class="cs-ba-cell after"><div class="cs-ba-header">After</div>Full Esri GIS on mobile</div>
             </div>
             <div class="cs-ba-row">
-              <div class="cs-ba-cell before"><div class="cs-ba-header">Before</div>Manual TGA docs (90 min)</div>
-              <div class="cs-ba-cell after"><div class="cs-ba-header">After</div>Auto-generated at creation</div>
+              <div class="cs-ba-cell before"><div class="cs-ba-header">Before</div>40hr regulatory reports</div>
+              <div class="cs-ba-cell after"><div class="cs-ba-header">After</div>One-click OEB export</div>
             </div>
           </div>
         </div>
@@ -507,23 +627,23 @@
         <div class="cs-sidebar-card">
           <p class="cs-sidebar-card-title">Technology Stack</p>
           <div class="cs-systems-list">
-            <div class="cs-system-item"><i class="fa-solid fa-circle-check"></i> Salesforce CPQ</div>
-            <div class="cs-system-item"><i class="fa-solid fa-circle-check"></i> Salesforce Sales Cloud</div>
-            <div class="cs-system-item"><i class="fa-solid fa-circle-check"></i> SAP ERP Integration</div>
-            <div class="cs-system-item"><i class="fa-solid fa-circle-check"></i> DocuSign e-Signature</div>
-            <div class="cs-system-item"><i class="fa-solid fa-circle-check"></i> CPQ Advanced Approvals</div>
-            <div class="cs-system-item"><i class="fa-solid fa-circle-check"></i> Conga Document Generation</div>
-            <div class="cs-system-item"><i class="fa-solid fa-circle-check"></i> Salesforce REST APIs</div>
+            <div class="cs-system-item"><i class="fa-solid fa-circle-check"></i> Salesforce Field Service Lightning</div>
+            <div class="cs-system-item"><i class="fa-solid fa-circle-check"></i> Einstein Work Order Routing</div>
+            <div class="cs-system-item"><i class="fa-solid fa-circle-check"></i> FSL Mobile App (iOS &amp; Android)</div>
+            <div class="cs-system-item"><i class="fa-solid fa-circle-check"></i> Esri ArcGIS Integration</div>
+            <div class="cs-system-item"><i class="fa-solid fa-circle-check"></i> Salesforce Service Cloud</div>
+            <div class="cs-system-item"><i class="fa-solid fa-circle-check"></i> FSL Connected Worker</div>
+            <div class="cs-system-item"><i class="fa-solid fa-circle-check"></i> Salesforce Field Service Analytics</div>
           </div>
         </div>
 
         <div class="cs-cta-card">
-          <h3>Ready to eliminate quote errors and close faster?</h3>
-          <p>Let Gagstek implement Salesforce CPQ tailored to your product complexity and pricing rules.</p>
+          <h3>Ready to modernise your field workforce operations?</h3>
+          <p>Let Gagstek design and implement Salesforce Field Service Lightning for your scale and complexity.</p>
           <a href="https://calendly.com/gagstek/30min" class="cs-cta-btn" target="_blank" rel="noopener">Book a Free Consultation ↗</a>
         </div>
-      </aside>
 
+      </aside>
     </div>
   </div>
 
