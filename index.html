@@ -2181,35 +2181,49 @@
   <!-- ═══ SECTION 7: WHY GAGSTEK ═══ -->
   <section class="why-section">
 
-    <!-- Top: heading above the dark panel -->
+    <!-- Top heading -->
     <div class="why-top">
       <h2 class="why-top-title">WHAT MAKES <span>GAGSTEK</span> DIFFERENT FROM<br>OTHER CLOUD & AI PARTNERS?</h2>
       <p class="why-top-sub">Our people. Our process. Our expertise. Our commitment.</p>
     </div>
 
-    <!-- Dark starfield panel -->
-    <div class="why-dark">
-
-
+    <!-- Equal split panel -->
+    <div class="why-panel">
       <div class="why-content">
-        <!-- Left: team image -->
+
+        <!-- Left: image, fills the column fully -->
         <div class="why-img-wrap">
           <img src="./img/vfg.png?w=900&q=85&fit=crop" alt="Gagstek Team at work" />
+          <!-- overlay badge -->
+          <div class="why-img-badge">
+            <span class="why-badge-dot"></span>
+            Trusted by 100+ Businesses Globally
+          </div>
         </div>
 
-        <!-- Right: white card -->
+        <!-- Right: marketing copy card -->
         <div class="why-card">
           <p class="why-card-tagline">Cloud-Powered Intelligence. AI-Driven Success.</p>
-          <p class="why-card-line1">Turning <em>Challenges</em> Into<br><strong>Opportunities</strong> One Project at a Time</p>
-          <div class="why-card-divider"></div>
-          <p class="why-card-cta">Ready? <strong>Gagstek!</strong></p>
-        </div>
-      </div>
 
-      <!-- Bottom buttons -->
-      <div class="why-btns">
-        <a href="about.html" class="why-btn why-btn-solid">MEET OUR TEAM</a>
-        <a href="services.html" class="why-btn why-btn-outline">EXPLORE OUR SERVICES</a>
+          <h3 class="why-card-headline">Turning <em>Challenges</em> Into<br><strong>Opportunities</strong><br>One Project at a Time</h3>
+
+          <div class="why-card-divider"></div>
+
+          <ul class="why-card-pillars">
+            <li><span class="why-pillar-icon">⚡</span> <span>Salesforce-certified experts</span></li>
+            <li><span class="why-pillar-icon">🤖</span> <span>AI-first delivery approach</span></li>
+            <li><span class="why-pillar-icon">🌍</span> <span>US · India · Australia offices</span></li>
+            <li><span class="why-pillar-icon">🏆</span> <span>98% on-time project delivery</span></li>
+          </ul>
+
+          <p class="why-card-cta-text">Ready? <strong>Gagstek!</strong></p>
+
+          <div class="why-card-actions">
+            <a href="about.html" class="why-cta-primary">Meet Our Team</a>
+            <a href="services.html" class="why-cta-secondary">Explore Services →</a>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -2218,14 +2232,14 @@
   <style>
     /* ── WHY SECTION ───────────────────────────────────── */
     .why-section {
-      background: #fff;
+      background: #f8faff;
       overflow: hidden;
     }
 
-    /* top white heading area */
+    /* top heading area */
     .why-top {
       text-align: center;
-      padding: 5rem 2rem 3rem;
+      padding: 5rem 2rem 3.5rem;
       max-width: 860px;
       margin: 0 auto;
     }
@@ -2241,144 +2255,182 @@
     }
     .why-top-title span { color: #3b82f6; }
     .why-top-sub {
-      font-size: 1.4rem;
+      font-size: 1.1rem;
       color: #64748b;
     }
 
-    /* white panel (was dark starfield) */
-    .why-dark {
-      position: relative;
-      background: #ffffff;
-      padding: 4rem 2rem 5rem;
-      overflow: hidden;
+    /* outer panel — light blue-grey bg */
+    .why-panel {
+      background: #f0f5ff;
+      padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 5vw, 5rem) clamp(3rem, 6vw, 5rem);
     }
 
-    .why-dark::before {
-      display: none;
-    }
-
-
-
-    /* content row */
+    /* equal 50/50 grid */
     .why-content {
-      max-width: 100%;
-      margin: 0 auto 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
       display: grid;
-      grid-template-columns: 58% 42%;
-      gap: 0;
-      align-items: center;
-      position: relative;
-      z-index: 2;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(1.5rem, 3vw, 3rem);
+      align-items: stretch;
     }
 
-    /* image */
+    /* LEFT: image fills column height */
     .why-img-wrap {
-      border-radius: 18px;
+      position: relative;
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+      box-shadow: 0 20px 50px rgba(10,22,40,0.18);
+      min-height: 460px;
     }
     .why-img-wrap img {
       width: 100%;
-      aspect-ratio: 4/3;
+      height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.5s ease;
+      /* NO hover zoom */
     }
-    .why-img-wrap:hover img { transform: scale(1.04); }
+    /* image overlay badge */
+    .why-img-badge {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px);
+      border-radius: 100px;
+      padding: 0.55rem 1.25rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #0a1628;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+    .why-badge-dot {
+      width: 8px; height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 3px rgba(34,197,94,0.25);
+    }
 
-    /* white card */
+    /* RIGHT: marketing card */
     .why-card {
       background: #fff;
-      border-radius: 18px;
-      padding: 3rem 2.5rem;
-      text-align: center;
-      box-shadow: 0 24px 60px rgba(0,0,0,0.12);
-      border: 1.5px solid #e8f0fe;
+      border-radius: 20px;
+      padding: clamp(2rem, 3.5vw, 3.5rem);
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1.6rem;
       justify-content: center;
-      align-items: center;
-      min-height: 480px;
-      margin-left: -60px;
-      align-self: end;
+      box-shadow: 0 8px 40px rgba(10,22,40,0.08);
+      border: 1.5px solid #e0eaff;
     }
+
     .why-card-tagline {
-      font-size: clamp(0.72rem, 1.2vw, 0.82rem);
+      font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 2px;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
       color: #3b82f6;
       background: rgba(59,130,246,0.08);
-      border: 1px solid rgba(59,130,246,0.2);
+      border: 1px solid rgba(59,130,246,0.22);
       border-radius: 100px;
-      padding: 0.45rem 1.2rem;
+      padding: 0.45rem 1.1rem;
       display: inline-block;
+      width: fit-content;
     }
-    .why-card-line1 {
-      font-size: clamp(1.1rem, 2vw, 1.4rem);
-      color: #334155;
-      line-height: 1.6;
-      text-align: center;
+
+    .why-card-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+      font-weight: 900;
+      color: #0a1628;
+      line-height: 1.25;
     }
-    .why-card-line1 em { font-style: normal; color: #3b82f6; font-weight: 600; }
-    .why-card-line1 strong { color: #0a1628; }
+    .why-card-headline em { font-style: normal; color: #3b82f6; }
+    .why-card-headline strong { color: #0a1628; }
+
     .why-card-divider {
-      width: 48px;
+      width: 52px;
       height: 3px;
       background: linear-gradient(90deg, #3b82f6, #60a5fa);
       border-radius: 2px;
-      margin: 0 auto;
     }
-    .why-card-cta {
+
+    /* pillar list */
+    .why-card-pillars {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .why-card-pillars li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.93rem;
+      color: #334155;
+      font-weight: 500;
+    }
+    .why-pillar-icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      background: #f0f5ff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .why-card-cta-text {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-size: clamp(1.3rem, 2.2vw, 1.7rem);
       font-weight: 900;
       color: #0a1628;
-      text-align: center;
     }
-    .why-card-cta strong { color: #3b82f6; }
+    .why-card-cta-text strong { color: #3b82f6; }
 
-    /* buttons */
-    .why-btns {
+    /* CTA buttons inside the card */
+    .why-card-actions {
       display: flex;
+      align-items: center;
       gap: 1.2rem;
-      justify-content: center;
-      position: relative;
-      z-index: 2;
+      flex-wrap: wrap;
     }
-    .why-btn {
-      padding: .9rem 2.4rem;
-      border-radius: 100px;
-      font-size: .88rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: transform .2s, box-shadow .2s, background .2s;
-    }
-    .why-btn-solid {
+    .why-cta-primary {
       background: #3b82f6;
       color: #fff;
-      box-shadow: 0 4px 20px rgba(59,130,246,0.4);
+      padding: 0.8rem 2rem;
+      border-radius: 100px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      box-shadow: 0 4px 18px rgba(59,130,246,0.4);
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
     }
-    .why-btn-solid:hover { background: #2563eb; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(59,130,246,0.5); }
-    .why-btn-outline {
-      background: transparent;
-      color: #0a1628;
-      border: 2px solid rgba(10,22,40,0.3);
+    .why-cta-primary:hover { background: #2563eb; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(59,130,246,0.5); }
+    .why-cta-secondary {
+      color: #3b82f6;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: color 0.2s, gap 0.2s;
     }
-    .why-btn-outline:hover { border-color: #0a1628; background: rgba(10,22,40,0.05); transform: translateY(-2px); }
+    .why-cta-secondary:hover { color: #2563eb; }
 
     /* responsive */
     @media (max-width: 860px) {
       .why-content { grid-template-columns: 1fr; }
-      .why-rocket { display: none; }
-      .why-card { min-height: auto; padding: 2rem 1.5rem; margin-left: 0; margin-top: 1.5rem; align-self: auto; }
+      .why-img-wrap { min-height: 300px; }
     }
     @media (max-width: 500px) {
-      .why-btns { flex-direction: column; align-items: center; }
-      .why-btn { width: 100%; max-width: 280px; text-align: center; }
+      .why-card-actions { flex-direction: column; align-items: flex-start; }
       .why-top { padding: 3.5rem 1.25rem 2rem; }
     }
   </style>
