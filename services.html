@@ -373,21 +373,28 @@
     .process-card:hover { border-color: rgba(59,130,246,0.3); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.3); }
     .process-card:hover::before { transform: scaleX(1); }
     .process-step-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem; font-weight: 900; color:rgb(120 169 249 / 68%);
-      line-height: 1; margin-bottom: 1.25rem; letter-spacing: -2px;
-    }
-    .process-icon {
-      width: 48px; height: 48px; border-radius: 12px;
-      background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.25);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1.2rem;
-    }
-    .process-card-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem; font-weight: 900; color: var(--white);
-      margin-bottom: 0.7rem; letter-spacing: -0.2px;
-    }
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem; font-weight: 900; color:rgb(120 169 249 / 68%);
+  line-height: 1; margin-bottom: 1.25rem; letter-spacing: -2px;
+  text-align: center;
+}
+.process-icon-title {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+.process-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.25);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.process-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem; font-weight: 900; color: var(--white);
+  margin-bottom: 0; letter-spacing: -0.2px;
+}
     .process-card-desc { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
 
     /* ─── STATS BAR ─────────────────────────────────────── */
@@ -1402,55 +1409,67 @@
 
         <div class="process-card">
           <div class="process-step-num">01</div>
-          <div class="process-icon">
-            <i class="fa-solid fa-magnifying-glass" style="color:#60a5fa;font-size:20px;"></i>
+          <div class="process-icon-title">
+            <div class="process-icon">
+              <i class="fa-solid fa-magnifying-glass" style="color:#60a5fa;font-size:20px;"></i>
+            </div>
+            <div class="process-card-title">Discovery</div>
           </div>
-          <div class="process-card-title">Discovery</div>
           <p class="process-card-desc">We get to know your business — desired outcomes, existing tools, and goals. No assumptions, lots of notes. This sets the foundation for everything that follows.</p>
         </div>
 
         <div class="process-card">
           <div class="process-step-num">02</div>
-          <div class="process-icon">
-            <i class="fa-solid fa-clipboard-check" style="color:#60a5fa;font-size:20px;"></i>
+          <div class="process-icon-title">
+            <div class="process-icon">
+              <i class="fa-solid fa-clipboard-check" style="color:#60a5fa;font-size:20px;"></i>
+            </div>
+            <div class="process-card-title">Assessment</div>
           </div>
-          <div class="process-card-title">Assessment</div>
           <p class="process-card-desc">Transparency first. We audit your current tech stack, clarify implementation scope, timelines, and costs upfront — so there are zero surprises later.</p>
         </div>
 
         <div class="process-card">
           <div class="process-step-num">03</div>
-          <div class="process-icon">
-            <i class="fa-solid fa-pencil-ruler" style="color:#60a5fa;font-size:20px;"></i>
+          <div class="process-icon-title">
+            <div class="process-icon">
+              <i class="fa-solid fa-pencil-ruler" style="color:#60a5fa;font-size:20px;"></i>
+            </div>
+            <div class="process-card-title">Design</div>
           </div>
-          <div class="process-card-title">Design</div>
           <p class="process-card-desc">We collaborate closely with your team to blueprint your system before a single line of code is written. What you approve in design is exactly what you get in the build.</p>
         </div>
 
         <div class="process-card">
           <div class="process-step-num">04</div>
-          <div class="process-icon">
-            <i class="fa-solid fa-code" style="color:#60a5fa;font-size:20px;"></i>
+          <div class="process-icon-title">
+            <div class="process-icon">
+              <i class="fa-solid fa-code" style="color:#60a5fa;font-size:20px;"></i>
+            </div>
+            <div class="process-card-title">Development</div>
           </div>
-          <div class="process-card-title">Development</div>
           <p class="process-card-desc">Fluid communication throughout. We involve your key stakeholders in regular reviews — you stay fully visible to progress, we stay aligned with your goals.</p>
         </div>
 
         <div class="process-card">
           <div class="process-step-num">05</div>
-          <div class="process-icon">
-            <i class="fa-solid fa-users" style="color:#60a5fa;font-size:20px;"></i>
+          <div class="process-icon-title">
+            <div class="process-icon">
+              <i class="fa-solid fa-users" style="color:#60a5fa;font-size:20px;"></i>
+            </div>
+            <div class="process-card-title">Onboarding</div>
           </div>
-          <div class="process-card-title">Onboarding</div>
           <p class="process-card-desc">We get your team excited and equipped — hands-on training on each feature, executive dashboards to show ROI, and guided onboarding at every critical phase.</p>
         </div>
 
         <div class="process-card">
           <div class="process-step-num">06</div>
-          <div class="process-icon">
-            <i class="fa-solid fa-headset" style="color:#60a5fa;font-size:20px;"></i>
+          <div class="process-icon-title">
+            <div class="process-icon">
+              <i class="fa-solid fa-headset" style="color:#60a5fa;font-size:20px;"></i>
+            </div>
+            <div class="process-card-title">Ongoing Support</div>
           </div>
-          <div class="process-card-title">Ongoing Support</div>
           <p class="process-card-desc">We're here for the long haul — proactive maintenance, system updates, and support as you grow. Because much like you're invested in us, we're invested in YOU.</p>
         </div>
 
