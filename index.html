@@ -2199,7 +2199,9 @@
 
         <!-- Right: white card -->
         <div class="why-card">
+          <p class="why-card-tagline">Cloud-Powered Intelligence. AI-Driven Success.</p>
           <p class="why-card-line1">Turning <em>Challenges</em> Into<br><strong>Opportunities</strong> One Project at a Time</p>
+          <div class="why-card-divider"></div>
           <p class="why-card-cta">Ready? <strong>Gagstek!</strong></p>
         </div>
       </div>
@@ -2243,39 +2245,16 @@
       color: #64748b;
     }
 
-    /* dark starfield panel */
+    /* white panel (was dark starfield) */
     .why-dark {
       position: relative;
-      background: #0b0e1f;
-      background-image:
-        radial-gradient(ellipse at 20% 50%, rgba(59,130,246,0.06) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 30%, rgba(124,58,237,0.07) 0%, transparent 60%);
+      background: #ffffff;
       padding: 4rem 2rem 5rem;
       overflow: hidden;
     }
 
-    /* star dots via box-shadow trick */
     .why-dark::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.55) 0%, transparent 100%),
-        radial-gradient(1px 1px at 25% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
-        radial-gradient(1px 1px at 40% 10%, rgba(255,255,255,0.5) 0%, transparent 100%),
-        radial-gradient(1px 1px at 55% 60%, rgba(255,255,255,0.35) 0%, transparent 100%),
-        radial-gradient(1px 1px at 70% 25%, rgba(255,255,255,0.5) 0%, transparent 100%),
-        radial-gradient(1px 1px at 85% 50%, rgba(255,255,255,0.4) 0%, transparent 100%),
-        radial-gradient(1px 1px at 15% 75%, rgba(255,255,255,0.45) 0%, transparent 100%),
-        radial-gradient(1px 1px at 60% 85%, rgba(255,255,255,0.3) 0%, transparent 100%),
-        radial-gradient(1px 1px at 90% 70%, rgba(255,255,255,0.5) 0%, transparent 100%),
-        radial-gradient(1.5px 1.5px at 35% 55%, rgba(255,255,255,0.6) 0%, transparent 100%),
-        radial-gradient(1px 1px at 75% 80%, rgba(255,255,255,0.35) 0%, transparent 100%),
-        radial-gradient(1px 1px at 5% 90%, rgba(255,255,255,0.4) 0%, transparent 100%),
-        radial-gradient(1px 1px at 48% 35%, rgba(255,255,255,0.45) 0%, transparent 100%),
-        radial-gradient(1.5px 1.5px at 92% 12%, rgba(255,255,255,0.55) 0%, transparent 100%),
-        radial-gradient(1px 1px at 63% 48%, rgba(255,255,255,0.3) 0%, transparent 100%);
-      pointer-events: none;
+      display: none;
     }
 
 
@@ -2313,28 +2292,50 @@
       border-radius: 18px;
       padding: 3rem 2.5rem;
       text-align: center;
-      box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+      border: 1.5px solid #e8f0fe;
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
       justify-content: center;
+      align-items: center;
       min-height: 480px;
       margin-left: -60px;
-     
       align-self: end;
+    }
+    .why-card-tagline {
+      font-size: clamp(0.72rem, 1.2vw, 0.82rem);
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #3b82f6;
+      background: rgba(59,130,246,0.08);
+      border: 1px solid rgba(59,130,246,0.2);
+      border-radius: 100px;
+      padding: 0.45rem 1.2rem;
+      display: inline-block;
     }
     .why-card-line1 {
       font-size: clamp(1.1rem, 2vw, 1.4rem);
       color: #334155;
-      line-height: 1.5;
+      line-height: 1.6;
+      text-align: center;
     }
     .why-card-line1 em { font-style: normal; color: #3b82f6; font-weight: 600; }
     .why-card-line1 strong { color: #0a1628; }
+    .why-card-divider {
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(90deg, #3b82f6, #60a5fa);
+      border-radius: 2px;
+      margin: 0 auto;
+    }
     .why-card-cta {
       font-family: 'Playfair Display', serif;
       font-size: clamp(1.5rem, 3vw, 2rem);
       font-weight: 900;
       color: #0a1628;
+      text-align: center;
     }
     .why-card-cta strong { color: #3b82f6; }
 
@@ -2364,10 +2365,10 @@
     .why-btn-solid:hover { background: #2563eb; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(59,130,246,0.5); }
     .why-btn-outline {
       background: transparent;
-      color: #fff;
-      border: 2px solid rgba(255,255,255,0.4);
+      color: #0a1628;
+      border: 2px solid rgba(10,22,40,0.3);
     }
-    .why-btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+    .why-btn-outline:hover { border-color: #0a1628; background: rgba(10,22,40,0.05); transform: translateY(-2px); }
 
     /* responsive */
     @media (max-width: 860px) {
