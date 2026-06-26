@@ -2083,12 +2083,25 @@
       if (this.value.trim()) { clearErr('fnameErr'); markInput('fname', false); }
     });
     document.getElementById('femail').addEventListener('input', function() {
-      if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value.trim())) { clearErr('femailErr'); markInput('femail', false); }
+      const val = this.value.trim();
+      if (!val) { clearErr('femailErr'); markInput('femail', false); return; }
+      if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+        clearErr('femailErr'); markInput('femail', false);
+      } else {
+        showErr('femailErr', 'Please enter a valid email (e.g. you@example.com).');
+        markInput('femail', true);
+      }
     });
     document.getElementById('fphone').addEventListener('input', function() {
       this.value = this.value.replace(/[^0-9+\-() ]/g, '');
       const digits = this.value.replace(/\D/g, '');
-      if (digits.length === 10) { clearErr('fphoneErr'); markInput('fphone', false); }
+      if (!digits) { clearErr('fphoneErr'); markInput('fphone', false); return; }
+      if (digits.length === 10) {
+        clearErr('fphoneErr'); markInput('fphone', false);
+      } else {
+        showErr('fphoneErr', 'Phone number must be exactly 10 digits.');
+        markInput('fphone', true);
+      }
     });
 
     function handleSubmit() {
