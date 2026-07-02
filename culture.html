@@ -228,7 +228,7 @@
     .culture-intro-inner {
       max-width: 100%; margin: 0 auto;
       display: grid; grid-template-columns: 1fr 1fr;
-      gap: 5rem; align-items: center;
+      gap: 5rem; align-items: start;
     }
     .culture-intro-text {}
     .section-label {
@@ -334,8 +334,6 @@
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.07);
     }
-    .gallery-item.tall { grid-row: span 2; }
-    .gallery-item.wide { grid-column: span 2; }
     .gallery-item img {
       width: 100%; height: 100%; object-fit: cover; display: block;
       transition: transform 0.5s ease;
@@ -387,8 +385,6 @@
 
     @media (max-width: 768px) {
       .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; }
-      .gallery-item.tall { grid-row: span 1; }
-      .gallery-item.wide { grid-column: span 1; }
     }
     @media (max-width: 480px) {
       .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 220px; }
@@ -598,10 +594,7 @@
             <div class="dp-icon" style="background:rgba(96,165,250,0.15);"><i class="fa-solid fa-images" style="color:#60a5fa;font-size:0.85rem;"></i></div>
             <div class="dp-meta">Culture &amp; Gallery<small>Life at Gagstek</small></div>
           </a>
-          <a href="culture.html" class="dp-current">
-            <div class="dp-icon" style="background:rgba(96,165,250,0.15);"><i class="fa-solid fa-images" style="color:#60a5fa;font-size:0.85rem;"></i></div>
-            <div class="dp-meta">Culture &amp; Gallery<small>Life at Gagstek</small></div>
-          </a>
+          
         </div>
       </li>
       <li><a href="https://calendly.com/gagstek/60min" class="nav-cta">Get Started</a></li>
@@ -638,7 +631,7 @@
     <a href="employee-review.html" class="mob-sub">→ Employee Reviews</a>
     <a href="blog.html" class="mob-sub">→ Newsletter</a>
     <a href="culture.html" class="mob-sub">→ Culture &amp; Gallery</a>
-    <a href="culture.html" class="mob-sub" style="color:#60a5fa;">→ Culture & Gallery</a>
+    
     <a href="contact.html">Contact</a>
     <a href="https://calendly.com/gagstek/60min" class="mob-cta">Get Started</a>
   </div>
@@ -731,7 +724,7 @@
       <div class="gallery-grid">
 
         <!-- Row 1 -->
-        <div class="gallery-item tall" data-index="0">
+        <div class="gallery-item" data-index="0">
           <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80&fit=crop" alt="Team collaboration" />
           <div class="gallery-overlay">
             <div class="gallery-caption"><i class="fa-solid fa-circle-dot"></i> Team Collaboration</div>
@@ -760,7 +753,7 @@
           </div>
         </div>
 
-        <div class="gallery-item wide" data-index="4">
+        <div class="gallery-item" data-index="4">
           <img src="https://images.unsplash.com/photo-1543269664-7eef42226a21?w=1200&q=80&fit=crop" alt="Team outing" />
           <div class="gallery-overlay">
             <div class="gallery-caption"><i class="fa-solid fa-circle-dot"></i> Team Outings</div>
@@ -768,7 +761,7 @@
         </div>
 
         <!-- Row 3 -->
-        <div class="gallery-item wide" data-index="5">
+        <div class="gallery-item" data-index="5">
           <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=1200&q=80&fit=crop" alt="Award ceremony" />
           <div class="gallery-overlay">
             <div class="gallery-caption"><i class="fa-solid fa-circle-dot"></i> Awards &amp; Recognition</div>
