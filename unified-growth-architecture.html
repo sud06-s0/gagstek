@@ -53,7 +53,7 @@
     .post-meta-divider { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,0.2); }
 
     /* ── HERO IMAGE ── */
-    .post-hero-img { max-width: 100%; margin: 0 auto; padding: 0 clamp(1rem, 3vw, 3rem); position: relative; z-index: 2; transform: translateY(-2rem); }
+    .post-hero-img { max-width: min(880px, 92vw); margin: 0 auto; padding: 0; position: relative; z-index: 2; transform: translateY(-2rem); }
     .post-hero-img img { width: 100%; border-radius: 20px; display: block; box-shadow: 0 32px 80px rgba(0,0,0,0.45); }
 
     /* ── LAYOUT ── */
@@ -213,7 +213,13 @@
     .post-hero h1 {
       font-size: clamp(1.8rem, 4vw, 3.4rem) !important;
     }
-    .post-hero-img, .stats-strip {
+    .post-hero-img {
+      max-width: min(880px, 92vw);
+      margin: 0 auto;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    .stats-strip {
       max-width: 100%;
       padding-left: clamp(1rem, 3vw, 3rem) !important;
       padding-right: clamp(1rem, 3vw, 3rem) !important;

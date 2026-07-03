@@ -380,22 +380,24 @@
 }
 .process-icon-title {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 0.85rem;
   margin-bottom: 0.85rem;
+  text-align: center;
 }
 .process-icon {
-  width: 48px; height: 48px; border-radius: 12px;
-  background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.25);
+  width: 48px; height: 48px;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
+.process-icon i { font-size: 30px !important; }
 .process-card-title {
   font-family: 'Playfair Display', serif;
   font-size: 1.15rem; font-weight: 900; color: var(--white);
   margin-bottom: 0; letter-spacing: -0.2px;
 }
-    .process-card-desc { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .process-card-desc { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.7; text-align: center; }
 
     /* ─── STATS BAR ─────────────────────────────────────── */
     .stats-bar {
@@ -1755,7 +1757,7 @@
     padding-left: 3rem !important;
     padding-right: 3rem !important;
   }
-  .nav-links a { font-size: 0.92rem !important; }
+  .nav-links a, .nav-drop-label { font-size: 0.92rem !important; }
 
   /* ── SECTION SIDE PADDING (2rem → 4rem) ──────────────── */
   .welcome-section, .testimonials-section, .services-section,
@@ -1803,7 +1805,7 @@
   /* ── FONT SIZES ───────────────────────────────────────── */
 
   /* --- NAV & UI --- */
-  .nav-links a, .db-text   { font-size: 0.92rem !important; }
+  .nav-links a, .nav-drop-label, .db-text   { font-size: 0.92rem !important; }
 
   /* --- EYEBROW / LABEL text (keep small but readable) --- */
   .section-eyebrow, .sb-label, .sbar-label, .stat-label,
