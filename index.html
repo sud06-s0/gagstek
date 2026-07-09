@@ -818,10 +818,10 @@
         padding-right: clamp(1.5rem, 4vw, 5rem);
       }
       .team-photo {
-        aspect-ratio: 16/7 !important;
-        max-height: clamp(280px, 35vh, 520px) !important;
+        aspect-ratio: 16/9 !important;
+        max-height: clamp(320px, 45vh, 600px) !important;
         object-fit: cover !important;
-        object-position: center top !important;
+        object-position: center center !important;
       }
       .team-photo-wrap {
         max-width: clamp(600px, 80vw, 1100px) !important;
@@ -3442,16 +3442,16 @@
           <p class="ft-col-title">Our Offices</p>
           <div class="ft-offices">
             <div class="ft-office">
-              <p class="ft-office-title">🇺🇸 United States</p>
+              <p class="ft-office-title"><img src="https://flagcdn.com/w40/us.png" alt="US" class="ft-flag-icon"> United States</p>
               <p class="ft-office-addr">16192 Coastal Highway, Lewes,<br>Delaware 19958</p>
               <p class="ft-office-phone">+1-567-399-2506</p>
             </div>
             <div class="ft-office">
-              <p class="ft-office-title">🇮🇳 India</p>
+              <p class="ft-office-title"><img src="https://flagcdn.com/w40/in.png" alt="IN" class="ft-flag-icon"> India</p>
               <p class="ft-office-addr">P3-001 Pentagon Tower,<br>Magarpatta City, Pune 411013</p>
             </div>
             <div class="ft-office">
-              <p class="ft-office-title">🇦🇺 Australia</p>
+              <p class="ft-office-title"><img src="https://flagcdn.com/w40/au.png" alt="AU" class="ft-flag-icon"> Australia</p>
               <p class="ft-office-addr">161 Collins St,<br>Melbourne VIC, 3000</p>
               <p class="ft-office-phone">+61-473118458</p>
             </div>
@@ -3508,7 +3508,8 @@
     .ft-col a:hover { color: #fff; }
     .ft-offices-col {}
     .ft-offices { display: flex; flex-direction: column; gap: 0.9rem; margin-top: 0.5rem; }
-    .ft-office-title { font-weight: 700; font-size: 0.8rem; color: #fff; margin-bottom: 0.1rem; }
+    .ft-office-title { font-weight: 700; font-size: 0.8rem; color: #fff; margin-bottom: 0.1rem; display: flex; align-items: center; gap: 0.4rem; }
+    .ft-flag-icon { width: 16px; height: 12px; object-fit: cover; border-radius: 2px; flex-shrink: 0; }
     .ft-office-addr { font-size: 0.75rem; line-height: 1.55; color: rgba(255,255,255,0.48); margin: 0; }
     .ft-office-phone { font-size: 0.72rem; color: rgba(255,255,255,0.38); margin-top: 0.08rem; }
     .footer-bottom { padding: 0.9rem 0; }
