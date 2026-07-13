@@ -20,7 +20,7 @@
   <meta name="twitter:image" content="./img/gag.png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -949,6 +949,156 @@
     </style>
 </head>
 <body>
+
+  <!-- ═══ WELCOME POPUP ═══ -->
+  <div id="welcomePopup" class="welcome-popup-overlay">
+    <div class="welcome-popup-box">
+      <button id="welcomePopupClose" class="welcome-popup-close" aria-label="Close">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="welcome-popup-icon">
+        <img src="./img/logo.png" alt="Gagstek" />
+      </div>
+      <p class="welcome-popup-text">
+        <span id="welcomeTypedText"></span><span class="welcome-cursor">|</span>
+      </p>
+    </div>
+  </div>
+
+  <style>
+    .welcome-popup-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(5,12,25,0.72);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+      padding: 1rem;
+    }
+    .welcome-popup-overlay.wp-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .welcome-popup-box {
+      position: relative;
+      background: linear-gradient(160deg, #0f172a 0%, #0a1628 100%);
+      border: 1px solid rgba(96,165,250,0.25);
+      border-radius: 20px;
+      padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 5vw, 3rem);
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(96,165,250,0.08);
+      transform: scale(0.9) translateY(10px);
+      animation: wpPopIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    @keyframes wpPopIn {
+      to { transform: scale(1) translateY(0); }
+    }
+    .welcome-popup-close {
+      position: absolute;
+      top: 0.9rem;
+      right: 0.9rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.06);
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .welcome-popup-close:hover { background: rgba(96,165,250,0.2); color: #fff; }
+    .welcome-popup-icon {
+      width: clamp(120px, 30vw, 180px);
+      margin: 0 auto 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .welcome-popup-icon img { width: 100%; height: auto; object-fit: contain; }
+    .welcome-popup-text {
+      font-family: 'Quicksand', 'DM Sans', sans-serif;
+      font-weight: 600;
+      color: #fff;
+      font-size: clamp(1.3rem, 4vw, 1.9rem);
+      line-height: 1.4;
+      min-height: 2.8em;
+      margin: 0;
+    }
+    .welcome-cursor {
+      display: inline-block;
+      color: #60a5fa;
+      animation: wpBlink 0.8s step-end infinite;
+      font-weight: 400;
+    }
+    @keyframes wpBlink { 50% { opacity: 0; } }
+
+    @media (max-width: 480px) {
+      .welcome-popup-box { border-radius: 16px; }
+      .welcome-popup-text { font-size: 1.15rem; }
+    }
+  </style>
+
+  <script>
+    (function () {
+      var overlay = document.getElementById('welcomePopup');
+      var closeBtn = document.getElementById('welcomePopupClose');
+      var typedEl = document.getElementById('welcomeTypedText');
+      var lines = ['Welcome to Gagstek 👋', 'Thank you for visiting us.'];
+      var lineIndex = 0, charIndex = 0, typing = true;
+      var autoCloseTimer;
+
+      function hidePopup() {
+        overlay.classList.add('wp-hidden');
+        clearTimeout(autoCloseTimer);
+        document.body.style.overflow = '';
+      }
+
+      function typeLoop() {
+        var current = lines[lineIndex];
+        if (typing) {
+          if (charIndex <= current.length) {
+            typedEl.textContent = current.slice(0, charIndex);
+            charIndex++;
+            setTimeout(typeLoop, 55);
+          } else {
+            typing = false;
+            setTimeout(typeLoop, lineIndex === lines.length - 1 ? 4000 : 900);
+          }
+        } else {
+          if (lineIndex < lines.length - 1) {
+            lineIndex++;
+            charIndex = 0;
+            typing = true;
+            typeLoop();
+          }
+          // last line stays on screen; loop ends
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        document.body.style.overflow = 'hidden';
+        setTimeout(typeLoop, 400);
+        autoCloseTimer = setTimeout(hidePopup, 12000);
+      });
+
+      closeBtn.addEventListener('click', hidePopup);
+      overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) hidePopup();
+      });
+    })();
+  </script>
 
   <!-- ═══ NAVBAR ═══ -->
     <nav id="navbar">
