@@ -441,7 +441,11 @@
       z-index: 2;
       position: relative;
     }
-    .tl-empty {}
+    .tl-empty { align-self: stretch; }
+    .tl-empty img {
+      width: 100%; height: 100%; min-height: 180px;
+      object-fit: cover; border-radius: 14px; display: block;
+    }
 
     /* ─── TEAM ───────────────────────────────────────────── */
     .team-section {
@@ -458,6 +462,7 @@
       max-width: 760px;
       margin: 0 auto;
     }
+    
     .team-card {
       background: #f8fafc;
       border: 1.5px solid #e2e8f0;
@@ -466,7 +471,7 @@
       text-align: center;
       transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
     }
-    .team-card:hover {
+    .team-card:hover{
       border-color: var(--accent);
       box-shadow: 0 8px 32px rgba(59,130,246,0.12);
       transform: translateY(-4px);
@@ -479,6 +484,17 @@
       display: block;
       border: 3px solid #e2e8f0;
     }
+
+    .team-avatar1 {
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1.2rem;
+      display: block;
+      border: 3px solid #e2e8f0;
+      object-position: top;
+    }
+
     .team-avatar-placeholder {
       width: 88px; height: 88px;
       border-radius: 50%;
@@ -568,17 +584,20 @@
       font-family: 'Playfair Display', serif;
       font-size: 1.1rem; font-weight: 700;
       color: #0a1628; margin-bottom: 0.5rem;
+      text-align: center;
     }
     .office-card .country {
       font-size: 0.75rem; font-weight: 700;
       letter-spacing: 1.5px; text-transform: uppercase;
       color: var(--accent); margin-bottom: 1rem;
+      text-align: center;
     }
     .office-addr {
       font-size: 0.88rem; color: #64748b;
       line-height: 1.7; margin-bottom: 1.2rem;
+      text-align: center;
     }
-    .office-contact { display: flex; flex-direction: column; gap: 0.4rem; }
+    .office-contact { display: flex; flex-direction: column; gap: 0.4rem; align-items: center; }
     .office-contact a {
       display: flex; align-items: center; gap: 0.5rem;
       font-size: 0.84rem; color: #475569; text-decoration: none;
@@ -586,10 +605,10 @@
     }
     .office-contact a:hover { color: var(--accent); }
     .office-divider {
-      width: 40px; height: 3px;
+      width: calc(100% - 1.5rem); height: 3px;
       background: var(--accent);
       border-radius: 2px;
-      margin-bottom: 1.2rem;
+      margin: 0 auto 1.2rem;
     }
 
     /* ─── FOOTER STYLES ──────────────────────────────────── */
@@ -1318,11 +1337,11 @@
             </div>
           </div>
           <div class="tl-dot"></div>
-          <div class="tl-empty"></div>
+          <div class="tl-empty"><img src="https://picsum.photos/seed/gagstek-2022-founded/600/400" alt="Gagstek founded in Pune, India" loading="lazy"></div>
         </div>
 
         <div class="tl-item right">
-          <div class="tl-empty"></div>
+          <div class="tl-empty"><img src="https://picsum.photos/seed/gagstek-2023-global/600/400" alt="Gagstek global expansion" loading="lazy"></div>
           <div class="tl-dot"></div>
           <div class="tl-content-wrap">
             <div class="tl-content">
@@ -1342,11 +1361,11 @@
             </div>
           </div>
           <div class="tl-dot"></div>
-          <div class="tl-empty"></div>
+          <div class="tl-empty"><img src="https://picsum.photos/seed/gagstek-2024-ai/600/400" alt="Gagstek AI and Agentic Solutions" loading="lazy"></div>
         </div>
 
         <div class="tl-item right">
-          <div class="tl-empty"></div>
+          <div class="tl-empty"><img src="https://picsum.photos/seed/gagstek-2026-scale/600/400" alt="Gagstek scaling new heights" loading="lazy"></div>
           <div class="tl-dot"></div>
           <div class="tl-content-wrap">
             <div class="tl-content">
@@ -1375,7 +1394,7 @@
           <img
             src="https://gagstek.com/wp-content/uploads/2023/09/PHOTO-2023-09-25-13-21-57.jpg"
             alt="Deepak Kumar"
-            class="team-avatar"
+            class="team-avatar1"
             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
           />
           <div class="team-avatar-placeholder" style="display:none;">D</div>
