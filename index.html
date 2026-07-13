@@ -819,7 +819,6 @@
       }
       .team-photo {
         aspect-ratio: 16/9 !important;
-        max-height: clamp(320px, 45vh, 600px) !important;
         object-fit: cover !important;
         object-position: center center !important;
       }
@@ -1053,6 +1052,13 @@
   <script>
     (function () {
       var overlay = document.getElementById('welcomePopup');
+      var alreadySeen = localStorage.getItem('gagstekWelcomeSeen');
+
+      if (alreadySeen) {
+        overlay.style.display = 'none';
+        return;
+      }
+
       var closeBtn = document.getElementById('welcomePopupClose');
       var typedEl = document.getElementById('welcomeTypedText');
       var lines = ['Welcome to Gagstek 👋', 'Thank you for visiting us.'];
@@ -1087,14 +1093,9 @@
         }
       }
 
+      localStorage.setItem('gagstekWelcomeSeen', 'true');
+
       document.addEventListener('DOMContentLoaded', function () {
-        var alreadySeen = localStorage.getItem('gagstekWelcomeSeen');
-        if (alreadySeen) {
-          overlay.classList.add('wp-hidden');
-          overlay.style.display = 'none';
-          return;
-        }
-        localStorage.setItem('gagstekWelcomeSeen', 'true');
         document.body.style.overflow = 'hidden';
         setTimeout(typeLoop, 400);
         autoCloseTimer = setTimeout(hidePopup, 12000);
