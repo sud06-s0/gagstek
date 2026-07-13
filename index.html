@@ -1088,6 +1088,13 @@
       }
 
       document.addEventListener('DOMContentLoaded', function () {
+        var alreadySeen = localStorage.getItem('gagstekWelcomeSeen');
+        if (alreadySeen) {
+          overlay.classList.add('wp-hidden');
+          overlay.style.display = 'none';
+          return;
+        }
+        localStorage.setItem('gagstekWelcomeSeen', 'true');
         document.body.style.overflow = 'hidden';
         setTimeout(typeLoop, 400);
         autoCloseTimer = setTimeout(hidePopup, 12000);
